@@ -203,6 +203,73 @@
             color: var(--forest);
         }
         .social-circle-footer svg { width: 22px; height: 22px; }
+
+        /* Floating Language Widget Styling */
+        #google_translate_element { display: none; }
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+
+        .lang-widget-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+        }
+        .lang-toggle-btn {
+            background-color: var(--forest);
+            color: var(--copper);
+            border: 1.5px solid var(--copper);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-toggle-btn:hover {
+            background-color: var(--copper);
+            color: var(--forest);
+            transform: scale(1.05);
+        }
+        .lang-dropdown-menu {
+            position: absolute;
+            bottom: 65px;
+            right: 0;
+            background: var(--parchment);
+            border: 1px solid rgba(212, 163, 115, 0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            padding: 0.5rem 0;
+            display: none;
+            min-width: 130px;
+        }
+        .lang-dropdown-menu.active {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+        .lang-option {
+            display: block;
+            width: 100%;
+            padding: 0.6rem 1rem;
+            text-align: left;
+            background: none;
+            border: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--forest);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-option:hover {
+            background: var(--forest);
+            color: var(--copper);
+        }
     </style>
 </head>
 <body>
@@ -415,6 +482,31 @@
         </div>
     </footer>
 
+    <!-- FLOATING LANGUAGE WIDGET (Bottom Right) -->
+    <div class="lang-widget-container">
+        <div id="google_translate_element"></div>
+        <div class="lang-dropdown-menu" id="langMenu">
+            <button class="lang-option" onclick="changeLanguage('en')">English</button>
+            <button class="lang-option" onclick="changeLanguage('fr')">Français</button>
+            <button class="lang-option" onclick="changeLanguage('nl')">Nederlands</button>
+        </div>
+        <button class="lang-toggle-btn" onclick="toggleLangMenu()" aria-label="Change Language">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </button>
+    </div>
+
+    <!-- Google Translate Script Loader -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,fr,nl',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <script>
         lucide.createIcons();
 
@@ -446,7 +538,26 @@
             }
         }
 
-        window.onclick = () => document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
+        function toggleLangMenu() {
+            const menu = document.getElementById('langMenu');
+            menu.classList.toggle('active');
+        }
+
+        function changeLanguage(langCode) {
+            const selectField = document.querySelector('.goog-te-combo');
+            if (selectField) {
+                selectField.value = langCode;
+                selectField.dispatchEvent(new Event('change'));
+            }
+            document.getElementById('langMenu').classList.remove('active');
+        }
+
+        window.onclick = (event) => {
+            document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
+            if (!event.target.closest('.lang-widget-container')) {
+                document.getElementById('langMenu').classList.remove('active');
+            }
+        };
     </script>
     <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ad3becddcd7249d19a31f20ef5fccc08"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
