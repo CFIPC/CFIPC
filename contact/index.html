@@ -185,6 +185,69 @@
             color: var(--forest);
         }
         .social-circle-footer svg { width: 22px; height: 22px; }
+
+        /* Custom Floating Language Widget Styling */
+        .lang-widget-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+        }
+        .lang-toggle-btn {
+            background-color: var(--forest);
+            color: var(--copper);
+            border: 1.5px solid var(--copper);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-toggle-btn:hover {
+            background-color: var(--copper);
+            color: var(--forest);
+            transform: scale(1.05);
+        }
+        .lang-dropdown-menu {
+            position: absolute;
+            bottom: 65px;
+            right: 0;
+            background: var(--parchment);
+            border: 1px solid rgba(212, 163, 115, 0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            padding: 0.5rem 0;
+            display: none;
+            min-width: 150px;
+        }
+        .lang-dropdown-menu.active {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+        .lang-option {
+            display: block;
+            width: 100%;
+            padding: 0.6rem 1rem;
+            text-align: left;
+            background: none;
+            border: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--forest);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-option:hover {
+            background: var(--forest);
+            color: var(--copper);
+        }
     </style>
 </head>
 <body>
@@ -197,34 +260,34 @@
         </div>
 
         <div class="mobile-group">
-            <span class="mobile-label">Competition</span>
-            <a href="https://cfipc.com/rules/" class="mobile-link">Rules</a>
-            <a href="https://cfipc.com/prizes/" class="mobile-link">Prizes</a>
-            <a href="https://cfipc.com/application/" class="mobile-link">Application</a>
-            <a href="https://cfipc.com/jury/" class="mobile-link">Jury</a>
-            <a href="https://cfipc.com/laureates/" class="mobile-link">Laureates</a>
+            <span class="mobile-label" data-i18n="nav_competition">Competition</span>
+            <a href="https://cfipc.com/rules/" class="mobile-link" data-i18n="nav_rules">Rules</a>
+            <a href="https://cfipc.com/prizes/" class="mobile-link" data-i18n="nav_prizes">Prizes</a>
+            <a href="https://cfipc.com/application/" class="mobile-link" data-i18n="nav_application">Application</a>
+            <a href="https://cfipc.com/jury/" class="mobile-link" data-i18n="nav_jury">Jury</a>
+            <a href="https://cfipc.com/laureates/" class="mobile-link" data-i18n="nav_laureates">Laureates</a>
         </div>
 
         <div class="mobile-group">
-            <span class="mobile-label">Masterclasses</span>
-            <a href="https://cfipc.com/winter-masterclass/" class="mobile-link">Winter Masterclass</a>
-            <a href="https://cfipc.com/spring-masterclass/" class="mobile-link">Spring Masterclass</a>
-            <a href="https://www.masterclass-volodos.com/" class="mobile-link">Volodos Masterclass</a>
+            <span class="mobile-label" data-i18n="nav_masterclasses">Masterclasses</span>
+            <a href="https://cfipc.com/winter-masterclass/" class="mobile-link" data-i18n="nav_winter">Winter Masterclass</a>
+            <a href="https://cfipc.com/spring-masterclass/" class="mobile-link" data-i18n="nav_spring">Spring Masterclass</a>
+            <a href="https://www.masterclass-volodos.com/" class="mobile-link" data-i18n="nav_volodos">Volodos Masterclass</a>
         </div>
 
         <div class="mobile-group">
-            <span class="mobile-label">Gallery</span>
-            <a href="https://cfipc.com/media/" class="mobile-link">Media</a>
-            <a href="https://cfipc.com/gallery/" class="mobile-link">Pictures</a>
+            <span class="mobile-label" data-i18n="nav_gallery">Gallery</span>
+            <a href="https://cfipc.com/media/" class="mobile-link" data-i18n="nav_media">Media</a>
+            <a href="https://cfipc.com/gallery/" class="mobile-link" data-i18n="nav_pictures">Pictures</a>
         </div>
 
         <div class="mobile-group">
-            <span class="mobile-label">About</span>
-            <a href="https://cfipc.com/contact/" class="mobile-link">Contact Us</a>
-            <a href="https://cfipc.com/about/" class="mobile-link">Legacy</a>
+            <span class="mobile-label" data-i18n="nav_about_label">About</span>
+            <a href="https://cfipc.com/contact/" class="mobile-link" data-i18n="nav_contact">Contact Us</a>
+            <a href="https://cfipc.com/about/" class="mobile-link" data-i18n="nav_legacy">Legacy</a>
         </div>
 
-        <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold text-decoration-none">Return to Home</a>
+        <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold text-decoration-none" data-i18n="nav_home">Return to Home</a>
     </div>
 
     <!-- Main Navigation Header -->
@@ -240,26 +303,26 @@
                     <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
                         <div class="dropdown-container">
                             <a href="https://cfipc.com/" class="nav-link" onclick="handleNavClick(event, this)">
-                                Competition 
+                                <span data-i18n="nav_competition">Competition</span> 
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/rules/" class="dropdown-item">Rules</a>
-                                <a href="https://cfipc.com/prizes/" class="dropdown-item">Prizes</a>
-                                <a href="https://cfipc.com/application/" class="dropdown-item">Application</a>
-                                <a href="https://cfipc.com/jury/" class="dropdown-item">Jury</a>
-                                <a href="https://cfipc.com/laureates/" class="dropdown-item">Laureates</a>
+                                <a href="https://cfipc.com/rules/" class="dropdown-item" data-i18n="nav_rules">Rules</a>
+                                <a href="https://cfipc.com/prizes/" class="dropdown-item" data-i18n="nav_prizes">Prizes</a>
+                                <a href="https://cfipc.com/application/" class="dropdown-item" data-i18n="nav_application">Application</a>
+                                <a href="https://cfipc.com/jury/" class="dropdown-item" data-i18n="nav_jury">Jury</a>
+                                <a href="https://cfipc.com/laureates/" class="dropdown-item" data-i18n="nav_laureates">Laureates</a>
                             </div>
                         </div>
                         <div class="dropdown-container">
                             <a href="https://cfipc.com/winter-masterclass/" class="nav-link" onclick="handleNavClick(event, this)">
-                                Masterclasses 
+                                <span data-i18n="nav_masterclasses">Masterclasses</span> 
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/winter-masterclass/" class="dropdown-item">Winter Masterclass</a>
-                                <a href="https://cfipc.com/spring-masterclass/" class="dropdown-item">Spring Masterclass</a>
-                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item">Volodos Masterclass</a>
+                                <a href="https://cfipc.com/winter-masterclass/" class="dropdown-item" data-i18n="nav_winter">Winter Masterclass</a>
+                                <a href="https://cfipc.com/spring-masterclass/" class="dropdown-item" data-i18n="nav_spring">Spring Masterclass</a>
+                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item" data-i18n="nav_volodos">Volodos Masterclass</a>
                             </div>
                         </div>
                     </div>
@@ -276,22 +339,22 @@
                     <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
                         <div class="dropdown-container">
                             <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
-                                About 
+                                <span data-i18n="nav_about">About</span> 
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/contact/" class="dropdown-item">Contact Us</a>
-                                <a href="https://cfipc.com/about/" class="dropdown-item">Legacy</a>
+                                <a href="https://cfipc.com/contact/" class="dropdown-item" data-i18n="nav_contact">Contact Us</a>
+                                <a href="https://cfipc.com/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
                             </div>
                         </div>
                         <div class="dropdown-container">
                             <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
-                                Gallery 
+                                <span data-i18n="nav_gallery">Gallery</span> 
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/media/" class="dropdown-item">Media</a>
-                                <a href="https://cfipc.com/gallery/" class="dropdown-item">Pictures</a>
+                                <a href="https://cfipc.com/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
+                                <a href="https://cfipc.com/gallery/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
                             </div>
                         </div>
                     </div>
@@ -304,58 +367,57 @@
         <section class="page-section py-24 px-4 md:px-8">
             <div class="max-w-[1400px] mx-auto">
                 <div class="text-center mb-24">
-                    <!-- Text made bigger: text-sm instead of text-[10px] -->
-                    <h4 class="text-copper uppercase tracking-[0.4em] text-sm font-bold mb-4">Connect With Us</h4>
-                    <h2 class="text-5xl md:text-7xl serif italic text-forest">Contact Us</h2>
+                    <h4 class="text-copper uppercase tracking-[0.4em] text-sm font-bold mb-4" data-i18n="connect_sub">Connect With Us</h4>
+                    <h2 class="text-5xl md:text-7xl serif italic text-forest" data-i18n="contact_title">Contact Us</h2>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-32">
                     <div class="grid grid-cols-1 gap-8">
                         <div class="shadow-box-beige">
-                            <h3 class="serif text-4xl italic text-forest mb-8">Practical Information</h3>
+                            <h3 class="serif text-4xl italic text-forest mb-8" data-i18n="practical_heading">Practical Information</h3>
                             <div class="space-y-8 text-base text-forest font-light leading-relaxed">
                                 <div>
-                                    <h5 class="text-copper font-bold uppercase tracking-widest text-xs mb-3">Competition Headquarters</h5>
+                                    <h5 class="text-copper font-bold uppercase tracking-widest text-xs mb-3" data-i18n="hq_title">Competition Headquarters</h5>
                                     <p>Lijsterbessenbomenlaan 6<br>1950 Kraainem, BELGIUM</p>
                                 </div>
                                 <div>
-                                    <h5 class="text-copper font-bold uppercase tracking-widest text-xs mb-3">Direct Inquiries</h5>
+                                    <h5 class="text-copper font-bold uppercase tracking-widest text-xs mb-3" data-i18n="direct_inquiries">Direct Inquiries</h5>
                                     <p class="font-medium"><a href="mailto:office@cfipc.com" class="hover:text-copper transition-colors">office@cfipc.com</a></p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="bg-forest p-10 rounded-sm shadow-xl border border-copper/10 text-copper">
-                            <p class="serif italic text-2xl mb-4 text-white">We are here to help</p>
-                            <p class="text-base font-light leading-relaxed opacity-80">
+                            <p class="serif italic text-2xl mb-4 text-white" data-i18n="help_title">We are here to help</p>
+                            <p class="text-base font-light leading-relaxed opacity-80" data-i18n="help_desc">
                                 Whether you have questions regarding the application process, the repertoire, or logistics in Brussels, our administrative team is available to assist you. Please expect a response within 48 hours.
                             </p>
                         </div>
                     </div>
 
                     <div class="shadow-box-beige">
-                        <h3 class="serif text-4xl italic text-forest mb-8">Send a Message</h3>
+                        <h3 class="serif text-4xl italic text-forest mb-8" data-i18n="msg_heading">Send a Message</h3>
                         <form id="contact-form" class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label for="name">Full Name</label>
-                                    <input type="text" id="name" name="name" placeholder="Your name" class="form-input text-base" required>
+                                    <label for="name" data-i18n="label_name">Full Name</label>
+                                    <input type="text" id="name" name="name" placeholder="Your name" class="form-input text-base" required data-i18n-placeholder="placeholder_name">
                                 </div>
                                 <div>
-                                    <label for="email">Email Address</label>
-                                    <input type="email" id="email" name="email" placeholder="Your email" class="form-input text-base" required>
+                                    <label for="email" data-i18n="label_email">Email Address</label>
+                                    <input type="email" id="email" name="email" placeholder="Your email" class="form-input text-base" required data-i18n-placeholder="placeholder_email">
                                 </div>
                             </div>
                             <div>
-                                <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="subject" placeholder="What is this regarding ?" class="form-input text-base" required>
+                                <label for="subject" data-i18n="label_subject">Subject</label>
+                                <input type="text" id="subject" name="subject" placeholder="What is this regarding ?" class="form-input text-base" required data-i18n-placeholder="placeholder_subject">
                             </div>
                             <div>
-                                <label for="message">Your Message</label>
-                                <textarea id="message" name="message" rows="6" placeholder="How can we assist you ?" class="form-input text-base" required></textarea>
+                                <label for="message" data-i18n="label_message">Your Message</label>
+                                <textarea id="message" name="message" rows="6" placeholder="How can we assist you ?" class="form-input text-base" required data-i18n-placeholder="placeholder_message"></textarea>
                             </div>
                             <div class="pt-4">
-                                <button type="submit" id="submit-btn" class="btn-copper w-full py-5 text-[10px] uppercase font-bold tracking-[0.3em] shadow-lg">Send Message</button>
+                                <button type="submit" id="submit-btn" class="btn-copper w-full py-5 text-[10px] uppercase font-bold tracking-[0.3em] shadow-lg" data-i18n="btn_send">Send Message</button>
                             </div>
                             <div id="form-status" class="hidden mt-4 p-4 rounded-sm text-center text-xs uppercase tracking-widest font-bold"></div>
                         </form>
@@ -387,8 +449,271 @@
         </div>
     </footer>
 
+    <!-- CUSTOM FLOATING LANGUAGE WIDGET -->
+    <div class="lang-widget-container">
+        <div class="lang-dropdown-menu" id="langMenu">
+            <button class="lang-option" onclick="setLanguage('en')">English</button>
+            <button class="lang-option" onclick="setLanguage('fr')">Français</button>
+            <button class="lang-option" onclick="setLanguage('nl')">Nederlands</button>
+            <button class="lang-option" onclick="setLanguage('de')">Deutsch</button>
+            <button class="lang-option" onclick="setLanguage('it')">Italiano</button>
+            <button class="lang-option" onclick="setLanguage('es')">Español</button>
+        </div>
+        <button class="lang-toggle-btn" onclick="toggleLangMenu()" aria-label="Change Language">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </button>
+    </div>
+
     <script>
         lucide.createIcons();
+
+        // 6-Language Dictionary for Contact Us Page
+        const translations = {
+            en: {
+                nav_competition: "Competition",
+                nav_rules: "Rules",
+                nav_prizes: "Prizes",
+                nav_application: "Application",
+                nav_jury: "Jury",
+                nav_laureates: "Laureates",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Winter Masterclass",
+                nav_spring: "Spring Masterclass",
+                nav_volodos: "Volodos Masterclass",
+                nav_about: "About",
+                nav_about_label: "About",
+                nav_contact: "Contact Us",
+                nav_legacy: "Legacy",
+                nav_gallery: "Gallery",
+                nav_media: "Media",
+                nav_pictures: "Pictures",
+                nav_home: "Return to Home",
+                connect_sub: "Connect With Us",
+                contact_title: "Contact Us",
+                practical_heading: "Practical Information",
+                hq_title: "Competition Headquarters",
+                direct_inquiries: "Direct Inquiries",
+                help_title: "We are here to help",
+                help_desc: "Whether you have questions regarding the application process, the repertoire, or logistics in Brussels, our administrative team is available to assist you. Please expect a response within 48 hours.",
+                msg_heading: "Send a Message",
+                label_name: "Full Name",
+                label_email: "Email Address",
+                label_subject: "Subject",
+                label_message: "Your Message",
+                placeholder_name: "Your name",
+                placeholder_email: "Your email",
+                placeholder_subject: "What is this regarding ?",
+                placeholder_message: "How can we assist you ?",
+                btn_send: "Send Message"
+            },
+            fr: {
+                nav_competition: "Concours",
+                nav_rules: "Règlement",
+                nav_prizes: "Prix",
+                nav_application: "Inscription",
+                nav_jury: "Jury",
+                nav_laureates: "Lauréats",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Masterclass d'Hiver",
+                nav_spring: "Masterclass de Printemps",
+                nav_volodos: "Masterclass Volodos",
+                nav_about: "À propos",
+                nav_about_label: "À propos",
+                nav_contact: "Contactez-nous",
+                nav_legacy: "Héritage",
+                nav_gallery: "Galerie",
+                nav_media: "Médias",
+                nav_pictures: "Photos",
+                nav_home: "Retour à l'accueil",
+                connect_sub: "Entrez en Contact",
+                contact_title: "Contactez-nous",
+                practical_heading: "Informations Pratiques",
+                hq_title: "Siège du Concours",
+                direct_inquiries: "Demandes Directes",
+                help_title: "Nous sommes là pour vous aider",
+                help_desc: "Que vous ayez des questions concernant le processus d'inscription, le répertoire ou la logistique à Bruxelles, notre équipe administrative est à votre disposition. Veuillez prévoir une réponse dans les 48 heures.",
+                msg_heading: "Envoyer un Message",
+                label_name: "Nom complet",
+                label_email: "Adresse e-mail",
+                label_subject: "Sujet",
+                label_message: "Votre message",
+                placeholder_name: "Votre nom",
+                placeholder_email: "Votre e-mail",
+                placeholder_subject: "Quel est l'objet de votre demande ?",
+                placeholder_message: "Comment pouvons-nous vous aider ?",
+                btn_send: "Envoyer le Message"
+            },
+            nl: {
+                nav_competition: "Competitie",
+                nav_rules: "Reglement",
+                nav_prizes: "Prijzen",
+                nav_application: "Inschrijving",
+                nav_jury: "Jury",
+                nav_laureates: "Laureaten",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Winter Masterclass",
+                nav_spring: "Lente Masterclass",
+                nav_volodos: "Volodos Masterclass",
+                nav_about: "Over Ons",
+                nav_about_label: "Over Ons",
+                nav_contact: "Contact",
+                nav_legacy: "Erfenis",
+                nav_gallery: "Gallerij",
+                nav_media: "Media",
+                nav_pictures: "Foto's",
+                nav_home: "Terug naar Home",
+                connect_sub: "Neem Contact Op",
+                contact_title: "Contact",
+                practical_heading: "Praktische Informatie",
+                hq_title: "Concours Hoofdkantoor",
+                direct_inquiries: "Directe Vragen",
+                help_title: "Wij staan voor u klaar",
+                help_desc: "Heeft u vragen over de inschrijvingsprocedure, het repertoire of de logistiek in Brussel, dan staat ons administratief team voor u klaar. U kunt binnen 48 uur een reactie verwachten.",
+                msg_heading: "Stuur een Bericht",
+                label_name: "Volledige Naam",
+                label_email: "E-mailadres",
+                label_subject: "Onderwerp",
+                label_message: "Uw Bericht",
+                placeholder_name: "Uw naam",
+                placeholder_email: "Uw e-mail",
+                placeholder_subject: "Waar gaat dit over?",
+                placeholder_message: "Hoe kunnen wij u helpen?",
+                btn_send: "Bericht Verzenden"
+            },
+            de: {
+                nav_competition: "Wettbewerb",
+                nav_rules: "Regeln",
+                nav_prizes: "Preise",
+                nav_application: "Bewerbung",
+                nav_jury: "Jury",
+                nav_laureates: "Preisträger",
+                nav_masterclasses: "Meisterkurse",
+                nav_winter: "Winter-Meisterkurs",
+                nav_spring: "Frühlings-Meisterkurs",
+                nav_volodos: "Volodos Meisterkurs",
+                nav_about: "Über Uns",
+                nav_about_label: "Über Uns",
+                nav_contact: "Kontakt",
+                nav_legacy: "Vermächtnis",
+                nav_gallery: "Galerie",
+                nav_media: "Medien",
+                nav_pictures: "Bilder",
+                nav_home: "Zur Startseite",
+                connect_sub: "Verbinden Sie Sich Mit Uns",
+                contact_title: "Kontakt",
+                practical_heading: "Praktische Informationen",
+                hq_title: "Wettbewerbs-Hauptsitz",
+                direct_inquiries: "Direkte Anfragen",
+                help_title: "Wir sind für Sie da",
+                help_desc: "Haben Sie Fragen zum Bewerbungsprozess, zum Repertoire oder zur Logistik in Brüssel, steht Ihnen unser Verwaltungsteam gerne zur Verfügung. Sie können innerhalb von 48 Stunden mit einer Antwort rechnen.",
+                msg_heading: "Nachricht Senden",
+                label_name: "Vollständiger Name",
+                label_email: "E-Mail-Adresse",
+                label_subject: "Betreff",
+                label_message: "Ihre Nachricht",
+                placeholder_name: "Ihr Name",
+                placeholder_email: "Ihre E-Mail",
+                placeholder_subject: "Worum geht es?",
+                placeholder_message: "Wie können wir Ihnen helfen?",
+                btn_send: "Nachricht Senden"
+            },
+            it: {
+                nav_competition: "Concorso",
+                nav_rules: "Regolamento",
+                nav_prizes: "Premi",
+                nav_application: "Iscrizione",
+                nav_jury: "Giuria",
+                nav_laureates: "Vincitori",
+                nav_masterclasses: "Masterclass",
+                nav_winter: "Masterclass Invernale",
+                nav_spring: "Masterclass Primaverile",
+                nav_volodos: "Masterclass Volodos",
+                nav_about: "Chi Siamo",
+                nav_about_label: "Chi Siamo",
+                nav_contact: "Contatti",
+                nav_legacy: "Eredità",
+                nav_gallery: "Galleria",
+                nav_media: "Media",
+                nav_pictures: "Foto",
+                nav_home: "Torna alla Home",
+                connect_sub: "Entra in Contatto",
+                contact_title: "Contattaci",
+                practical_heading: "Informazioni Pratiche",
+                hq_title: "Sede del Concorso",
+                direct_inquiries: "Richieste Dirette",
+                help_title: "Siamo qui per aiutarti",
+                help_desc: "Per qualsiasi domanda sul processo di iscrizione, sul repertorio o sulla logistica a Bruxelles, il nostro team amministrativo è a tua disposizione. Ti risponderemo entro 48 ore.",
+                msg_heading: "Invia un Messaggio",
+                label_name: "Nome Completo",
+                label_email: "Indirizzo Email",
+                label_subject: "Oggetto",
+                label_message: "Il tuo Messaggio",
+                placeholder_name: "Il tuo nome",
+                placeholder_email: "La tua email",
+                placeholder_subject: "Di cosa si tratta?",
+                placeholder_message: "Come possiamo aiutarti?",
+                btn_send: "Invia Messaggio"
+            },
+            es: {
+                nav_competition: "Concurso",
+                nav_rules: "Reglas",
+                nav_prizes: "Premios",
+                nav_application: "Inscripción",
+                nav_jury: "Jurado",
+                nav_laureates: "Laureados",
+                nav_masterclasses: "Clases Magistrales",
+                nav_winter: "Clase Magistral de Invierno",
+                nav_spring: "Clase Magistral de Primavera",
+                nav_volodos: "Clase Magistral Volodos",
+                nav_about: "Acerca de",
+                nav_about_label: "Acerca de",
+                nav_contact: "Contacto",
+                nav_legacy: "Legado",
+                nav_gallery: "Galería",
+                nav_media: "Medios",
+                nav_pictures: "Imágenes",
+                nav_home: "Volver al Inicio",
+                connect_sub: "Conéctate con Nosotros",
+                contact_title: "Contáctenos",
+                practical_heading: "Información Práctica",
+                hq_title: "Sede del Concurso",
+                direct_inquiries: "Consultas Directas",
+                help_title: "Estamos aquí para ayudar",
+                help_desc: "Si tiene preguntas sobre el proceso de solicitud, el repertorio o la logística en Bruselas, nuestro equipo administrativo está disponible para ayudarle. Espere una respuesta en un plazo de 48 horas.",
+                msg_heading: "Enviar un Mensaje",
+                label_name: "Nombre Completo",
+                label_email: "Correo Electrónico",
+                label_subject: "Asunto",
+                label_message: "Su Mensaje",
+                placeholder_name: "Su nombre",
+                placeholder_email: "Su correo",
+                placeholder_subject: "¿De qué se trata?",
+                placeholder_message: "¿Cómo podemos ayudarle?",
+                btn_send: "Enviar Mensaje"
+            }
+        };
+
+        function setLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Translate placeholders
+            const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
+            placeholders.forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+
+            document.getElementById('langMenu').classList.remove('active');
+            localStorage.setItem('cfipc_lang', lang);
+        }
 
         function handleNavClick(event, btn) {
             const menu = btn.nextElementSibling;
@@ -416,6 +741,11 @@
                 setTimeout(() => { overlay.classList.add('open'); }, 10);
                 document.body.style.overflow = 'hidden';
             }
+        }
+
+        function toggleLangMenu() {
+            const menu = document.getElementById('langMenu');
+            menu.classList.toggle('active');
         }
 
         const form = document.getElementById("contact-form");
@@ -458,7 +788,21 @@
             });
         }
         form.addEventListener("submit", handleSubmit);
-        window.onclick = () => document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
+
+        window.onclick = (event) => {
+            document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
+            if (!event.target.closest('.lang-widget-container')) {
+                document.getElementById('langMenu').classList.remove('active');
+            }
+        };
+
+        // Auto-load user preference if previously saved
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('cfipc_lang');
+            if (savedLang && translations[savedLang]) {
+                setLanguage(savedLang);
+            }
+        });
     </script>
     <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ad3becddcd7249d19a31f20ef5fccc08"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
