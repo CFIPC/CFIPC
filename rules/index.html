@@ -45,6 +45,8 @@
             display: flex;
             align-items: center;
             white-space: nowrap;
+            background: none;
+            border: none;
             text-decoration: none;
         }
         .nav-link:hover { color: var(--copper); }
@@ -193,6 +195,69 @@
             padding-left: 1.5rem;
             margin-bottom: 2.5rem;
         }
+
+        /* Custom Floating Language Widget Styling */
+        .lang-widget-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+        }
+        .lang-toggle-btn {
+            background-color: var(--forest);
+            color: var(--copper);
+            border: 1.5px solid var(--copper);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-toggle-btn:hover {
+            background-color: var(--copper);
+            color: var(--forest);
+            transform: scale(1.05);
+        }
+        .lang-dropdown-menu {
+            position: absolute;
+            bottom: 65px;
+            right: 0;
+            background: var(--parchment);
+            border: 1px solid rgba(212, 163, 115, 0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            padding: 0.5rem 0;
+            display: none;
+            min-width: 150px;
+        }
+        .lang-dropdown-menu.active {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+        .lang-option {
+            display: block;
+            width: 100%;
+            padding: 0.6rem 1rem;
+            text-align: left;
+            background: none;
+            border: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--forest);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-option:hover {
+            background: var(--forest);
+            color: var(--copper);
+        }
     </style>
 </head>
 <body>
@@ -204,25 +269,25 @@
             <button onclick="toggleMobileMenu()" class="text-copper text-4xl leading-none">&times;</button>
         </div>
         <div class="mobile-group">
-            <span class="mobile-label">Competition</span>
-            <a href="https://cfipc.com/rules/" class="mobile-link">Rules</a>
-            <a href="https://cfipc.com/prizes/" class="mobile-link">Prizes</a>
-            <a href="https://cfipc.com/application/" class="mobile-link">Application</a>
-            <a href="https://cfipc.com/jury/" class="mobile-link">Jury</a>
-            <a href="https://cfipc.com/laureates/" class="mobile-link">Laureates</a>
+            <span class="mobile-label" data-i18n="nav_competition">Competition</span>
+            <a href="https://cfipc.com/rules/" class="mobile-link" data-i18n="nav_rules">Rules</a>
+            <a href="https://cfipc.com/prizes/" class="mobile-link" data-i18n="nav_prizes">Prizes</a>
+            <a href="https://cfipc.com/application/" class="mobile-link" data-i18n="nav_application">Application</a>
+            <a href="https://cfipc.com/jury/" class="mobile-link" data-i18n="nav_jury">Jury</a>
+            <a href="https://cfipc.com/laureates/" class="mobile-link" data-i18n="nav_laureates">Laureates</a>
         </div>
         <div class="mobile-group">
-            <span class="mobile-label">Masterclasses</span>
-            <a href="https://cfipc.com/winter-masterclass/" class="mobile-link">Winter Masterclass</a>
-            <a href="https://cfipc.com/spring-masterclass/" class="mobile-link">Spring Masterclass</a>
-            <a href="https://www.masterclass-volodos.com/" class="mobile-link">Volodos Masterclass</a>
+            <span class="mobile-label" data-i18n="nav_masterclasses">Masterclasses</span>
+            <a href="https://cfipc.com/winter-masterclass/" class="mobile-link" data-i18n="nav_winter">Winter Masterclass</a>
+            <a href="https://cfipc.com/spring-masterclass/" class="mobile-link" data-i18n="nav_spring">Spring Masterclass</a>
+            <a href="https://www.masterclass-volodos.com/" class="mobile-link" data-i18n="nav_volodos">Volodos Masterclass</a>
         </div>
         <div class="mobile-group">
-            <span class="mobile-label">About</span>
-            <a href="https://cfipc.com/contact/" class="mobile-link">Contact Us</a>
-            <a href="https://cfipc.com/about/" class="mobile-link">Legacy</a>
+            <span class="mobile-label" data-i18n="nav_about_label">About</span>
+            <a href="https://cfipc.com/contact/" class="mobile-link" data-i18n="nav_contact">Contact Us</a>
+            <a href="https://cfipc.com/about/" class="mobile-link" data-i18n="nav_legacy">Legacy</a>
         </div>
-        <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold">Return to Home</a>
+        <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold" data-i18n="nav_home">Return to Home</a>
     </div>
 
     <!-- Main Navigation Header -->
@@ -236,21 +301,21 @@
                     </button>
                     <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
                         <div class="dropdown-container">
-                            <a href="https://cfipc.com/" class="nav-link">Competition <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
+                            <a href="https://cfipc.com/" class="nav-link"><span data-i18n="nav_competition">Competition</span> <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/rules/" class="dropdown-item">Rules</a>
-                                <a href="https://cfipc.com/prizes/" class="dropdown-item">Prizes</a>
-                                <a href="https://cfipc.com/application/" class="dropdown-item">Application</a>
-                                <a href="https://cfipc.com/jury/" class="dropdown-item">Jury</a>
-                                <a href="https://cfipc.com/laureates/" class="dropdown-item">Laureates</a>
+                                <a href="https://cfipc.com/rules/" class="dropdown-item" data-i18n="nav_rules">Rules</a>
+                                <a href="https://cfipc.com/prizes/" class="dropdown-item" data-i18n="nav_prizes">Prizes</a>
+                                <a href="https://cfipc.com/application/" class="dropdown-item" data-i18n="nav_application">Application</a>
+                                <a href="https://cfipc.com/jury/" class="dropdown-item" data-i18n="nav_jury">Jury</a>
+                                <a href="https://cfipc.com/laureates/" class="dropdown-item" data-i18n="nav_laureates">Laureates</a>
                             </div>
                         </div>
                         <div class="dropdown-container">
-                            <a href="https://cfipc.com/winter-masterclass/" class="nav-link">Masterclasses <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
+                            <a href="https://cfipc.com/winter-masterclass/" class="nav-link"><span data-i18n="nav_masterclasses">Masterclasses</span> <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/winter-masterclass/" class="dropdown-item">Winter Masterclass</a>
-                                <a href="https://cfipc.com/spring-masterclass/" class="dropdown-item">Spring Masterclass</a>
-                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item">Volodos Masterclass</a>
+                                <a href="https://cfipc.com/winter-masterclass/" class="dropdown-item" data-i18n="nav_winter">Winter Masterclass</a>
+                                <a href="https://cfipc.com/spring-masterclass/" class="dropdown-item" data-i18n="nav_spring">Spring Masterclass</a>
+                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item" data-i18n="nav_volodos">Volodos Masterclass</a>
                             </div>
                         </div>
                     </div>
@@ -261,17 +326,17 @@
                 <div class="flex-1 flex justify-end items-center">
                     <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
                         <div class="dropdown-container">
-                            <a href="#" class="nav-link" onclick="handleNavClick(event, this)">About <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
+                            <a href="#" class="nav-link" onclick="handleNavClick(event, this)"><span data-i18n="nav_about">About</span> <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/contact/" class="dropdown-item">Contact Us</a>
-                                <a href="https://cfipc.com/about/" class="dropdown-item">Legacy</a>
+                                <a href="https://cfipc.com/contact/" class="dropdown-item" data-i18n="nav_contact">Contact Us</a>
+                                <a href="https://cfipc.com/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
                             </div>
                         </div>
                         <div class="dropdown-container">
-                            <a href="#" class="nav-link" onclick="handleNavClick(event, this)">Gallery <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
+                            <a href="#" class="nav-link" onclick="handleNavClick(event, this)"><span data-i18n="nav_gallery">Gallery</span> <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/media/" class="dropdown-item">Media</a>
-                                <a href="https://cfipc.com/gallery/" class="dropdown-item">Pictures</a>
+                                <a href="https://cfipc.com/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
+                                <a href="https://cfipc.com/gallery/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
                             </div>
                         </div>
                     </div>
@@ -284,60 +349,60 @@
         <section id="rules" class="page-section py-24 px-4 md:px-8">
             <div class="max-w-[1400px] mx-auto">
                 <div class="text-center mb-24">
-                    <h4 class="text-copper uppercase tracking-[0.4em] text-[10px] font-bold mb-4">Official Regulations</h4>
-                    <h2 class="text-5xl md:text-7xl serif italic text-forest">Rules & Regulations 2026</h2>
-                    <p class="text-copper font-bold uppercase tracking-[0.2em] text-[14px] mt-6">Deadline : November 1st 2026</p>
+                    <h4 class="text-copper uppercase tracking-[0.4em] text-[10px] font-bold mb-4" data-i18n="rules_tag">Official Regulations</h4>
+                    <h2 class="text-5xl md:text-7xl serif italic text-forest" data-i18n="rules_title">Rules & Regulations 2026</h2>
+                    <p class="text-copper font-bold uppercase tracking-[0.2em] text-[14px] mt-6" data-i18n="rules_deadline">Deadline : November 1st 2026</p>
                 </div>
 
                 <!-- CATEGORIES -->
                 <div class="mb-32">
-                    <h3 class="serif text-4xl italic text-forest mb-12 border-b border-forest/5 pb-4">Age Categories & Fees</h3>
+                    <h3 class="serif text-4xl italic text-forest mb-12 border-b border-forest/5 pb-4" data-i18n="cat_heading">Age Categories & Fees</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
                         <div class="rules-card text-center">
-                            <h4 class="text-copper text-[12px] uppercase font-bold tracking-[0.2em] mb-4">Category A</h4>
-                            <p class="text-5xl serif mb-4 italic text-forest">10 & Under</p>
+                            <h4 class="text-copper text-[12px] uppercase font-bold tracking-[0.2em] mb-4" data-i18n="cat_a_title">Category A</h4>
+                            <p class="text-5xl serif mb-4 italic text-forest" data-i18n="cat_a_age">10 & Under</p>
                             <div class="space-y-3 pt-6 border-t border-forest/10">
-                                <p class="text-forest font-bold text-sm uppercase">Fee : €80</p>
-                                <p class="text-copper font-bold text-lg">1st Prize Value : €550</p>
+                                <p class="text-forest font-bold text-sm uppercase" data-i18n="cat_a_fee">Fee : €80</p>
+                                <p class="text-copper font-bold text-lg" data-i18n="cat_a_prize">1st Prize Value : €550</p>
                                 <div class="mt-6 pt-6 border-t border-forest/5 text-[12px] uppercase tracking-widest text-stone-500 font-semibold space-y-1">
-                                    <p class="flex justify-between"><span>Semi-Finals :</span> <span class="text-forest">6 mins</span></p>
-                                    <p class="flex justify-between"><span>Finals :</span> <span class="text-forest">10 mins</span></p>
+                                    <p class="flex justify-between"><span data-i18n="semi_label">Semi-Finals :</span> <span class="text-forest" data-i18n="cat_a_semi">6 mins</span></p>
+                                    <p class="flex justify-between"><span data-i18n="finals_label">Finals :</span> <span class="text-forest" data-i18n="cat_a_final">10 mins</span></p>
                                 </div>
                             </div>
                         </div>
                         <div class="rules-card text-center">
-                            <h4 class="text-copper text-[12px] uppercase font-bold tracking-[0.2em] mb-4">Category B</h4>
-                            <p class="text-5xl serif mb-4 italic text-forest">11 - 13</p>
+                            <h4 class="text-copper text-[12px] uppercase font-bold tracking-[0.2em] mb-4" data-i18n="cat_b_title">Category B</h4>
+                            <p class="text-5xl serif mb-4 italic text-forest" data-i18n="cat_b_age">11 - 13</p>
                             <div class="space-y-3 pt-6 border-t border-forest/10">
-                                <p class="text-forest font-bold text-sm uppercase">Fee : €90</p>
-                                <p class="text-copper font-bold text-lg">1st Prize Value : €650</p>
+                                <p class="text-forest font-bold text-sm uppercase" data-i18n="cat_b_fee">Fee : €90</p>
+                                <p class="text-copper font-bold text-lg" data-i18n="cat_b_prize">1st Prize Value : €650</p>
                                 <div class="mt-6 pt-6 border-t border-forest/5 text-[12px] uppercase tracking-widest text-stone-500 font-semibold space-y-1">
-                                    <p class="flex justify-between"><span>Semi-Finals :</span> <span class="text-forest">8 mins</span></p>
-                                    <p class="flex justify-between"><span>Finals :</span> <span class="text-forest">12 mins</span></p>
+                                    <p class="flex justify-between"><span data-i18n="semi_label">Semi-Finals :</span> <span class="text-forest" data-i18n="cat_b_semi">8 mins</span></p>
+                                    <p class="flex justify-between"><span data-i18n="finals_label">Finals :</span> <span class="text-forest" data-i18n="cat_b_final">12 mins</span></p>
                                 </div>
                             </div>
                         </div>
                         <div class="rules-card text-center">
-                            <h4 class="text-copper text-[12px] uppercase font-bold tracking-[0.2em] mb-4">Category C</h4>
-                            <p class="text-5xl serif mb-4 italic text-forest">14 - 16</p>
+                            <h4 class="text-copper text-[12px] uppercase font-bold tracking-[0.2em] mb-4" data-i18n="cat_c_title">Category C</h4>
+                            <p class="text-5xl serif mb-4 italic text-forest" data-i18n="cat_c_age">14 - 16</p>
                             <div class="space-y-3 pt-6 border-t border-forest/10">
-                                <p class="text-forest font-bold text-sm uppercase">Fee : €100</p>
-                                <p class="text-copper font-bold text-lg">1st Prize Value : €750</p>
+                                <p class="text-forest font-bold text-sm uppercase" data-i18n="cat_c_fee">Fee : €100</p>
+                                <p class="text-copper font-bold text-lg" data-i18n="cat_c_prize">1st Prize Value : €750</p>
                                 <div class="mt-6 pt-6 border-t border-forest/5 text-[12px] uppercase tracking-widest text-stone-500 font-semibold space-y-1">
-                                    <p class="flex justify-between"><span>Semi-Finals :</span> <span class="text-forest">10 mins</span></p>
-                                    <p class="flex justify-between"><span>Finals :</span> <span class="text-forest">15 mins</span></p>
+                                    <p class="flex justify-between"><span data-i18n="semi_label">Semi-Finals :</span> <span class="text-forest" data-i18n="cat_c_semi">10 mins</span></p>
+                                    <p class="flex justify-between"><span data-i18n="finals_label">Finals :</span> <span class="text-forest" data-i18n="cat_c_final">15 mins</span></p>
                                 </div>
                             </div>
                         </div>
                         <div class="rules-card text-center">
-                            <h4 class="text-copper text-[12px] uppercase font-bold tracking-[0.2em] mb-4">Category D</h4>
-                            <p class="text-5xl serif mb-4 italic text-forest">17 - 21</p>
+                            <h4 class="text-copper text-[12px] uppercase font-bold tracking-[0.2em] mb-4" data-i18n="cat_d_title">Category D</h4>
+                            <p class="text-5xl serif mb-4 italic text-forest" data-i18n="cat_d_age">17 - 21</p>
                             <div class="space-y-3 pt-6 border-t border-forest/10">
-                                <p class="text-forest font-bold text-sm uppercase">Fee : €110</p>
-                                <p class="text-copper font-bold text-lg">1st Prize Value : €1450</p>
+                                <p class="text-forest font-bold text-sm uppercase" data-i18n="cat_d_fee">Fee : €110</p>
+                                <p class="text-copper font-bold text-lg" data-i18n="cat_d_prize">1st Prize Value : €1450</p>
                                 <div class="mt-6 pt-6 border-t border-forest/5 text-[12px] uppercase tracking-widest text-stone-500 font-semibold space-y-1">
-                                    <p class="flex justify-between"><span>Semi-Finals :</span> <span class="text-forest">15 mins</span></p>
-                                    <p class="flex justify-between"><span>Finals :</span> <span class="text-forest">30 mins</span></p>
+                                    <p class="flex justify-between"><span data-i18n="semi_label">Semi-Finals :</span> <span class="text-forest" data-i18n="cat_d_semi">15 mins</span></p>
+                                    <p class="flex justify-between"><span data-i18n="finals_label">Finals :</span> <span class="text-forest" data-i18n="cat_d_final">30 mins</span></p>
                                 </div>
                             </div>
                         </div>
@@ -346,30 +411,30 @@
 
                 <!-- PROGRAM REQUIREMENTS -->
                 <div class="mb-32">
-                    <h3 class="serif text-4xl italic text-forest mb-12 border-b border-forest/5 pb-4">Program Requirements</h3>
+                    <h3 class="serif text-4xl italic text-forest mb-12 border-b border-forest/5 pb-4" data-i18n="prog_heading">Program Requirements</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 text-sm text-stone-600 font-light leading-relaxed">
                         <div class="space-y-8">
                             <div class="regulation-item">
-                                <h5 class="font-bold text-xs uppercase tracking-widest text-forest mb-2">Repertoire Selection</h5>
-                                <p>For both rounds, a free program can be chosen for Category A & B applicants. However, applicants from Categories C & D must include at least one movement from a "Viennese Classic" composer (Haydn, Mozart, or Beethoven) in their Finals program.</p>
+                                <h5 class="font-bold text-xs uppercase tracking-widest text-forest mb-2" data-i18n="req_1_title">Repertoire Selection</h5>
+                                <p data-i18n="req_1_desc">For both rounds, a free program can be chosen for Category A & B applicants. However, applicants from Categories C & D must include at least one movement from a "Viennese Classic" composer (Haydn, Mozart, or Beethoven) in their Finals program.</p>
                             </div>
                             <div class="regulation-item">
-                                <h5 class="font-bold text-xs uppercase tracking-widest text-forest mb-2">Belgian Composers</h5>
-                                <p>It is not obligatory but recommended to include at least one piece written by a Belgian composer in the semi-final or the final round.</p>
+                                <h5 class="font-bold text-xs uppercase tracking-widest text-forest mb-2" data-i18n="req_2_title">Belgian Composers</h5>
+                                <p data-i18n="req_2_desc">It is not obligatory but recommended to include at least one piece written by a Belgian composer in the semi-final or the final round.</p>
                             </div>
                             <div class="regulation-item">
-                                <h5 class="font-bold text-xs uppercase tracking-widest text-forest mb-2">Memory Interpretation</h5>
-                                <p>Memory interpretation is required for both rounds of the competition except for certain contemporary pieces after a personal request and approval by the competition.</p>
+                                <h5 class="font-bold text-xs uppercase tracking-widest text-forest mb-2" data-i18n="req_3_title">Memory Interpretation</h5>
+                                <p data-i18n="req_3_desc">Memory interpretation is required for both rounds of the competition except for certain contemporary pieces after a personal request and approval by the competition.</p>
                             </div>
                         </div>
                         <div class="space-y-8">
                             <div class="regulation-item">
-                                <h5 class="font-bold text-xs uppercase tracking-widest text-forest mb-2">Program Changes</h5>
-                                <p>It is NOT possible to change the semi-finals program after submission. For all selected finalists, it is possible to change your finals program until November 15th, 2026. Candidates may include in their Finals program previously recorded works from the 1st round.</p>
+                                <h5 class="font-bold text-xs uppercase tracking-widest text-forest mb-2" data-i18n="req_4_title">Program Changes</h5>
+                                <p data-i18n="req_4_desc">It is NOT possible to change the semi-finals program after submission. For all selected finalists, it is possible to change your finals program until November 15th, 2026. Candidates may include in their Finals program previously recorded works from the 1st round.</p>
                             </div>
                             <div class="regulation-item">
-                                <h5 class="font-bold text-xs uppercase tracking-widest text-forest mb-2">Score Submission</h5>
-                                <p>A copy of your program (Urtext or original editions as preferred by the jury) must be scanned and sent by all finalists to office@cfipc.com before November 15th, 2026. Programme changes are not permitted after this date. Any candidate who fails to submit the required scores by the deadline risks disqualification.</p>
+                                <h5 class="font-bold text-xs uppercase tracking-widest text-forest mb-2" data-i18n="req_5_title">Score Submission</h5>
+                                <p data-i18n="req_5_desc">A copy of your program (Urtext or original editions as preferred by the jury) must be scanned and sent by all finalists to office@cfipc.com before November 15th, 2026. Programme changes are not permitted after this date. Any candidate who fails to submit the required scores by the deadline risks disqualification.</p>
                             </div>
                         </div>
                     </div>
@@ -377,22 +442,22 @@
 
                 <!-- SEMI-FINALS (ONLINE) -->
                 <div class="mb-32 bg-forest p-12 md:p-20 rounded-sm shadow-2xl relative overflow-hidden">
-                    <h3 class="serif text-4xl italic mb-12 text-copper relative z-10">Semi-Finals (Online)</h3>
+                    <h3 class="serif text-4xl italic mb-12 text-copper relative z-10" data-i18n="semi_box_title">Semi-Finals (Online)</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
                         <div class="glass-box text-copper">
-                            <h5 class="font-bold uppercase tracking-widest text-[11px] mb-6">Video Standards</h5>
+                            <h5 class="font-bold uppercase tracking-widest text-[11px] mb-6" data-i18n="video_std_title">Video Standards</h5>
                             <ul class="space-y-4 text-sm font-light">
-                                <li class="flex gap-3"><span>&bull;</span> All video submissions should not be edited (audio). All edited videos will be automatically disqualified.</li>
-                                <li class="flex gap-3"><span>&bull;</span> Recordings must be made in 2026 and recorded in one take without cuts, also between pieces, like in a live competition (i.e. a single link) .</li>
-                                <li class="flex gap-3"><span>&bull;</span> Must be uploaded directly to a streaming service (YouTube, Vimeo, Dailymotion, Dropbox) where it can be streamed without downloading. No WeTransfer or DVDs.</li>
+                                <li class="flex gap-3"><span>&bull;</span> <span data-i18n="video_std_1">All video submissions should not be edited (audio). All edited videos will be automatically disqualified.</span></li>
+                                <li class="flex gap-3"><span>&bull;</span> <span data-i18n="video_std_2">Recordings must be made in 2026 and recorded in one take without cuts, also between pieces, like in a live competition (i.e. a single link) .</span></li>
+                                <li class="flex gap-3"><span>&bull;</span> <span data-i18n="video_std_3">Must be uploaded directly to a streaming service (YouTube, Vimeo, Dailymotion, Dropbox) where it can be streamed without downloading. No WeTransfer or DVDs.</span></li>
                             </ul>
                         </div>
                         <div class="glass-box text-copper">
-                            <h5 class="font-bold uppercase tracking-widest text-[11px] mb-6">Logistics & Evaluation</h5>
+                            <h5 class="font-bold uppercase tracking-widest text-[11px] mb-6" data-i18n="logistics_title">Logistics & Evaluation</h5>
                             <ul class="space-y-4 text-sm font-light">
-                                <li class="flex gap-3"><span>&bull;</span> Candidates must ensure links remain active until selection announcement. Recordings on upright pianos and smartphones are accepted and will not be penalised.</li>
-                                <li class="flex gap-3"><span>&bull;</span> A maximum of 5 finalists will be selected per category, subject to the discretion of the jur .</li>
-                                <li class="flex gap-3"><span>&bull;</span> Results announced on November 10th 2026 via email and social media.</li>
+                                <li class="flex gap-3"><span>&bull;</span> <span data-i18n="logistics_1">Candidates must ensure links remain active until selection announcement. Recordings on upright pianos and smartphones are accepted and will not be penalised.</span></li>
+                                <li class="flex gap-3"><span>&bull;</span> <span data-i18n="logistics_2">A maximum of 5 finalists will be selected per category, subject to the discretion of the jury.</span></li>
+                                <li class="flex gap-3"><span>&bull;</span> <span data-i18n="logistics_3">Results announced on November 10th 2026 via email and social media.</span></li>
                             </ul>
                         </div>
                     </div>
@@ -400,25 +465,25 @@
 
                 <!-- FEES & PAYMENT -->
                 <div class="mb-32 shadow-box-beige">
-                    <h3 class="serif text-4xl italic text-forest mb-12 border-b border-forest/10 pb-4 text-center">Fees & Payment</h3>
+                    <h3 class="serif text-4xl italic text-forest mb-12 border-b border-forest/10 pb-4 text-center" data-i18n="fees_heading">Fees & Payment</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-forest">
                         <div>
-                            <h5 class="text-copper font-bold uppercase tracking-widest text-xs mb-6">Bank Transfer Details</h5>
+                            <h5 class="text-copper font-bold uppercase tracking-widest text-xs mb-6" data-i18n="bank_title">Bank Transfer Details</h5>
                             <div class="space-y-4 text-sm font-light leading-relaxed">
-                                <p>Please state : <strong>CFIPC 2026 + Full Name + Category</strong></p>
+                                <p data-i18n="bank_ref">Please state : <strong>CFIPC 2026 + Full Name + Category</strong></p>
                                 <ul class="pl-4 border-l border-copper/30 space-y-1">
-                                    <li>Account Name : CFIPC</li>
-                                    <li>Bank : BNP Paribas Fortis</li>
+                                    <li data-i18n="bank_name">Account Name : CFIPC</li>
+                                    <li data-i18n="bank_inst">Bank : BNP Paribas Fortis</li>
                                     <li>IBAN : BE28 0016 9098 3620</li>
                                     <li>BIC : GEBABEBB</li>
-                                    <li>Address : Lijsterbessenbomenlaan 6, Kraainem 1950, BELGIUM</li>
+                                    <li data-i18n="bank_addr">Address : Lijsterbessenbomenlaan 6, Kraainem 1950, BELGIUM</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="border-l border-forest/5 md:pl-12">
-                            <h5 class="text-copper font-bold uppercase tracking-widest text-xs mb-6">PayPal Alternative</h5>
-                            <p class="text-sm font-light mb-6">Pay via PayPal to <strong>office@cfipc.com</strong> .</p>
-                            <div class="bg-forest/5 p-6 border border-forest/10 rounded-sm italic text-xs text-stone-500">
+                            <h5 class="text-copper font-bold uppercase tracking-widest text-xs mb-6" data-i18n="paypal_title">PayPal Alternative</h5>
+                            <p class="text-sm font-light mb-6" data-i18n="paypal_desc">Pay via PayPal to <strong>office@cfipc.com</strong> .</p>
+                            <div class="bg-forest/5 p-6 border border-forest/10 rounded-sm italic text-xs text-stone-500" data-i18n="paypal_note">
                                 Note : There is a 5€ surcharge for the transfer fee on top of the application fee should you wish to pay using PayPal.
                             </div>
                         </div>
@@ -427,54 +492,54 @@
 
                 <!-- GENERAL REGULATIONS / RULES -->
                 <div class="mb-32 bg-forest p-12 md:p-24 rounded-sm shadow-2xl relative overflow-hidden">
-                    <h3 class="serif text-4xl italic mb-12 text-copper relative z-10 border-b border-copper/20 pb-4">General Regulations</h3>
+                    <h3 class="serif text-4xl italic mb-12 text-copper relative z-10 border-b border-copper/20 pb-4" data-i18n="gen_reg_title">General Regulations</h3>
                     
                     <!-- KEY DATES BOXES -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 relative z-10">
                         <div class="highlight-box border-copper/50 bg-forest/40">
-                            <h5 class="text-[11px] font-bold uppercase tracking-[0.2em] text-copper mb-3">Semifinals (Online) Deadline</h5>
-                            <p class="serif italic text-3xl text-copper">November 1, 2026</p>
+                            <h5 class="text-[11px] font-bold uppercase tracking-[0.2em] text-copper mb-3" data-i18n="date_1_title">Semifinals (Online) Deadline</h5>
+                            <p class="serif italic text-3xl text-copper" data-i18n="date_1_val">November 1, 2026</p>
                         </div>
                         <div class="highlight-box border-copper/50 bg-forest/40">
-                            <h5 class="text-[11px] font-bold uppercase tracking-[0.2em] text-copper mb-3">Results & Selection</h5>
-                            <p class="serif italic text-3xl text-copper">November 10, 2026</p>
-                            <p class="text-[11px] mt-2 uppercase text-copper/60 font-semibold tracking-widest">Max 5 Finalists per Category</p>
+                            <h5 class="text-[11px] font-bold uppercase tracking-[0.2em] text-copper mb-3" data-i18n="date_2_title">Results & Selection</h5>
+                            <p class="serif italic text-3xl text-copper" data-i18n="date_2_val">November 10, 2026</p>
+                            <p class="text-[11px] mt-2 uppercase text-copper/60 font-semibold tracking-widest" data-i18n="date_2_sub">Max 5 Finalists per Category</p>
                         </div>
                         <div class="highlight-box border-copper/50 bg-forest/40">
-                            <h5 class="text-[11px] font-bold uppercase tracking-[0.2em] text-copper mb-3">Final Deadline</h5>
-                            <p class="serif italic text-3xl text-copper">November 15, 2026</p>
-                            <p class="text-[11px] mt-2 uppercase text-copper/60 font-semibold tracking-widest">Score Submission & Changes</p>
+                            <h5 class="text-[11px] font-bold uppercase tracking-[0.2em] text-copper mb-3" data-i18n="date_3_title">Final Deadline</h5>
+                            <p class="serif italic text-3xl text-copper" data-i18n="date_3_val">November 15, 2026</p>
+                            <p class="text-[11px] mt-2 uppercase text-copper/60 font-semibold tracking-widest" data-i18n="date_3_sub">Score Submission & Changes</p>
                         </div>
                         <div class="highlight-box border-copper/50 bg-forest/40">
-                            <h5 class="text-[11px] font-bold uppercase tracking-[0.2em] text-copper mb-3">Live Finals Competition</h5>
-                            <p class="serif italic text-3xl text-copper">December 18 - 20, 2026</p>
-                            <p class="text-[11px] mt-2 uppercase text-copper/60 font-semibold tracking-widest">GC De Lijsterbes, Belgium</p>
+                            <h5 class="text-[11px] font-bold uppercase tracking-[0.2em] text-copper mb-3" data-i18n="date_4_title">Live Finals Competition</h5>
+                            <p class="serif italic text-3xl text-copper" data-i18n="date_4_val">December 18 - 20, 2026</p>
+                            <p class="text-[11px] mt-2 uppercase text-copper/60 font-semibold tracking-widest" data-i18n="date_4_sub">GC De Lijsterbes, Belgium</p>
                         </div>
                     </div>
 
                     <!-- 18 GENERAL RULES -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6 text-sm text-copper font-light leading-relaxed relative z-10">
                         <div class="space-y-6">
-                            <p><strong>1.</strong> The 14th César Franck IPC is open to all nationalities aged 21 or less at the time of the Finals (18-20 December 2026). Live finals take place at De Lijsterbes, Belgium.</p>
-                            <p><strong>2.</strong> Applicants must complete the online form and upload: CV, high-resolution photo (max 2MB), passport scan (candidate & parent), proof of payment, program and video link before 1st November 2026.</p>
-                            <p><strong>3.</strong> Candidacy is only confirmed after we have received the application fee.</p>
-                            <p><strong>4.</strong> A maximum of 5 participants from each category will be selected to perform in the finals, however, the final and exact number of participants selected is subject to the discretion of the jury.</p>
-                            <p><strong>5.</strong> The decision of the jury is final and will not be subjected to reviews or appeals.</p>
-                            <p><strong>6.</strong> The results of the semi-finals will be announced on 10th November 2026 via email and social media.</p>
-                            <p><strong>7.</strong> The application fee is not refundable and the candidates are responsible for any bank/PayPal transfer fees.</p>
-                            <p><strong>8.</strong> The entry in the competition implies the acceptance of the present rules without any reservation.</p>
-                            <p><strong>9.</strong> The competition registration acts as an agreement for all candidates and their parents.</p>
+                            <p><strong data-i18n="rule_1_num">1.</strong> <span data-i18n="rule_1_text">The 14th César Franck IPC is open to all nationalities aged 21 or less at the time of the Finals (18-20 December 2026). Live finals take place at De Lijsterbes, Belgium.</span></p>
+                            <p><strong data-i18n="rule_2_num">2.</strong> <span data-i18n="rule_2_text">Applicants must complete the online form and upload: CV, high-resolution photo (max 2MB), passport scan (candidate & parent), proof of payment, program and video link before 1st November 2026.</span></p>
+                            <p><strong data-i18n="rule_3_num">3.</strong> <span data-i18n="rule_3_text">Candidacy is only confirmed after we have received the application fee.</span></p>
+                            <p><strong data-i18n="rule_4_num">4.</strong> <span data-i18n="rule_4_text">A maximum of 5 participants from each category will be selected to perform in the finals, however, the final and exact number of participants selected is subject to the discretion of the jury.</span></p>
+                            <p><strong data-i18n="rule_5_num">5.</strong> <span data-i18n="rule_5_text">The decision of the jury is final and will not be subjected to reviews or appeals.</span></p>
+                            <p><strong data-i18n="rule_6_num">6.</strong> <span data-i18n="rule_6_text">The results of the semi-finals will be announced on 10th November 2026 via email and social media.</span></p>
+                            <p><strong data-i18n="rule_7_num">7.</strong> <span data-i18n="rule_7_text">The application fee is not refundable and the candidates are responsible for any bank/PayPal transfer fees.</span></p>
+                            <p><strong data-i18n="rule_8_num">8.</strong> <span data-i18n="rule_8_text">The entry in the competition implies the acceptance of the present rules without any reservation.</span></p>
+                            <p><strong data-i18n="rule_9_num">9.</strong> <span data-i18n="rule_9_text">The competition registration acts as an agreement for all candidates and their parents.</span></p>
                         </div>
                         <div class="space-y-6">
-                            <p><strong>10.</strong> Organizers reserve the right to record all performances during the competition for radio and television broadcasts. Each candidate renounces all rights, fees and claims regarding such recordings.</p>
-                            <p><strong>11.</strong> All contestants under 18 must be accompanied by an adult who will carry full responsibility at all times. If not a parent, a signed permission note is required.</p>
-                            <p><strong>12.</strong> All travel expenses, tickets and visas are to be carried out by the participant. Invitation letters are available upon request for visa applications.</p>
-                            <p><strong>13.</strong> Contestants are responsible for their own accommodation costs. A special deal with a hotel partner will normally be offered to each candidate.</p>
-                            <p><strong>14.</strong> The competition is not responsible for any accidents or incidents involving contestants beyond the standard insurance of the Community Centre De Lijsterbes.</p>
-                            <p><strong>15.</strong> It is advised to check personal insurance for coverage of accidents and incidents outside the competition venue.</p>
-                            <p><strong>16.</strong> The name of the candidate’s teacher/professor will not be printed in the program for the jury.</p>
-                            <p><strong>17.</strong> If a candidate is studying with a member of the jury, this particular jury member will not be allowed to vote for their student.</p>
-                            <p><strong>18.</strong> Rules may be subject to change without notice.</p>
+                            <p><strong data-i18n="rule_10_num">10.</strong> <span data-i18n="rule_10_text">Organizers reserve the right to record all performances during the competition for radio and television broadcasts. Each candidate renounces all rights, fees and claims regarding such recordings.</span></p>
+                            <p><strong data-i18n="rule_11_num">11.</strong> <span data-i18n="rule_11_text">All contestants under 18 must be accompanied by an adult who will carry full responsibility at all times. If not a parent, a signed permission note is required.</span></p>
+                            <p><strong data-i18n="rule_12_num">12.</strong> <span data-i18n="rule_12_text">All travel expenses, tickets and visas are to be carried out by the participant. Invitation letters are available upon request for visa applications.</span></p>
+                            <p><strong data-i18n="rule_13_num">13.</strong> <span data-i18n="rule_13_text">Contestants are responsible for their own accommodation costs. A special deal with a hotel partner will normally be offered to each candidate.</span></p>
+                            <p><strong data-i18n="rule_14_num">14.</strong> <span data-i18n="rule_14_text">The competition is not responsible for any accidents or incidents involving contestants beyond the standard insurance of the Community Centre De Lijsterbes.</span></p>
+                            <p><strong data-i18n="rule_15_num">15.</strong> <span data-i18n="rule_15_text">It is advised to check personal insurance for coverage of accidents and incidents outside the competition venue.</span></p>
+                            <p><strong data-i18n="rule_16_num">16.</strong> <span data-i18n="rule_16_text">The name of the candidate’s teacher/professor will not be printed in the program for the jury.</span></p>
+                            <p><strong data-i18n="rule_17_num">17.</strong> <span data-i18n="rule_17_text">If a candidate is studying with a member of the jury, this particular jury member will not be allowed to vote for their student.</span></p>
+                            <p><strong data-i18n="rule_18_num">18.</strong> <span data-i18n="rule_18_text">Rules may be subject to change without notice.</span></p>
                         </div>
                     </div>
                 </div>
@@ -500,8 +565,669 @@
         </div>
     </footer>
 
+    <!-- CUSTOM FLOATING LANGUAGE WIDGET -->
+    <div class="lang-widget-container">
+        <div class="lang-dropdown-menu" id="langMenu">
+            <button class="lang-option" onclick="setLanguage('en')">English</button>
+            <button class="lang-option" onclick="setLanguage('fr')">Français</button>
+            <button class="lang-option" onclick="setLanguage('nl')">Nederlands</button>
+            <button class="lang-option" onclick="setLanguage('de')">Deutsch</button>
+            <button class="lang-option" onclick="setLanguage('it')">Italiano</button>
+            <button class="lang-option" onclick="setLanguage('es')">Español</button>
+        </div>
+        <button class="lang-toggle-btn" onclick="toggleLangMenu()" aria-label="Change Language">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </button>
+    </div>
+
     <script>
         lucide.createIcons();
+
+        // Professional Translations Dictionary for Rules Page
+        const translations = {
+            en: {
+                nav_competition: "Competition",
+                nav_rules: "Rules",
+                nav_prizes: "Prizes",
+                nav_application: "Application",
+                nav_jury: "Jury",
+                nav_laureates: "Laureates",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Winter Masterclass",
+                nav_spring: "Spring Masterclass",
+                nav_volodos: "Volodos Masterclass",
+                nav_about: "About",
+                nav_about_label: "About",
+                nav_contact: "Contact Us",
+                nav_legacy: "Legacy",
+                nav_gallery: "Gallery",
+                nav_media: "Media",
+                nav_pictures: "Pictures",
+                nav_home: "Return to Home",
+                rules_tag: "Official Regulations",
+                rules_title: "Rules & Regulations 2026",
+                rules_deadline: "Deadline : November 1st 2026",
+                cat_heading: "Age Categories & Fees",
+                cat_a_title: "Category A",
+                cat_a_age: "10 & Under",
+                cat_a_fee: "Fee : €80",
+                cat_a_prize: "1st Prize Value : €550",
+                cat_b_title: "Category B",
+                cat_b_age: "11 - 13",
+                cat_b_fee: "Fee : €90",
+                cat_b_prize: "1st Prize Value : €650",
+                cat_c_title: "Category C",
+                cat_c_age: "14 - 16",
+                cat_c_fee: "Fee : €100",
+                cat_c_prize: "1st Prize Value : €750",
+                cat_d_title: "Category D",
+                cat_d_age: "17 - 21",
+                cat_d_fee: "Fee : €110",
+                cat_d_prize: "1st Prize Value : €1450",
+                semi_label: "Semi-Finals :",
+                finals_label: "Finals :",
+                cat_a_semi: "6 mins", cat_a_final: "10 mins",
+                cat_b_semi: "8 mins", cat_b_final: "12 mins",
+                cat_c_semi: "10 mins", cat_c_final: "15 mins",
+                cat_d_semi: "15 mins", cat_d_final: "30 mins",
+                prog_heading: "Program Requirements",
+                req_1_title: "Repertoire Selection",
+                req_1_desc: 'For both rounds, a free program can be chosen for Category A & B applicants. However, applicants from Categories C & D must include at least one movement from a "Viennese Classic" composer (Haydn, Mozart, or Beethoven) in their Finals program.',
+                req_2_title: "Belgian Composers",
+                req_2_desc: "It is not obligatory but recommended to include at least one piece written by a Belgian composer in the semi-final or the final round.",
+                req_3_title: "Memory Interpretation",
+                req_3_desc: "Memory interpretation is required for both rounds of the competition except for certain contemporary pieces after a personal request and approval by the competition.",
+                req_4_title: "Program Changes",
+                req_4_desc: "It is NOT possible to change the semi-finals program after submission. For all selected finalists, it is possible to change your finals program until November 15th, 2026. Candidates may include in their Finals program previously recorded works from the 1st round.",
+                req_5_title: "Score Submission",
+                req_5_desc: "A copy of your program (Urtext or original editions as preferred by the jury) must be scanned and sent by all finalists to office@cfipc.com before November 15th, 2026. Programme changes are not permitted after this date. Any candidate who fails to submit the required scores by the deadline risks disqualification.",
+                semi_box_title: "Semi-Finals (Online)",
+                video_std_title: "Video Standards",
+                video_std_1: "All video submissions should not be edited (audio). All edited videos will be automatically disqualified.",
+                video_std_2: "Recordings must be made in 2026 and recorded in one take without cuts, also between pieces, like in a live competition (i.e. a single link) .",
+                video_std_3: "Must be uploaded directly to a streaming service (YouTube, Vimeo, Dailymotion, Dropbox) where it can be streamed without downloading. No WeTransfer or DVDs.",
+                logistics_title: "Logistics & Evaluation",
+                logistics_1: "Candidates must ensure links remain active until selection announcement. Recordings on upright pianos and smartphones are accepted and will not be penalised.",
+                logistics_2: "A maximum of 5 finalists will be selected per category, subject to the discretion of the jury.",
+                logistics_3: "Results announced on November 10th 2026 via email and social media.",
+                fees_heading: "Fees & Payment",
+                bank_title: "Bank Transfer Details",
+                bank_ref: "Please state : <strong>CFIPC 2026 + Full Name + Category</strong>",
+                bank_name: "Account Name : CFIPC",
+                bank_inst: "Bank : BNP Paribas Fortis",
+                bank_addr: "Address : Lijsterbessenbomenlaan 6, Kraainem 1950, BELGIUM",
+                paypal_title: "PayPal Alternative",
+                paypal_desc: "Pay via PayPal to <strong>office@cfipc.com</strong> .",
+                paypal_note: "Note : There is a 5€ surcharge for the transfer fee on top of the application fee should you wish to pay using PayPal.",
+                gen_reg_title: "General Regulations",
+                date_1_title: "Semifinals (Online) Deadline",
+                date_1_val: "November 1, 2026",
+                date_2_title: "Results & Selection",
+                date_2_val: "November 10, 2026",
+                date_2_sub: "Max 5 Finalists per Category",
+                date_3_title: "Final Deadline",
+                date_3_val: "November 15, 2026",
+                date_3_sub: "Score Submission & Changes",
+                date_4_title: "Live Finals Competition",
+                date_4_val: "December 18 - 20, 2026",
+                date_4_sub: "GC De Lijsterbes, Belgium",
+                rule_1_num: "1.", rule_1_text: "The 14th César Franck IPC is open to all nationalities aged 21 or less at the time of the Finals (18-20 December 2026). Live finals take place at De Lijsterbes, Belgium.",
+                rule_2_num: "2.", rule_2_text: "Applicants must complete the online form and upload: CV, high-resolution photo (max 2MB), passport scan (candidate & parent), proof of payment, program and video link before 1st November 2026.",
+                rule_3_num: "3.", rule_3_text: "Candidacy is only confirmed after we have received the application fee.",
+                rule_4_num: "4.", rule_4_text: "A maximum of 5 participants from each category will be selected to perform in the finals, however, the final and exact number of participants selected is subject to the discretion of the jury.",
+                rule_5_num: "5.", rule_5_text: "The decision of the jury is final and will not be subjected to reviews or appeals.",
+                rule_6_num: "6.", rule_6_text: "The results of the semi-finals will be announced on 10th November 2026 via email and social media.",
+                rule_7_num: "7.", rule_7_text: "The application fee is not refundable and the candidates are responsible for any bank/PayPal transfer fees.",
+                rule_8_num: "8.", rule_8_text: "The entry in the competition implies the acceptance of the present rules without any reservation.",
+                rule_9_num: "9.", rule_9_text: "The competition registration acts as an agreement for all candidates and their parents.",
+                rule_10_num: "10.", rule_10_text: "Organizers reserve the right to record all performances during the competition for radio and television broadcasts. Each candidate renounces all rights, fees and claims regarding such recordings.",
+                rule_11_num: "11.", rule_11_text: "All contestants under 18 must be accompanied by an adult who will carry full responsibility at all times. If not a parent, a signed permission note is required.",
+                rule_12_num: "12.", rule_12_text: "All travel expenses, tickets and visas are to be carried out by the participant. Invitation letters are available upon request for visa applications.",
+                rule_13_num: "13.", rule_13_text: "Contestants are responsible for their own accommodation costs. A special deal with a hotel partner will normally be offered to each candidate.",
+                rule_14_num: "14.", rule_14_text: "The competition is not responsible for any accidents or incidents involving contestants beyond the standard insurance of the Community Centre De Lijsterbes.",
+                rule_15_num: "15.", rule_15_text: "It is advised to check personal insurance for coverage of accidents and incidents outside the competition venue.",
+                rule_16_num: "16.", rule_16_text: "The name of the candidate’s teacher/professor will not be printed in the program for the jury.",
+                rule_17_num: "17.", rule_17_text: "If a candidate is studying with a member of the jury, this particular jury member will not be allowed to vote for their student.",
+                rule_18_num: "18.", rule_18_text: "Rules may be subject to change without notice."
+            },
+            fr: {
+                nav_competition: "Concours",
+                nav_rules: "Règlement",
+                nav_prizes: "Prix",
+                nav_application: "Inscription",
+                nav_jury: "Jury",
+                nav_laureates: "Lauréats",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Masterclass d'Hiver",
+                nav_spring: "Masterclass de Printemps",
+                nav_volodos: "Masterclass Volodos",
+                nav_about: "À propos",
+                nav_about_label: "À propos",
+                nav_contact: "Contactez-nous",
+                nav_legacy: "Héritage",
+                nav_gallery: "Galerie",
+                nav_media: "Médias",
+                nav_pictures: "Photos",
+                nav_home: "Retour à l'accueil",
+                rules_tag: "Règlement Officiel",
+                rules_title: "Règles & Conditions 2026",
+                rules_deadline: "Date limite : 1er Novembre 2026",
+                cat_heading: "Catégories d'Âge & Frais",
+                cat_a_title: "Catégorie A",
+                cat_a_age: "10 ans & moins",
+                cat_a_fee: "Frais : €80",
+                cat_a_prize: "1er Prix : €550",
+                cat_b_title: "Catégorie B",
+                cat_b_age: "11 - 13 ans",
+                cat_b_fee: "Frais : €90",
+                cat_b_prize: "1er Prix : €650",
+                cat_c_title: "Catégorie C",
+                cat_c_age: "14 - 16 ans",
+                cat_c_fee: "Frais : €100",
+                cat_c_prize: "1er Prix : €750",
+                cat_d_title: "Catégorie D",
+                cat_d_age: "17 - 21 ans",
+                cat_d_fee: "Frais : €110",
+                cat_d_prize: "1er Prix : €1450",
+                semi_label: "Demi-finales :",
+                finals_label: "Finales :",
+                cat_a_semi: "6 min", cat_a_final: "10 min",
+                cat_b_semi: "8 min", cat_b_final: "12 min",
+                cat_c_semi: "10 min", cat_c_final: "15 min",
+                cat_d_semi: "15 min", cat_d_final: "30 min",
+                prog_heading: "Exigences du Programme",
+                req_1_title: "Sélection du Répertoire",
+                req_1_desc: 'Pour les deux tours, un programme libre peut être choisi pour les candidats des catégories A & B. Cependant, les candidats des catégories C & D doivent inclure au moins un mouvement d’un compositeur "classique viennois" (Haydn, Mozart ou Beethoven) dans leur programme de finale.',
+                req_2_title: "Compositeurs Belges",
+                req_2_desc: "Il n'est pas obligatoire mais recommandé d'inclure au moins une œuvre écrite par un compositeur belge lors de la demi-finale ou de la finale.",
+                req_3_title: "Interprétation de Mémoire",
+                req_3_desc: "L'interprétation de mémoire est requise pour les deux tours du concours, sauf pour certaines pièces contemporaines après demande personnelle et approbation du concours.",
+                req_4_title: "Modifications de Programme",
+                req_4_desc: "Il n'est PAS possible de modifier le programme des demi-finales après soumission. Pour tous les finalistes sélectionnés, il est possible de modifier votre programme de finale jusqu'au 15 novembre 2026. Les candidats peuvent inclure des œuvres enregistrées du 1er tour.",
+                req_5_title: "Soumission des Partitions",
+                req_5_desc: "Une copie de votre programme (Urtext ou éditions originales préférées par le jury) doit être numérisée et envoyée par tous les finalistes à office@cfipc.com avant le 15 novembre 2026. Aucun changement de programme n'est autorisé après cette date.",
+                semi_box_title: "Demi-Finales (En Ligne)",
+                video_std_title: "Normes Vidéo",
+                video_std_1: "Les vidéos soumises ne doivent pas être éditées (audio). Toute vidéo modifiée sera automatiquement disqualifiée.",
+                video_std_2: "Les enregistrements doivent être réalisés en 2026 en une seule prise sans coupure, y compris entre les morceaux, comme lors d'un concours en direct (un seul lien).",
+                video_std_3: "Doit être téléchargé directement sur un service de streaming (YouTube, Vimeo, Dailymotion, Dropbox) diffusable sans téléchargement. Pas de WeTransfer ni de DVD.",
+                logistics_title: "Logistique & Évaluation",
+                logistics_1: "Les candidats doivent s'assurer que les liens restent actifs jusqu'à l'annonce de la sélection. Les enregistrements sur pianos droits et smartphones sont acceptés sans pénalité.",
+                logistics_2: "Un maximum de 5 finalistes sera sélectionné par catégorie, sous réserve de l'appréciation du jury.",
+                logistics_3: "Résultats annoncés le 10 novembre 2026 par e-mail et sur les réseaux sociaux.",
+                fees_heading: "Frais & Paiement",
+                bank_title: "Détails du Virement Bancaire",
+                bank_ref: "Veuillez indiquer : <strong>CFIPC 2026 + Nom Prénom + Catégorie</strong>",
+                bank_name: "Nom du Compte : CFIPC",
+                bank_inst: "Banque : BNP Paribas Fortis",
+                bank_addr: "Adresse : Lijsterbessenbomenlaan 6, Kraainem 1950, BELGIQUE",
+                paypal_title: "Alternative PayPal",
+                paypal_desc: "Payer via PayPal à <strong>office@cfipc.com</strong> .",
+                paypal_note: "Remarque : Un supplément de 5€ s'applique pour les frais de transfert si vous payez par PayPal.",
+                gen_reg_title: "Règlement Général",
+                date_1_title: "Date limite Demi-finales (En ligne)",
+                date_1_val: "1er Novembre 2026",
+                date_2_title: "Résultats & Sélection",
+                date_2_val: "10 Novembre 2026",
+                date_2_sub: "Max 5 Finalistes par Catégorie",
+                date_3_title: "Date limite Finale",
+                date_3_val: "15 Novembre 2026",
+                date_3_sub: "Envoi des partitions & modifications",
+                date_4_title: "Concert de Finale en Direct",
+                date_4_val: "18 - 20 Décembre 2026",
+                date_4_sub: "GC De Lijsterbes, Belgique",
+                rule_1_num: "1.", rule_1_text: "Le 14e IPC César Franck est ouvert à toutes les nationalités âgées de 21 ans ou moins au moment de la finale (18-20 décembre 2026). Les finales en direct ont lieu à De Lijsterbes, en Belgique.",
+                rule_2_num: "2.", rule_2_text: "Les candidats doivent remplir le formulaire en ligne et télécharger : CV, photo haute résolution (max 2 Mo), scan du passeport (candidat et parent), preuve de paiement, programme et lien vidéo avant le 1er novembre 2026.",
+                rule_3_num: "3.", rule_3_text: "La candidature n'est confirmée qu'après réception des frais d'inscription.",
+                rule_4_num: "4.", rule_4_text: "Un maximum de 5 participants par catégorie sera sélectionné pour la finale, le nombre exact restant à la discrétion du jury.",
+                rule_5_num: "5.", rule_5_text: "La décision du jury est sans appel et ne peut faire l'objet de recours.",
+                rule_6_num: "6.", rule_6_text: "Les résultats des demi-finales seront annoncés le 10 novembre 2026 par e-mail et sur les réseaux sociaux.",
+                rule_7_num: "7.", rule_7_text: "Les frais d'inscription ne sont pas remboursables et les candidats prennent en charge les frais bancaires.",
+                rule_8_num: "8.", rule_8_text: "L'inscription implique l'acceptation sans réserve du présent règlement.",
+                rule_9_num: "9.", rule_9_text: "L'inscription vaut accord pour tous les candidats et leurs parents.",
+                rule_10_num: "10.", rule_10_text: "Les organisateurs se réservent le droit d'enregistrer toutes les prestations pour la radio et la télévision, sans contrepartie financière pour les candidats.",
+                rule_11_num: "11.", rule_11_text: "Les mineurs de moins de 18 ans doivent être accompagnés d'un adulte responsable. Une autorisation signée est requise si ce n'est pas un parent.",
+                rule_12_num: "12.", rule_12_text: "Tous les frais de voyage et de visa sont à la charge du participant. Des lettres d'invitation sont fournies sur demande.",
+                rule_13_num: "13.", rule_13_text: "Les frais d'hébergement sont à la charge des candidats. Un tarif préférentiel avec un hôtel partenaire est généralement proposé.",
+                rule_14_num: "14.", rule_14_text: "Le concours décline toute responsabilité en cas d'accident au-delà de l'assurance standard du Centre Culturel De Lijsterbes.",
+                rule_15_num: "15.", rule_15_text: "Il est conseillé de souscrire une assurance personnelle couvrant les déplacements en dehors du site.",
+                rule_16_num: "16.", rule_16_text: "Le nom du professeur du candidat ne figurera pas sur le programme destiné au jury.",
+                rule_17_num: "17.", rule_17_text: "Si un candidat étudie avec un membre du jury, celui-ci ne pourra pas voter pour son élève.",
+                rule_18_num: "18.", rule_18_text: "Le règlement peut être sujet à modification sans préavis."
+            },
+            nl: {
+                nav_competition: "Competitie",
+                nav_rules: "Reglement",
+                nav_prizes: "Prijzen",
+                nav_application: "Inschrijving",
+                nav_jury: "Jury",
+                nav_laureates: "Laureaten",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Winter Masterclass",
+                nav_spring: "Lente Masterclass",
+                nav_volodos: "Volodos Masterclass",
+                nav_about: "Over Ons",
+                nav_about_label: "Over Ons",
+                nav_contact: "Contact",
+                nav_legacy: "Erfenis",
+                nav_gallery: "Gallerij",
+                nav_media: "Media",
+                nav_pictures: "Foto's",
+                nav_home: "Terug naar Home",
+                rules_tag: "Officieel Reglement",
+                rules_title: "Regels & Voorwaarden 2026",
+                rules_deadline: "Deadline : 1 november 2026",
+                cat_heading: "Leeftijdscategorieën & Prijzen",
+                cat_a_title: "Categorie A",
+                cat_a_age: "10 jaar & jonger",
+                cat_a_fee: "Inschrijving : €80",
+                cat_a_prize: "1e Prijs Waarde : €550",
+                cat_b_title: "Categorie B",
+                cat_b_age: "11 - 13",
+                cat_b_fee: "Inschrijving : €90",
+                cat_b_prize: "1e Prijs Waarde : €650",
+                cat_c_title: "Categorie C",
+                cat_c_age: "14 - 16",
+                cat_c_fee: "Inschrijving : €100",
+                cat_c_prize: "1e Prijs Waarde : €750",
+                cat_d_title: "Categorie D",
+                cat_d_age: "17 - 21",
+                cat_d_fee: "Inschrijving : €110",
+                cat_d_prize: "1e Prijs Waarde : €1450",
+                semi_label: "Halve finales :",
+                finals_label: "Finales :",
+                cat_a_semi: "6 min", cat_a_final: "10 min",
+                cat_b_semi: "8 min", cat_b_final: "12 min",
+                cat_c_semi: "10 min", cat_c_final: "15 min",
+                cat_d_semi: "15 min", cat_d_final: "30 min",
+                prog_heading: "Programmavereisten",
+                req_1_title: "Repertoireselectie",
+                req_1_desc: 'Voor beide rondes kan een vrij programma worden gekozen voor categorie A & B. Kandidaten uit Categorie C & D moeten echter ten minste één deel van een "Wienklassiek" componist (Haydn, Mozart of Beethoven) in hun finaleprogramma opnemen.',
+                req_2_title: "Belgische Componisten",
+                req_2_desc: "Het is niet verplicht maar wel aanbevolen om ten minste één werk van een Belgische componist op te nemen in de halve finale of finale.",
+                req_3_title: "Uit de Hoofd spelen",
+                req_3_desc: "Uit het hoofd spelen is verplicht voor beide rondes, met uitzondering van bepaalde hedendaagse stukken na voorafgaand verzoek en goedkeuring.",
+                req_4_title: "Programmawijzigingen",
+                req_4_desc: "Het is NIET mogelijk om het halve finale programma na indiening te wijzigen. Finalisten kunnen hun finaleprogramma wijzigen tot 15 november 2026.",
+                req_5_title: "Partituur indienen",
+                req_5_desc: "Een kopie van uw programma (Urtext of originele edities) moet worden gescand en verzonden naar office@cfipc.com vóór 15 november 2026.",
+                semi_box_title: "Halve Finales (Online)",
+                video_std_title: "Videostandaarden",
+                video_std_1: "Ingezonden video's mogen niet bewerkt zijn (audio). Bewerkte video's worden automatisch gediskwalificeerd.",
+                video_std_2: "Opnames moeten in 2026 zijn gemaakt in één take zonder knippen (één enkele link).",
+                video_std_3: "Moet direct worden geüpload naar een streamingservice (YouTube, Vimeo, Dailymotion, Dropbox). Geen WeTransfer of dvd's.",
+                logistics_title: "Logistiek & Evaluatie",
+                logistics_1: "Kandidaten moeten ervoor zorgen dat links actief blijven tot de selectie bekend is. Opnames op akoestische piano's en smartphones zijn toegestaan.",
+                logistics_2: "Maximaal 5 finalisten worden per categorie geselecteerd, ter discretionaire bevoegdheid van de jury.",
+                logistics_3: "Resultaten worden bekendgemaakt op 10 november 2026 via e-mail en sociale media.",
+                fees_heading: "Inschrijfgeld & Betaling",
+                bank_title: "Bankgegevens",
+                bank_ref: "Vermeld alstublieft : <strong>CFIPC 2026 + Volledige Naam + Categorie</strong>",
+                bank_name: "Rekeningnaam : CFIPC",
+                bank_inst: "Bank : BNP Paribas Fortis",
+                bank_addr: "Adres : Lijsterbessenbomenlaan 6, Kraainem 1950, BELGIË",
+                paypal_title: "PayPal Alternatief",
+                paypal_desc: "Betaal via PayPal naar <strong>office@cfipc.com</strong> .",
+                paypal_note: "Let op : Er is een toeslag van €5 voor overschrijvingskosten bovenop het inschrijfgeld bij betaling via PayPal.",
+                gen_reg_title: "Algemeen Reglement",
+                date_1_title: "Deadline Halve Finales (Online)",
+                date_1_val: "1 november 2026",
+                date_2_title: "Resultaten & Selectie",
+                date_2_val: "10 november 2026",
+                date_2_sub: "Max 5 Finalisten per Categorie",
+                date_3_title: "Finale Deadline",
+                date_3_val: "15 november 2026",
+                date_3_sub: "Indiening partituren & wijzigingen",
+                date_4_title: "Live Finale Competitie",
+                date_4_val: "18 - 20 december 2026",
+                date_4_sub: "GC De Lijsterbes, België",
+                rule_1_num: "1.", rule_1_text: "Het 14e César Franck IPC staat open voor alle nationaliteiten van 21 jaar of jonger ten tijde van de Finale (18-20 december 2026). De live finales vinden plaats in De Lijsterbes, België.",
+                rule_2_num: "2.", rule_2_text: "Kandidaten moeten het online formulier invullen en uploaden: CV, foto (max 2MB), paspoortkopie, betalingsbewijs, programma en videolink vóór 1 november 2026.",
+                rule_3_num: "3.", rule_3_text: "De kandidaatstelling is pas definitief na ontvangst van het inschrijfgeld.",
+                rule_4_num: "4.", rule_4_text: "Maximaal 5 deelnemers per categorie worden geselecteerd voor de finale, onder voorbehoud van de beslissing van de jury.",
+                rule_5_num: "5.", rule_5_text: "De beslissing van de jury is bindend en niet vatbaar voor beroep.",
+                rule_6_num: "6.", rule_6_text: "De resultaten van de halve finales worden bekendgemaakt op 10 november 2026 via e-mail en sociale media.",
+                rule_7_num: "7.", rule_7_text: "Het inschrijfgeld wordt niet gerestitueerd; bankkosten zijn voor rekening van de kandidaat.",
+                rule_8_num: "8.", rule_8_text: "Deelname houdt in dat men akkoord gaat met het huidige reglement.",
+                rule_9_num: "9.", rule_9_text: "Registratie geldt als akkoord voor alle kandidaten en hun ouders.",
+                rule_10_num: "10.", rule_10_text: "Organisatoren behouden zich het recht voor om optredens op te nemen voor radio en televisie zonder aanspraak op vergoeding.",
+                rule_11_num: "11.", rule_11_text: "Deelnemers onder de 18 moeten worden begeleid door een volwassene. Een ondertekende toestemmingsverklaring is vereist.",
+                rule_12_num: "12.", rule_12_text: "Reiskosten, tickets en visa zijn voor rekening van de deelnemer. Uitnodigingsbrieven zijn op aanvraag beschikbaar.",
+                rule_13_num: "13.", rule_13_text: "Deelnemers zijn verantwoordelijk voor hun eigen verblijfskosten. Er wordt doorgaans een speciaal hotelpartner-tarief aangeboden.",
+                rule_14_num: "14.", rule_14_text: "De organisatie is niet aansprakelijk voor ongevallen buiten de standaardverzekering van De Lijsterbes.",
+                rule_15_num: "15.", rule_15_text: "Het wordt aangeraden een persoonlijke reis- en ongevallenverzekering af te sluiten.",
+                rule_16_num: "16.", rule_16_text: "De naam van de docent van de kandidaat wordt niet vermeld in het juryprogramma.",
+                rule_17_num: "17.", rule_17_text: "Indien een kandidaat studeert bij een lid van de jury, zal dit lid niet stemmen voor deze student.",
+                rule_18_num: "18.", rule_18_text: "Regels kunnen zonder voorafgaande kennisgeving worden gewijzigd."
+            },
+            de: {
+                nav_competition: "Wettbewerb",
+                nav_rules: "Regeln",
+                nav_prizes: "Preise",
+                nav_application: "Bewerbung",
+                nav_jury: "Jury",
+                nav_laureates: "Preisträger",
+                nav_masterclasses: "Meisterkurse",
+                nav_winter: "Winter-Meisterkurs",
+                nav_spring: "Frühlings-Meisterkurs",
+                nav_volodos: "Volodos Meisterkurs",
+                nav_about: "Über Uns",
+                nav_about_label: "Über Uns",
+                nav_contact: "Kontakt",
+                nav_legacy: "Vermächtnis",
+                nav_gallery: "Galerie",
+                nav_media: "Medien",
+                nav_pictures: "Bilder",
+                nav_home: "Zur Startseite",
+                rules_tag: "Offizielle Bestimmungen",
+                rules_title: "Regeln & Bestimmungen 2026",
+                rules_deadline: "Einsendeschluss : 1. November 2026",
+                cat_heading: "Altersgruppen & Gebühren",
+                cat_a_title: "Kategorie A",
+                cat_a_age: "10 Jahre & jünger",
+                cat_a_fee: "Gebühr : €80",
+                cat_a_prize: "1. Preis Wert : €550",
+                cat_b_title: "Kategorie B",
+                cat_b_age: "11 - 13",
+                cat_b_fee: "Gebühr : €90",
+                cat_b_prize: "1. Preis Wert : €650",
+                cat_c_title: "Kategorie C",
+                cat_c_age: "14 - 16",
+                cat_c_fee: "Gebühr : €100",
+                cat_c_prize: "1. Preis Wert : €750",
+                cat_d_title: "Kategorie D",
+                cat_d_age: "17 - 21",
+                cat_d_fee: "Gebühr : €110",
+                cat_d_prize: "1. Preis Wert : €1450",
+                semi_label: "Halbfinale :",
+                finals_label: "Finale :",
+                cat_a_semi: "6 Min.", cat_a_final: "10 Min.",
+                cat_b_semi: "8 Min.", cat_b_final: "12 Min.",
+                cat_c_semi: "10 Min.", cat_c_final: "15 Min.",
+                cat_d_semi: "15 Min.", cat_d_final: "30 Min.",
+                prog_heading: "Programmanforderungen",
+                req_1_title: "Repertoireauswahl",
+                req_1_desc: 'Für die Runden A & B kann ein freies Programm gewählt werden. Teilnehmer der Kategorien C & D müssen jedoch mindestens einen Satz eines "Wiener Klassikers" (Haydn, Mozart oder Beethoven) in ihr Finalprogramm aufnehmen.',
+                req_2_title: "Belgische Komponisten",
+                req_2_desc: "Es wird empfohlen, mindestens ein Werk eines belgischen Komponisten im Halbfinale oder Finale zu spielen.",
+                req_3_title: "Auswendigspiel",
+                req_3_desc: "Das Auswendigspiel ist für beide Runden verpflichtend, außer für bestimmte zeitgenössische Stücke nach vorheriger Genehmigung.",
+                req_4_title: "Programmänderungen",
+                req_4_desc: "Programmänderungen für das Halbfinale sind nach Einreichung nicht möglich. Finalisten können ihr Finalprogramm bis zum 15. November 2026 ändern.",
+                req_5_title: "Noteneinreichung",
+                req_5_desc: "Notenkopien (Urtext oder Originalausgaben) müssen bis zum 15. November 2026 digital an office@cfipc.com gesendet werden.",
+                semi_box_title: "Halbfinale (Online)",
+                video_std_title: "Videostandards",
+                video_std_1: "Eingereichte Videos dürfen audio-technisch nicht bearbeitet sein.",
+                video_std_2: "Aufnahmen müssen 2026 in einem Take ohne Schnitte erstellt werden.",
+                video_std_3: "Muss direkt auf einen Streaming-Dienst (YouTube, Vimeo, Dailymotion, Dropbox) hochgeladen werden. Kein WeTransfer.",
+                logistics_title: "Logistik & Bewertung",
+                logistics_1: "Links müssen bis zur Bekanntgabe aktiv bleiben. Aufnahmen auf Klavieren und Smartphones werden akzeptiert.",
+                logistics_2: "Maximal 5 Finalisten pro Kategorie werden nach Ermessen der Jury ausgewählt.",
+                logistics_3: "Ergebnisse werden am 10. November 2026 bekannt gegeben.",
+                fees_heading: "Gebühren & Zahlung",
+                bank_title: "Bankverbindung",
+                bank_ref: "Bitte angeben : <strong>CFIPC 2026 + Vollständiger Name + Kategorie</strong>",
+                bank_name: "Kontoinhaber : CFIPC",
+                bank_inst: "Bank : BNP Paribas Fortis",
+                bank_addr: "Adresse : Lijsterbessenbomenlaan 6, Kraainem 1950, BELGIEN",
+                paypal_title: "PayPal Alternative",
+                paypal_desc: "Zahlen Sie über PayPal an <strong>office@cfipc.com</strong> .",
+                paypal_note: "Hinweis : Bei PayPal-Zahlung fällt ein Zuschlag von €5 an.",
+                gen_reg_title: "Allgemeine Bestimmungen",
+                date_1_title: "Einsendeschluss Halbfinale (Online)",
+                date_1_val: "1. November 2026",
+                date_2_title: "Ergebnisse & Auswahl",
+                date_2_val: "10. November 2026",
+                date_2_sub: "Max. 5 Finalisten pro Kategorie",
+                date_3_title: "Final-Frist",
+                date_3_val: "15. November 2026",
+                date_3_sub: "Noteneinreichung & Änderungen",
+                date_4_title: "Live-Finale",
+                date_4_val: "18. - 20. Dezember 2026",
+                date_4_sub: "GC De Lijsterbes, Belgien",
+                rule_1_num: "1.", rule_1_text: "Der 14. César Franck IPC steht allen Nationalitäten offen, die zum Zeitpunkt des Finales (18.-20. Dezember 2026) 21 Jahre oder jünger sind.",
+                rule_2_num: "2.", rule_2_text: "Bewerber müssen das Online-Formular ausfüllen und Lebenslauf, Foto, Reisepass, Zahlungsnachweis und Videolink bis zum 1. November 2026 hochladen.",
+                rule_3_num: "3.", rule_3_text: "Die Anmeldung wird erst nach Eingang der Gebühr bestätigt.",
+                rule_4_num: "4.", rule_4_text: "Maximal 5 Teilnehmer pro Kategorie werden für das Finale ausgewählt.",
+                rule_5_num: "5.", rule_5_text: "Die Entscheidung der Jury ist unanfechtbar.",
+                rule_6_num: "6.", rule_6_text: "Die Ergebnisse des Halbfinales werden am 10. November 2026 bekannt gegeben.",
+                rule_7_num: "7.", rule_7_text: "Die Anmeldegebühr wird nicht erstattet.",
+                rule_8_num: "8.", rule_8_text: "Die Teilnahme setzt die Annahme dieser Regeln voraus.",
+                rule_9_num: "9.", rule_9_text: "Die Registrierung gilt als Vereinbarung für alle Kandidaten und Eltern.",
+                rule_10_num: "10.", rule_10_text: "Die Organisatoren behalten sich das Recht vor, Auftritte für Radio und Fernsehen aufzuzeichnen.",
+                rule_11_num: "11.", rule_11_text: "Minderjährige Teilnehmer müssen von einem Erwachsenen begleitet werden.",
+                rule_12_num: "12.", rule_12_text: "Reisekosten und Visa gehen zu Lasten des Teilnehmers.",
+                rule_13_num: "13.", rule_13_text: "Unterbringungskosten tragen die Kandidaten selbst.",
+                rule_14_num: "14.", rule_14_text: "Der Veranstalter haftet nicht für Unfälle über die Standardversicherung hinaus.",
+                rule_15_num: "15.", rule_15_text: "Eine private Unfallversicherung wird empfohlen.",
+                rule_16_num: "16.", rule_16_text: "Der Name des Lehrers wird nicht im Jury-Programm gedruckt.",
+                rule_17_num: "17.", rule_17_text: "Juroren stimmen bei eigenen Schülern nicht ab.",
+                rule_18_num: "18.", rule_18_text: "Änderungen der Regeln vorbehalten."
+            },
+            it: {
+                nav_competition: "Concorso",
+                nav_rules: "Regolamento",
+                nav_prizes: "Premi",
+                nav_application: "Iscrizione",
+                nav_jury: "Giuria",
+                nav_laureates: "Vincitori",
+                nav_masterclasses: "Masterclass",
+                nav_winter: "Masterclass Invernale",
+                nav_spring: "Masterclass Primaverile",
+                nav_volodos: "Masterclass Volodos",
+                nav_about: "Chi Siamo",
+                nav_about_label: "Chi Siamo",
+                nav_contact: "Contatti",
+                nav_legacy: "Eredità",
+                nav_gallery: "Galleria",
+                nav_media: "Media",
+                nav_pictures: "Foto",
+                nav_home: "Torna alla Home",
+                rules_tag: "Regolamento Ufficiale",
+                rules_title: "Regole e Condizioni 2026",
+                rules_deadline: "Scadenza : 1 Novembre 2026",
+                cat_heading: "Categorie d'Età e Quote",
+                cat_a_title: "Categoria A",
+                cat_a_age: "10 anni e meno",
+                cat_a_fee: "Quota : €80",
+                cat_a_prize: "Valore 1° Premio : €550",
+                cat_b_title: "Categoria B",
+                cat_b_age: "11 - 13",
+                cat_b_fee: "Quota : €90",
+                cat_b_prize: "Valore 1° Premio : €650",
+                cat_c_title: "Categoria C",
+                cat_c_age: "14 - 16",
+                cat_c_fee: "Quota : €100",
+                cat_c_prize: "Valore 1° Premio : €750",
+                cat_d_title: "Categoria D",
+                cat_d_age: "17 - 21",
+                cat_d_fee: "Quota : €110",
+                cat_d_prize: "Valore 1° Premio : €1450",
+                semi_label: "Semifinali :",
+                finals_label: "Finali :",
+                cat_a_semi: "6 min", cat_a_final: "10 min",
+                cat_b_semi: "8 min", cat_b_final: "12 min",
+                cat_c_semi: "10 min", cat_c_final: "15 min",
+                cat_d_semi: "15 min", cat_d_final: "30 min",
+                prog_heading: "Requisiti del Programma",
+                req_1_title: "Selezione del Repertorio",
+                req_1_desc: 'Per le categorie A e B è previsto un programma libero. I candidati delle categorie C e D devono includere almeno un movimento di un compositore "classico viennese" (Haydn, Mozart o Beethoven) nel programma della Finale.',
+                req_2_title: "Compositori Belgi",
+                req_2_desc: "Si consiglia vivamente di includere almeno un brano di un compositore belga nella semifinale o nella finale.",
+                req_3_title: "Esecuzione a Memoria",
+                req_3_desc: "L'esecuzione a memoria è obbligatoria per entrambi i turni, salvo eccezioni per brani contemporanei previa approvazione.",
+                req_4_title: "Modifiche al Programma",
+                req_4_desc: "Non è possibile modificare il programma delle semifinali. I finalisti possono modificare il programma della finale entro il 15 novembre 2026.",
+                req_5_title: "Invio delle Partiture",
+                req_5_desc: "Una copia delle partiture deve essere scansionata e inviata a office@cfipc.com entro il 15 novembre 2026.",
+                semi_box_title: "Semifinali (Online)",
+                video_std_title: "Standard Video",
+                video_std_1: "I video non devono essere modificati (audio). I video alterati saranno squalificati.",
+                video_std_2: "Le registrazioni devono essere effettuate nel 2026 in un'unica ripresa senza tagli.",
+                video_std_3: "Caricare direttamente su un servizio di streaming (YouTube, Vimeo, Dropbox). No WeTransfer o DVD.",
+                logistics_title: "Logistica e Valutazione",
+                logistics_1: "I link video devono rimanere attivi fino all'annuncio della selezione. Sono ammessi pianoforti verticali e smartphone.",
+                logistics_2: "Un massimo di 5 finalisti per categoria a discrezione della giuria.",
+                logistics_3: "Risultati annunciati il 10 novembre 2026 via email e social media.",
+                fees_heading: "Quote e Pagamento",
+                bank_title: "Dettagli Bonifico Bancario",
+                bank_ref: "Causale : <strong>CFIPC 2026 + Nome Cognome + Categoria</strong>",
+                bank_name: "Intestato a : CFIPC",
+                bank_inst: "Banca : BNP Paribas Fortis",
+                bank_addr: "Indirizzo : Lijsterbessenbomenlaan 6, Kraainem 1950, BELGIO",
+                paypal_title: "Alternativa PayPal",
+                paypal_desc: "Paga tramite PayPal a <strong>office@cfipc.com</strong> .",
+                paypal_note: "Nota : È previsto un supplemento di €5 per i costi di trasferimento PayPal.",
+                gen_reg_title: "Regolamento Generale",
+                date_1_title: "Scadenza Semifinali (Online)",
+                date_1_val: "1 Novembre 2026",
+                date_2_title: "Risultati e Selezione",
+                date_2_val: "10 Novembre 2026",
+                date_2_sub: "Max 5 Finalisti per Categoria",
+                date_3_title: "Scadenza Finale",
+                date_3_val: "15 Novembre 2026",
+                date_3_sub: "Invio partiture e modifiche",
+                date_4_title: "Finali dal Vivo",
+                date_4_val: "18 - 20 Dicembre 2026",
+                date_4_sub: "GC De Lijsterbes, Belgio",
+                rule_1_num: "1.", rule_1_text: "Il 14° Concorso César Franck è aperto a tutte le nazionalità di età pari o inferiore a 21 anni al momento della Finale (18-20 dicembre 2026).",
+                rule_2_num: "2.", rule_2_text: "I candidati devono completare il modulo online e caricare CV, foto, passaporto, prova di pagamento e video entro il 1° novembre 2026.",
+                rule_3_num: "3.", rule_3_text: "La candidatura è confermata solo dopo la ricezione della quota di iscrizione.",
+                rule_4_num: "4.", rule_4_text: "Saranno selezionati massimo 5 partecipanti per categoria per la finale.",
+                rule_5_num: "5.", rule_5_text: "La decisione della giuria è inappellabile.",
+                rule_6_num: "6.", rule_6_text: "I risultati delle semifinali saranno annunciati il 10 novembre 2026.",
+                rule_7_num: "7.", rule_7_text: "La quota di iscrizione non è rimborsabile.",
+                rule_8_num: "8.", rule_8_text: "L'iscrizione implica l'accettazione incondizionata del regolamento.",
+                rule_9_num: "9.", rule_9_text: "La registrazione costituisce accordo per candidati e genitori.",
+                rule_10_num: "10.", rule_10_text: "Gli organizzatori si riservano il diritto di registrare le esibizioni per radio e TV.",
+                rule_11_num: "11.", rule_11_text: "I concorrenti sotto i 18 anni devono essere accompagnati da un adulto.",
+                rule_12_num: "12.", rule_12_text: "Spese di viaggio e visti sono a carico del partecipante.",
+                rule_13_num: "13.", rule_13_text: "I costi di alloggio sono a carico dei concorrenti.",
+                rule_14_num: "14.", rule_14_text: "Il concorso non è responsabile per incidenti oltre l'assicurazione del centro.",
+                rule_15_num: "15.", rule_15_text: "Si consiglia un'assicurazione privata per i viaggi.",
+                rule_16_num: "16.", rule_16_text: "Il nome del professore non verrà stampato nel programma per la giuria.",
+                rule_17_num: "17.", rule_17_text: "I membri della giuria non voteranno i propri studenti.",
+                rule_18_num: "18.", rule_18_text: "Le regole possono subire variazioni senza preavviso."
+            },
+            es: {
+                nav_competition: "Concurso",
+                nav_rules: "Reglas",
+                nav_prizes: "Premios",
+                nav_application: "Inscripción",
+                nav_jury: "Jurado",
+                nav_laureates: "Laureados",
+                nav_masterclasses: "Clases Magistrales",
+                nav_winter: "Clase Magistral de Invierno",
+                nav_spring: "Clase Magistral de Primavera",
+                nav_volodos: "Clase Magistral Volodos",
+                nav_about: "Acerca de",
+                nav_about_label: "Acerca de",
+                nav_contact: "Contacto",
+                nav_legacy: "Legado",
+                nav_gallery: "Galería",
+                nav_media: "Medios",
+                nav_pictures: "Imágenes",
+                nav_home: "Volver al Inicio",
+                rules_tag: "Normativa Oficial",
+                rules_title: "Reglas y Condiciones 2026",
+                rules_deadline: "Fecha límite : 1 de Noviembre de 2026",
+                cat_heading: "Categorías de Edad y Cuotas",
+                cat_a_title: "Categoría A",
+                cat_a_age: "10 años y menos",
+                cat_a_fee: "Cuota : €80",
+                cat_a_prize: "1er Premio : €550",
+                cat_b_title: "Categoría B",
+                cat_b_age: "11 - 13",
+                cat_b_fee: "Cuota : €90",
+                cat_b_prize: "1er Premio : €650",
+                cat_c_title: "Categoría C",
+                cat_c_age: "14 - 16",
+                cat_c_fee: "Cuota : €100",
+                cat_c_prize: "1er Premio : €750",
+                cat_d_title: "Categoría D",
+                cat_d_age: "17 - 21",
+                cat_d_fee: "Cuota : €110",
+                cat_d_prize: "1er Premio : €1450",
+                semi_label: "Semifinales :",
+                finals_label: "Finales :",
+                cat_a_semi: "6 min", cat_a_final: "10 min",
+                cat_b_semi: "8 min", cat_b_final: "12 min",
+                cat_c_semi: "10 min", cat_c_final: "15 min",
+                cat_d_semi: "15 min", cat_d_final: "30 min",
+                prog_heading: "Requisitos del Programa",
+                req_1_title: "Selección de Repertorio",
+                req_1_desc: 'Para las rondas A y B se puede elegir un programa libre. Los solicitantes de las categorías C y D deben incluir al menos un movimiento de un compositor "clásico vienés" (Haydn, Mozart o Beethoven) en su programa final.',
+                req_2_title: "Compositores Belgas",
+                req_2_desc: "Se recomienda encarecidamente incluir al menos una obra de un compositor belga en la semifinal o la final.",
+                req_3_title: "Interpretación de Memoria",
+                req_3_desc: "La interpretación de memoria es obligatoria para ambas rondas, excepto para ciertas piezas contemporáneas bajo aprobación.",
+                req_4_title: "Cambios de Programa",
+                req_4_desc: "No es posible cambiar el programa de semifinales. Los finalistas pueden cambiar su programa final hasta el 15 de noviembre de 2026.",
+                req_5_title: "Envío de Partituras",
+                req_5_desc: "Una copia del programa debe ser escaneada y enviada a office@cfipc.com antes del 15 de noviembre de 2026.",
+                semi_box_title: "Semifinales (En Línea)",
+                video_std_title: "Estándares de Video",
+                video_std_1: "Los videos no deben estar editados (audio). Los videos modificados serán descalificados.",
+                video_std_2: "Las grabaciones deben realizarse en 2026 en una sola toma sin cortes.",
+                video_std_3: "Debe subirse directamente a servicios de streaming (YouTube, Vimeo, Dropbox). No se acepta WeTransfer.",
+                logistics_title: "Logística y Evaluación",
+                logistics_1: "Los enlaces deben permanecer activos hasta el anuncio de selección. Se aceptan pianos verticales y smartphones.",
+                logistics_2: "Un máximo de 5 finalistas seleccionados por categoría a discreción del jurado.",
+                logistics_3: "Resultados anunciados el 10 de noviembre de 2026 por correo electrónico y redes sociales.",
+                fees_heading: "Cuotas y Pago",
+                bank_title: "Detalles de Transferencia Bancaria",
+                bank_ref: "Indicar : <strong>CFIPC 2026 + Nombre Apellido + Categoría</strong>",
+                bank_name: "Titular de la cuenta : CFIPC",
+                bank_inst: "Banco : BNP Paribas Fortis",
+                bank_addr: "Dirección : Lijsterbessenbomenlaan 6, Kraainem 1950, BÉLGICA",
+                paypal_title: "Alternativa PayPal",
+                paypal_desc: "Pagar a través de PayPal a <strong>office@cfipc.com</strong> .",
+                paypal_note: "Nota : Hay un recargo de €5 por la tarifa de transferencia si paga con PayPal.",
+                gen_reg_title: "Normativa General",
+                date_1_title: "Fecha límite Semifinales (En línea)",
+                date_1_val: "1 de Noviembre de 2026",
+                date_2_title: "Resultados y Selección",
+                date_2_val: "10 de Noviembre de 2026",
+                date_2_sub: "Máx 5 Finalistas por Categoría",
+                date_3_title: "Fecha límite Final",
+                date_3_val: "15 de Noviembre de 2026",
+                date_3_sub: "Envío de partituras y cambios",
+                date_4_title: "Finales en Vivo",
+                date_4_val: "18 - 20 de Diciembre de 2026",
+                date_4_sub: "GC De Lijsterbes, Bélgica",
+                rule_1_num: "1.", rule_1_text: "El 14º Concurso César Franck está abierto a todas las nacionalidades de 21 años o menos en el momento de la Final (18-20 de diciembre de 2026).",
+                rule_2_num: "2.", rule_2_text: "Los candidatos deben completar el formulario en línea y subir CV, foto, pasaporte, comprobante de pago y video antes del 1 de noviembre de 2026.",
+                rule_3_num: "3.", rule_3_text: "La candidatura solo se confirma tras recibir la cuota de inscripción.",
+                rule_4_num: "4.", rule_4_text: "Se seleccionará un máximo de 5 participantes por categoría para la final.",
+                rule_5_num: "5.", rule_5_text: "La decisión del jurado es inapelable.",
+                rule_6_num: "6.", rule_6_text: "Los resultados de las semifinales se anunciarán el 10 de noviembre de 2026.",
+                rule_7_num: "7.", rule_7_text: "La cuota de inscripción no es reembolsable.",
+                rule_8_num: "8.", rule_8_text: "La inscripción implica la aceptación incondicional de estas reglas.",
+                rule_9_num: "9.", rule_9_text: "El registro actúa como un acuerdo para candidatos y padres.",
+                rule_10_num: "10.", rule_10_text: "Los organizadores se reservan el derecho de grabar las actuaciones para radio y televisión.",
+                rule_11_num: "11.", rule_11_text: "Los menores de 18 años deben estar acompañados por un adulto responsable.",
+                rule_12_num: "12.", rule_12_text: "Los gastos de viaje y visados corren a cargo del participante.",
+                rule_13_num: "13.", rule_13_text: "Los costos de alojamiento corren por cuenta de los concursantes.",
+                rule_14_num: "14.", rule_14_text: "El concurso no se hace responsable de accidentes fuera del seguro estándar del centro.",
+                rule_15_num: "15.", rule_15_text: "Se aconseja contar con un seguro de viaje privado.",
+                rule_16_num: "16.", rule_16_text: "El nombre del profesor no se imprimirá en el programa para el jurado.",
+                rule_17_num: "17.", rule_17_text: "Los miembros del jurado no votarán por sus propios alumnos.",
+                rule_18_num: "18.", rule_18_text: "Las reglas están sujetas a cambios sin previo aviso."
+            }
+        };
+
+        function setLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.getElementById('langMenu').classList.remove('active');
+            localStorage.setItem('cfipc_lang', lang);
+        }
 
         function handleNavClick(event, btn) {
             const menu = btn.nextElementSibling;
@@ -531,7 +1257,25 @@
             }
         }
 
-        window.onclick = () => document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
+        function toggleLangMenu() {
+            const menu = document.getElementById('langMenu');
+            menu.classList.toggle('active');
+        }
+
+        window.onclick = (event) => {
+            document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
+            if (!event.target.closest('.lang-widget-container')) {
+                document.getElementById('langMenu').classList.remove('active');
+            }
+        };
+
+        // Auto-load user preference if previously saved
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('cfipc_lang');
+            if (savedLang && translations[savedLang]) {
+                setLanguage(savedLang);
+            }
+        });
     </script>
     <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ad3becddcd7249d19a31f20ef5fccc08"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
