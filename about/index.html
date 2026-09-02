@@ -185,7 +185,7 @@
             color: var(--copper);
             display: flex;
             flex-direction: column;
-            overflow-wrap: break-word; /* Prevents overflow */
+            overflow-wrap: break-word;
         }
         .anecdote-card:hover {
             transform: translateY(-5px);
@@ -195,7 +195,6 @@
             color: var(--copper) !important;
             opacity: 0.9;
         }
-        /* Fixed: long words now break to stay inside the box */
         .anecdote-card h5 {
             font-size: 1.4rem !important;
             letter-spacing: 0.15em;
@@ -217,6 +216,69 @@
         .portrait-slide.active {
             opacity: 1;
         }
+
+        /* Custom Floating Language Widget Styling */
+        .lang-widget-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+        }
+        .lang-toggle-btn {
+            background-color: var(--forest);
+            color: var(--copper);
+            border: 1.5px solid var(--copper);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-toggle-btn:hover {
+            background-color: var(--copper);
+            color: var(--forest);
+            transform: scale(1.05);
+        }
+        .lang-dropdown-menu {
+            position: absolute;
+            bottom: 65px;
+            right: 0;
+            background: var(--parchment);
+            border: 1px solid rgba(212, 163, 115, 0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            padding: 0.5rem 0;
+            display: none;
+            min-width: 150px;
+        }
+        .lang-dropdown-menu.active {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+        .lang-option {
+            display: block;
+            width: 100%;
+            padding: 0.6rem 1rem;
+            text-align: left;
+            background: none;
+            border: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--forest);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-option:hover {
+            background: var(--forest);
+            color: var(--copper);
+        }
     </style>
 </head>
 <body>
@@ -228,30 +290,30 @@
             <button onclick="toggleMobileMenu()" class="text-copper text-4xl leading-none">&times;</button>
         </div>
         <div class="mobile-group">
-            <span class="mobile-label">Competition</span>
-            <a href="https://cfipc.com/rules/" class="mobile-link">Rules</a>
-            <a href="https://cfipc.com/prizes/" class="mobile-link">Prizes</a>
-            <a href="https://cfipc.com/application/" class="mobile-link">Application</a>
-            <a href="https://cfipc.com/jury/" class="mobile-link">Jury</a>
-            <a href="https://cfipc.com/laureates/" class="mobile-link">Laureates</a>
+            <span class="mobile-label" data-i18n="nav_competition">Competition</span>
+            <a href="https://cfipc.com/rules/" class="mobile-link" data-i18n="nav_rules">Rules</a>
+            <a href="https://cfipc.com/prizes/" class="mobile-link" data-i18n="nav_prizes">Prizes</a>
+            <a href="https://cfipc.com/application/" class="mobile-link" data-i18n="nav_application">Application</a>
+            <a href="https://cfipc.com/jury/" class="mobile-link" data-i18n="nav_jury">Jury</a>
+            <a href="https://cfipc.com/laureates/" class="mobile-link" data-i18n="nav_laureates">Laureates</a>
         </div>
         <div class="mobile-group">
-            <span class="mobile-label">Masterclasses</span>
-            <a href="https://cfipc.com/winter-masterclass/" class="mobile-link">Winter Masterclass</a>
-            <a href="https://cfipc.com/spring-masterclass/" class="mobile-link">Spring Masterclass</a>
-            <a href="https://www.masterclass-volodos.com/" class="mobile-link">Volodos Masterclass</a>
+            <span class="mobile-label" data-i18n="nav_masterclasses">Masterclasses</span>
+            <a href="https://cfipc.com/winter-masterclass/" class="mobile-link" data-i18n="nav_winter">Winter Masterclass</a>
+            <a href="https://cfipc.com/spring-masterclass/" class="mobile-link" data-i18n="nav_spring">Spring Masterclass</a>
+            <a href="https://www.masterclass-volodos.com/" class="mobile-link" data-i18n="nav_volodos">Volodos Masterclass</a>
         </div>
         <div class="mobile-group">
-            <span class="mobile-label">Gallery</span>
-            <a href="https://cfipc.com/media/" class="mobile-link">Media</a>
-            <a href="https://cfipc.com/gallery/" class="mobile-link">Pictures</a>
+            <span class="mobile-label" data-i18n="nav_gallery">Gallery</span>
+            <a href="https://cfipc.com/media/" class="mobile-link" data-i18n="nav_media">Media</a>
+            <a href="https://cfipc.com/gallery/" class="mobile-link" data-i18n="nav_pictures">Pictures</a>
         </div>
         <div class="mobile-group">
-            <span class="mobile-label">About</span>
-            <a href="https://cfipc.com/contact/" class="mobile-link">Contact Us</a>
-            <a href="https://cfipc.github.com/about/" class="mobile-link">Legacy</a>
+            <span class="mobile-label" data-i18n="nav_about_label">About</span>
+            <a href="https://cfipc.com/contact/" class="mobile-link" data-i18n="nav_contact">Contact Us</a>
+            <a href="https://cfipc.github.com/about/" class="mobile-link" data-i18n="nav_legacy">Legacy</a>
         </div>
-        <a href="https://cfipc.com" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold">Return to Home</a>
+        <a href="https://cfipc.com" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold" data-i18n="nav_home">Return to Home</a>
     </div>
 
     <!-- Navigation Header -->
@@ -265,21 +327,27 @@
                     </button>
                     <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
                         <div class="dropdown-container">
-                            <a href="https://cfipc.com" class="nav-link" onclick="handleNavClick(event, this)">Competition <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
+                            <a href="https://cfipc.com" class="nav-link" onclick="handleNavClick(event, this)">
+                                <span data-i18n="nav_competition">Competition</span> 
+                                <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                            </a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/rules/" class="dropdown-item">Rules</a>
-                                <a href="https://cfipc.com/prizes/" class="dropdown-item">Prizes</a>
-                                <a href="https://cfipc.com/application/" class="dropdown-item">Application</a>
-                                <a href="https://cfipc.com/jury/" class="dropdown-item">Jury</a>
-                                <a href="https://cfipc.com/laureates/" class="dropdown-item">Laureates</a>
+                                <a href="https://cfipc.com/rules/" class="dropdown-item" data-i18n="nav_rules">Rules</a>
+                                <a href="https://cfipc.com/prizes/" class="dropdown-item" data-i18n="nav_prizes">Prizes</a>
+                                <a href="https://cfipc.com/application/" class="dropdown-item" data-i18n="nav_application">Application</a>
+                                <a href="https://cfipc.com/jury/" class="dropdown-item" data-i18n="nav_jury">Jury</a>
+                                <a href="https://cfipc.com/laureates/" class="dropdown-item" data-i18n="nav_laureates">Laureates</a>
                             </div>
                         </div>
                         <div class="dropdown-container">
-                            <a href="https://cfipc.com/winter-masterclass/" class="nav-link" onclick="handleNavClick(event, this)">Masterclasses <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
+                            <a href="https://cfipc.com/winter-masterclass/" class="nav-link" onclick="handleNavClick(event, this)">
+                                <span data-i18n="nav_masterclasses">Masterclasses</span> 
+                                <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                            </a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/winter-masterclass/" class="dropdown-item">Winter Masterclass</a>
-                                <a href="https://cfipc.com/spring-masterclass/" class="dropdown-item">Spring Masterclass</a>
-                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item">Volodos Masterclass</a>
+                                <a href="https://cfipc.com/winter-masterclass/" class="dropdown-item" data-i18n="nav_winter">Winter Masterclass</a>
+                                <a href="https://cfipc.com/spring-masterclass/" class="dropdown-item" data-i18n="nav_spring">Spring Masterclass</a>
+                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item" data-i18n="nav_volodos">Volodos Masterclass</a>
                             </div>
                         </div>
                     </div>
@@ -290,17 +358,23 @@
                 <div class="flex-1 flex justify-end items-center">
                     <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
                         <div class="dropdown-container">
-                            <a href="#" class="nav-link" onclick="handleNavClick(event, this)">About <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
+                            <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
+                                <span data-i18n="nav_about">About</span> 
+                                <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                            </a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/contact/" class="dropdown-item">Contact Us</a>
-                                <a href="https://cfipc.com/about/" class="dropdown-item">Legacy</a>
+                                <a href="https://cfipc.com/contact/" class="dropdown-item" data-i18n="nav_contact">Contact Us</a>
+                                <a href="https://cfipc.com/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
                             </div>
                         </div>
                         <div class="dropdown-container">
-                            <a href="#" class="nav-link" onclick="handleNavClick(event, this)">Gallery <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
+                            <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
+                                <span data-i18n="nav_gallery">Gallery</span> 
+                                <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                            </a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/media/" class="dropdown-item">Media</a>
-                                <a href="https://cfipc.com/gallery/" class="dropdown-item">Pictures</a>
+                                <a href="https://cfipc.com/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
+                                <a href="https://cfipc.com/gallery/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
                             </div>
                         </div>
                     </div>
@@ -314,9 +388,9 @@
         <section class="legacy-hero">
             <img src="magda_hero.png" alt="Magda Calleeuw Painting">
             <div class="relative z-10 text-center px-8">
-                <h4 class="text-copper uppercase tracking-[0.5em] text-xs font-bold mb-6">THE SOUL AND VISIONARY</h4>
+                <h4 class="text-copper uppercase tracking-[0.5em] text-xs font-bold mb-6" data-i18n="hero_sub">THE SOUL AND VISIONARY</h4>
                 <h1 class="text-white serif italic text-5xl md:text-8xl">Magda Calleeuw</h1>
-                <p class="text-white/60 uppercase tracking-[0.2em] text-sm mt-8">Painter - Founder of the CFIPC - Visionary</p>
+                <p class="text-white/60 uppercase tracking-[0.2em] text-sm mt-8" data-i18n="hero_roles">Painter - Founder of the CFIPC - Visionary</p>
             </div>
         </section>
 
@@ -325,11 +399,11 @@
             <div class="max-w-[1200px] mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
                     <div>
-                        <h2 class="serif text-5xl italic mb-12">A Life Dedicated to Art</h2>
+                        <h2 class="serif text-5xl italic mb-12" data-i18n="bio_title">A Life Dedicated to Art</h2>
                         <div class="space-y-6 text-stone-600 leading-relaxed font-light text-justify">
-                            <p>Magda Calleeuw was the driving force behind the César Franck International Piano Competition ( CFIPC ) and a defining figure in the Belgian cultural landscape . As both a painter and a cultural leader , her life was a vibrant tapestry woven from visual art , music , and a profound dedication to the next generation of artists .</p>
-                            <p>As the founder of the CFIPC , Magda was far more than that ; she was the spiritual heart and soul of the competition . She infused the event with a warmth and artistic integrity that came to define its very character .</p>
-                            <p>Guided by the belief that art should be a shared , living experience , she created a platform where young pianists from around the globe could find not only a stage for their talent , but a home for their creative growth . Through her unwavering resolve and infectious energy , she transformed a personal dream into a prestigious global reality .</p>
+                            <p data-i18n="bio_p1">Magda Calleeuw was the driving force behind the César Franck International Piano Competition ( CFIPC ) and a defining figure in the Belgian cultural landscape . As both a painter and a cultural leader , her life was a vibrant tapestry woven from visual art , music , and a profound dedication to the next generation of artists .</p>
+                            <p data-i18n="bio_p2">As the founder of the CFIPC , Magda was far more than that ; she was the spiritual heart and soul of the competition . She infused the event with a warmth and artistic integrity that came to define its very character .</p>
+                            <p data-i18n="bio_p3">Guided by the belief that art should be a shared , living experience , she created a platform where young pianists from around the globe could find not only a stage for their talent , but a home for their creative growth . Through her unwavering resolve and infectious energy , she transformed a personal dream into a prestigious global reality .</p>
                         </div>
                     </div>
                     <div class="relative pt-12">
@@ -353,12 +427,12 @@
             <div class="max-w-[1400px] mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                     <div class="space-y-8 text-black font-light leading-relaxed">
-                        <h3 class="serif text-4xl italic mb-8">Architect of Community</h3>
-                        <p>Beyond her personal artistry , Magda was a tireless architect of community and culture . Her leadership spanned from the chairmanship of the Culture Council in Kraainem to the creation of the Cesar Franck International Music Festival and Competition in Kraainem . In every role , she moved with an unwavering willpower that turned ambitious visions into reality .</p>
-                        <p>Whether she was mentoring students at the GC de Lijsterbes or coordinating world-class international juries , her approach was always grounded in a deep respect for the artist’s journey . She understood that the pursuit of excellence required both rigorous discipline and a supportive , nurturing environment - a philosophy that remains the foundational pillar of the CFIPC today .</p>
+                        <h3 class="serif text-4xl italic mb-8" data-i18n="lead_title">Architect of Community</h3>
+                        <p data-i18n="lead_p1">Beyond her personal artistry , Magda was a tireless architect of community and culture . Her leadership spanned from the chairmanship of the Culture Council in Kraainem to the creation of the Cesar Franck International Music Festival and Competition in Kraainem . In every role , she moved with an unwavering willpower that turned ambitious visions into reality .</p>
+                        <p data-i18n="lead_p2">Whether she was mentoring students at the GC de Lijsterbes or coordinating world-class international juries , her approach was always grounded in a deep respect for the artist’s journey . She understood that the pursuit of excellence required both rigorous discipline and a supportive , nurturing environment - a philosophy that remains the foundational pillar of the CFIPC today .</p>
                     </div>
                     <div class="bg-white p-12 border border-copper/20 rounded-sm shadow-sm">
-                        <p class="text-black font-light leading-relaxed">Though Magda Calleeuw passed away in early 2020 , her legacy remains a vivid and guiding light for all who step onto our stage . She did not merely build a competition ; she fostered a global family of musicians united by the same passion that fueled her own life . To look upon her paintings or to hear the opening notes of a CFIPC recital is to encounter her spirit anew .</p>
+                        <p class="text-black font-light leading-relaxed" data-i18n="lead_p3">Though Magda Calleeuw passed away in early 2020 , her legacy remains a vivid and guiding light for all who step onto our stage . She did not merely build a competition ; she fostered a global family of musicians united by the same passion that fueled her own life . To look upon her paintings or to hear the opening notes of a CFIPC recital is to encounter her spirit anew .</p>
                     </div>
                 </div>
             </div>
@@ -368,27 +442,27 @@
         <section class="py-32 px-4 md:px-8">
             <div class="max-w-[1400px] mx-auto">
                 <div class="text-center mb-24">
-                    <h4 class="text-copper uppercase tracking-[0.4em] text-[10px] font-bold mb-4">THE PAINTER'S STORY</h4>
-                    <h2 class="text-5xl serif italic mb-12">Anecdotes about the Works</h2>
+                    <h4 class="text-copper uppercase tracking-[0.4em] text-[10px] font-bold mb-4" data-i18n="anecdote_sub">THE PAINTER'S STORY</h4>
+                    <h2 class="text-5xl serif italic mb-12" data-i18n="anecdote_title">Anecdotes about the Works</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Anecdote 1 -->
                     <div class="anecdote-card">
                         <div class="w-12 h-[1px] bg-copper mb-6"></div>
-                        <h5>PICTURES AT AN EXHIBITION</h5>
-                        <p class="font-light leading-relaxed text-sm">This intrinsic connection between the brush and the keyboard reached its pinnacle in her celebrated collaboration with her son , the pianist Philippe Raskin . In a landmark project , she created five original paintings to interpret the lost visual inspirations of Mussorgsky’s suite , effectively completing the sensory circle the composer had envisioned over a century ago .</p>
+                        <h5 data-i18n="anc1_title">PICTURES AT AN EXHIBITION</h5>
+                        <p class="font-light leading-relaxed text-sm" data-i18n="anc1_text">This intrinsic connection between the brush and the keyboard reached its pinnacle in her celebrated collaboration with her son , the pianist Philippe Raskin . In a landmark project , she created five original paintings to interpret the lost visual inspirations of Mussorgsky’s suite , effectively completing the sensory circle the composer had envisioned over a century ago .</p>
                     </div>
                     <!-- Anecdote 2 -->
                     <div class="anecdote-card">
                         <div class="w-12 h-[1px] bg-copper mb-6"></div>
-                        <h5>LYRICAL ABSTRACTION</h5>
-                        <p class="font-light leading-relaxed text-sm">Her canvases were known for their ethereal depth , often reflecting a state of synesthesia where colors seemed to vibrate with the resonance of a musical chord . She sought to capture the "inner space" of human emotion , proving that the boundaries between sight and sound are beautifully porous .</p>
+                        <h5 data-i18n="anc2_title">LYRICAL ABSTRACTION</h5>
+                        <p class="font-light leading-relaxed text-sm" data-i18n="anc2_text">Her canvases were known for their ethereal depth , often reflecting a state of synesthesia where colors seemed to vibrate with the resonance of a musical chord . She sought to capture the "inner space" of human emotion , proving that the boundaries between sight and sound are beautifully porous .</p>
                     </div>
                     <!-- Anecdote 3 -->
                     <div class="anecdote-card">
                         <div class="w-12 h-[1px] bg-copper mb-6"></div>
-                        <h5>THE ARTIESTENPARCOURS</h5>
-                        <p class="font-light leading-relaxed text-sm">As Chair of the Culture Council , Magda spearheaded initiatives like the <span class="italic">Artiestenparcours</span> to bring art directly into the lives of the public . Her tireless advocacy meant that art was never a static object in a gallery but a living , breathing part of the community in Kraainem and beyond .</p>
+                        <h5 data-i18n="anc3_title">THE ARTIESTENPARCOURS</h5>
+                        <p class="font-light leading-relaxed text-sm" data-i18n="anc3_text">As Chair of the Culture Council , Magda spearheaded initiatives like the <span class="italic">Artiestenparcours</span> to bring art directly into the lives of the public . Her tireless advocacy meant that art was never a static object in a gallery but a living , breathing part of the community in Kraainem and beyond .</p>
                     </div>
                 </div>
             </div>
@@ -397,7 +471,7 @@
         <!-- Selection of Works -->
         <section class="py-24 bg-dusty-white px-4 md:px-8">
             <div class="max-w-[1400px] mx-auto text-center">
-                <h3 class="serif text-4xl italic mb-16">The Artistic Vision</h3>
+                <h3 class="serif text-4xl italic mb-16" data-i18n="gallery_title">The Artistic Vision</h3>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="aspect-square bg-stone-200 overflow-hidden rounded-sm"><img src="magda_1.png" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="Magda Calleeuw Work 1"></div>
                     <div class="aspect-square bg-stone-200 overflow-hidden rounded-sm"><img src="magda_2.png" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="Magda Calleeuw Work 2"></div>
@@ -426,8 +500,273 @@
         </div>
     </footer>
 
+    <!-- CUSTOM FLOATING LANGUAGE WIDGET -->
+    <div class="lang-widget-container">
+        <div class="lang-dropdown-menu" id="langMenu">
+            <button class="lang-option" onclick="setLanguage('en')">English</button>
+            <button class="lang-option" onclick="setLanguage('fr')">Français</button>
+            <button class="lang-option" onclick="setLanguage('nl')">Nederlands</button>
+            <button class="lang-option" onclick="setLanguage('de')">Deutsch</button>
+            <button class="lang-option" onclick="setLanguage('it')">Italiano</button>
+            <button class="lang-option" onclick="setLanguage('es')">Español</button>
+        </div>
+        <button class="lang-toggle-btn" onclick="toggleLangMenu()" aria-label="Change Language">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </button>
+    </div>
+
     <script>
         lucide.createIcons();
+
+        // 6-Language Dictionary for Legacy Page
+        const translations = {
+            en: {
+                nav_competition: "Competition",
+                nav_rules: "Rules",
+                nav_prizes: "Prizes",
+                nav_application: "Application",
+                nav_jury: "Jury",
+                nav_laureates: "Laureates",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Winter Masterclass",
+                nav_spring: "Spring Masterclass",
+                nav_volodos: "Volodos Masterclass",
+                nav_about: "About",
+                nav_about_label: "About",
+                nav_contact: "Contact Us",
+                nav_legacy: "Legacy",
+                nav_gallery: "Gallery",
+                nav_media: "Media",
+                nav_pictures: "Pictures",
+                nav_home: "Return to Home",
+                hero_sub: "THE SOUL AND VISIONARY",
+                hero_roles: "Painter - Founder of the CFIPC - Visionary",
+                bio_title: "A Life Dedicated to Art",
+                bio_p1: "Magda Calleeuw was the driving force behind the César Franck International Piano Competition ( CFIPC ) and a defining figure in the Belgian cultural landscape . As both a painter and a cultural leader , her life was a vibrant tapestry woven from visual art , music , and a profound dedication to the next generation of artists .",
+                bio_p2: "As the founder of the CFIPC , Magda was far more than that ; she was the spiritual heart and soul of the competition . She infused the event with a warmth and artistic integrity that came to define its very character .",
+                bio_p3: "Guided by the belief that art should be a shared , living experience , she created a platform where young pianists from around the globe could find not only a stage for their talent , but a home for their creative growth . Through her unwavering resolve and infectious energy , she transformed a personal dream into a prestigious global reality .",
+                lead_title: "Architect of Community",
+                lead_p1: "Beyond her personal artistry , Magda was a tireless architect of community and culture . Her leadership spanned from the chairmanship of the Culture Council in Kraainem to the creation of the Cesar Franck International Music Festival and Competition in Kraainem . In every role , she moved with an unwavering willpower that turned ambitious visions into reality .",
+                lead_p2: "Whether she was mentoring students at the GC de Lijsterbes or coordinating world-class international juries , her approach was always grounded in a deep respect for the artist’s journey . She understood that the pursuit of excellence required both rigorous discipline and a supportive , nurturing environment - a philosophy that remains the foundational pillar of the CFIPC today .",
+                lead_p3: "Though Magda Calleeuw passed away in early 2020 , her legacy remains a vivid and guiding light for all who step onto our stage . She did not merely build a competition ; she fostered a global family of musicians united by the same passion that fueled her own life . To look upon her paintings or to hear the opening notes of a CFIPC recital is to encounter her spirit anew .",
+                anecdote_sub: "THE PAINTER'S STORY",
+                anecdote_title: "Anecdotes about the Works",
+                anc1_title: "PICTURES AT AN EXHIBITION",
+                anc1_text: "This intrinsic connection between the brush and the keyboard reached its pinnacle in her celebrated collaboration with her son , the pianist Philippe Raskin . In a landmark project , she created five original paintings to interpret the lost visual inspirations of Mussorgsky’s suite , effectively completing the sensory circle the composer had envisioned over a century ago .",
+                anc2_title: "LYRICAL ABSTRACTION",
+                anc2_text: "Her canvases were known for their ethereal depth , often reflecting a state of synesthesia where colors seemed to vibrate with the resonance of a musical chord . She sought to capture the \"inner space\" of human emotion , proving that the boundaries between sight and sound are beautifully porous .",
+                anc3_title: "THE ARTIESTENPARCOURS",
+                anc3_text: "As Chair of the Culture Council , Magda spearheaded initiatives like the <span class=\"italic\">Artiestenparcours</span> to bring art directly into the lives of the public . Her tireless advocacy meant that art was never a static object in a gallery but a living , breathing part of the community in Kraainem and beyond .",
+                gallery_title: "The Artistic Vision"
+            },
+            fr: {
+                nav_competition: "Concours",
+                nav_rules: "Règlement",
+                nav_prizes: "Prix",
+                nav_application: "Inscription",
+                nav_jury: "Jury",
+                nav_laureates: "Lauréats",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Masterclass d'Hiver",
+                nav_spring: "Masterclass de Printemps",
+                nav_volodos: "Masterclass Volodos",
+                nav_about: "À propos",
+                nav_about_label: "À propos",
+                nav_contact: "Contactez-nous",
+                nav_legacy: "Héritage",
+                nav_gallery: "Galerie",
+                nav_media: "Médias",
+                nav_pictures: "Photos",
+                nav_home: "Retour à l'accueil",
+                hero_sub: "L'ÂME ET LA VISIONNAIRE",
+                hero_roles: "Artiste-peintre - Fondatrice du CFIPC - Visionnaire",
+                bio_title: "Une Vie Dédiée à l'Art",
+                bio_p1: "Magda Calleeuw a été la force motrice du Concours International de Piano César Franck (CFIPC) et une figure marquante du paysage culturel belge. À la fois artiste-peintre et leader culturelle, sa vie a été une vibrante tapisserie tissée d'art visuel, de musique et d'un profond dévouement envers la nouvelle génération d'artistes.",
+                bio_p2: "En tant que fondatrice du CFIPC, Magda était bien plus que cela ; elle en était le cœur et l'âme spirituelle. Elle a insufflé à l'événement une chaleur et une intégrité artistique qui en définissent le caractère.",
+                bio_p3: "Guidée par la conviction que l'art doit être une expérience partagée et vivante, elle a créé une plateforme où de jeunes pianistes du monde entier pouvaient trouver non seulement une scène pour leur talent, mais un foyer pour leur épanouissement créatif. Grâce à sa détermination sans faille et à son énergie contagieuse, elle a transformé un rêve personnel en une réalité mondiale prestigieuse.",
+                lead_title: "Architecte de la Communauté",
+                lead_p1: "Au-delà de son art personnel, Magda a été une infatigable architecte de la communauté et de la culture. Son leadership s'est étendu de la présidence du Conseil Culturel de Kraainem à la création du Festival et Concours International de Musique César Franck à Kraainem. Dans chaque rôle, elle a agi avec une volonté inébranlable qui a transformé des visions ambitieuses en réalité.",
+                lead_p2: "Qu'elle encadre des étudiants au GC de Lijsterbes ou qu'elle coordonne des jurys internationaux de premier plan, son approche a toujours reposé sur un profond respect du parcours de l'artiste. Elle comprenait que la recherche de l'excellence exigeait à la fois une discipline rigoureuse et un environnement bienveillant — une philosophie qui reste le pilier fondamental du CFIPC aujourd'hui.",
+                lead_p3: "Bien que Magda Calleeuw nous ait quittés au début de 2020, son héritage demeure une lumière vive et directrice pour tous ceux qui foulent notre scène. Elle n'a pas seulement créé un concours ; elle a favorisé une famille mondiale de musiciens unis par la même passion qui animait sa propre vie. Contempler ses peintures ou entendre les notes initiales d'un récital du CFIPC, c'est retrouver son esprit intact.",
+                anecdote_sub: "L'HISTOIRE DE LA PEINTRE",
+                anecdote_title: "Anecdotes sur les Œuvres",
+                anc1_title: "TABLEAUX D'UNE EXPOSITION",
+                anc1_text: "Ce lien intrinsèque entre le pinceau et le clavier a atteint son apogée lors de sa célèbre collaboration avec son fils, le pianiste Philippe Raskin. Dans le cadre d'un projet phare, elle a créé cinq peintures originales pour interpréter les inspirations visuelles perdues de la suite de Moussorgski, bouclant ainsi le cercle sensoriel que le compositeur avait imaginé il y a plus d'un siècle.",
+                anc2_title: "ABSTRACTION LYRIQUE",
+                anc2_text: "Ses toiles étaient reconnues pour leur profondeur éthérée, reflétant souvent un état de synesthésie où les couleurs semblaient vibrer à l'unisson d'un accord musical. Elle cherchait à capturer « l'espace intérieur » de l'émotion humaine, prouvant que les frontières entre la vue et le son sont magnifiquement poreuses.",
+                anc3_title: "L'ARTIESTENPARCOURS",
+                anc3_text: "En tant que présidente du Conseil Culturel, Magda a impulsé des initiatives telles que l'<span class=\"italic\">Artiestenparcours</span> pour amener l'art directement auprès du public. Son infatigable engagement signifiait que l'art ne devait jamais être un objet statique dans une galerie, mais une partie vivante et respirante de la communauté à Kraainem et au-delà.",
+                gallery_title: "La Vision Artistique"
+            },
+            nl: {
+                nav_competition: "Competitie",
+                nav_rules: "Reglement",
+                nav_prizes: "Prijzen",
+                nav_application: "Inschrijving",
+                nav_jury: "Jury",
+                nav_laureates: "Laureaten",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Winter Masterclass",
+                nav_spring: "Lente Masterclass",
+                nav_volodos: "Volodos Masterclass",
+                nav_about: "Over Ons",
+                nav_about_label: "Over Ons",
+                nav_contact: "Contact",
+                nav_legacy: "Erfenis",
+                nav_gallery: "Gallerij",
+                nav_media: "Media",
+                nav_pictures: "Foto's",
+                nav_home: "Terug naar Home",
+                hero_sub: "DE ZIEL EN VISIONARIS",
+                hero_roles: "Kunstschilder - Oprichtster van het CFIPC - Visionair",
+                bio_title: "Een Leven Gewijd aan Kunst",
+                bio_p1: "Magda Calleeuw was de drijvende kracht achter het César Franck International Piano Competition (CFIPC) en een bepalende figuur in het Belgische culturele landschap. Als kunstschilder en cultureel leider was haar leven een levendig wandtapijt geweven uit Beeldende Kunst, muziek en een diepe toewijding aan de volgende generatie artiesten.",
+                bio_p2: "Als oprichtster van het CFIPC was Magda veel meer dan dat; zij was het spirituele hart en de ziel van het concours. Ze gaf het evenement een warmte en artistieke integriteit die de eigen aard ervan zijn gaan bepalen.",
+                bio_p3: "Geleid door de overtuiging dat kunst een gedeelde, levende ervaring moet zijn, creëerde ze een platform waar jonge pianisten van over de hele wereld niet alleen een podium voor hun talent vonden, maar ook een thuis voor hun creatieve groei. Door haar niet-aflatende vastberadenheid en aanstekelijke energie transformeerde ze een persoonlijke droom in een prestigieuze wereldwijde werkelijkheid.",
+                lead_title: "Architect van de Gemeenschap",
+                lead_p1: "Naast haar persoonlijke kunstenaarschap was Magda een onvermoeibare architect van gemeenschap en cultuur. Haar leiderschap strekte zich uit van het voorzittersschap van de Cultuurraad in Kraainem tot de oprichting van het César Franck Internationaal Muziekfestival en Concours in Kraainem. In elke rol handelde ze met een rotsvaste wilskracht die ambitieuze visies omzette in werkelijkheid.",
+                lead_p2: "Of ze nu studenten begeleidde in GC de Lijsterbes of internationale jury's van wereldklasse coördineerde, haar benadering was altijd gegrond in een diep respect voor de reis van de artiest. Ze begreep dat het nastreven van uitmuntendheid zowel strenge discipline als een ondersteunende, stimulerende omgeving vereist — een filosofie die vandaag de dag de fundamentele pijler van het CFIPC blijft.",
+                lead_p3: "Hoewel Magda Calleeuw begin 2020 overleed, blijft haar nalatenschap een levendig en leidend licht voor iedereen die ons podium betreedt. Ze bouwde niet zomaar een concours; ze koesterde een wereldwijde familie van musici verenigd door dezelfde passie die haar eigen leven voedde. Naar haar schilderijen kijken of de beginnoten van een CFIPC-recital horen, is haar geest opnieuw ontmoeten.",
+                anecdote_sub: "HET VERHAAL VAN DE SCHILDER",
+                anecdote_title: "Anecdotes over de Werken",
+                anc1_title: "SCHILDERIJEN VAN EEN TENTOONSTELLING",
+                anc1_text: "Deze intrinsieke verbinding tussen het penseel en het klavier bereikte haar hoogtepunt in haar gevierde samenwerking met haar zoon, pianist Philippe Raskin. In een baanbrekend project creëerde ze vijf originele schilderijen om de verloren visuele inspiraties van Moessorgski's suite te interpreteren, waarmee ze de zintuiglijke cirkel voltooide die de componist ruim een eeuw geleden voor ogen had.",
+                anc2_title: "LYRISCHE ABSTRACTIE",
+                anc2_text: "Haar doeken stonden bekend om hun etherische diepte, die vaak een staat van synesthesie weerspiegelden waarin kleuren leken te trubelen met de resonantie van een muzikaal akkoord. Ze probeerde de 'binnenruimte' van menselijke emotie vast te leggen, waarmee ze bewees dat de grenzen tussen zicht en geluid prachtig poreus zijn.",
+                anc3_title: "HET ARTIESTENPARCOURS",
+                anc3_text: "Als voorzitter van de Cultuurraad initieerde Magda projecten zoals het <span class=\"italic\">Artiestenparcours</span> om kunst rechtstreeks naar het publiek te brengen. Haar onvermoeibare inzet betekende dat kunst nooit een statisch object in een galerie was, maar een levend, ademend deel van de gemeenschap in Kraainem en daarbuiten.",
+                gallery_title: "De Artistieke Visie"
+            },
+            de: {
+                nav_competition: "Wettbewerb",
+                nav_rules: "Regeln",
+                nav_prizes: "Preise",
+                nav_application: "Bewerbung",
+                nav_jury: "Jury",
+                nav_laureates: "Preisträger",
+                nav_masterclasses: "Meisterkurse",
+                nav_winter: "Winter-Meisterkurs",
+                nav_spring: "Frühlings-Meisterkurs",
+                nav_volodos: "Volodos Meisterkurs",
+                nav_about: "Über Uns",
+                nav_about_label: "Über Uns",
+                nav_contact: "Kontakt",
+                nav_legacy: "Vermächtnis",
+                nav_gallery: "Galerie",
+                nav_media: "Medien",
+                nav_pictures: "Bilder",
+                nav_home: "Zur Startseite",
+                hero_sub: "DIE SEELE UND VISIONÄRIN",
+                hero_roles: "Malerin - Gründerin des CFIPC - Visionärin",
+                bio_title: "Ein Leben im Dienste der Kunst",
+                bio_p1: "Magda Calleeuw war die treibende Kraft hinter dem César Franck International Piano Competition (CFIPC) und eine prägende Gestalt der belgischen Kulturlandschaft. Als Malerin und Kulturleiterin war ihr Leben ein lebendiger Wandteppich aus Bildender Kunst, Musik und tiefem Engagement für die nächste Generation von Künstlern.",
+                bio_p2: "Als Gründerin des CFIPC war Magda weit mehr als das; sie war das geistige Herz und die Seele des Wettbewerbs. Sie verlieh der Veranstaltung eine Wärme und künstlerische Integrität, die ihren Charakter ausmachen.",
+                bio_p3: "Geleitet von der Überzeugung, dass Kunst eine geteilte, lebendige Erfahrung sein sollte, schuf sie eine Plattform, auf der junge Pianisten aus aller Welt nicht nur eine Bühne für ihr Talent, sondern eine Heimat für ihre kreative Entwicklung fanden. Durch ihre unerschütterliche Entschlossenheit und ansteckende Energie verwandelte sie einen persönlichen Traum in eine prestigeträchtige globale Realität.",
+                lead_title: "Architektin der Gemeinschaft",
+                lead_p1: "Über ihr persönliches Künstlertum hinaus war Magda eine unermüdliche Architektin von Gemeinschaft und Kultur. Ihre Führung reichte vom Vorsitz des Kulturrats in Kraainem bis zur Gründung des César Franck International Music Festival and Competition in Kraainem. In jeder Rolle handelte sie mit einer unerschütterlichen Willenskraft, die ehrgeizige Visionen in die Realität umsetzte.",
+                lead_p2: "Ob sie Studenten im GC de Lijsterbes betreute oder internationale Jurys von Weltrang koordinierte, ihr Ansatz basierte stets auf tiefem Respekt vor dem Weg des Künstlers. Sie verstand, dass das Streben nach Exzellenz sowohl strenge Disziplin als auch ein unterstützendes, förderndes Umfeld erfordert — eine Philosophie, die bis heute die Grundpfeiler des CFIPC bildet.",
+                lead_p3: "Obwohl Magda Calleeuw Anfang 2020 verstarb, bleibt ihr Vermächtnis ein lebendiges und richtungsweisendes Licht für alle, die unsere Bühne betreten. Sie hat nicht nur einen Wettbewerb ins Leben gerufen; sie förderte eine weltweite Musikerfamilie, die durch dieselbe Leidenschaft vereint ist, die ihr eigenes Leben angetrieben hat. Ihre Bilder zu betrachten oder die Eröffnungstöne eines CFIPC-Rezitals zu hören, heißt, ihrem Geist aufs Neue zu begegnen.",
+                anecdote_sub: "DIE GESCHICHTE DER MALERIN",
+                anecdote_title: "Anekdoten zu den Werken",
+                anc1_title: "BILDER EINER AUSSTELLUNG",
+                anc1_text: "Diese inhärente Verbindung zwischen Pinsel und Klaviatur erreichte ihren Höhepunkt in ihrer gefeierten Zusammenarbeit mit ihrem Sohn, dem Pianisten Philippe Raskin. In einem wegweisenden Projekt schuf sie fünf Originalgemälde zur Interpretation der verlorenen visuellen Inspirationen von Mussorgskys Suite und vollendete damit den sinnlichen Kreis, den sich der Komponist vor über einem Jahrhundert vorgestellt hatte.",
+                anc2_title: "LYRISCHE ABSTRAKTION",
+                anc2_text: "Ihre Leinwände waren für ihre ätherische Tiefe bekannt und spiegelten oft einen Zustand der Synästhesie wider, in dem Farben mit der Resonanz eines musikalischen Akkords zu vibrieren schienen. Sie versuchte, den „inneren Raum“ menschlicher Emotionen einzufangen und bewies, dass die Grenzen zwischen Sehen und Hören wunderschön porös sind.",
+                anc3_title: "DER ARTIESTENPARCOURS",
+                anc3_text: "Als Vorsitzende des Kulturrats initiierte Magda Projekte wie den <span class=\"italic\">Artiestenparcours</span>, um Kunst direkt in das Leben der Öffentlichkeit zu bringen. Ihr unermüdlicher Einsatz bedeutete, dass Kunst niemals ein statisches Objekt in einer Galerie war, sondern ein lebendiger, atmender Teil der Gemeinschaft in Kraainem und darüber hinaus.",
+                gallery_title: "Die Künstlerische Vision"
+            },
+            it: {
+                nav_competition: "Concorso",
+                nav_rules: "Regolamento",
+                nav_prizes: "Premi",
+                nav_application: "Iscrizione",
+                nav_jury: "Giuria",
+                nav_laureates: "Vincitori",
+                nav_masterclasses: "Masterclass",
+                nav_winter: "Masterclass Invernale",
+                nav_spring: "Masterclass Primaverile",
+                nav_volodos: "Masterclass Volodos",
+                nav_about: "Chi Siamo",
+                nav_about_label: "Chi Siamo",
+                nav_contact: "Contatti",
+                nav_legacy: "Eredità",
+                nav_gallery: "Galleria",
+                nav_media: "Media",
+                nav_pictures: "Foto",
+                nav_home: "Torna alla Home",
+                hero_sub: "L'ANIMA E LA VISIONARIA",
+                hero_roles: "Pittrice - Fondatrice del CFIPC - Visionaria",
+                bio_title: "Una Vita Dedicata all'Arte",
+                bio_p1: "Magda Calleeuw è stata la forza trainante del Concorso Pianistico Internazionale César Franck (CFIPC) e una figura di riferimento nel panorama culturale belga. Sia come pittrice che come leader culturale, la sua vita è stata un vibrante arazzo intessuto di arti visive, musica e una profonda dedizione alla prossima generazione di artisti.",
+                bio_p2: "In qualità di fondatrice del CFIPC, Magda è stata molto più di questo; è stata il cuore spirituale e l'anima del concorso. Ha infuso nell'evento un calore e un'integrità artistica che ne definiscono il carattere.",
+                bio_p3: " GUIDATA dalla convinzione che l'arte debba essere un'esperienza condivisa e viva, ha creato una piattaforma in cui giovani pianisti di tutto il mondo potessero trovare non solo un palcoscenico per il loro talento, ma una casa per la loro crescita creativa. Attraverso la sua incrollabile determinazione e la sua energia contagiosa, ha trasformato un sogno personale in una prestigiosa realtà globale.",
+                lead_title: "Architetto di Comunità",
+                lead_p1: "Oltre alla sua personale vena artistica, Magda è stata un'infaticabile architetta di comunità e cultura. La sua leadership è durata dalla presidenza del Consiglio Culturale di Kraainem alla creazione del Festival e Concorso Internazionale di Musica César Franck a Kraainem. In ogni ruolo, ha agito con una forza di volontà incrollabile che ha trasformato visioni ambiziose in realtà.",
+                lead_p2: "Che stesse facendo da mentore agli studenti del GC de Lijsterbes o coordinando giurie internazionali di alto livello, il suo approccio si è sempre fondato su un profondo rispetto per il percorso dell'artista. Sapeva che la ricerca dell'eccellenza richiedeva sia una disciplina rigorosa che un ambiente favorevole e stimolante — una filosofia che rimane il pilastro fondamentale del CFIPC oggi.",
+                lead_p3: "Sebbene Magda Calleeuw sia scomparsa all'inizio del 2020, la sua eredità rimane una luce viva e guida per chiunque salga sul nostro palco. Non si è limitata a costruire un concorso; ha coltivato una famiglia globale di musicisti uniti dalla stessa passione che alimentava la sua vita. Guardare i suoi dipinti o ascoltare le prime note di un recital del CFIPC significa incontrare nuovamente il suo spirito.",
+                anecdote_sub: "LA STORIA DELLA PITTRICE",
+                anecdote_title: "Aneddoti sulle Opere",
+                anc1_title: "QUADRI DI UN'ESPOSIZIONE",
+                anc1_text: "Questo legame intrinseco tra il pennello e la tastiera ha raggiunto il suo apice nella celebre collaborazione con suo figlio, il pianista Philippe Raskin. In un progetto fondamentale, ha creato cinque dipinti originali per interpretare le ispirazioni visive perdute della suite di Mussorgsky, completando efficacemente il cerchio sensoriale che il compositore aveva immaginato oltre un secolo fa.",
+                anc2_title: "ASTRAZIONE LIRICA",
+                anc2_text: "Le sue tele erano note per la loro profondità eterea, che spesso rifletteva uno stato di sinestesia in cui i colori sembravano vibrare con la risonanza di un accordo musicale. Cercava di catturare lo \"spazio interiore\" dell'emozione umana, dimostrando che i confini tra vista e suono sono meravigliosamente porosi.",
+                anc3_title: "L'ARTIESTENPARCOURS",
+                anc3_text: "In qualità di Presidente del Consiglio Culturale, Magda ha promosso iniziative come l'<span class=\"italic\">Artiestenparcours</span> per portare l'arte direttamente nella vita del pubblico. La sua infaticabile difesa ha fatto sì che l'arte non fosse mai un oggetto statico in una galleria, ma una parte viva e pulsante della comunità di Kraainem e oltre.",
+                gallery_title: "La Visione Artistica"
+            },
+            es: {
+                nav_competition: "Concurso",
+                nav_rules: "Reglas",
+                nav_prizes: "Premios",
+                nav_application: "Inscripción",
+                nav_jury: "Jurado",
+                nav_laureates: "Laureados",
+                nav_masterclasses: "Clases Magistrales",
+                nav_winter: "Clase Magistral de Invierno",
+                nav_spring: "Clase Magistral de Primavera",
+                nav_volodos: "Clase Magistral Volodos",
+                nav_about: "Acerca de",
+                nav_about_label: "Acerca de",
+                nav_contact: "Contacto",
+                nav_legacy: "Legado",
+                nav_gallery: "Galería",
+                nav_media: "Medios",
+                nav_pictures: "Imágenes",
+                nav_home: "Volver al Inicio",
+                hero_sub: "EL ALMA Y LA VISIONARIA",
+                hero_roles: "Pintora - Fundadora del CFIPC - Visionaria",
+                bio_title: "Una Vida Dedicada al Arte",
+                bio_p1: "Magda Calleeuw fue la fuerza impulsora detrás del Concurso Internacional de Piano César Franck (CFIPC) y una figura determinante en el panorama cultural belga. Como pintora y líder cultural, su vida fue un tapiz vibrante tejido de artes visuales, música y una profunda dedicación a la próxima generación de artistas.",
+                bio_p2: "Como fundadora del CFIPC, Magda fue mucho más que eso; fue el corazón espiritual y el alma del concurso. Infundió al evento una calidez y una integridad artística que llegaron a definir su propio carácter.",
+                bio_p3: "Guiada por la convicción de que el arte debe ser una experiencia compartida y viva, creó una plataforma donde jóvenes pianistas de todo el mundo podían encontrar no solo un escenario para su talento, sino un hogar para su crecimiento creativo. A través de su inquebrantable determinación y energía contagiosa, transformó un sueño personal en una prestigiosa realidad global.",
+                lead_title: "Arquitecta de la Comunidad",
+                lead_p1: "Más allá de su arte personal, Magda fue una incansable arquitecta de comunidad y cultura. Su liderazgo abarcó desde la presidencia del Consejo Cultural en Kraainem hasta la creación del Festival y Concurso Internacional de Música César Franck en Kraainem. En cada papel, actuó con una voluntad inquebrantable que convirtió visiones ambiciosas en realidad.",
+                lead_p2: "Ya fuera tutelando a estudiantes en el GC de Lijsterbes o coordinando jurados internacionales de primer nivel, su enfoque siempre estuvo basado en un profundo respeto por el viaje del artista. Comprendía que la búsqueda de la excelencia requería tanto una disciplina rigurosa como un entorno solidario y enriquecedor, una filosofía que sigue siendo el pilar fundamental del CFIPC hoy en día.",
+                lead_p3: "Aunque Magda Calleeuw falleció a principios de 2020, su legado sigue siendo una luz viva y orientadora para todos los que pisan nuestro escenario. No se limitó a construir un concurso; fomentó una familia global de músicos unidos por la misma pasión que impulsaba su propia vida. Mirar sus pinturas o escuchar las notas iniciales de un recital del CFIPC es reencontrarse con su espíritu.",
+                anecdote_sub: "LA HISTORIA DE LA PINTORA",
+                anecdote_title: "Anécdotas sobre las Obras",
+                anc1_title: "CUADROS DE UNA EXPOSICIÓN",
+                anc1_text: "Esta conexión intrínseca entre el pincel y el teclado alcanzó su cúspide en su célebre colaboración con su hijo, el pianista Philippe Raskin. En un proyecto histórico, creó cinco pinturas originales para interpretar las inspiraciones visuales perdidas de la suite de Mussorgsky, completando eficazmente el círculo sensorial que el compositor había imaginado hace más de un siglo.",
+                anc2_title: "ABSTRACCIÓN LÍRICA",
+                anc2_text: "Sus lienzos eran conocidos por su profundidad etérea, reflejando a menudo un estado de sinestesia donde los colores parecían vibrar con la resonancia de un acorde musical. Buscó capturar el «espacio interior» de la emoción humana, demostrando que los límites entre la vista y el sonido son maravillosamente porosos.",
+                anc3_title: "EL ARTIESTENPARCOURS",
+                anc3_text: "Como Presidenta del Consejo Cultural, Magda impulsó iniciativas como el <span class=\"italic\">Artiestenparcours</span> para llevar el arte directamente a la vida del público. Su incansable defensa significó que el arte nunca fuera un objeto estático en una galería, sino una parte viva y respirante de la comunidad en Kraainem y más allá.",
+                gallery_title: "La Visión Artística"
+            }
+        };
+
+        function setLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.getElementById('langMenu').classList.remove('active');
+            localStorage.setItem('cfipc_lang', lang);
+        }
 
         // Main Portrait Slideshow logic
         let currentPortraitIndex = 0;
@@ -472,7 +811,25 @@
             }
         }
 
-        window.onclick = () => document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
+        function toggleLangMenu() {
+            const menu = document.getElementById('langMenu');
+            menu.classList.toggle('active');
+        }
+
+        window.onclick = (event) => {
+            document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
+            if (!event.target.closest('.lang-widget-container')) {
+                document.getElementById('langMenu').classList.remove('active');
+            }
+        };
+
+        // Auto-load user preference if previously saved
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('cfipc_lang');
+            if (savedLang && translations[savedLang]) {
+                setLanguage(savedLang);
+            }
+        });
     </script>
     <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ad3becddcd7249d19a31f20ef5fccc08"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
