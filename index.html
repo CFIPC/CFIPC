@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- PRIMARY SEO -->
-    <title>César Franck International Piano Competition | CFIPC Brussels</title>
+    <title id="meta-title">César Franck International Piano Competition | CFIPC Brussels</title>
     <meta name="description" content="With 70 participants originating from more than 25 different countries and an internationally acclaimed jury in 2024, the César Franck has already established itself as a leading competition for young musicians worldwide.">
     <link rel="canonical" href="https://www.cfipc.com/">
     <meta name="robots" content="index, follow">
@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="Prestigious international piano competition and masterclasses in Brussels, Belgium.">
     <meta name="twitter:image" content="https://www.cfipc.com/home.png">
 
-    <!-- SCHEMA MARKUP (Tells Google exactly what this is) -->
+    <!-- SCHEMA MARKUP -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -204,11 +204,7 @@
         }
         .social-circle-footer svg { width: 22px; height: 22px; }
 
-        /* Floating Language Widget Styling */
-        #google_translate_element { display: none; }
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
-        body { top: 0px !important; }
-
+        /* Custom Floating Language Widget Styling */
         .lang-widget-container {
             position: fixed;
             bottom: 2rem;
@@ -244,7 +240,7 @@
             border-radius: 4px;
             padding: 0.5rem 0;
             display: none;
-            min-width: 130px;
+            min-width: 150px;
         }
         .lang-dropdown-menu.active {
             display: block;
@@ -282,28 +278,28 @@
         </div>
 
         <div class="mobile-group">
-            <span class="mobile-label">Competition</span>
-            <a href="/rules/" class="mobile-link">Rules</a>
-            <a href="/prizes/" class="mobile-link">Prizes</a>
-            <a href="/application/" class="mobile-link">Application</a>
-            <a href="/jury/" class="mobile-link">Jury</a>
-            <a href="/laureates/" class="mobile-link">Laureates</a>
+            <span class="mobile-label" data-i18n="nav_competition">Competition</span>
+            <a href="/rules/" class="mobile-link" data-i18n="nav_rules">Rules</a>
+            <a href="/prizes/" class="mobile-link" data-i18n="nav_prizes">Prizes</a>
+            <a href="/application/" class="mobile-link" data-i18n="nav_application">Application</a>
+            <a href="/jury/" class="mobile-link" data-i18n="nav_jury">Jury</a>
+            <a href="/laureates/" class="mobile-link" data-i18n="nav_laureates">Laureates</a>
         </div>
 
         <div class="mobile-group">
-            <span class="mobile-label">Masterclasses</span>
-            <a href="/winter-masterclass/" class="mobile-link">Winter Masterclass</a>
-            <a href="/spring-masterclass/" class="mobile-link">Spring Masterclass</a>
-            <a href="https://www.masterclass-volodos.com/" class="mobile-link" target="_blank">Volodos Masterclass</a>
+            <span class="mobile-label" data-i18n="nav_masterclasses">Masterclasses</span>
+            <a href="/winter-masterclass/" class="mobile-link" data-i18n="nav_winter">Winter Masterclass</a>
+            <a href="/spring-masterclass/" class="mobile-link" data-i18n="nav_spring">Spring Masterclass</a>
+            <a href="https://www.masterclass-volodos.com/" class="mobile-link" target="_blank" data-i18n="nav_volodos">Volodos Masterclass</a>
         </div>
 
         <div class="mobile-group">
-            <span class="mobile-label">About</span>
-            <a href="/contact/" class="mobile-link">Contact Us</a>
-            <a href="/about/" class="mobile-link">Legacy</a>
+            <span class="mobile-label" data-i18n="nav_about_label">About</span>
+            <a href="/contact/" class="mobile-link" data-i18n="nav_contact">Contact Us</a>
+            <a href="/about/" class="mobile-link" data-i18n="nav_legacy">Legacy</a>
         </div>
 
-        <a href="/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold text-decoration-none">Home</a>
+        <a href="/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold text-decoration-none" data-i18n="nav_home">Home</a>
     </div>
 
     <!-- Main Navigation Header -->
@@ -319,26 +315,26 @@
                     <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
                         <div class="dropdown-container">
                             <a href="/" class="nav-link" onclick="handleNavClick(event, this)">
-                                Competition 
+                                <span data-i18n="nav_competition">Competition</span>
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="/rules/" class="dropdown-item">Rules</a>
-                                <a href="/prizes/" class="dropdown-item">Prizes</a>
-                                <a href="/application/" class="dropdown-item">Application</a>
-                                <a href="/jury/" class="dropdown-item">Jury</a>
-                                <a href="/laureates/" class="dropdown-item">Laureates</a>
+                                <a href="/rules/" class="dropdown-item" data-i18n="nav_rules">Rules</a>
+                                <a href="/prizes/" class="dropdown-item" data-i18n="nav_prizes">Prizes</a>
+                                <a href="/application/" class="dropdown-item" data-i18n="nav_application">Application</a>
+                                <a href="/jury/" class="dropdown-item" data-i18n="nav_jury">Jury</a>
+                                <a href="/laureates/" class="dropdown-item" data-i18n="nav_laureates">Laureates</a>
                             </div>
                         </div>
                         <div class="dropdown-container">
                             <a href="/winter-masterclass/" class="nav-link" onclick="handleNavClick(event, this)">
-                                Masterclasses 
+                                <span data-i18n="nav_masterclasses">Masterclasses</span>
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="/winter-masterclass/" class="dropdown-item">Winter Masterclass</a>
-                                <a href="/spring-masterclass/" class="dropdown-item">Spring Masterclass</a>
-                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item" target="_blank">Volodos Masterclass</a>
+                                <a href="/winter-masterclass/" class="dropdown-item" data-i18n="nav_winter">Winter Masterclass</a>
+                                <a href="/spring-masterclass/" class="dropdown-item" data-i18n="nav_spring">Spring Masterclass</a>
+                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item" target="_blank" data-i18n="nav_volodos">Volodos Masterclass</a>
                             </div>
                         </div>
                     </div>
@@ -355,22 +351,22 @@
                     <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
                         <div class="dropdown-container">
                             <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
-                                About 
+                                <span data-i18n="nav_about">About</span>
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="/contact/" class="dropdown-item">Contact Us</a>
-                                <a href="/about/" class="dropdown-item">Legacy</a>
+                                <a href="/contact/" class="dropdown-item" data-i18n="nav_contact">Contact Us</a>
+                                <a href="/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
                             </div>
                         </div>
                         <div class="dropdown-container">
                             <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
-                                Gallery 
+                                <span data-i18n="nav_gallery">Gallery</span>
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="/media/" class="dropdown-item">Media</a>
-                                <a href="/gallery/" class="dropdown-item">Pictures</a>
+                                <a href="/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
+                                <a href="/gallery/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
                             </div>
                         </div>
                     </div>
@@ -388,15 +384,15 @@
                 </div>
                 <div class="max-w-[1400px] mx-auto px-8 relative z-10 w-full">
                     <div class="max-w-5xl">
-                        <h1 class="text-copper italic font-bold text-5xl md:text-7xl lg:text-[5.5rem] serif leading-[1.1] mb-2">
+                        <h1 class="text-copper italic font-bold text-5xl md:text-7xl lg:text-[5.5rem] serif leading-[1.1] mb-2" data-i18n="hero_title">
                             César Franck International Piano Competition
                         </h1>
-                        <p class="text-copper text-sm md:text-base uppercase tracking-[0.4em] mt-8 mb-12">
+                        <p class="text-copper text-sm md:text-base uppercase tracking-[0.4em] mt-8 mb-12" data-i18n="hero_subtitle">
                             14th Edition | 18-20 December 2026
                         </p>
                         <div class="flex flex-col md:flex-row items-center gap-10">
-                            <a href="/application/" class="btn-copper px-12 py-6 text-sm md:text-base uppercase font-bold tracking-[0.3em] rounded-sm hover:opacity-90 transition w-full md:w-auto text-center">Apply Now</a>
-                            <p class="text-copper text-xl md:text-2xl font-bold italic serif leading-relaxed max-w-lg text-center md:text-left [text-shadow:_1px_1px_1px_#000,-1px_-1px_1px_#000,1px_-1px_1px_#000,-1px_1px_1px_#000]">
+                            <a href="/application/" class="btn-copper px-12 py-6 text-sm md:text-base uppercase font-bold tracking-[0.3em] rounded-sm hover:opacity-90 transition w-full md:w-auto text-center" data-i18n="hero_cta">Apply Now</a>
+                            <p class="text-copper text-xl md:text-2xl font-bold italic serif leading-relaxed max-w-lg text-center md:text-left [text-shadow:_1px_1px_1px_#000,-1px_-1px_1px_#000,1px_-1px_1px_#000,-1px_1px_1px_#000]" data-i18n="hero_desc">
                                 Honouring the legacy of César Franck. Providing an international stage for the next generation of musical talent in Brussels.
                             </p>
                         </div>
@@ -408,17 +404,17 @@
             <div class="py-32 px-8 bg-[#F2F0E9]">
                 <div class="max-w-[1000px] mx-auto">
                     <div class="text-center mb-16">
-                        <h4 class="text-copper uppercase tracking-[0.4em] text-[10px] font-bold mb-4">Our Mission</h4>
-                        <h2 class="text-4xl md:text-5xl serif italic text-forest">Artistic Excellence & Education</h2>
+                        <h4 class="text-copper uppercase tracking-[0.4em] text-[10px] font-bold mb-4" data-i18n="mission_tag">Our Mission</h4>
+                        <h2 class="text-4xl md:text-5xl serif italic text-forest" data-i18n="mission_title">Artistic Excellence & Education</h2>
                     </div>
                     <div class="space-y-10 text-stone-500 text-lg md:text-xl font-light leading-relaxed text-center">
-                        <p>
+                        <p data-i18n="mission_p1">
                             Established in 2013 by Belgian painter Magda Calleeuw and pianist Philippe Raskin, the CFIPC mission is to encourage new generations of young pianists to transcend their own capabilities by providing an international platform.
                         </p>
-                        <p>
+                        <p data-i18n="mission_p2">
                             With 70 participants originating from more than 25 different countries and an internationally acclaimed jury in 2025, the César Franck has already established itself as a leading competition for young musicians worldwide.
                         </p>
-                        <p>
+                        <p data-i18n="mission_p3">
                             The incorporation of the competition, concerts and education program as a yearly event symbolizes our commitment and passion to the advancement of culture and education.
                         </p>
                     </div>
@@ -430,18 +426,18 @@
                 <div class="max-w-[1400px] mx-auto">
                     <div class="flex flex-col lg:flex-row items-center justify-between gap-16">
                         <div class="text-copper flex-grow max-w-2xl text-left">
-                            <h2 class="text-5xl md:text-6xl serif italic mb-10 text-parchment leading-tight">Competition & <br><span class="text-copper">Concert Venue</span></h2>
+                            <h2 class="text-5xl md:text-6xl serif italic mb-10 text-parchment leading-tight"><span data-i18n="venue_h1">Competition &</span> <br><span class="text-copper" data-i18n="venue_h2">Concert Venue</span></h2>
                             <div class="space-y-8">
                                 <div>
-                                    <h5 class="text-[10px] uppercase font-bold text-copper mb-2 tracking-[0.2em]">Location</h5>
+                                    <h5 class="text-[10px] uppercase font-bold text-copper mb-2 tracking-[0.2em]" data-i18n="venue_location_label">Location</h5>
                                     <p class="text-2xl md:text-3xl serif italic">GC De Lijsterbes</p>
-                                    <p class="font-light mt-2 leading-relaxed text-lg">
+                                    <p class="font-light mt-2 leading-relaxed text-lg" data-i18n="venue_address">
                                         Lijsterbessenbomenlaan 6,<br>
                                         1950 Kraainem BELGIUM
                                     </p>
                                 </div>
                                 <div class="pt-4">
-                                    <a href="https://maps.google.com/maps?q=Lijsterbessenbomenlaan%206,%201950%20Kraainem,%20Belgium" target="_blank" class="btn-copper inline-block px-8 py-4 text-[9px] uppercase font-bold tracking-widest rounded-sm hover:opacity-90 transition shadow-lg">Get Directions</a>
+                                    <a href="https://maps.google.com/maps?q=Lijsterbessenbomenlaan%206,%201950%20Kraainem,%20Belgium" target="_blank" class="btn-copper inline-block px-8 py-4 text-[9px] uppercase font-bold tracking-widest rounded-sm hover:opacity-90 transition shadow-lg" data-i18n="venue_directions">Get Directions</a>
                                 </div>
                             </div>
                         </div>
@@ -455,7 +451,7 @@
             <!-- Partners Section -->
             <div class="py-24 px-8 border-t border-forest/5 bg-white">
                 <div class="max-w-[1400px] mx-auto text-center">
-                    <h4 class="text-stone-400 uppercase tracking-[0.4em] text-[8px] font-bold mb-12">Our Partners</h4>
+                    <h4 class="text-stone-400 uppercase tracking-[0.4em] text-[8px] font-bold mb-12" data-i18n="partners_title">Our Partners</h4>
                     <div class="flex justify-center items-center">
                         <img src="/partners.png" alt="Official Partners of César Franck International Piano Competition" class="max-w-full h-auto opacity-70 hover:opacity-100 transition duration-700" onerror="this.src='https://via.placeholder.com/1200x200?text=Partners+Image+Logo+Strip'">
                     </div>
@@ -482,33 +478,243 @@
         </div>
     </footer>
 
-    <!-- FLOATING LANGUAGE WIDGET (Bottom Right) -->
+    <!-- CUSTOM FLOATING LANGUAGE WIDGET -->
     <div class="lang-widget-container">
-        <div id="google_translate_element"></div>
         <div class="lang-dropdown-menu" id="langMenu">
-            <button class="lang-option" onclick="changeLanguage('en')">English</button>
-            <button class="lang-option" onclick="changeLanguage('fr')">Français</button>
-            <button class="lang-option" onclick="changeLanguage('nl')">Nederlands</button>
+            <button class="lang-option" onclick="setLanguage('en')">English</button>
+            <button class="lang-option" onclick="setLanguage('fr')">Français</button>
+            <button class="lang-option" onclick="setLanguage('nl')">Nederlands</button>
+            <button class="lang-option" onclick="setLanguage('de')">Deutsch</button>
+            <button class="lang-option" onclick="setLanguage('it')">Italiano</button>
+            <button class="lang-option" onclick="setLanguage('es')">Español</button>
         </div>
         <button class="lang-toggle-btn" onclick="toggleLangMenu()" aria-label="Change Language">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </button>
     </div>
 
-    <!-- Google Translate Script Loader -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,fr,nl',
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
     <script>
         lucide.createIcons();
+
+        // Professional Native Translations Dictionary
+        const translations = {
+            en: {
+                nav_competition: "Competition",
+                nav_rules: "Rules",
+                nav_prizes: "Prizes",
+                nav_application: "Application",
+                nav_jury: "Jury",
+                nav_laureates: "Laureates",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Winter Masterclass",
+                nav_spring: "Spring Masterclass",
+                nav_volodos: "Volodos Masterclass",
+                nav_about: "About",
+                nav_contact: "Contact Us",
+                nav_legacy: "Legacy",
+                nav_gallery: "Gallery",
+                nav_media: "Media",
+                nav_pictures: "Pictures",
+                nav_home: "Home",
+                hero_title: "César Franck International Piano Competition",
+                hero_subtitle: "14th Edition | 18-20 December 2026",
+                hero_cta: "Apply Now",
+                hero_desc: "Honouring the legacy of César Franck. Providing an international stage for the next generation of musical talent in Brussels.",
+                mission_tag: "Our Mission",
+                mission_title: "Artistic Excellence & Education",
+                mission_p1: "Established in 2013 by Belgian painter Magda Calleeuw and pianist Philippe Raskin, the CFIPC mission is to encourage new generations of young pianists to transcend their own capabilities by providing an international platform.",
+                mission_p2: "With 70 participants originating from more than 25 different countries and an internationally acclaimed jury in 2025, the César Franck has already established itself as a leading competition for young musicians worldwide.",
+                mission_p3: "The incorporation of the competition, concerts and education program as a yearly event symbolizes our commitment and passion to the advancement of culture and education.",
+                venue_h1: "Competition &",
+                venue_h2: "Concert Venue",
+                venue_location_label: "Location",
+                venue_address: "Lijsterbessenbomenlaan 6,<br>1950 Kraainem BELGIUM",
+                venue_directions: "Get Directions",
+                partners_title: "Our Partners"
+            },
+            fr: {
+                nav_competition: "Concours",
+                nav_rules: "Règlement",
+                nav_prizes: "Prix",
+                nav_application: "Inscription",
+                nav_jury: "Jury",
+                nav_laureates: "Lauréats",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Masterclass d'Hiver",
+                nav_spring: "Masterclass de Printemps",
+                nav_volodos: "Masterclass Volodos",
+                nav_about: "À propos",
+                nav_contact: "Contactez-nous",
+                nav_legacy: "Héritage",
+                nav_gallery: "Galerie",
+                nav_media: "Médias",
+                nav_pictures: "Photos",
+                nav_home: "Accueil",
+                hero_title: "Concours International de Piano César Franck",
+                hero_subtitle: "14e Édition | 18-20 Décembre 2026",
+                hero_cta: "Postuler",
+                hero_desc: "Honorer l'héritage de César Franck. Offrir une scène internationale à la prochaine génération de talents musicaux à Bruxelles.",
+                mission_tag: "Notre Mission",
+                mission_title: "Excellence Artistique & Éducation",
+                mission_p1: "Fondé en 2013 par la peintre belge Magda Calleeuw et le pianiste Philippe Raskin, le CFIPC a pour mission d'encourager les nouvelles générations de jeunes pianistes à se surpasser en leur offrant une plateforme internationale.",
+                mission_p2: "Avec 70 participants originaires de plus de 25 pays différents et un jury de renommée internationale en 2025, le César Franck s'est déjà imposé comme un concours de premierplan pour les jeunes musiciens du monde entier.",
+                mission_p3: "L'intégration du concours, des concerts et du programme éducatif en un événement annuel symbolise notre engagement et notre passion pour la promotion de la culture et de l'éducation.",
+                venue_h1: "Lieu du Concours",
+                venue_h2: "& des Concerts",
+                venue_location_label: "Emplacement",
+                venue_address: "Lijsterbessenbomenlaan 6,<br>1950 Kraainem BELGIQUE",
+                venue_directions: "Obtenir l'itinéraire",
+                partners_title: "Nos Partenaires"
+            },
+            nl: {
+                nav_competition: "Competitie",
+                nav_rules: "Reglement",
+                nav_prizes: "Prijzen",
+                nav_application: "Inschrijving",
+                nav_jury: "Jury",
+                nav_laureates: "Laureaten",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Winter Masterclass",
+                nav_spring: "Lente Masterclass",
+                nav_volodos: "Volodos Masterclass",
+                nav_about: "Over Ons",
+                nav_contact: "Contact",
+                nav_legacy: "Erfenis",
+                nav_gallery: "Gallerij",
+                nav_media: "Media",
+                nav_pictures: "Foto's",
+                nav_home: "Thuis",
+                hero_title: "César Franck Internationale Pianowedstrijd",
+                hero_subtitle: "14e Editie | 18-20 December 2026",
+                hero_cta: "Inschrijven",
+                hero_desc: "Eerbetoon aan de nalatenschap van César Franck. Een internationaal podium bieden voor de volgende generatie muzikaal talent in Brussel.",
+                mission_tag: "Onze Missie",
+                mission_title: "Artistieke Excellentie & Educatie",
+                mission_p1: "Opgericht in 2013 door de Belgische kunstenares Magda Calleeuw en pianist Philippe Raskin, is het de missie van het CFIPC om nieuwe generaties jonge pianisten aan te moedigen hun eigen grenzen te verleggen via een internationaal podium.",
+                mission_p2: "Met 70 deelnemers afkomstig uit meer dan 25 verschillende landen en een internationaal bekroonde jury in 2025, heeft de César Franck zich reeds gevestigd als een toonaangevende wedstrijd voor jonge musici wereldwijd.",
+                mission_p3: "Het opnemen van de wedstrijd, concerten en het educatieve programma als jaarlijks evenement symboliseert onze toewijding en passie voor de bevordering van cultuur en educatie.",
+                venue_h1: "Wedstrijd &",
+                venue_h2: "Concertlocatie",
+                venue_location_label: "Locatie",
+                venue_address: "Lijsterbessenbomenlaan 6,<br>1950 Kraainem BELGIË",
+                venue_directions: "Routebeschrijving",
+                partners_title: "Onze Partners"
+            },
+            de: {
+                nav_competition: "Wettbewerb",
+                nav_rules: "Regeln",
+                nav_prizes: "Preise",
+                nav_application: "Bewerbung",
+                nav_jury: "Jury",
+                nav_laureates: "Preisträger",
+                nav_masterclasses: "Meisterkurse",
+                nav_winter: "Winter-Meisterkurs",
+                nav_spring: "Frühlings-Meisterkurs",
+                nav_volodos: "Volodos Meisterkurs",
+                nav_about: "Über Uns",
+                nav_contact: "Kontakt",
+                nav_legacy: "Vermächtnis",
+                nav_gallery: "Galerie",
+                nav_media: "Medien",
+                nav_pictures: "Bilder",
+                nav_home: "Startseite",
+                hero_title: "César Franck Internationaler Klavierwettbewerb",
+                hero_subtitle: "14. Ausgabe | 18.-20. Dezember 2026",
+                hero_cta: "Jetzt bewerben",
+                hero_desc: "Dem Vermächtnis von César Franck gewidmet. Eine internationale Bühne für die nächste Generation musikalischer Talente in Brüssel.",
+                mission_tag: "Unsere Mission",
+                mission_title: "Künstlerische Exzellenz & Bildung",
+                mission_p1: "2013 von der belgischen Malerin Magda Calleeuw und dem Pianisten Philippe Raskin ins Leben gerufen, hat es sich das CFIPC zur Aufgabe gemacht, junge Pianisten durch eine internationale Plattform zu fördern.",
+                mission_p2: "Mit 70 Teilnehmern aus über 25 Ländern und einer international gefeierten Jury im Jahr 2025 hat sich der César Franck als führender Wettbewerb für junge Musiker etabliert.",
+                mission_p3: "Die Etablierung des Wettbewerbs, der Konzerte und des Bildungsprogramms als jährliche Veranstaltung spiegelt unsere Leidenschaft für Kultur und Bildung wider.",
+                venue_h1: "Wettbewerbs- &",
+                venue_h2: "Konzertort",
+                venue_location_label: "Standort",
+                venue_address: "Lijsterbessenbomenlaan 6,<br>1950 Kraainem BELGIEN",
+                venue_directions: "Route berechnen",
+                partners_title: "Unsere Partner"
+            },
+            it: {
+                nav_competition: "Concorso",
+                nav_rules: "Regolamento",
+                nav_prizes: "Premi",
+                nav_application: "Iscrizione",
+                nav_jury: "Giuria",
+                nav_laureates: "Vincitori",
+                nav_masterclasses: "Masterclass",
+                nav_winter: "Masterclass Invernale",
+                nav_spring: "Masterclass Primaverile",
+                nav_volodos: "Masterclass Volodos",
+                nav_about: "Chi Siamo",
+                nav_contact: "Contatti",
+                nav_legacy: "Eredità",
+                nav_gallery: "Galleria",
+                nav_media: "Media",
+                nav_pictures: "Foto",
+                nav_home: "Home",
+                hero_title: "Concorso Pianistico Internazionale César Franck",
+                hero_subtitle: "14ª Edizione | 18-20 Dicembre 2026",
+                hero_cta: "Partecipa",
+                hero_desc: "Onorando l'eredità di César Franck. Offrendo un palcoscenico internazionale alla prossima generazione di talenti musicali a Bruxelles.",
+                mission_tag: "La Nostra Missione",
+                mission_title: "Eccellenza Artistica ed Educazione",
+                mission_p1: "Fondato nel 2013 dalla pittrice belga Magda Calleeuw e dal pianista Philippe Raskin, il CFIPC incoraggia le nuove generazioni di giovani pianisti a trascendere le proprie capacità offrendo una piattaforma internazionale.",
+                mission_p2: "Con 70 partecipanti provenienti da oltre 25 paesi e una giuria di acclamazione internazionale nel 2025, il concorso César Franck è una competizione di primo piano per giovani musicisti.",
+                mission_p3: "L'integrazione del concorso, dei concerti e del programma educativo come evento annuale simboleggia il nostro impegno per la promozione della cultura.",
+                venue_h1: "Sede del Concorso",
+                venue_h2: "& Concerti",
+                venue_location_label: "Posizione",
+                venue_address: "Lijsterbessenbomenlaan 6,<br>1950 Kraainem BELGIO",
+                venue_directions: "Ottieni indicazioni",
+                partners_title: "I Nostri Partner"
+            },
+            es: {
+                nav_competition: "Concurso",
+                nav_rules: "Reglas",
+                nav_prizes: "Premios",
+                nav_application: "Inscripción",
+                nav_jury: "Jurado",
+                nav_laureates: "Laureados",
+                nav_masterclasses: "Clases Magistrales",
+                nav_winter: "Clase Magistral de Invierno",
+                nav_spring: "Clase Magistral de Primavera",
+                nav_volodos: "Clase Magistral Volodos",
+                nav_about: "Acerca de",
+                nav_contact: "Contacto",
+                nav_legacy: "Legado",
+                nav_gallery: "Galería",
+                nav_media: "Medios",
+                nav_pictures: "Imágenes",
+                nav_home: "Inicio",
+                hero_title: "Concurso Internacional de Piano César Franck",
+                hero_subtitle: "14ª Edición | 18-20 de Diciembre de 2026",
+                hero_cta: "Inscribirse",
+                hero_desc: "Honrando el legado de César Franck. Brindando un escenario internacional para la próxima generación de talentos musicales en Bruselas.",
+                mission_tag: "Nuestra Misión",
+                mission_title: "Excelencia Artística y Educación",
+                mission_p1: "Fundado en 2013 por la pintora belga Magda Calleeuw y el pianista Philippe Raskin, el CFIPC busca alentar a las nuevas generaciones de jóvenes pianistas a trascender sus capacidades mediante una plataforma internacional.",
+                mission_p2: "Con 70 participantes de más de 25 países y un jurado de prestigio internacional en 2025, el concurso César Franck se ha consolidado como un referente para jóvenes músicos en todo el mundo.",
+                mission_p3: "La integración del concurso, conciertos y programa educativo como evento anual simboliza nuestro compromiso con el avance de la cultura y la educación.",
+                venue_h1: "Sede del Concurso",
+                venue_h2: "y Conciertos",
+                venue_location_label: "Ubicación",
+                venue_address: "Lijsterbessenbomenlaan 6,<br>1950 Kraainem BÉLGICA",
+                venue_directions: "Cómo llegar",
+                partners_title: "Nuestros Socios"
+            }
+        };
+
+        function setLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.getElementById('langMenu').classList.remove('active');
+            localStorage.setItem('cfipc_lang', lang);
+        }
 
         function handleNavClick(event, btn) {
             const menu = btn.nextElementSibling;
@@ -543,21 +749,20 @@
             menu.classList.toggle('active');
         }
 
-        function changeLanguage(langCode) {
-            const selectField = document.querySelector('.goog-te-combo');
-            if (selectField) {
-                selectField.value = langCode;
-                selectField.dispatchEvent(new Event('change'));
-            }
-            document.getElementById('langMenu').classList.remove('active');
-        }
-
         window.onclick = (event) => {
             document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
             if (!event.target.closest('.lang-widget-container')) {
                 document.getElementById('langMenu').classList.remove('active');
             }
         };
+
+        // Auto-load user preference if previously saved
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('cfipc_lang');
+            if (savedLang && translations[savedLang]) {
+                setLanguage(savedLang);
+            }
+        });
     </script>
     <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ad3becddcd7249d19a31f20ef5fccc08"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
