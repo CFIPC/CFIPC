@@ -158,7 +158,7 @@
             justify-content: center;
             flex-grow: 1;
         }
-        .jury-name { font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 600; color: var(--forest); margin-bottom: 0.2rem; }
+        .jury-name { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--forest); margin-bottom: 0.2rem; }
         .jury-country { font-family: 'Outfit', sans-serif; font-size: 0.7rem; text-transform: uppercase; color: var(--copper); letter-spacing: 0.15em; font-weight: 700; }
         .jury-role-label { font-family: 'Cormorant Garamond', serif; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.2em; color: #999; margin-bottom: 0.5rem; }
 
@@ -173,7 +173,7 @@
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(212, 163, 115, 0.2);
-            padding: 2.5rem;
+            padding: 2rem 1.5rem;
             height: 100%;
             transition: all 0.3s ease;
             border-radius: 2px;
@@ -328,23 +328,22 @@
         </div>
     </nav>
 
-    <main class="pt-32 md:pt-48">
-        <section id="jury" class="py-32 px-4 md:px-8">
+    <main class="pt-28 md:pt-36">
+        <section id="jury" class="py-16 md:py-24 px-4 md:px-8">
             <div class="max-w-[1400px] mx-auto">
-                <div class="text-center mb-24">
-                    <h4 class="text-copper uppercase tracking-[0.4em] text-[10px] font-bold mb-4">The Artistic Panel</h4>
-                    <h2 class="text-5xl md:text-7xl serif italic text-forest">Jury 2025</h2>
-                    <p class="text-stone-400 uppercase tracking-widest text-[11px] mt-6">JURY 2026 TO BE ANNOUNCED SOON !</p>
+                <div class="text-center mb-16">
+                    <span class="text-copper uppercase tracking-[0.4em] text-xs font-bold block mb-3">The Artistic Panel</span>
+                    <h2 class="text-5xl md:text-7xl serif italic text-forest">Jury 2026</h2>
                 </div>
 
                 <div class="mb-24">
-                    <div class="flex items-center gap-6 mb-16">
-                        <h3 class="serif text-4xl italic text-forest">Finals Jury</h3>
-                        <div class="h-[1px] flex-grow bg-forest/5"></div>
+                    <div class="flex items-center gap-6 mb-12">
+                        <h3 class="serif text-3xl md:text-4xl italic text-forest">Finals Jury</h3>
+                        <div class="h-[1px] flex-grow bg-forest/10"></div>
                     </div>
                     
-                    <div class="flex justify-center mb-16">
-                        <a href="https://olgakern.com" target="_blank" class="jury-card w-full md:w-[420px] border-copper/30">
+                    <div class="flex justify-center mb-12">
+                        <a href="https://olgakern.com" target="_blank" class="jury-card w-full md:w-[380px] border-copper/30">
                             <img src="olga.png" class="jury-image" alt="Olga Kern">
                             <div class="jury-info">
                                 <p class="jury-role-label">President</p>
@@ -354,7 +353,7 @@
                         </a>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                         <div class="jury-card">
                             <img src="svetlana.png" class="jury-image" alt="Svetlana Eganian">
                             <div class="jury-info">
@@ -397,19 +396,12 @@
                                 <span class="jury-country">USA</span>
                             </div>
                         </a>
-                        <a href="https://www.imep.be/news/guido-jardon-grandir-en-puisant-dans-les-racines-du-passe/" target="_blank" class="jury-card">
-                            <img src="guido.png" class="jury-image" alt="Guido Jardon">
-                            <div class="jury-info">
-                                <h4 class="jury-name">Guido Jardon</h4>
-                                <span class="jury-country">Belgium</span>
-                            </div>
-                        </a>
-                        <a href="https://www.philipperaskin.com" target="_blank" class="jury-card border-copper/30">
+                        <a href="https://www.philipperaskin.com" target="_blank" class="jury-card border-copper/30 sm:col-span-2 md:col-span-1">
                             <img src="philippe.png" class="jury-image" alt="Philippe Raskin">
                             <div class="jury-info">
                                 <h4 class="jury-name">Philippe Raskin</h4>
                                 <span class="jury-country">Belgium</span>
-                                <p class="serif italic text-sage text-sm mt-2">Artistic Director</p>
+                                <p class="serif italic text-sage text-xs mt-1">Artistic Director</p>
                             </div>
                         </a>
                         <a href="https://moutouzkine.com" target="_blank" class="jury-card">
@@ -419,23 +411,16 @@
                                 <span class="jury-country">Russia / USA</span>
                             </div>
                         </a>
-                        <div class="jury-card">
-                            <img src="steven.png" class="jury-image" alt="Steven De Mesmaeker">
-                            <div class="jury-info">
-                                <h4 class="jury-name">Steven De Mesmaeker</h4>
-                                <span class="jury-country">Belgium</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                <div class="bg-forest p-12 md:p-24 rounded-sm shadow-2xl text-copper relative overflow-hidden">
-                    <div class="flex items-center gap-6 mb-12">
-                        <h3 class="serif text-4xl italic text-copper">Semi-Finals Jury</h3>
+                <div class="bg-forest p-8 md:p-16 rounded-sm shadow-2xl text-copper relative overflow-hidden">
+                    <div class="flex items-center gap-6 mb-10">
+                        <h3 class="serif text-3xl md:text-4xl italic text-copper">Semi-Finals Jury</h3>
                         <div class="h-[1px] flex-grow bg-copper/20"></div>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                         <div class="glass-box">
                             <h4 class="jury-name !mb-1">Svetlana Eganian</h4>
                             <span class="jury-country">France / Armenia</span>
@@ -459,10 +444,6 @@
                         <div class="glass-box">
                             <h4 class="jury-name !mb-1">Cristiana Dragos</h4>
                             <span class="jury-country">Romania / Belgium</span>
-                        </div>
-                        <div class="glass-box">
-                            <h4 class="jury-name !mb-1">Paulius Andersson</h4>
-                            <span class="jury-country">Lithuania</span>
                         </div>
                     </div>
                 </div>
