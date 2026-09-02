@@ -186,6 +186,69 @@
             color: var(--forest);
         }
         .social-circle-footer svg { width: 22px; height: 22px; }
+
+        /* Custom Floating Language Widget Styling */
+        .lang-widget-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+        }
+        .lang-toggle-btn {
+            background-color: var(--forest);
+            color: var(--copper);
+            border: 1.5px solid var(--copper);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-toggle-btn:hover {
+            background-color: var(--copper);
+            color: var(--forest);
+            transform: scale(1.05);
+        }
+        .lang-dropdown-menu {
+            position: absolute;
+            bottom: 65px;
+            right: 0;
+            background: var(--parchment);
+            border: 1px solid rgba(212, 163, 115, 0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            padding: 0.5rem 0;
+            display: none;
+            min-width: 150px;
+        }
+        .lang-dropdown-menu.active {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+        .lang-option {
+            display: block;
+            width: 100%;
+            padding: 0.6rem 1rem;
+            text-align: left;
+            background: none;
+            border: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--forest);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-option:hover {
+            background: var(--forest);
+            color: var(--copper);
+        }
     </style>
 </head>
 <body>
@@ -198,28 +261,28 @@
         </div>
 
         <div class="mobile-group">
-            <span class="mobile-label">Competition</span>
-            <a href="https://cfipc.com/rules/" class="mobile-link">Rules</a>
-            <a href="https://cfipc.com/prizes/" class="mobile-link">Prizes</a>
-            <a href="https://cfipc.com/application/" class="mobile-link">Application</a>
-            <a href="https://cfipc.com/jury/" class="mobile-link">Jury</a>
-            <a href="https://cfipc.com/laureates/" class="mobile-link">Laureates</a>
+            <span class="mobile-label" data-i18n="nav_competition">Competition</span>
+            <a href="https://cfipc.com/rules/" class="mobile-link" data-i18n="nav_rules">Rules</a>
+            <a href="https://cfipc.com/prizes/" class="mobile-link" data-i18n="nav_prizes">Prizes</a>
+            <a href="https://cfipc.com/application/" class="mobile-link" data-i18n="nav_application">Application</a>
+            <a href="https://cfipc.com/jury/" class="mobile-link" data-i18n="nav_jury">Jury</a>
+            <a href="https://cfipc.com/laureates/" class="mobile-link" data-i18n="nav_laureates">Laureates</a>
         </div>
 
         <div class="mobile-group">
-            <span class="mobile-label">Masterclasses</span>
-            <a href="https://cfipc.com/winter-masterclass/" class="mobile-link">Winter Masterclass</a>
-            <a href="https://cfipc.com/spring-masterclass/" class="mobile-link">Spring Masterclass</a>
-            <a href="https://www.masterclass-volodos.com/" class="mobile-link">Volodos Masterclass</a>
+            <span class="mobile-label" data-i18n="nav_masterclasses">Masterclasses</span>
+            <a href="https://cfipc.com/winter-masterclass/" class="mobile-link" data-i18n="nav_winter">Winter Masterclass</a>
+            <a href="https://cfipc.com/spring-masterclass/" class="mobile-link" data-i18n="nav_spring">Spring Masterclass</a>
+            <a href="https://www.masterclass-volodos.com/" class="mobile-link" data-i18n="nav_volodos">Volodos Masterclass</a>
         </div>
 
         <div class="mobile-group">
-            <span class="mobile-label">About</span>
-            <a href="https://cfipc.com/contact/" class="mobile-link">Contact Us</a>
-            <a href="https://cfipc.com/about/" class="mobile-link">Legacy</a>
+            <span class="mobile-label" data-i18n="nav_about_label">About</span>
+            <a href="https://cfipc.com/contact/" class="mobile-link" data-i18n="nav_contact">Contact Us</a>
+            <a href="https://cfipc.com/about/" class="mobile-link" data-i18n="nav_legacy">Legacy</a>
         </div>
 
-        <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold text-decoration-none">Return to Home</a>
+        <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold text-decoration-none" data-i18n="nav_home">Return to Home</a>
     </div>
 
     <!-- Main Navigation Header -->
@@ -235,26 +298,26 @@
                     <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
                         <div class="dropdown-container">
                             <a href="https://cfipc.com/" class="nav-link" onclick="handleNavClick(event, this)">
-                                Competition 
+                                <span data-i18n="nav_competition">Competition</span> 
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/rules/" class="dropdown-item">Rules</a>
-                                <a href="https://cfipc.com/prizes/" class="dropdown-item">Prizes</a>
-                                <a href="https://cfipc.com/application/" class="dropdown-item">Application</a>
-                                <a href="https://cfipc.com/jury/" class="dropdown-item">Jury</a>
-                                <a href="https://cfipc.com/laureates/" class="dropdown-item">Laureates</a>
+                                <a href="https://cfipc.com/rules/" class="dropdown-item" data-i18n="nav_rules">Rules</a>
+                                <a href="https://cfipc.com/prizes/" class="dropdown-item" data-i18n="nav_prizes">Prizes</a>
+                                <a href="https://cfipc.com/application/" class="dropdown-item" data-i18n="nav_application">Application</a>
+                                <a href="https://cfipc.com/jury/" class="dropdown-item" data-i18n="nav_jury">Jury</a>
+                                <a href="https://cfipc.com/laureates/" class="dropdown-item" data-i18n="nav_laureates">Laureates</a>
                             </div>
                         </div>
                         <div class="dropdown-container">
                             <a href="https://cfipc.com/winter-masterclass/" class="nav-link" onclick="handleNavClick(event, this)">
-                                Masterclasses 
+                                <span data-i18n="nav_masterclasses">Masterclasses</span> 
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/winter-masterclass/" class="dropdown-item">Winter Masterclass</a>
-                                <a href="https://cfipc.com/spring-masterclass/" class="dropdown-item">Spring Masterclass</a>
-                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item">Volodos Masterclass</a>
+                                <a href="https://cfipc.com/winter-masterclass/" class="dropdown-item" data-i18n="nav_winter">Winter Masterclass</a>
+                                <a href="https://cfipc.com/spring-masterclass/" class="dropdown-item" data-i18n="nav_spring">Spring Masterclass</a>
+                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item" data-i18n="nav_volodos">Volodos Masterclass</a>
                             </div>
                         </div>
                     </div>
@@ -268,22 +331,22 @@
                     <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
                         <div class="dropdown-container">
                             <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
-                                About 
+                                <span data-i18n="nav_about">About</span> 
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/contact/" class="dropdown-item">Contact Us</a>
-                                <a href="https://cfipc.com/about/" class="dropdown-item">Legacy</a>
+                                <a href="https://cfipc.com/contact/" class="dropdown-item" data-i18n="nav_contact">Contact Us</a>
+                                <a href="https://cfipc.com/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
                             </div>
                         </div>
                         <div class="dropdown-container">
                             <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
-                                Gallery 
+                                <span data-i18n="nav_gallery">Gallery</span> 
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/media/" class="dropdown-item">Media</a>
-                                <a href="https://cfipc.com/gallery/" class="dropdown-item">Pictures</a>
+                                <a href="https://cfipc.com/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
+                                <a href="https://cfipc.com/gallery/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
                             </div>
                         </div>
                     </div>
@@ -296,43 +359,45 @@
         <section id="prizes" class="page-section py-32 px-4 md:px-8">
             <div class="max-w-[1400px] mx-auto">
                 <div class="text-center mb-24">
-                    <h4 class="text-copper uppercase tracking-[0.4em] text-[10px] font-bold mb-4">Awards & Laureates</h4>
-                    <h2 class="text-5xl md:text-7xl serif italic text-forest">Competition Prizes</h2>
-                    <p class="text-stone-400 uppercase tracking-widest text-[11px] mt-6">Recognizing Artistic Excellence across Categories</p>
+                    <h4 class="text-copper uppercase tracking-[0.4em] text-[10px] font-bold mb-4" data-i18n="prizes_tag">Awards & Laureates</h4>
+                    <h2 class="text-5xl md:text-7xl serif italic text-forest" data-i18n="prizes_title">Competition Prizes</h2>
+                    <p class="text-stone-400 uppercase tracking-widest text-[11px] mt-6" data-i18n="prizes_subtitle">Recognizing Artistic Excellence across Categories</p>
                 </div>
 
                 <!-- CATEGORY A PRIZES -->
                 <div class="mb-32">
                     <div class="flex items-center gap-6 mb-12">
-                        <h3 class="serif text-5xl italic text-forest">Category A</h3>
+                        <h3 class="serif text-5xl italic text-forest" data-i18n="cat_a_heading">Category A</h3>
                         <div class="h-[1px] flex-grow bg-forest/5"></div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest">1st Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic">Valued at 550€</p>
+                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="first_prize">1st Prize</h5>
+                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_a_p1_val">Valued at 550€</p>
                             <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li>&bull; €100 cash prize</li>
-                                <li>&bull; Concert with orchestra in April 2027</li>
-                                <li>&bull; €250 fee for concerto performance</li>
-                                <li>&bull; €200 Scholarship (CF Young Talents Festival)</li>
+                                <li data-i18n="cat_a_p1_1">&bull; €100 cash prize</li>
+                                <li data-i18n="cat_a_p1_2">&bull; Concert with orchestra in April 2027</li>
+                                <li data-i18n="cat_a_p1_3">&bull; €250 fee for concerto performance</li>
+                                <li data-i18n="cat_a_p1_4">&bull; €200 Scholarship (CF Young Talents Festival)</li>
+                                <li data-i18n="imf_paris_finals_1">&bull; Direct access to the Finals of IMF Paris Competition</li>
                             </ul>
                         </div>
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest">2nd Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic">Valued at 250€</p>
+                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="second_prize">2nd Prize</h5>
+                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_a_p2_val">Valued at 250€</p>
                             <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li>&bull; €50 cash prize</li>
-                                <li>&bull; €100 Scholarship (CF Young Talents Festival)</li>
-                                <li>&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                <li data-i18n="cat_a_p2_1">&bull; €50 cash prize</li>
+                                <li data-i18n="cat_a_p2_2">&bull; €100 Scholarship (CF Young Talents Festival)</li>
+                                <li data-i18n="cat_a_p2_3">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                <li data-i18n="imf_paris_finals_2">&bull; Direct access to the Finals of IMF Paris Competition</li>
                             </ul>
                         </div>
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest">3rd Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic">Valued at 100€</p>
+                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="third_prize">3rd Prize</h5>
+                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_a_p3_val">Valued at 100€</p>
                             <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li>&bull; €100 Scholarship (IMF Paris Masterclass)</li>
-                                <li>&bull; Invitation to CF Young Talents Festival 2027</li>
+                                <li data-i18n="cat_a_p3_1">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                <li data-i18n="cat_a_p3_2">&bull; Invitation to CF Young Talents Festival 2027</li>
                             </ul>
                         </div>
                     </div>
@@ -341,35 +406,37 @@
                 <!-- CATEGORY B PRIZES -->
                 <div class="mb-32">
                     <div class="flex items-center gap-6 mb-12">
-                        <h3 class="serif text-5xl italic text-forest">Category B</h3>
+                        <h3 class="serif text-5xl italic text-forest" data-i18n="cat_b_heading">Category B</h3>
                         <div class="h-[1px] flex-grow bg-forest/5"></div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest">1st Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic">Valued at 650€</p>
+                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="first_prize">1st Prize</h5>
+                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_b_p1_val">Valued at 650€</p>
                             <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li>&bull; €200 cash prize</li>
-                                <li>&bull; Concert with orchestra in April 2027</li>
-                                <li>&bull; €250 fee for concerto performance</li>
-                                <li>&bull; €200 Scholarship (CF Young Talents Festival)</li>
+                                <li data-i18n="cat_b_p1_1">&bull; €200 cash prize</li>
+                                <li data-i18n="cat_b_p1_2">&bull; Concert with orchestra in April 2027</li>
+                                <li data-i18n="cat_b_p1_3">&bull; €250 fee for concerto performance</li>
+                                <li data-i18n="cat_b_p1_4">&bull; €200 Scholarship (CF Young Talents Festival)</li>
+                                <li data-i18n="imf_paris_finals_1">&bull; Direct access to the Finals of IMF Paris Competition</li>
                             </ul>
                         </div>
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest">2nd Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic">Valued at 280€</p>
+                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="second_prize">2nd Prize</h5>
+                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_b_p2_val">Valued at 280€</p>
                             <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li>&bull; €80 cash prize</li>
-                                <li>&bull; €100 Scholarship (CF Young Talents Festival)</li>
-                                <li>&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                <li data-i18n="cat_b_p2_1">&bull; €80 cash prize</li>
+                                <li data-i18n="cat_b_p2_2">&bull; €100 Scholarship (CF Young Talents Festival)</li>
+                                <li data-i18n="cat_b_p2_3">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                <li data-i18n="imf_paris_finals_2">&bull; Direct access to the Finals of IMF Paris Competition</li>
                             </ul>
                         </div>
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest">3rd Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic">Valued at 100€</p>
+                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="third_prize">3rd Prize</h5>
+                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_b_p3_val">Valued at 100€</p>
                             <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li>&bull; €200 Scholarship (CF Young Talents Festival)</li>
-                                <li>&bull; Invitation to CF Young Talents Festival 2027</li>
+                                <li data-i18n="cat_b_p3_1">&bull; €200 Scholarship (CF Young Talents Festival)</li>
+                                <li data-i18n="cat_b_p3_2">&bull; Invitation to CF Young Talents Festival 2027</li>
                             </ul>
                         </div>
                     </div>
@@ -378,35 +445,37 @@
                 <!-- CATEGORY C PRIZES -->
                 <div class="mb-32">
                     <div class="flex items-center gap-6 mb-12">
-                        <h3 class="serif text-5xl italic text-forest">Category C</h3>
+                        <h3 class="serif text-5xl italic text-forest" data-i18n="cat_c_heading">Category C</h3>
                         <div class="h-[1px] flex-grow bg-forest/5"></div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest">1st Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic">Valued at 750€</p>
+                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="first_prize">1st Prize</h5>
+                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_c_p1_val">Valued at 750€</p>
                             <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li>&bull; €300 cash prize</li>
-                                <li>&bull; Concert with orchestra in April 2027</li>
-                                <li>&bull; €250 fee for concerto performance</li>
-                                <li>&bull; €200 Scholarship (CF Young Talents Festival)</li>
+                                <li data-i18n="cat_c_p1_1">&bull; €300 cash prize</li>
+                                <li data-i18n="cat_c_p1_2">&bull; Concert with orchestra in April 2027</li>
+                                <li data-i18n="cat_c_p1_3">&bull; €250 fee for concerto performance</li>
+                                <li data-i18n="cat_c_p1_4">&bull; €200 Scholarship (CF Young Talents Festival)</li>
+                                <li data-i18n="imf_paris_finals_1">&bull; Direct access to the Finals of IMF Paris Competition</li>
                             </ul>
                         </div>
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest">2nd Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic">Valued at 320€</p>
+                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="second_prize">2nd Prize</h5>
+                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_c_p2_val">Valued at 320€</p>
                             <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li>&bull; €120 cash prize</li>
-                                <li>&bull; €100 Scholarship (CF Young Talents Festival)</li>
-                                <li>&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                <li data-i18n="cat_c_p2_1">&bull; €120 cash prize</li>
+                                <li data-i18n="cat_c_p2_2">&bull; €100 Scholarship (CF Young Talents Festival)</li>
+                                <li data-i18n="cat_c_p2_3">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                <li data-i18n="imf_paris_finals_2">&bull; Direct access to the Finals of IMF Paris Competition</li>
                             </ul>
                         </div>
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest">3rd Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic">Valued at 100€</p>
+                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="third_prize">3rd Prize</h5>
+                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_c_p3_val">Valued at 100€</p>
                             <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li>&bull; €100 Scholarship (IMF Paris Masterclass)</li>
-                                <li>&bull; Invitation to CF Young Talents Festival 2027</li>
+                                <li data-i18n="cat_c_p3_1">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                <li data-i18n="cat_c_p3_2">&bull; Invitation to CF Young Talents Festival 2027</li>
                             </ul>
                         </div>
                     </div>
@@ -415,36 +484,37 @@
                 <!-- CATEGORY D PRIZES -->
                 <div class="mb-32">
                     <div class="flex items-center gap-6 mb-12">
-                        <h3 class="serif text-5xl italic text-forest">Category D</h3>
+                        <h3 class="serif text-5xl italic text-forest" data-i18n="cat_d_heading">Category D</h3>
                         <div class="h-[1px] flex-grow bg-forest/5"></div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest">1st Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic">Valued at 1450€</p>
+                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="first_prize">1st Prize</h5>
+                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_d_p1_val">Valued at 1450€</p>
                             <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li>&bull; €1000 cash prize</li>
-                                <li>&bull; Concert with orchestra in April 2027</li>
-                                <li>&bull; €250 fee for concerto performance</li>
-                                <li>&bull; €200 Scholarship (CF Young Talents Festival)</li>
-                                <li>&bull; Direct access to IMF Paris Round 2</li>
+                                <li data-i18n="cat_d_p1_1">&bull; €1000 cash prize</li>
+                                <li data-i18n="cat_d_p1_2">&bull; Concert with orchestra in April 2027</li>
+                                <li data-i18n="cat_d_p1_3">&bull; €250 fee for concerto performance</li>
+                                <li data-i18n="cat_d_p1_4">&bull; €200 Scholarship (CF Young Talents Festival)</li>
+                                <li data-i18n="imf_paris_finals_1">&bull; Direct access to the Finals of IMF Paris Competition</li>
                             </ul>
                         </div>
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest">2nd Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic">Valued at 600€</p>
+                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="second_prize">2nd Prize</h5>
+                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_d_p2_val">Valued at 600€</p>
                             <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li>&bull; €400 cash prize</li>
-                                <li>&bull; €100 Scholarship (CF Young Talents Festival)</li>
-                                <li>&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                <li data-i18n="cat_d_p2_1">&bull; €400 cash prize</li>
+                                <li data-i18n="cat_d_p2_2">&bull; €100 Scholarship (CF Young Talents Festival)</li>
+                                <li data-i18n="cat_d_p2_3">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                <li data-i18n="imf_paris_finals_2">&bull; Direct access to the Finals of IMF Paris Competition</li>
                             </ul>
                         </div>
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest">3rd Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic">Valued at 200€</p>
+                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="third_prize">3rd Prize</h5>
+                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_d_p3_val">Valued at 200€</p>
                             <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li>&bull; €100 Scholarship (CF Young Talents Festival)</li>
-                                <li>&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                <li data-i18n="cat_d_p3_1">&bull; €100 Scholarship (CF Young Talents Festival)</li>
+                                <li data-i18n="cat_d_p3_2">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
                             </ul>
                         </div>
                     </div>
@@ -453,62 +523,62 @@
                 <!-- SPECIAL PRIZES -->
                 <div class="bg-forest p-12 md:p-24 text-copper rounded-sm shadow-2xl relative overflow-hidden">
                     <div class="text-center mb-16">
-                        <h3 class="serif text-5xl italic text-copper">Special Prizes</h3>
-                        <p class="text-copper uppercase tracking-[0.2em] text-[10px] mt-4 font-bold">Prestigious Invitations & Performance Awards</p>
+                        <h3 class="serif text-5xl italic text-copper" data-i18n="special_prizes_heading">Special Prizes</h3>
+                        <p class="text-copper uppercase tracking-[0.2em] text-[10px] mt-4 font-bold" data-i18n="special_prizes_sub">Prestigious Invitations & Performance Awards</p>
                     </div>
                     
                     <div class="max-w-4xl mx-auto space-y-6">
                         <div class="special-prize-card">
                             <div class="w-12 h-12 rounded-full border border-copper flex items-center justify-center flex-shrink-0 text-copper italic serif text-2xl font-bold bg-copper/10">1</div>
                             <div>
-                                <h5 class="text-copper font-bold uppercase tracking-widest text-[12px] mb-1">César Franck Chamber Orchestra Prize</h5>
-                                <p class="text-copper font-light text-sm">1st Prizewinners will perform with the orchestra conducted by Maestro Vahan Mardirossian in Brussels, April 2027.</p>
+                                <h5 class="text-copper font-bold uppercase tracking-widest text-[12px] mb-1" data-i18n="sp_1_title">César Franck Chamber Orchestra Prize</h5>
+                                <p class="text-copper font-light text-sm" data-i18n="sp_1_desc">1st Prizewinners will perform with the orchestra conducted by Maestro Vahan Mardirossian in Brussels, April 2027.</p>
                             </div>
                         </div>
                         <div class="special-prize-card">
                             <div class="w-12 h-12 rounded-full border border-copper flex items-center justify-center flex-shrink-0 text-copper italic serif text-2xl font-bold bg-copper/10">2</div>
                             <div>
-                                <h5 class="text-copper font-bold uppercase tracking-widest text-[12px] mb-1">Piano Talents Milano Prize</h5>
-                                <p class="text-copper font-light text-sm">Concert performance within the 2027 Concert Season of the Associazione PianoFriends Milano.</p>
+                                <h5 class="text-copper font-bold uppercase tracking-widest text-[12px] mb-1" data-i18n="sp_2_title">Piano Talents Milano Prize</h5>
+                                <p class="text-copper font-light text-sm" data-i18n="sp_2_desc">Concert performance within the 2027 Concert Season of the Associazione PianoFriends Milano.</p>
                             </div>
                         </div>
                         <div class="special-prize-card">
                             <div class="w-12 h-12 rounded-full border border-copper flex items-center justify-center flex-shrink-0 text-copper italic serif text-2xl font-bold bg-copper/10">3</div>
                             <div>
-                                <h5 class="text-copper font-bold uppercase tracking-widest text-[12px] mb-1">MozArte Aachen Prize</h5>
-                                <p class="text-copper font-light text-sm">Concert opportunity as part of the 2026 Concert Season of the MozArte Festival Aachen.</p>
+                                <h5 class="text-copper font-bold uppercase tracking-widest text-[12px] mb-1" data-i18n="sp_3_title">MozArte Aachen Prize</h5>
+                                <p class="text-copper font-light text-sm" data-i18n="sp_3_desc">Concert opportunity as part of the 2026 Concert Season of the MozArte Festival Aachen.</p>
                             </div>
                         </div>
                         <div class="special-prize-card">
                             <div class="w-12 h-12 rounded-full border border-copper flex items-center justify-center flex-shrink-0 text-copper italic serif text-2xl font-bold bg-copper/10">4</div>
                             <div>
-                                <h5 class="text-copper font-bold uppercase tracking-widest text-[12px] mb-1">Hotchkiss School Scholarship Prize</h5>
-                                <p class="text-copper font-light text-sm">Concert at Carnegie Hall and partial tuition for the Summer Piano Portals (Gisele & Fabio Witkowski).</p>
+                                <h5 class="text-copper font-bold uppercase tracking-widest text-[12px] mb-1" data-i18n="sp_4_title">Hotchkiss School Scholarship Prize</h5>
+                                <p class="text-copper font-light text-sm" data-i18n="sp_4_desc">Concert at Carnegie Hall and partial tuition for the Summer Piano Portals (Gisele & Fabio Witkowski).</p>
                             </div>
                         </div>
                         <div class="special-prize-card">
                             <div class="w-12 h-12 rounded-full border border-copper flex items-center justify-center flex-shrink-0 text-copper italic serif text-2xl font-bold bg-copper/10">5</div>
                             <div>
-                                <h5 class="text-copper font-bold uppercase tracking-widest text-[12px] mb-1">Prix IMEP</h5>
-                                <p class="text-copper font-light text-sm">Concert invitations for the International Piano Festival IMEP 2026, offered by Guido Jardon.</p>
+                                <h5 class="text-copper font-bold uppercase tracking-widest text-[12px] mb-1" data-i18n="sp_5_title">Prix IMEP</h5>
+                                <p class="text-copper font-light text-sm" data-i18n="sp_5_desc">Concert invitations for the International Piano Festival IMEP 2026, offered by Guido Jardon.</p>
                             </div>
                         </div>
                         <div class="special-prize-card">
                             <div class="w-12 h-12 rounded-full border border-copper flex items-center justify-center flex-shrink-0 text-copper italic serif text-2xl font-bold bg-copper/10">6</div>
                             <div>
-                                <h5 class="text-copper font-bold uppercase tracking-widest text-[12px] mb-1">IMF Paris Festival Prize</h5>
-                                <p class="text-copper font-light text-sm">Concert participation within the IMF Paris Festival 2026 Season.</p>
+                                <h5 class="text-copper font-bold uppercase tracking-widest text-[12px] mb-1" data-i18n="sp_6_title">IMF Paris Festival Prize</h5>
+                                <p class="text-copper font-light text-sm" data-i18n="sp_6_desc">Concert participation within the IMF Paris Festival 2026 Season.</p>
                             </div>
                         </div>
                         <div class="special-prize-card">
                             <div class="w-12 h-12 rounded-full border border-copper flex items-center justify-center flex-shrink-0 text-copper italic serif text-2xl font-bold bg-copper/10">7</div>
                             <div>
-                                <h5 class="text-copper font-bold uppercase tracking-widest text-[12px] mb-1">Music Without Limits Award</h5>
-                                <p class="text-copper font-light text-sm">Free participation in masterclasses, competition, and concerts in Druskininkai, Lithuania.</p>
+                                <h5 class="text-copper font-bold uppercase tracking-widest text-[12px] mb-1" data-i18n="sp_7_title">Music Without Limits Award</h5>
+                                <p class="text-copper font-light text-sm" data-i18n="sp_7_desc">Free participation in masterclasses, competition, and concerts in Druskininkai, Lithuania.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-16 text-center italic text-copper/30 text-sm">Other special prizes to be announced soon</div>
+                    <div class="mt-16 text-center italic text-copper/30 text-sm" data-i18n="other_prizes">Other special prizes to be announced soon</div>
                 </div>
             </div>
         </section>
@@ -532,8 +602,621 @@
         </div>
     </footer>
 
+    <!-- CUSTOM FLOATING LANGUAGE WIDGET -->
+    <div class="lang-widget-container">
+        <div class="lang-dropdown-menu" id="langMenu">
+            <button class="lang-option" onclick="setLanguage('en')">English</button>
+            <button class="lang-option" onclick="setLanguage('fr')">Français</button>
+            <button class="lang-option" onclick="setLanguage('nl')">Nederlands</button>
+            <button class="lang-option" onclick="setLanguage('de')">Deutsch</button>
+            <button class="lang-option" onclick="setLanguage('it')">Italiano</button>
+            <button class="lang-option" onclick="setLanguage('es')">Español</button>
+        </div>
+        <button class="lang-toggle-btn" onclick="toggleLangMenu()" aria-label="Change Language">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </button>
+    </div>
+
     <script>
         lucide.createIcons();
+
+        // Professional Translations Dictionary for Prizes Page
+        const translations = {
+            en: {
+                nav_competition: "Competition",
+                nav_rules: "Rules",
+                nav_prizes: "Prizes",
+                nav_application: "Application",
+                nav_jury: "Jury",
+                nav_laureates: "Laureates",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Winter Masterclass",
+                nav_spring: "Spring Masterclass",
+                nav_volodos: "Volodos Masterclass",
+                nav_about: "About",
+                nav_about_label: "About",
+                nav_contact: "Contact Us",
+                nav_legacy: "Legacy",
+                nav_gallery: "Gallery",
+                nav_media: "Media",
+                nav_pictures: "Pictures",
+                nav_home: "Return to Home",
+                prizes_tag: "Awards & Laureates",
+                prizes_title: "Competition Prizes",
+                prizes_subtitle: "Recognizing Artistic Excellence across Categories",
+                cat_a_heading: "Category A",
+                cat_b_heading: "Category B",
+                cat_c_heading: "Category C",
+                cat_d_heading: "Category D",
+                first_prize: "1st Prize",
+                second_prize: "2nd Prize",
+                third_prize: "3rd Prize",
+                cat_a_p1_val: "Valued at 550€",
+                cat_a_p1_1: "&bull; €100 cash prize",
+                cat_a_p1_2: "&bull; Concert with orchestra in April 2027",
+                cat_a_p1_3: "&bull; €250 fee for concerto performance",
+                cat_a_p1_4: "&bull; €200 Scholarship (CF Young Talents Festival)",
+                cat_a_p2_val: "Valued at 250€",
+                cat_a_p2_1: "&bull; €50 cash prize",
+                cat_a_p2_2: "&bull; €100 Scholarship (CF Young Talents Festival)",
+                cat_a_p2_3: "&bull; €100 Scholarship (IMF Paris Masterclass)",
+                cat_a_p3_val: "Valued at 100€",
+                cat_a_p3_1: "&bull; €100 Scholarship (IMF Paris Masterclass)",
+                cat_a_p3_2: "&bull; Invitation to CF Young Talents Festival 2027",
+                cat_b_p1_val: "Valued at 650€",
+                cat_b_p1_1: "&bull; €200 cash prize",
+                cat_b_p1_2: "&bull; Concert with orchestra in April 2027",
+                cat_b_p1_3: "&bull; €250 fee for concerto performance",
+                cat_b_p1_4: "&bull; €200 Scholarship (CF Young Talents Festival)",
+                cat_b_p2_val: "Valued at 280€",
+                cat_b_p2_1: "&bull; €80 cash prize",
+                cat_b_p2_2: "&bull; €100 Scholarship (CF Young Talents Festival)",
+                cat_b_p2_3: "&bull; €100 Scholarship (IMF Paris Masterclass)",
+                cat_b_p3_val: "Valued at 100€",
+                cat_b_p3_1: "&bull; €200 Scholarship (CF Young Talents Festival)",
+                cat_b_p3_2: "&bull; Invitation to CF Young Talents Festival 2027",
+                cat_c_p1_val: "Valued at 750€",
+                cat_c_p1_1: "&bull; €300 cash prize",
+                cat_c_p1_2: "&bull; Concert with orchestra in April 2027",
+                cat_c_p1_3: "&bull; €250 fee for concerto performance",
+                cat_c_p1_4: "&bull; €200 Scholarship (CF Young Talents Festival)",
+                cat_c_p2_val: "Valued at 320€",
+                cat_c_p2_1: "&bull; €120 cash prize",
+                cat_c_p2_2: "&bull; €100 Scholarship (CF Young Talents Festival)",
+                cat_c_p2_3: "&bull; €100 Scholarship (IMF Paris Masterclass)",
+                cat_c_p3_val: "Valued at 100€",
+                cat_c_p3_1: "&bull; €100 Scholarship (IMF Paris Masterclass)",
+                cat_c_p3_2: "&bull; Invitation to CF Young Talents Festival 2027",
+                cat_d_p1_val: "Valued at 1450€",
+                cat_d_p1_1: "&bull; €1000 cash prize",
+                cat_d_p1_2: "&bull; Concert with orchestra in April 2027",
+                cat_d_p1_3: "&bull; €250 fee for concerto performance",
+                cat_d_p1_4: "&bull; €200 Scholarship (CF Young Talents Festival)",
+                cat_d_p2_val: "Valued at 600€",
+                cat_d_p2_1: "&bull; €400 cash prize",
+                cat_d_p2_2: "&bull; €100 Scholarship (CF Young Talents Festival)",
+                cat_d_p2_3: "&bull; €100 Scholarship (IMF Paris Masterclass)",
+                cat_d_p3_val: "Valued at 200€",
+                cat_d_p3_1: "&bull; €100 Scholarship (CF Young Talents Festival)",
+                cat_d_p3_2: "&bull; €100 Scholarship (IMF Paris Masterclass)",
+                imf_paris_finals_1: "&bull; Direct access to the Finals of IMF Paris Competition",
+                imf_paris_finals_2: "&bull; Direct access to the Finals of IMF Paris Competition",
+                special_prizes_heading: "Special Prizes",
+                special_prizes_sub: "Prestigious Invitations & Performance Awards",
+                sp_1_title: "César Franck Chamber Orchestra Prize",
+                sp_1_desc: "1st Prizewinners will perform with the orchestra conducted by Maestro Vahan Mardirossian in Brussels, April 2027.",
+                sp_2_title: "Piano Talents Milano Prize",
+                sp_2_desc: "Concert performance within the 2027 Concert Season of the Associazione PianoFriends Milano.",
+                sp_3_title: "MozArte Aachen Prize",
+                sp_3_desc: "Concert opportunity as part of the 2026 Concert Season of the MozArte Festival Aachen.",
+                sp_4_title: "Hotchkiss School Scholarship Prize",
+                sp_4_desc: "Concert at Carnegie Hall and partial tuition for the Summer Piano Portals (Gisele & Fabio Witkowski).",
+                sp_5_title: "Prix IMEP",
+                sp_5_desc: "Concert invitations for the International Piano Festival IMEP 2026, offered by Guido Jardon.",
+                sp_6_title: "IMF Paris Festival Prize",
+                sp_6_desc: "Concert participation within the IMF Paris Festival 2026 Season.",
+                sp_7_title: "Music Without Limits Award",
+                sp_7_desc: "Free participation in masterclasses, competition, and concerts in Druskininkai, Lithuania.",
+                other_prizes: "Other special prizes to be announced soon"
+            },
+            fr: {
+                nav_competition: "Concours",
+                nav_rules: "Règlement",
+                nav_prizes: "Prix",
+                nav_application: "Inscription",
+                nav_jury: "Jury",
+                nav_laureates: "Lauréats",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Masterclass d'Hiver",
+                nav_spring: "Masterclass de Printemps",
+                nav_volodos: "Masterclass Volodos",
+                nav_about: "À propos",
+                nav_about_label: "À propos",
+                nav_contact: "Contactez-nous",
+                nav_legacy: "Héritage",
+                nav_gallery: "Galerie",
+                nav_media: "Médias",
+                nav_pictures: "Photos",
+                nav_home: "Retour à l'accueil",
+                prizes_tag: "Récompenses & Lauréats",
+                prizes_title: "Prix du Concours",
+                prizes_subtitle: "Reconnaissance de l'excellence artistique par catégorie",
+                cat_a_heading: "Catégorie A",
+                cat_b_heading: "Catégorie B",
+                cat_c_heading: "Catégorie C",
+                cat_d_heading: "Catégorie D",
+                first_prize: "1er Prix",
+                second_prize: "2e Prix",
+                third_prize: "3e Prix",
+                cat_a_p1_val: "D'une valeur de 550€",
+                cat_a_p1_1: "&bull; Prix en espèces de 100€",
+                cat_a_p1_2: "&bull; Concert avec orchestre en avril 2027",
+                cat_a_p1_3: "&bull; Cachet de 250€ pour la performance de concerto",
+                cat_a_p1_4: "&bull; Bourse de 200€ (Festival CF Young Talents)",
+                cat_a_p2_val: "D'une valeur de 250€",
+                cat_a_p2_1: "&bull; Prix en espèces de 50€",
+                cat_a_p2_2: "&bull; Bourse de 100€ (Festival CF Young Talents)",
+                cat_a_p2_3: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
+                cat_a_p3_val: "D'une valeur de 100€",
+                cat_a_p3_1: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
+                cat_a_p3_2: "&bull; Invitation au Festival CF Young Talents 2027",
+                cat_b_p1_val: "D'une valeur de 650€",
+                cat_b_p1_1: "&bull; Prix en espèces de 200€",
+                cat_b_p1_2: "&bull; Concert avec orchestre en avril 2027",
+                cat_b_p1_3: "&bull; Cachet de 250€ pour la performance de concerto",
+                cat_b_p1_4: "&bull; Bourse de 200€ (Festival CF Young Talents)",
+                cat_b_p2_val: "D'une valeur de 280€",
+                cat_b_p2_1: "&bull; Prix en espèces de 80€",
+                cat_b_p2_2: "&bull; Bourse de 100€ (Festival CF Young Talents)",
+                cat_b_p2_3: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
+                cat_b_p3_val: "D'une valeur de 100€",
+                cat_b_p3_1: "&bull; Bourse de 200€ (Festival CF Young Talents)",
+                cat_b_p3_2: "&bull; Invitation au Festival CF Young Talents 2027",
+                cat_c_p1_val: "D'une valeur de 750€",
+                cat_c_p1_1: "&bull; Prix en espèces de 300€",
+                cat_c_p1_2: "&bull; Concert avec orchestre en avril 2027",
+                cat_c_p1_3: "&bull; Cachet de 250€ pour la performance de concerto",
+                cat_c_p1_4: "&bull; Bourse de 200€ (Festival CF Young Talents)",
+                cat_c_p2_val: "D'une valeur de 320€",
+                cat_c_p2_1: "&bull; Prix en espèces de 120€",
+                cat_c_p2_2: "&bull; Bourse de 100€ (Festival CF Young Talents)",
+                cat_c_p2_3: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
+                cat_c_p3_val: "D'une valeur de 100€",
+                cat_c_p3_1: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
+                cat_c_p3_2: "&bull; Invitation au Festival CF Young Talents 2027",
+                cat_d_p1_val: "D'une valeur de 1450€",
+                cat_d_p1_1: "&bull; Prix en espèces de 1000€",
+                cat_d_p1_2: "&bull; Concert avec orchestre en avril 2027",
+                cat_d_p1_3: "&bull; Cachet de 250€ pour la performance de concerto",
+                cat_d_p1_4: "&bull; Bourse de 200€ (Festival CF Young Talents)",
+                cat_d_p2_val: "D'une valeur de 600€",
+                cat_d_p2_1: "&bull; Prix en espèces de 400€",
+                cat_d_p2_2: "&bull; Bourse de 100€ (Festival CF Young Talents)",
+                cat_d_p2_3: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
+                cat_d_p3_val: "D'une valeur de 200€",
+                cat_d_p3_1: "&bull; Bourse de 100€ (Festival CF Young Talents)",
+                cat_d_p3_2: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
+                imf_paris_finals_1: "&bull; Accès direct aux Finales du Concours IMF Paris",
+                imf_paris_finals_2: "&bull; Accès direct aux Finales du Concours IMF Paris",
+                special_prizes_heading: "Prix Spéciaux",
+                special_prizes_sub: "Invitations Prestigues & Prix de Performance",
+                sp_1_title: "Prix de l'Orchestre de Chambre César Franck",
+                sp_1_desc: "Les 1ers prix se produiront avec l'orchestre dirigé par le Maestro Vahan Mardirossian à Bruxelles, en avril 2027.",
+                sp_2_title: "Prix Piano Talents Milano",
+                sp_2_desc: "Prestation de concert dans le cadre de la saison 2027 de l'Associazione PianoFriends Milano.",
+                sp_3_title: "Prix MozArte Aix-la-Chapelle",
+                sp_3_desc: "Opportunité de concert dans le cadre de la saison 2026 du Festival MozArte d'Aix-la-Chapelle.",
+                sp_4_title: "Prix de Bourse Hotchkiss School",
+                sp_4_desc: "Concert au Carnegie Hall et frais de scolarité partiels pour les Summer Piano Portals (Gisele & Fabio Witkowski).",
+                sp_5_title: "Prix IMEP",
+                sp_5_desc: "Invitations de concert pour le Festival International de Piano IMEP 2026, offert par Guido Jardon.",
+                sp_6_title: "Prix du Festival IMF Paris",
+                sp_6_desc: "Participation à un concert dans le cadre de la saison 2026 du Festival IMF Paris.",
+                sp_7_title: "Prix Musique Sans Frontières",
+                sp_7_desc: "Participation gratuite aux masterclasses, au concours et aux concerts à Druskininkai, en Lituanie.",
+                other_prizes: "D'autres prix spéciaux seront annoncés prochainement"
+            },
+            nl: {
+                nav_competition: "Competitie",
+                nav_rules: "Reglement",
+                nav_prizes: "Prijzen",
+                nav_application: "Inschrijving",
+                nav_jury: "Jury",
+                nav_laureates: "Laureaten",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Winter Masterclass",
+                nav_spring: "Lente Masterclass",
+                nav_volodos: "Volodos Masterclass",
+                nav_about: "Over Ons",
+                nav_about_label: "Over Ons",
+                nav_contact: "Contact",
+                nav_legacy: "Erfenis",
+                nav_gallery: "Gallerij",
+                nav_media: "Media",
+                nav_pictures: "Foto's",
+                nav_home: "Terug naar Home",
+                prizes_tag: "Prijzen & Laureaten",
+                prizes_title: "Competitie Prijzen",
+                prizes_subtitle: "Erkenning van artistieke excellentie per categorie",
+                cat_a_heading: "Categorie A",
+                cat_b_heading: "Categorie B",
+                cat_c_heading: "Categorie C",
+                cat_d_heading: "Categorie D",
+                first_prize: "1e Prijs",
+                second_prize: "2e Prijs",
+                third_prize: "3e Prijs",
+                cat_a_p1_val: "Waarde van 550€",
+                cat_a_p1_1: "&bull; €100 geldprijs",
+                cat_a_p1_2: "&bull; Concert met orkest in april 2027",
+                cat_a_p1_3: "&bull; €250 honorarium voor concertouitvoering",
+                cat_a_p1_4: "&bull; €200 beurs (CF Young Talents Festival)",
+                cat_a_p2_val: "Waarde van 250€",
+                cat_a_p2_1: "&bull; €50 geldprijs",
+                cat_a_p2_2: "&bull; €100 beurs (CF Young Talents Festival)",
+                cat_a_p2_3: "&bull; €100 beurs (IMF Paris Masterclass)",
+                cat_a_p3_val: "Waarde van 100€",
+                cat_a_p3_1: "&bull; €100 beurs (IMF Paris Masterclass)",
+                cat_a_p3_2: "&bull; Uitnodiging voor CF Young Talents Festival 2027",
+                cat_b_p1_val: "Waarde van 650€",
+                cat_b_p1_1: "&bull; €200 geldprijs",
+                cat_b_p1_2: "&bull; Concert met orkest in april 2027",
+                cat_b_p1_3: "&bull; €250 honorarium voor concertouitvoering",
+                cat_b_p1_4: "&bull; €200 beurs (CF Young Talents Festival)",
+                cat_b_p2_val: "Waarde van 280€",
+                cat_b_p2_1: "&bull; €80 geldprijs",
+                cat_b_p2_2: "&bull; €100 beurs (CF Young Talents Festival)",
+                cat_b_p2_3: "&bull; €100 beurs (IMF Paris Masterclass)",
+                cat_b_p3_val: "Waarde van 100€",
+                cat_b_p3_1: "&bull; €200 beurs (CF Young Talents Festival)",
+                cat_b_p3_2: "&bull; Uitnodiging voor CF Young Talents Festival 2027",
+                cat_c_p1_val: "Waarde van 750€",
+                cat_c_p1_1: "&bull; €300 geldprijs",
+                cat_c_p1_2: "&bull; Concert met orkest in april 2027",
+                cat_c_p1_3: "&bull; €250 honorarium voor concertouitvoering",
+                cat_c_p1_4: "&bull; €200 beurs (CF Young Talents Festival)",
+                cat_c_p2_val: "Waarde van 320€",
+                cat_c_p2_1: "&bull; €120 geldprijs",
+                cat_c_p2_2: "&bull; €100 beurs (CF Young Talents Festival)",
+                cat_c_p2_3: "&bull; €100 beurs (IMF Paris Masterclass)",
+                cat_c_p3_val: "Waarde van 100€",
+                cat_c_p3_1: "&bull; €100 beurs (IMF Paris Masterclass)",
+                cat_c_p3_2: "&bull; Uitnodiging voor CF Young Talents Festival 2027",
+                cat_d_p1_val: "Waarde van 1450€",
+                cat_d_p1_1: "&bull; €1000 geldprijs",
+                cat_d_p1_2: "&bull; Concert met orkest in april 2027",
+                cat_d_p1_3: "&bull; €250 honorarium voor concertouitvoering",
+                cat_d_p1_4: "&bull; €200 beurs (CF Young Talents Festival)",
+                cat_d_p2_val: "Waarde van 600€",
+                cat_d_p2_1: "&bull; €400 geldprijs",
+                cat_d_p2_2: "&bull; €100 beurs (CF Young Talents Festival)",
+                cat_d_p2_3: "&bull; €100 beurs (IMF Paris Masterclass)",
+                cat_d_p3_val: "Waarde van 200€",
+                cat_d_p3_1: "&bull; €100 beurs (CF Young Talents Festival)",
+                cat_d_p3_2: "&bull; €100 beurs (IMF Paris Masterclass)",
+                imf_paris_finals_1: "&bull; Directe toegang tot de Finales van het IMF Paris Concours",
+                imf_paris_finals_2: "&bull; Directe toegang tot de Finales van het IMF Paris Concours",
+                special_prizes_heading: "Speciale Prijzen",
+                special_prizes_sub: "Prestigieuze Uitnodigingen & Concertprijzen",
+                sp_1_title: "César Franck Kamerorkest Prijs",
+                sp_1_desc: "1e Prijswinnaars treden op met het orkest onder leiding van Maestro Vahan Mardirossian in Brussel, april 2027.",
+                sp_2_title: "Piano Talents Milano Prijs",
+                sp_2_desc: "Concertoptreden binnen het concertseizoen 2027 van Associazione PianoFriends Milano.",
+                sp_3_title: "MozArte Aachen Prijs",
+                sp_3_desc: "Concertmogelijkheid als onderdeel van het concertseizoen 2026 van het MozArte Festival Aachen.",
+                sp_4_title: "Hotchkiss School Beursprijs",
+                sp_4_desc: "Concert in Carnegie Hall en gedeeltelijk lesgeld voor de Summer Piano Portals (Gisele & Fabio Witkowski).",
+                sp_5_title: "Prix IMEP",
+                sp_5_desc: "Concertuitnodigingen voor het Internationaal Pianofestival IMEP 2026, aangeboden door Guido Jardon.",
+                sp_6_title: "IMF Paris Festival Prijs",
+                sp_6_desc: "Concertdeelname binnen het IMF Paris Festival 2026 Seizoen.",
+                sp_7_title: "Music Without Limits Award",
+                sp_7_desc: "Gratis deelname aan masterclasses, competitie en concerten in Druskininkai, Litouwen.",
+                other_prizes: "Andere speciale prijzen worden binnenkort bekendgemaakt"
+            },
+            de: {
+                nav_competition: "Wettbewerb",
+                nav_rules: "Regeln",
+                nav_prizes: "Preise",
+                nav_application: "Bewerbung",
+                nav_jury: "Jury",
+                nav_laureates: "Preisträger",
+                nav_masterclasses: "Meisterkurse",
+                nav_winter: "Winter-Meisterkurs",
+                nav_spring: "Frühlings-Meisterkurs",
+                nav_volodos: "Volodos Meisterkurs",
+                nav_about: "Über Uns",
+                nav_about_label: "Über Uns",
+                nav_contact: "Kontakt",
+                nav_legacy: "Vermächtnis",
+                nav_gallery: "Galerie",
+                nav_media: "Medien",
+                nav_pictures: "Bilder",
+                nav_home: "Zur Startseite",
+                prizes_tag: "Preise & Preisträger",
+                prizes_title: "Wettbewerbspreise",
+                prizes_subtitle: "Würdigung künstlerischer Exzellenz nach Kategorien",
+                cat_a_heading: "Kategorie A",
+                cat_b_heading: "Kategorie B",
+                cat_c_heading: "Kategorie C",
+                cat_d_heading: "Kategorie D",
+                first_prize: "1. Preis",
+                second_prize: "2. Preis",
+                third_prize: "3. Preis",
+                cat_a_p1_val: "Wert 550€",
+                cat_a_p1_1: "&bull; 100€ Geldpreis",
+                cat_a_p1_2: "&bull; Konzert mit Orchester im April 2027",
+                cat_a_p1_3: "&bull; 250€ Honorar für Konzertauftritt",
+                cat_a_p1_4: "&bull; 200€ Stipendium (CF Young Talents Festival)",
+                cat_a_p2_val: "Wert 250€",
+                cat_a_p2_1: "&bull; 50€ Geldpreis",
+                cat_a_p2_2: "&bull; 100€ Stipendium (CF Young Talents Festival)",
+                cat_a_p2_3: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
+                cat_a_p3_val: "Wert 100€",
+                cat_a_p3_1: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
+                cat_a_p3_2: "&bull; Einladung zum CF Young Talents Festival 2027",
+                cat_b_p1_val: "Wert 650€",
+                cat_b_p1_1: "&bull; 200€ Geldpreis",
+                cat_b_p1_2: "&bull; Konzert mit Orchester im April 2027",
+                cat_b_p1_3: "&bull; 250€ Honorar für Konzertauftritt",
+                cat_b_p1_4: "&bull; 200€ Stipendium (CF Young Talents Festival)",
+                cat_b_p2_val: "Wert 280€",
+                cat_b_p2_1: "&bull; 80€ Geldpreis",
+                cat_b_p2_2: "&bull; 100€ Stipendium (CF Young Talents Festival)",
+                cat_b_p2_3: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
+                cat_b_p3_val: "Wert 100€",
+                cat_b_p3_1: "&bull; 200€ Stipendium (CF Young Talents Festival)",
+                cat_b_p3_2: "&bull; Einladung zum CF Young Talents Festival 2027",
+                cat_c_p1_val: "Wert 750€",
+                cat_c_p1_1: "&bull; 300€ Geldpreis",
+                cat_c_p1_2: "&bull; Konzert mit Orchester im April 2027",
+                cat_c_p1_3: "&bull; 250€ Honorar für Konzertauftritt",
+                cat_c_p1_4: "&bull; 200€ Stipendium (CF Young Talents Festival)",
+                cat_c_p2_val: "Wert 320€",
+                cat_c_p2_1: "&bull; 120€ Geldpreis",
+                cat_c_p2_2: "&bull; 100€ Stipendium (CF Young Talents Festival)",
+                cat_c_p2_3: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
+                cat_c_p3_val: "Wert 100€",
+                cat_c_p3_1: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
+                cat_c_p3_2: "&bull; Einladung zum CF Young Talents Festival 2027",
+                cat_d_p1_val: "Wert 1450€",
+                cat_d_p1_1: "&bull; 1000€ Geldpreis",
+                cat_d_p1_2: "&bull; Konzert mit Orchester im April 2027",
+                cat_d_p1_3: "&bull; 250€ Honorar für Konzertauftritt",
+                cat_d_p1_4: "&bull; 200€ Stipendium (CF Young Talents Festival)",
+                cat_d_p2_val: "Wert 600€",
+                cat_d_p2_1: "&bull; 400€ Geldpreis",
+                cat_d_p2_2: "&bull; 100€ Stipendium (CF Young Talents Festival)",
+                cat_d_p2_3: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
+                cat_d_p3_val: "Wert 200€",
+                cat_d_p3_1: "&bull; 100€ Stipendium (CF Young Talents Festival)",
+                cat_d_p3_2: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
+                imf_paris_finals_1: "&bull; Direkter Zugang zum Finale des IMF Paris Wettbewerbs",
+                imf_paris_finals_2: "&bull; Direkter Zugang zum Finale des IMF Paris Wettbewerbs",
+                special_prizes_heading: "Sonderpreise",
+                special_prizes_sub: "Prestigesache & Konzertpreise",
+                sp_1_title: "César Franck Kammerorchester Preis",
+                sp_1_desc: "1. Preisträger treten im April 2027 in Brüssel mit dem Orchester unter der Leitung von Maestro Vahan Mardirossian auf.",
+                sp_2_title: "Piano Talents Milano Preis",
+                sp_2_desc: "Konzertauftritt innerhalb der Konzertsaison 2027 der Associazione PianoFriends Milano.",
+                sp_3_title: "MozArte Aachen Preis",
+                sp_3_desc: "Konzertmöglichkeit im Rahmen der Konzertsaison 2026 des MozArte Festivals Aachen.",
+                sp_4_title: "Hotchkiss School Stipendienpreis",
+                sp_4_desc: "Konzert in der Carnegie Hall und Teilstipendium für die Summer Piano Portals (Gisele & Fabio Witkowski).",
+                sp_5_title: "Prix IMEP",
+                sp_5_desc: "Konzert-Einladungen für das Internationale Klavierfestival IMEP 2026, angeboten von Guido Jardon.",
+                sp_6_title: "IMF Paris Festival Preis",
+                sp_6_desc: "Konzertteilnahme in der Saison 2026 des IMF Paris Festivals.",
+                sp_7_title: "Music Without Limits Award",
+                sp_7_desc: "Kostenlose Teilnahme an Meisterkursen, Wettbewerb und Konzerten in Druskininkai, Litauen.",
+                other_prizes: "Weitere Sonderpreise werden in Kürze bekannt gegeben"
+            },
+            it: {
+                nav_competition: "Concorso",
+                nav_rules: "Regolamento",
+                nav_prizes: "Premi",
+                nav_application: "Iscrizione",
+                nav_jury: "Giuria",
+                nav_laureates: "Vincitori",
+                nav_masterclasses: "Masterclass",
+                nav_winter: "Masterclass Invernale",
+                nav_spring: "Masterclass Primaverile",
+                nav_volodos: "Masterclass Volodos",
+                nav_about: "Chi Siamo",
+                nav_about_label: "Chi Siamo",
+                nav_contact: "Contatti",
+                nav_legacy: "Eredità",
+                nav_gallery: "Galleria",
+                nav_media: "Media",
+                nav_pictures: "Foto",
+                nav_home: "Torna alla Home",
+                prizes_tag: "Premi e Vincitori",
+                prizes_title: "Premi del Concorso",
+                prizes_subtitle: "Riconoscimento dell'eccellenza artistica per categoria",
+                cat_a_heading: "Categoria A",
+                cat_b_heading: "Categoria B",
+                cat_c_heading: "Categoria C",
+                cat_d_heading: "Categoria D",
+                first_prize: "1° Premio",
+                second_prize: "2° Premio",
+                third_prize: "3° Premio",
+                cat_a_p1_val: "Valore di 550€",
+                cat_a_p1_1: "&bull; Premio in denaro di 100€",
+                cat_a_p1_2: "&bull; Concerto con orchestra nell'aprile 2027",
+                cat_a_p1_3: "&bull; Compenso di 250€ per l'esecuzione del concerto",
+                cat_a_p1_4: "&bull; Borsa di studio di 200€ (Festival CF Young Talents)",
+                cat_a_p2_val: "Valore di 250€",
+                cat_a_p2_1: "&bull; Premio in denaro di 50€",
+                cat_a_p2_2: "&bull; Borsa di studio di 100€ (Festival CF Young Talents)",
+                cat_a_p2_3: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
+                cat_a_p3_val: "Valore di 100€",
+                cat_a_p3_1: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
+                cat_a_p3_2: "&bull; Invito al Festival CF Young Talents 2027",
+                cat_b_p1_val: "Valore di 650€",
+                cat_b_p1_1: "&bull; Premio in denaro di 200€",
+                cat_b_p1_2: "&bull; Concerto con orchestra nell'aprile 2027",
+                cat_b_p1_3: "&bull; Compenso di 250€ per l'esecuzione del concerto",
+                cat_b_p1_4: "&bull; Borsa di studio di 200€ (Festival CF Young Talents)",
+                cat_b_p2_val: "Valore di 280€",
+                cat_b_p2_1: "&bull; Premio in denaro di 80€",
+                cat_b_p2_2: "&bull; Borsa di studio di 100€ (Festival CF Young Talents)",
+                cat_b_p2_3: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
+                cat_b_p3_val: "Valore di 100€",
+                cat_b_p3_1: "&bull; Borsa di studio di 200€ (Festival CF Young Talents)",
+                cat_b_p3_2: "&bull; Invito al Festival CF Young Talents 2027",
+                cat_c_p1_val: "Valore di 750€",
+                cat_c_p1_1: "&bull; Premio in denaro di 300€",
+                cat_c_p1_2: "&bull; Concerto con orchestra nell'aprile 2027",
+                cat_c_p1_3: "&bull; Compenso di 250€ per l'esecuzione del concerto",
+                cat_c_p1_4: "&bull; Borsa di studio di 200€ (Festival CF Young Talents)",
+                cat_c_p2_val: "Valore di 320€",
+                cat_c_p2_1: "&bull; Premio in denaro di 120€",
+                cat_c_p2_2: "&bull; Borsa di studio di 100€ (Festival CF Young Talents)",
+                cat_c_p2_3: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
+                cat_c_p3_val: "Valore di 100€",
+                cat_c_p3_1: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
+                cat_c_p3_2: "&bull; Invito al Festival CF Young Talents 2027",
+                cat_d_p1_val: "Valore di 1450€",
+                cat_d_p1_1: "&bull; Premio in denaro di 1000€",
+                cat_d_p1_2: "&bull; Concerto con orchestra nell'aprile 2027",
+                cat_d_p1_3: "&bull; Compenso di 250€ per l'esecuzione del concerto",
+                cat_d_p1_4: "&bull; Borsa di studio di 200€ (Festival CF Young Talents)",
+                cat_d_p2_val: "Valore di 600€",
+                cat_d_p2_1: "&bull; Premio in denaro di 400€",
+                cat_d_p2_2: "&bull; Borsa di studio di 100€ (Festival CF Young Talents)",
+                cat_d_p2_3: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
+                cat_d_p3_val: "Valore di 200€",
+                cat_d_p3_1: "&bull; Borsa di studio di 100€ (Festival CF Young Talents)",
+                cat_d_p3_2: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
+                imf_paris_finals_1: "&bull; Accesso diretto alle Finali del Concorso IMF Paris",
+                imf_paris_finals_2: "&bull; Accesso diretto alle Finali del Concorso IMF Paris",
+                special_prizes_heading: "Premi Speciali",
+                special_prizes_sub: "Inviti Prestigiosi e Premi di Performance",
+                sp_1_title: "Premio Orchestra da Camera César Franck",
+                sp_1_desc: "I vincitori del 1° premio si esibiranno con l'orchestra diretta dal Maestro Vahan Mardirossian a Bruxelles, aprile 2027.",
+                sp_2_title: "Premio Piano Talents Milano",
+                sp_2_desc: "Concerto all'interno della stagione concertistica 2027 dell'Associazione PianoFriends Milano.",
+                sp_3_title: "Premio MozArte Aquisgrana",
+                sp_3_desc: "Opportunità di concerto nell'ambito della stagione concertistica 2026 del MozArte Festival Aachen.",
+                sp_4_title: "Premio Borsa di Studio Hotchkiss School",
+                sp_4_desc: "Concerto alla Carnegie Hall e retta parziale per i Summer Piano Portals (Gisele & Fabio Witkowski).",
+                sp_5_title: "Prix IMEP",
+                sp_5_desc: "Inviti a concerti per il Festival Pianistico Internazionale IMEP 2026, offerti da Guido Jardon.",
+                sp_6_title: "Premio Festival IMF Paris",
+                sp_6_desc: "Partecipazione a concerti all'interno della stagione 2026 del Festival IMF Paris.",
+                sp_7_title: "Music Without Limits Award",
+                sp_7_desc: "Partecipazione gratuita a masterclass, concorso e concerti a Druskininkai, Lituania.",
+                other_prizes: "Altri premi speciali saranno annunciati prossimamente"
+            },
+            es: {
+                nav_competition: "Concurso",
+                nav_rules: "Reglas",
+                nav_prizes: "Premios",
+                nav_application: "Inscripción",
+                nav_jury: "Jurado",
+                nav_laureates: "Laureados",
+                nav_masterclasses: "Clases Magistrales",
+                nav_winter: "Clase Magistral de Invierno",
+                nav_spring: "Clase Magistral de Primavera",
+                nav_volodos: "Clase Magistral Volodos",
+                nav_about: "Acerca de",
+                nav_about_label: "Acerca de",
+                nav_contact: "Contacto",
+                nav_legacy: "Legado",
+                nav_gallery: "Galería",
+                nav_media: "Medios",
+                nav_pictures: "Imágenes",
+                nav_home: "Volver al Inicio",
+                prizes_tag: "Premios y Laureados",
+                prizes_title: "Premios del Concurso",
+                prizes_subtitle: "Reconocimiento a la excelencia artística por categorías",
+                cat_a_heading: "Categoría A",
+                cat_b_heading: "Categoría B",
+                cat_c_heading: "Categoría C",
+                cat_d_heading: "Categoría D",
+                first_prize: "1er Premio",
+                second_prize: "2º Premio",
+                third_prize: "3er Premio",
+                cat_a_p1_val: "Valorado en 550€",
+                cat_a_p1_1: "&bull; Premio en efectivo de 100€",
+                cat_a_p1_2: "&bull; Concierto con orquesta en abril de 2027",
+                cat_a_p1_3: "&bull; Tarifa de 250€ por interpretación de concierto",
+                cat_a_p1_4: "&bull; Beca de 200€ (Festival CF Young Talents)",
+                cat_a_p2_val: "Valorado en 250€",
+                cat_a_p2_1: "&bull; Premio en efectivo de 50€",
+                cat_a_p2_2: "&bull; Beca de 100€ (Festival CF Young Talents)",
+                cat_a_p2_3: "&bull; Beca de 100€ (Masterclass IMF Paris)",
+                cat_a_p3_val: "Valorado en 100€",
+                cat_a_p3_1: "&bull; Beca de 100€ (Masterclass IMF Paris)",
+                cat_a_p3_2: "&bull; Invitación al Festival CF Young Talents 2027",
+                cat_b_p1_val: "Valorado en 650€",
+                cat_b_p1_1: "&bull; Premio en efectivo de 200€",
+                cat_b_p1_2: "&bull; Concierto con orquesta en abril de 2027",
+                cat_b_p1_3: "&bull; Tarifa de 250€ por interpretación de concierto",
+                cat_b_p1_4: "&bull; Beca de 200€ (Festival CF Young Talents)",
+                cat_b_p2_val: "Valorado en 280€",
+                cat_b_p2_1: "&bull; Premio en efectivo de 80€",
+                cat_b_p2_2: "&bull; Beca de 100€ (Festival CF Young Talents)",
+                cat_b_p2_3: "&bull; Beca de 100€ (Masterclass IMF Paris)",
+                cat_b_p3_val: "Valorado en 100€",
+                cat_b_p3_1: "&bull; Beca de 200€ (Festival CF Young Talents)",
+                cat_b_p3_2: "&bull; Invitación al Festival CF Young Talents 2027",
+                cat_c_p1_val: "Valorado en 750€",
+                cat_c_p1_1: "&bull; Premio en efectivo de 300€",
+                cat_c_p1_2: "&bull; Concierto con orquesta en abril de 2027",
+                cat_c_p1_3: "&bull; Tarifa de 250€ por interpretación de concierto",
+                cat_c_p1_4: "&bull; Beca de 200€ (Festival CF Young Talents)",
+                cat_c_p2_val: "Valorado en 320€",
+                cat_c_p2_1: "&bull; Premio en efectivo de 120€",
+                cat_c_p2_2: "&bull; Beca de 100€ (Festival CF Young Talents)",
+                cat_c_p2_3: "&bull; Beca de 100€ (Masterclass IMF Paris)",
+                cat_c_p3_val: "Valorado en 100€",
+                cat_c_p3_1: "&bull; Beca de 100€ (Masterclass IMF Paris)",
+                cat_c_p3_2: "&bull; Invitación al Festival CF Young Talents 2027",
+                cat_d_p1_val: "Valorado en 1450€",
+                cat_d_p1_1: "&bull; Premio en efectivo de 1000€",
+                cat_d_p1_2: "&bull; Concierto con orquesta en abril de 2027",
+                cat_d_p1_3: "&bull; Tarifa de 250€ por interpretación de concierto",
+                cat_d_p1_4: "&bull; Beca de 200€ (Festival CF Young Talents)",
+                cat_d_p2_val: "Valorado en 600€",
+                cat_d_p2_1: "&bull; Premio en efectivo de 400€",
+                cat_d_p2_2: "&bull; Beca de 100€ (Festival CF Young Talents)",
+                cat_d_p2_3: "&bull; Beca de 100€ (Masterclass IMF Paris)",
+                cat_d_p3_val: "Valorado en 200€",
+                cat_d_p3_1: "&bull; Beca de 100€ (Festival CF Young Talents)",
+                cat_d_p3_2: "&bull; Beca de 100€ (Masterclass IMF Paris)",
+                imf_paris_finals_1: "&bull; Acceso directo a las Finales del Concurso IMF Paris",
+                imf_paris_finals_2: "&bull; Acceso directo a las Finales del Concurso IMF Paris",
+                special_prizes_heading: "Premios Especiales",
+                special_prizes_sub: "Invitaciones Prestigosas y Premios de Interpretación",
+                sp_1_title: "Premio Orquesta de Cámara César Franck",
+                sp_1_desc: "Los ganadores del 1er premio actuarán con la orquesta dirigida por el Maestro Vahan Mardirossian en Bruselas, abril de 2027.",
+                sp_2_title: "Premio Piano Talents Milano",
+                sp_2_desc: "Concierto dentro de la temporada de conciertos 2027 de la Associazione PianoFriends Milano.",
+                sp_3_title: "Premio MozArte Aquisgrán",
+                sp_3_desc: "Oportunidad de concierto como parte de la temporada de conciertos 2026 del MozArte Festival Aachen.",
+                sp_4_title: "Premio Beca Hotchkiss School",
+                sp_4_desc: "Concierto en el Carnegie Hall y matrícula parcial para los Summer Piano Portals (Gisele & Fabio Witkowski).",
+                sp_5_title: "Prix IMEP",
+                sp_5_desc: "Invitaciones a conciertos para el Festival Internacional de Piano IMEP 2026, ofrecidas por Guido Jardon.",
+                sp_6_title: "Premio del Festival IMF Paris",
+                sp_6_desc: "Participación en conciertos dentro de la temporada 2026 del Festival IMF Paris.",
+                sp_7_title: "Music Without Limits Award",
+                sp_7_desc: "Participación gratuita en clases magistrales, concurso y conciertos en Druskininkai, Lituania.",
+                other_prizes: "Pronto se anunciarán otros premios especiales"
+            }
+        };
+
+        function setLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.getElementById('langMenu').classList.remove('active');
+            localStorage.setItem('cfipc_lang', lang);
+        }
 
         function handleNavClick(event, btn) {
             const menu = btn.nextElementSibling;
@@ -563,8 +1246,24 @@
             }
         }
 
-        window.addEventListener('click', () => {
+        function toggleLangMenu() {
+            const menu = document.getElementById('langMenu');
+            menu.classList.toggle('active');
+        }
+
+        window.onclick = (event) => {
             document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
+            if (!event.target.closest('.lang-widget-container')) {
+                document.getElementById('langMenu').classList.remove('active');
+            }
+        };
+
+        // Auto-load user preference if previously saved
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('cfipc_lang');
+            if (savedLang && translations[savedLang]) {
+                setLanguage(savedLang);
+            }
         });
     </script>
     <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ad3becddcd7249d19a31f20ef5fccc08"}'></script><!-- End Cloudflare Web Analytics -->
