@@ -172,6 +172,69 @@
             color: var(--forest);
         }
         .social-circle-footer svg { width: 22px; height: 22px; }
+
+        /* Custom Floating Language Widget Styling */
+        .lang-widget-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+        }
+        .lang-toggle-btn {
+            background-color: var(--forest);
+            color: var(--copper);
+            border: 1.5px solid var(--copper);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-toggle-btn:hover {
+            background-color: var(--copper);
+            color: var(--forest);
+            transform: scale(1.05);
+        }
+        .lang-dropdown-menu {
+            position: absolute;
+            bottom: 65px;
+            right: 0;
+            background: var(--parchment);
+            border: 1px solid rgba(212, 163, 115, 0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            padding: 0.5rem 0;
+            display: none;
+            min-width: 150px;
+        }
+        .lang-dropdown-menu.active {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+        .lang-option {
+            display: block;
+            width: 100%;
+            padding: 0.6rem 1rem;
+            text-align: left;
+            background: none;
+            border: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--forest);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-option:hover {
+            background: var(--forest);
+            color: var(--copper);
+        }
     </style>
 </head>
 <body>
@@ -184,34 +247,34 @@
         </div>
 
         <div class="mobile-group">
-            <span class="mobile-label">Competition</span>
-            <a href="https://cfipc.com/rules/" class="mobile-link">Rules</a>
-            <a href="https://cfipc.com/prizes/" class="mobile-link">Prizes</a>
-            <a href="https://cfipc.com/application/" class="mobile-link">Application</a>
-            <a href="https://cfipc.com/jury/" class="mobile-link">Jury</a>
-            <a href="https://cfipc.com/laureates/" class="mobile-link">Laureates</a>
+            <span class="mobile-label" data-i18n="nav_competition">Competition</span>
+            <a href="https://cfipc.com/rules/" class="mobile-link" data-i18n="nav_rules">Rules</a>
+            <a href="https://cfipc.com/prizes/" class="mobile-link" data-i18n="nav_prizes">Prizes</a>
+            <a href="https://cfipc.com/application/" class="mobile-link" data-i18n="nav_application">Application</a>
+            <a href="https://cfipc.com/jury/" class="mobile-link" data-i18n="nav_jury">Jury</a>
+            <a href="https://cfipc.com/laureates/" class="mobile-link" data-i18n="nav_laureates">Laureates</a>
         </div>
 
         <div class="mobile-group">
-            <span class="mobile-label">Masterclasses</span>
-            <a href="https://cfipc.com/winter-masterclass/" class="mobile-link">Winter Masterclass</a>
-            <a href="https://cfipc.com/spring-masterclass/" class="mobile-link">Spring Masterclass</a>
-            <a href="https://www.masterclass-volodos.com/" class="mobile-link">Volodos Masterclass</a>
+            <span class="mobile-label" data-i18n="nav_masterclasses">Masterclasses</span>
+            <a href="https://cfipc.com/winter-masterclass/" class="mobile-link" data-i18n="nav_winter">Winter Masterclass</a>
+            <a href="https://cfipc.com/spring-masterclass/" class="mobile-link" data-i18n="nav_spring">Spring Masterclass</a>
+            <a href="https://www.masterclass-volodos.com/" class="mobile-link" data-i18n="nav_volodos">Volodos Masterclass</a>
         </div>
 
         <div class="mobile-group">
-            <span class="mobile-label">Gallery</span>
-            <a href="https://cfipc.com/media/" class="mobile-link">Media</a>
-            <a href="https://cfipc.com/gallery/" class="mobile-link">Pictures</a>
+            <span class="mobile-label" data-i18n="nav_gallery">Gallery</span>
+            <a href="https://cfipc.com/media/" class="mobile-link" data-i18n="nav_media">Media</a>
+            <a href="https://cfipc.com/gallery/" class="mobile-link" data-i18n="nav_pictures">Pictures</a>
         </div>
 
         <div class="mobile-group">
-            <span class="mobile-label">About</span>
-            <a href="https://cfipc.com/contact/" class="mobile-link">Contact Us</a>
-            <a href="https://cfipc.com/about/" class="mobile-link">Legacy</a>
+            <span class="mobile-label" data-i18n="nav_about_label">About</span>
+            <a href="https://cfipc.com/contact/" class="mobile-link" data-i18n="nav_contact">Contact Us</a>
+            <a href="https://cfipc.com/about/" class="mobile-link" data-i18n="nav_legacy">Legacy</a>
         </div>
 
-        <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold text-decoration-none">Return to Home</a>
+        <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold text-decoration-none" data-i18n="nav_home">Return to Home</a>
     </div>
 
     <!-- Main Navigation Header -->
@@ -227,26 +290,26 @@
                     <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
                         <div class="dropdown-container">
                             <a href="https://cfipc.com/" class="nav-link" onclick="handleNavClick(event, this)">
-                                Competition 
+                                <span data-i18n="nav_competition">Competition</span> 
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/rules/" class="dropdown-item">Rules</a>
-                                <a href="https://cfipc.com/prizes/" class="dropdown-item">Prizes</a>
-                                <a href="https://cfipc.com/application/" class="dropdown-item">Application</a>
-                                <a href="https://cfipc.com/jury/" class="dropdown-item">Jury</a>
-                                <a href="https://cfipc.com/laureates/" class="dropdown-item">Laureates</a>
+                                <a href="https://cfipc.com/rules/" class="dropdown-item" data-i18n="nav_rules">Rules</a>
+                                <a href="https://cfipc.com/prizes/" class="dropdown-item" data-i18n="nav_prizes">Prizes</a>
+                                <a href="https://cfipc.com/application/" class="dropdown-item" data-i18n="nav_application">Application</a>
+                                <a href="https://cfipc.com/jury/" class="dropdown-item" data-i18n="nav_jury">Jury</a>
+                                <a href="https://cfipc.com/laureates/" class="dropdown-item" data-i18n="nav_laureates">Laureates</a>
                             </div>
                         </div>
                         <div class="dropdown-container">
                             <a href="https://cfipc.com/winter-masterclass/" class="nav-link" onclick="handleNavClick(event, this)">
-                                Masterclasses 
+                                <span data-i18n="nav_masterclasses">Masterclasses</span> 
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/winter-masterclass/" class="dropdown-item">Winter Masterclass</a>
-                                <a href="https://cfipc.com/spring-masterclass/" class="dropdown-item">Spring Masterclass</a>
-                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item">Volodos Masterclass</a>
+                                <a href="https://cfipc.com/winter-masterclass/" class="dropdown-item" data-i18n="nav_winter">Winter Masterclass</a>
+                                <a href="https://cfipc.com/spring-masterclass/" class="dropdown-item" data-i18n="nav_spring">Spring Masterclass</a>
+                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item" data-i18n="nav_volodos">Volodos Masterclass</a>
                             </div>
                         </div>
                     </div>
@@ -263,22 +326,22 @@
                     <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
                         <div class="dropdown-container">
                             <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
-                                About 
+                                <span data-i18n="nav_about">About</span> 
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/contact/" class="dropdown-item">Contact Us</a>
-                                <a href="https://cfipc.com/about/" class="dropdown-item">Legacy</a>
+                                <a href="https://cfipc.com/contact/" class="dropdown-item" data-i18n="nav_contact">Contact Us</a>
+                                <a href="https://cfipc.com/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
                             </div>
                         </div>
                         <div class="dropdown-container">
                             <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
-                                Gallery 
+                                <span data-i18n="nav_gallery">Gallery</span> 
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/media/" class="dropdown-item">Media</a>
-                                <a href="https://cfipc.com/gallery/" class="dropdown-item">Pictures</a>
+                                <a href="https://cfipc.com/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
+                                <a href="https://cfipc.com/gallery/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
                             </div>
                         </div>
                     </div>
@@ -291,93 +354,80 @@
         <section id="contact" class="page-section py-32 px-4 md:px-8">
             <div class="max-w-[1400px] mx-auto">
                 <div class="text-center mb-24">
-                    <h4 class="text-copper uppercase tracking-[0.4em] text-[10px] font-bold mb-4">Registration Portal</h4>
-                    <h2 class="text-5xl md:text-7xl serif italic text-forest">Application 2026</h2>
-                    <p class="text-copper font-bold uppercase tracking-[0.2em] text-[14px] mt-6">Deadline : November 1st, 2026</p>
+                    <h4 class="text-copper uppercase tracking-[0.4em] text-[10px] font-bold mb-4" data-i18n="portal_tag">Registration Portal</h4>
+                    <h2 class="text-5xl md:text-7xl serif italic text-forest" data-i18n="portal_title">Application 2026</h2>
+                    <p class="text-copper font-bold uppercase tracking-[0.2em] text-[14px] mt-6" data-i18n="portal_deadline">Deadline : November 1st, 2026</p>
                 </div>
 
                 <div class="mb-24 bg-white p-12 border border-forest/5 rounded-sm shadow-sm flex flex-col md:flex-row items-center justify-between gap-8">
                     <div>
-                        <h3 class="serif text-3xl italic text-forest mb-2">Required Documentation for Underage Participants</h3>
-                        <p class="text-stone-500 font-light">Contestants in Categories A, B, & C must submit a signed Parental Consent Form.</p>
+                        <h3 class="serif text-3xl italic text-forest mb-2" data-i18n="doc_heading">Required Documentation for Underage Participants</h3>
+                        <p class="text-stone-500 font-light" data-i18n="doc_sub">Contestants in Categories A, B, & C must submit a signed Parental Consent Form.</p>
                     </div>
                     <a href="https://e.pcloud.link/publink/show?code=XZ3mgGZ7nUTo0ILKHfCdsBUeUWnnugwckc7" target="_blank" class="btn-copper flex items-center gap-3 px-8 py-5 text-[10px] uppercase font-bold tracking-[0.3em] rounded-sm shadow-md">
                         <i data-lucide="download" class="w-4 h-4"></i>
-                        Download Parental Consent Form
+                        <span data-i18n="download_btn">Download Parental Consent Form</span>
                     </a>
                 </div>
 
                 <div class="mb-24">
-                    <h3 class="serif text-4xl italic mb-12 text-forest border-b border-forest/5 pb-4">Age Categories & Performance Timing</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                    <h3 class="serif text-4xl italic mb-12 text-forest border-b border-forest/5 pb-4" data-i18n="cats_heading">Age Categories & Performance Timing</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                         <div class="rules-card text-center min-h-[400px]">
-                            <h4 class="text-copper text-[12px] uppercase font-bold tracking-[0.2em] mb-4">Category A</h4>
-                            <p class="text-5xl serif mb-4 italic text-forest">10 & Under</p>
+                            <h4 class="text-copper text-[12px] uppercase font-bold tracking-[0.2em] mb-4" data-i18n="cat_a_title">Category A</h4>
+                            <p class="text-5xl serif mb-4 italic text-forest" data-i18n="cat_a_age">10 & Under</p>
                             <div class="space-y-3 pt-6 border-t border-forest/10">
-                                <p class="text-forest font-bold text-sm uppercase">Fee : €80</p>
+                                <p class="text-forest font-bold text-sm uppercase" data-i18n="cat_a_fee">Fee : €80</p>
                                 <div class="mt-6 pt-6 border-t border-forest/5 text-[12px] uppercase tracking-widest text-stone-500 font-semibold space-y-2">
-                                    <p class="flex justify-between"><span>Semi-Final :</span> <span class="text-forest">6 mins</span></p>
-                                    <p class="flex justify-between"><span>Finals :</span> <span class="text-forest">10 mins</span></p>
+                                    <p class="flex justify-between"><span data-i18n="semi_final">Semi-Final :</span> <span class="text-forest">6 mins</span></p>
+                                    <p class="flex justify-between"><span data-i18n="finals">Finals :</span> <span class="text-forest">10 mins</span></p>
                                 </div>
                             </div>
                         </div>
                         <div class="rules-card text-center min-h-[400px]">
-                            <h4 class="text-copper text-[12px] uppercase font-bold tracking-[0.2em] mb-4">Category B</h4>
-                            <p class="text-5xl serif mb-4 italic text-forest">11 - 13</p>
+                            <h4 class="text-copper text-[12px] uppercase font-bold tracking-[0.2em] mb-4" data-i18n="cat_b_title">Category B</h4>
+                            <p class="text-5xl serif mb-4 italic text-forest" data-i18n="cat_b_age">11 - 13</p>
                             <div class="space-y-3 pt-6 border-t border-forest/10">
-                                <p class="text-forest font-bold text-sm uppercase">Fee : €90</p>
+                                <p class="text-forest font-bold text-sm uppercase" data-i18n="cat_b_fee">Fee : €90</p>
                                 <div class="mt-6 pt-6 border-t border-forest/5 text-[12px] uppercase tracking-widest text-stone-500 font-semibold space-y-2">
-                                    <p class="flex justify-between"><span>Semi-Final :</span> <span class="text-forest">8 mins</span></p>
-                                    <p class="flex justify-between"><span>Finals :</span> <span class="text-forest">12 mins</span></p>
+                                    <p class="flex justify-between"><span data-i18n="semi_final">Semi-Final :</span> <span class="text-forest">8 mins</span></p>
+                                    <p class="flex justify-between"><span data-i18n="finals">Finals :</span> <span class="text-forest">12 mins</span></p>
                                 </div>
                             </div>
                         </div>
                         <div class="rules-card text-center min-h-[400px]">
-                            <h4 class="text-copper text-[12px] uppercase font-bold tracking-[0.2em] mb-4">Category C</h4>
-                            <p class="text-5xl serif mb-4 italic text-forest">14 - 16</p>
+                            <h4 class="text-copper text-[12px] uppercase font-bold tracking-[0.2em] mb-4" data-i18n="cat_c_title">Category C</h4>
+                            <p class="text-5xl serif mb-4 italic text-forest" data-i18n="cat_c_age">14 - 16</p>
                             <div class="space-y-3 pt-6 border-t border-forest/10">
-                                <p class="text-forest font-bold text-sm uppercase">Fee : €100</p>
+                                <p class="text-forest font-bold text-sm uppercase" data-i18n="cat_c_fee">Fee : €100</p>
                                 <div class="mt-6 pt-6 border-t border-forest/5 text-[12px] uppercase tracking-widest text-stone-500 font-semibold space-y-2">
-                                    <p class="flex justify-between"><span>Semi-Final :</span> <span class="text-forest">10 mins</span></p>
-                                    <p class="flex justify-between"><span>Finals :</span> <span class="text-forest">15 mins</span></p>
+                                    <p class="flex justify-between"><span data-i18n="semi_final">Semi-Final :</span> <span class="text-forest">10 mins</span></p>
+                                    <p class="flex justify-between"><span data-i18n="finals">Finals :</span> <span class="text-forest">15 mins</span></p>
                                 </div>
                             </div>
                         </div>
                         <div class="rules-card text-center min-h-[400px]">
-                            <h4 class="text-copper text-[12px] uppercase font-bold tracking-[0.2em] mb-4">Category D</h4>
-                            <p class="text-5xl serif mb-4 italic text-forest">17 - 21</p>
+                            <h4 class="text-copper text-[12px] uppercase font-bold tracking-[0.2em] mb-4" data-i18n="cat_d_title">Category D</h4>
+                            <p class="text-5xl serif mb-4 italic text-forest" data-i18n="cat_d_age">17 - 21</p>
                             <div class="space-y-3 pt-6 border-t border-forest/10">
-                                <p class="text-forest font-bold text-sm uppercase">Fee : €110</p>
+                                <p class="text-forest font-bold text-sm uppercase" data-i18n="cat_d_fee">Fee : €110</p>
                                 <div class="mt-6 pt-6 border-t border-forest/5 text-[12px] uppercase tracking-widest text-stone-500 font-semibold space-y-2">
-                                    <p class="flex justify-between"><span>Semi-Final :</span> <span class="text-forest">15 mins</span></p>
-                                    <p class="flex justify-between"><span>Finals :</span> <span class="text-forest">30 mins</span></p>
+                                    <p class="flex justify-between"><span data-i18n="semi_final">Semi-Final :</span> <span class="text-forest">15 mins</span></p>
+                                    <p class="flex justify-between"><span data-i18n="finals">Finals :</span> <span class="text-forest">30 mins</span></p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="bg-white p-10 border-l-4 border-copper shadow-sm">
-                            <h5 class="serif text-2xl italic mb-6">Bank Transfer Details</h5>
-                            <div class="space-y-3 text-sm text-stone-600 font-light">
-                                <p><span class="font-bold text-forest uppercase text-[10px]">Account Name :</span> CFIPC</p>
-                                <p><span class="font-bold text-forest uppercase text-[10px]">Bank :</span> BNP Paribas Fortis</p>
-                                <p><span class="font-bold text-forest uppercase text-[10px]">IBAN :</span> BE28 0016 9098 3620</p>
-                                <p><span class="font-bold text-forest uppercase text-[10px]">BIC :</span> GEBABEBB</p>
-                                <div class="pt-4 text-forest font-bold text-xs uppercase tracking-widest">Address :</div>
-                                <p>Lijsterbessenbomenlaan 6, Kraainem 1950, BELGIUM</p>
-                            </div>
-                        </div>
-                        <div class="bg-white p-10 border-l-4 border-forest shadow-sm">
-                            <h5 class="serif text-2xl italic mb-6">PayPal Alternative</h5>
-                            <p class="text-sm text-stone-600 mb-6 font-light">Pay via PayPal to <span class="font-bold">office@cfipc.com</span>.</p>
-                            <p class="text-xs italic text-stone-400">Note : There is a 5€ surcharge for PayPal transfers.</p>
-                        </div>
+                    <!-- Payment Information Note -->
+                    <div class="bg-white p-8 border-l-4 border-copper shadow-sm text-sm text-stone-700 font-light space-y-3">
+                        <p data-i18n="payment_info_1">Payment will be requested on the last step of the application, and it can be done by Mastercard, Visa, American Express, and Discover.</p>
+                        <p data-i18n="payment_info_2">If you have problems with the payment, please contact directly <a href="mailto:office@cfipc.com" class="text-forest font-bold underline">office@cfipc.com</a> who will offer bank transfer information.</p>
                     </div>
                 </div>
 
                 <div class="mb-32">
-                    <h3 class="serif text-4xl italic mb-12 text-forest border-b border-forest/5 pb-4">Application Form</h3>
+                    <h3 class="serif text-4xl italic mb-12 text-forest border-b border-forest/5 pb-4" data-i18n="form_heading">Application Form</h3>
                     <div class="bg-white p-4 md:p-8 rounded-sm shadow-xl border border-forest/5">
                         <div style="width:100%; height:600px;" data-fillout-id="oXJB2kADFMus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
                         <script src="https://server.fillout.com/embed/v1/"></script>
@@ -405,8 +455,303 @@
         </div>
     </footer>
 
+    <!-- CUSTOM FLOATING LANGUAGE WIDGET -->
+    <div class="lang-widget-container">
+        <div class="lang-dropdown-menu" id="langMenu">
+            <button class="lang-option" onclick="setLanguage('en')">English</button>
+            <button class="lang-option" onclick="setLanguage('fr')">Français</button>
+            <button class="lang-option" onclick="setLanguage('nl')">Nederlands</button>
+            <button class="lang-option" onclick="setLanguage('de')">Deutsch</button>
+            <button class="lang-option" onclick="setLanguage('it')">Italiano</button>
+            <button class="lang-option" onclick="setLanguage('es')">Español</button>
+        </div>
+        <button class="lang-toggle-btn" onclick="toggleLangMenu()" aria-label="Change Language">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </button>
+    </div>
+
     <script>
         lucide.createIcons();
+
+        // Professional Translations Dictionary for Application Page
+        const translations = {
+            en: {
+                nav_competition: "Competition",
+                nav_rules: "Rules",
+                nav_prizes: "Prizes",
+                nav_application: "Application",
+                nav_jury: "Jury",
+                nav_laureates: "Laureates",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Winter Masterclass",
+                nav_spring: "Spring Masterclass",
+                nav_volodos: "Volodos Masterclass",
+                nav_about: "About",
+                nav_about_label: "About",
+                nav_contact: "Contact Us",
+                nav_legacy: "Legacy",
+                nav_gallery: "Gallery",
+                nav_media: "Media",
+                nav_pictures: "Pictures",
+                nav_home: "Return to Home",
+                portal_tag: "Registration Portal",
+                portal_title: "Application 2026",
+                portal_deadline: "Deadline : November 1st, 2026",
+                doc_heading: "Required Documentation for Underage Participants",
+                doc_sub: "Contestants in Categories A, B, & C must submit a signed Parental Consent Form.",
+                download_btn: "Download Parental Consent Form",
+                cats_heading: "Age Categories & Performance Timing",
+                cat_a_title: "Category A",
+                cat_a_age: "10 & Under",
+                cat_a_fee: "Fee : €80",
+                cat_b_title: "Category B",
+                cat_b_age: "11 - 13",
+                cat_b_fee: "Fee : €90",
+                cat_c_title: "Category C",
+                cat_c_age: "14 - 16",
+                cat_c_fee: "Fee : €100",
+                cat_d_title: "Category D",
+                cat_d_age: "17 - 21",
+                cat_d_fee: "Fee : €110",
+                semi_final: "Semi-Final :",
+                finals: "Finals :",
+                payment_info_1: "Payment will be requested on the last step of the application, and it can be done by Mastercard, Visa, American Express, and Discover.",
+                payment_info_2: "If you have problems with the payment, please contact directly office@cfipc.com who will offer bank transfer information.",
+                form_heading: "Application Form"
+            },
+            fr: {
+                nav_competition: "Concours",
+                nav_rules: "Règlement",
+                nav_prizes: "Prix",
+                nav_application: "Inscription",
+                nav_jury: "Jury",
+                nav_laureates: "Lauréats",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Masterclass d'Hiver",
+                nav_spring: "Masterclass de Printemps",
+                nav_volodos: "Masterclass Volodos",
+                nav_about: "À propos",
+                nav_about_label: "À propos",
+                nav_contact: "Contactez-nous",
+                nav_legacy: "Héritage",
+                nav_gallery: "Galerie",
+                nav_media: "Médias",
+                nav_pictures: "Photos",
+                nav_home: "Retour à l'accueil",
+                portal_tag: "Portail d'Inscription",
+                portal_title: "Candidature 2026",
+                portal_deadline: "Date limite : 1er novembre 2026",
+                doc_heading: "Documentation requise pour les participants mineurs",
+                doc_sub: "Les candidats des catégories A, B et C doivent soumettre un formulaire d'autorisation parentale signé.",
+                download_btn: "Télécharger le formulaire d'autorisation parentale",
+                cats_heading: "Catégories d'âge et durée des prestations",
+                cat_a_title: "Catégorie A",
+                cat_a_age: "10 ans et moins",
+                cat_a_fee: "Frais : €80",
+                cat_b_title: "Catégorie B",
+                cat_b_age: "11 - 13",
+                cat_b_fee: "Frais : €90",
+                cat_c_title: "Catégorie C",
+                cat_c_age: "14 - 16",
+                cat_c_fee: "Frais : €100",
+                cat_d_title: "Catégorie D",
+                cat_d_age: "17 - 21",
+                cat_d_fee: "Frais : €110",
+                semi_final: "Demi-finale :",
+                finals: "Finales :",
+                payment_info_1: "Le paiement sera demandé lors de la dernière étape de la candidature et pourra être effectué par Mastercard, Visa, American Express et Discover.",
+                payment_info_2: "Si vous rencontrez des problèmes de paiement, veuillez contacter directement office@cfipc.com qui vous fournira les informations pour un virement bancaire.",
+                form_heading: "Formulaire de Candidature"
+            },
+            nl: {
+                nav_competition: "Competitie",
+                nav_rules: "Reglement",
+                nav_prizes: "Prijzen",
+                nav_application: "Inschrijving",
+                nav_jury: "Jury",
+                nav_laureates: "Laureaten",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Winter Masterclass",
+                nav_spring: "Lente Masterclass",
+                nav_volodos: "Volodos Masterclass",
+                nav_about: "Over Ons",
+                nav_about_label: "Over Ons",
+                nav_contact: "Contact",
+                nav_legacy: "Erfenis",
+                nav_gallery: "Gallerij",
+                nav_media: "Media",
+                nav_pictures: "Foto's",
+                nav_home: "Terug naar Home",
+                portal_tag: "Inschrijvingsportaal",
+                portal_title: "Aanmelding 2026",
+                portal_deadline: "Deadline : 1 november 2026",
+                doc_heading: "Vereiste documentatie voor minderjarige deelnemers",
+                doc_sub: "Deelnemers in categorie A, B en C moeten een ondertekend ouderlijk toestemmingsformulier indienen.",
+                download_btn: "Download ouderlijk toestemmingsformulier",
+                cats_heading: "Leeftijdscategorieën & Speelduur",
+                cat_a_title: "Categorie A",
+                cat_a_age: "10 & jonger",
+                cat_a_fee: "Inschrijfgeld : €80",
+                cat_b_title: "Categorie B",
+                cat_b_age: "11 - 13",
+                cat_b_fee: "Inschrijfgeld : €90",
+                cat_c_title: "Categorie C",
+                cat_c_age: "14 - 16",
+                cat_c_fee: "Inschrijfgeld : €100",
+                cat_d_title: "Categorie D",
+                cat_d_age: "17 - 21",
+                cat_d_fee: "Inschrijfgeld : €110",
+                semi_final: "Halve finale :",
+                finals: "Finales :",
+                payment_info_1: "Betaling wordt gevraagd bij de laatste stap van de aanvraag en kan worden voldaan via Mastercard, Visa, American Express en Discover.",
+                payment_info_2: "Bij betalingsproblemen kunt u rechtstreeks contact opnemen met office@cfipc.com voor bankoverschrijvingsgegevens.",
+                form_heading: "Inschrijvingsformulier"
+            },
+            de: {
+                nav_competition: "Wettbewerb",
+                nav_rules: "Regeln",
+                nav_prizes: "Preise",
+                nav_application: "Bewerbung",
+                nav_jury: "Jury",
+                nav_laureates: "Preisträger",
+                nav_masterclasses: "Meisterkurse",
+                nav_winter: "Winter-Meisterkurs",
+                nav_spring: "Frühlings-Meisterkurs",
+                nav_volodos: "Volodos Meisterkurs",
+                nav_about: "Über Uns",
+                nav_about_label: "Über Uns",
+                nav_contact: "Kontakt",
+                nav_legacy: "Vermächtnis",
+                nav_gallery: "Galerie",
+                nav_media: "Medien",
+                nav_pictures: "Bilder",
+                nav_home: "Zur Startseite",
+                portal_tag: "Anmeldeportal",
+                portal_title: "Bewerbung 2026",
+                portal_deadline: "Frist : 1. November 2026",
+                doc_heading: "Erforderliche Dokumente für minderjährige Teilnehmer",
+                doc_sub: "Teilnehmer der Kategorien A, B und C müssen ein unterschriebenes Elterneinverständnis einreichen.",
+                download_btn: "Einverständniserklärung herunterladen",
+                cats_heading: "Alterskategorien & Programmdauer",
+                cat_a_title: "Kategorie A",
+                cat_a_age: "10 & jünger",
+                cat_a_fee: "Gebühr : €80",
+                cat_b_title: "Kategorie B",
+                cat_b_age: "11 - 13",
+                cat_b_fee: "Gebühr : €90",
+                cat_c_title: "Kategorie C",
+                cat_c_age: "14 - 16",
+                cat_c_fee: "Gebühr : €100",
+                cat_d_title: "Kategorie D",
+                cat_d_age: "17 - 21",
+                cat_d_fee: "Gebühr : €110",
+                semi_final: "Halbfinale :",
+                finals: "Finale :",
+                payment_info_1: "Die Zahlung wird im letzten Schritt der Bewerbung angefordert und kann per Mastercard, Visa, American Express und Discover erfolgen.",
+                payment_info_2: "Bei Zahlungsproblemen wenden Sie sich bitte direkt an office@cfipc.com, um Banküberweisungsinformationen zu erhalten.",
+                form_heading: "Anmeldeformular"
+            },
+            it: {
+                nav_competition: "Concorso",
+                nav_rules: "Regolamento",
+                nav_prizes: "Premi",
+                nav_application: "Iscrizione",
+                nav_jury: "Giuria",
+                nav_laureates: "Vincitori",
+                nav_masterclasses: "Masterclass",
+                nav_winter: "Masterclass Invernale",
+                nav_spring: "Masterclass Primaverile",
+                nav_volodos: "Masterclass Volodos",
+                nav_about: "Chi Siamo",
+                nav_about_label: "Chi Siamo",
+                nav_contact: "Contatti",
+                nav_legacy: "Eredità",
+                nav_gallery: "Galleria",
+                nav_media: "Media",
+                nav_pictures: "Foto",
+                nav_home: "Torna alla Home",
+                portal_tag: "Portale di Registrazione",
+                portal_title: "Candidatura 2026",
+                portal_deadline: "Scadenza : 1° novembre 2026",
+                doc_heading: "Documentazione richiesta per i partecipanti minorenni",
+                doc_sub: "I concorrenti delle categorie A, B e C devono presentare un modulo di consenso genitoriale firmato.",
+                download_btn: "Scarica modulo di consenso genitoriale",
+                cats_heading: "Categorie d'età e durata delle esibizioni",
+                cat_a_title: "Categoria A",
+                cat_a_age: "10 anni e meno",
+                cat_a_fee: "Quota : €80",
+                cat_b_title: "Categoria B",
+                cat_b_age: "11 - 13",
+                cat_b_fee: "Quota : €90",
+                cat_c_title: "Categoria C",
+                cat_c_age: "14 - 16",
+                cat_c_fee: "Quota : €100",
+                cat_d_title: "Categoria D",
+                cat_d_age: "17 - 21",
+                cat_d_fee: "Quota : €110",
+                semi_final: "Semifinale :",
+                finals: "Finali :",
+                payment_info_1: "Il pagamento verrà richiesto nell'ultimo passaggio della candidatura e potrà essere effettuato tramite Mastercard, Visa, American Express e Discover.",
+                payment_info_2: "In caso di problemi con il pagamento, si prega di contattare direttamente office@cfipc.com che fornirà le informazioni per il bonifico bancario.",
+                form_heading: "Modulo di Domanda"
+            },
+            es: {
+                nav_competition: "Concurso",
+                nav_rules: "Reglas",
+                nav_prizes: "Premios",
+                nav_application: "Inscripción",
+                nav_jury: "Jurado",
+                nav_laureates: "Laureados",
+                nav_masterclasses: "Clases Magistrales",
+                nav_winter: "Clase Magistral de Invierno",
+                nav_spring: "Clase Magistral de Primavera",
+                nav_volodos: "Clase Magistral Volodos",
+                nav_about: "Acerca de",
+                nav_about_label: "Acerca de",
+                nav_contact: "Contacto",
+                nav_legacy: "Legado",
+                nav_gallery: "Galería",
+                nav_media: "Medios",
+                nav_pictures: "Imágenes",
+                nav_home: "Volver al Inicio",
+                portal_tag: "Portal de Inscripción",
+                portal_title: "Solicitud 2026",
+                portal_deadline: "Fecha límite : 1 de noviembre de 2026",
+                doc_heading: "Documentación requerida para participantes menores de edad",
+                doc_sub: "Los concursantes de las categorías A, B y C deben presentar un formulario de consentimiento parental firmado.",
+                download_btn: "Descargar formulario de consentimiento parental",
+                cats_heading: "Categorías de edad y duración de la interpretación",
+                cat_a_title: "Categoría A",
+                cat_a_age: "10 y menos",
+                cat_a_fee: "Cuota : €80",
+                cat_b_title: "Categoría B",
+                cat_b_age: "11 - 13",
+                cat_b_fee: "Cuota : €90",
+                cat_c_title: "Categoría C",
+                cat_c_age: "14 - 16",
+                cat_c_fee: "Cuota : €100",
+                cat_d_title: "Categoría D",
+                cat_d_age: "17 - 21",
+                cat_d_fee: "Cuota : €110",
+                semi_final: "Semifinal :",
+                finals: "Finales :",
+                payment_info_1: "El pago se solicitará en el último paso de la solicitud y se puede realizar mediante Mastercard, Visa, American Express y Discover.",
+                payment_info_2: "Si tiene problemas con el pago, comuníquese directamente con office@cfipc.com, quien le ofrecerá información sobre transferencia bancaria.",
+                form_heading: "Formulario de Solicitud"
+            }
+        };
+
+        function setLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.getElementById('langMenu').classList.remove('active');
+            localStorage.setItem('cfipc_lang', lang);
+        }
 
         function handleNavClick(event, btn) {
             const menu = btn.nextElementSibling;
@@ -436,7 +781,25 @@
             }
         }
 
-        window.onclick = () => document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
+        function toggleLangMenu() {
+            const menu = document.getElementById('langMenu');
+            menu.classList.toggle('active');
+        }
+
+        window.onclick = (event) => {
+            document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
+            if (!event.target.closest('.lang-widget-container')) {
+                document.getElementById('langMenu').classList.remove('active');
+            }
+        };
+
+        // Auto-load user preference if previously saved
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('cfipc_lang');
+            if (savedLang && translations[savedLang]) {
+                setLanguage(savedLang);
+            }
+        });
     </script>
     <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ad3becddcd7249d19a31f20ef5fccc08"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
