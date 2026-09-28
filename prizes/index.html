@@ -146,6 +146,9 @@
             height: 100%;
             transition: all 0.3s ease;
             border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .prize-column-box:hover {
             background: rgba(255, 255, 255, 0.6);
@@ -187,7 +190,6 @@
         }
         .social-circle-footer svg { width: 22px; height: 22px; }
 
-        /* Custom Floating Language Widget Styling */
         .lang-widget-container {
             position: fixed;
             bottom: 2rem;
@@ -253,7 +255,6 @@
 </head>
 <body>
 
-    <!-- Mobile Navigation Overlay -->
     <div id="mobile-nav-overlay">
         <div class="flex justify-between items-center mb-12">
             <span class="serif italic text-2xl text-parchment">Menu</span>
@@ -285,7 +286,6 @@
         <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold text-decoration-none" data-i18n="nav_home">Return to Home</a>
     </div>
 
-    <!-- Main Navigation Header -->
     <nav class="fixed w-full z-50 bg-[#F2F0E9]/95 backdrop-blur-md border-b border-forest/5">
         <div class="max-w-[1600px] mx-auto px-4 md:px-8">
             <div class="flex justify-between items-center h-32 md:h-48">
@@ -364,80 +364,51 @@
                     <p class="text-stone-400 uppercase tracking-widest text-[11px] mt-6" data-i18n="prizes_subtitle">Recognizing Artistic Excellence across Categories</p>
                 </div>
 
-                <!-- CATEGORY A PRIZES -->
+                <!-- CATEGORY D PRIZES -->
                 <div class="mb-32">
                     <div class="flex items-center gap-6 mb-12">
-                        <h3 class="serif text-5xl italic text-forest" data-i18n="cat_a_heading">Category A</h3>
+                        <h3 class="serif text-5xl italic text-forest" data-i18n="cat_d_heading">Category D</h3>
                         <div class="h-[1px] flex-grow bg-forest/5"></div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="first_prize">1st Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_a_p1_val">Valued at 550€</p>
-                            <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li data-i18n="cat_a_p1_1">&bull; €100 cash prize</li>
-                                <li data-i18n="cat_a_p1_2">&bull; Concert with orchestra in April 2027</li>
-                                <li data-i18n="cat_a_p1_3">&bull; €250 fee for concerto performance</li>
-                                <li data-i18n="cat_a_p1_4">&bull; €200 Scholarship (CF Young Talents Festival)</li>
-                                <li data-i18n="imf_paris_finals_1">&bull; Direct access to the Finals of IMF Paris Competition</li>
-                            </ul>
+                            <div>
+                                <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="first_prize">1st Prize</h5>
+                                <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_d_p1_val">Valued at 2000€</p>
+                                <ul class="text-sm space-y-4 text-stone-600 font-light">
+                                    <li data-i18n="cat_d_p1_1">&bull; €1000 cash prize</li>
+                                    <li data-i18n="cat_d_p1_2">&bull; Concert with orchestra in October 2027 during the "CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027"</li>
+                                    <li data-i18n="cat_d_p1_3">&bull; €250 fee for concerto performance</li>
+                                    <li data-i18n="cat_d_p1_4">&bull; €200 Scholarship (CF Young Talents Festival)</li>
+                                    <li data-i18n="cat_d_paid_concert">&bull; Paid concert (650 eur*)</li>
+                                    <li data-i18n="imf_paris_finals_1">&bull; Direct access to the Finals of IMF Paris Competition (for candidates wishing to participate)</li>
+                                </ul>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-forest/10 text-[10px] text-stone-500 italic" data-i18n="asterisk_note_d">*Subject to confirmation by the concert organizer; amounts reflect previous editions and are subject to change.</div>
                         </div>
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="second_prize">2nd Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_a_p2_val">Valued at 250€</p>
-                            <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li data-i18n="cat_a_p2_1">&bull; €50 cash prize</li>
-                                <li data-i18n="cat_a_p2_2">&bull; €100 Scholarship (CF Young Talents Festival)</li>
-                                <li data-i18n="cat_a_p2_3">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
-                                <li data-i18n="imf_paris_finals_2">&bull; Direct access to the Finals of IMF Paris Competition</li>
-                            </ul>
+                            <div>
+                                <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="second_prize">2nd Prize</h5>
+                                <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_d_p2_val">Valued at 600€</p>
+                                <ul class="text-sm space-y-4 text-stone-600 font-light">
+                                    <li data-i18n="cat_d_p2_1">&bull; €400 cash prize</li>
+                                    <li data-i18n="cat_d_p2_2">&bull; €100 Scholarship (CF Young Talents Festival)</li>
+                                    <li data-i18n="cat_d_p2_3">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                    <li data-i18n="imf_paris_finals_2">&bull; Direct access to the Finals of IMF Paris Competition (for candidates wishing to participate)</li>
+                                </ul>
+                            </div>
+                            <div></div>
                         </div>
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="third_prize">3rd Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_a_p3_val">Valued at 100€</p>
-                            <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li data-i18n="cat_a_p3_1">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
-                                <li data-i18n="cat_a_p3_2">&bull; Invitation to CF Young Talents Festival 2027</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CATEGORY B PRIZES -->
-                <div class="mb-32">
-                    <div class="flex items-center gap-6 mb-12">
-                        <h3 class="serif text-5xl italic text-forest" data-i18n="cat_b_heading">Category B</h3>
-                        <div class="h-[1px] flex-grow bg-forest/5"></div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="first_prize">1st Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_b_p1_val">Valued at 650€</p>
-                            <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li data-i18n="cat_b_p1_1">&bull; €200 cash prize</li>
-                                <li data-i18n="cat_b_p1_2">&bull; Concert with orchestra in April 2027</li>
-                                <li data-i18n="cat_b_p1_3">&bull; €250 fee for concerto performance</li>
-                                <li data-i18n="cat_b_p1_4">&bull; €200 Scholarship (CF Young Talents Festival)</li>
-                                <li data-i18n="imf_paris_finals_1">&bull; Direct access to the Finals of IMF Paris Competition</li>
-                            </ul>
-                        </div>
-                        <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="second_prize">2nd Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_b_p2_val">Valued at 280€</p>
-                            <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li data-i18n="cat_b_p2_1">&bull; €80 cash prize</li>
-                                <li data-i18n="cat_b_p2_2">&bull; €100 Scholarship (CF Young Talents Festival)</li>
-                                <li data-i18n="cat_b_p2_3">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
-                                <li data-i18n="imf_paris_finals_2">&bull; Direct access to the Finals of IMF Paris Competition</li>
-                            </ul>
-                        </div>
-                        <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="third_prize">3rd Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_b_p3_val">Valued at 100€</p>
-                            <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li data-i18n="cat_b_p3_1">&bull; €200 Scholarship (CF Young Talents Festival)</li>
-                                <li data-i18n="cat_b_p3_2">&bull; Invitation to CF Young Talents Festival 2027</li>
-                            </ul>
+                            <div>
+                                <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="third_prize">3rd Prize</h5>
+                                <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_d_p3_val">Valued at 200€</p>
+                                <ul class="text-sm space-y-4 text-stone-600 font-light">
+                                    <li data-i18n="cat_d_p3_1">&bull; €100 Scholarship (CF Young Talents Festival)</li>
+                                    <li data-i18n="cat_d_p3_2">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                </ul>
+                            </div>
+                            <div></div>
                         </div>
                     </div>
                 </div>
@@ -450,72 +421,139 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="first_prize">1st Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_c_p1_val">Valued at 750€</p>
-                            <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li data-i18n="cat_c_p1_1">&bull; €300 cash prize</li>
-                                <li data-i18n="cat_c_p1_2">&bull; Concert with orchestra in April 2027</li>
-                                <li data-i18n="cat_c_p1_3">&bull; €250 fee for concerto performance</li>
-                                <li data-i18n="cat_c_p1_4">&bull; €200 Scholarship (CF Young Talents Festival)</li>
-                                <li data-i18n="imf_paris_finals_1">&bull; Direct access to the Finals of IMF Paris Competition</li>
-                            </ul>
+                            <div>
+                                <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="first_prize">1st Prize</h5>
+                                <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_c_p1_val">Valued at 1400€</p>
+                                <ul class="text-sm space-y-4 text-stone-600 font-light">
+                                    <li data-i18n="cat_c_p1_1">&bull; €300 cash prize</li>
+                                    <li data-i18n="cat_c_p1_2">&bull; Concert with orchestra in October 2027 during the "CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027"</li>
+                                    <li data-i18n="cat_c_p1_3">&bull; €250 fee for concerto performance</li>
+                                    <li data-i18n="cat_c_p1_4">&bull; €200 Scholarship (CF Young Talents Festival)</li>
+                                    <li data-i18n="cat_c_paid_concert">&bull; Paid concert (650 eur*)</li>
+                                    <li data-i18n="imf_paris_finals_1">&bull; Direct access to the Finals of IMF Paris Competition (for candidates wishing to participate)</li>
+                                </ul>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-forest/10 text-[10px] text-stone-500 italic" data-i18n="asterisk_note_c">*Subject to confirmation by the concert organizer; amounts reflect previous editions and are subject to change.</div>
                         </div>
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="second_prize">2nd Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_c_p2_val">Valued at 320€</p>
-                            <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li data-i18n="cat_c_p2_1">&bull; €120 cash prize</li>
-                                <li data-i18n="cat_c_p2_2">&bull; €100 Scholarship (CF Young Talents Festival)</li>
-                                <li data-i18n="cat_c_p2_3">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
-                                <li data-i18n="imf_paris_finals_2">&bull; Direct access to the Finals of IMF Paris Competition</li>
-                            </ul>
+                            <div>
+                                <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="second_prize">2nd Prize</h5>
+                                <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_c_p2_val">Valued at 320€</p>
+                                <ul class="text-sm space-y-4 text-stone-600 font-light">
+                                    <li data-i18n="cat_c_p2_1">&bull; €120 cash prize</li>
+                                    <li data-i18n="cat_c_p2_2">&bull; €100 Scholarship (CF Young Talents Festival)</li>
+                                    <li data-i18n="cat_c_p2_3">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                    <li data-i18n="imf_paris_finals_2">&bull; Direct access to the Finals of IMF Paris Competition (for candidates wishing to participate)</li>
+                                </ul>
+                            </div>
+                            <div></div>
                         </div>
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="third_prize">3rd Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_c_p3_val">Valued at 100€</p>
-                            <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li data-i18n="cat_c_p3_1">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
-                                <li data-i18n="cat_c_p3_2">&bull; Invitation to CF Young Talents Festival 2027</li>
-                            </ul>
+                            <div>
+                                <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="third_prize">3rd Prize</h5>
+                                <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_c_p3_val">Valued at 100€</p>
+                                <ul class="text-sm space-y-4 text-stone-600 font-light">
+                                    <li data-i18n="cat_c_p3_1">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                    <li data-i18n="cat_c_p3_2">&bull; Invitation to CF Young Talents Festival 2027</li>
+                                </ul>
+                            </div>
+                            <div></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- CATEGORY D PRIZES -->
+                <!-- CATEGORY B PRIZES -->
                 <div class="mb-32">
                     <div class="flex items-center gap-6 mb-12">
-                        <h3 class="serif text-5xl italic text-forest" data-i18n="cat_d_heading">Category D</h3>
+                        <h3 class="serif text-5xl italic text-forest" data-i18n="cat_b_heading">Category B</h3>
                         <div class="h-[1px] flex-grow bg-forest/5"></div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="first_prize">1st Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_d_p1_val">Valued at 1450€</p>
-                            <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li data-i18n="cat_d_p1_1">&bull; €1000 cash prize</li>
-                                <li data-i18n="cat_d_p1_2">&bull; Concert with orchestra in April 2027</li>
-                                <li data-i18n="cat_d_p1_3">&bull; €250 fee for concerto performance</li>
-                                <li data-i18n="cat_d_p1_4">&bull; €200 Scholarship (CF Young Talents Festival)</li>
-                                <li data-i18n="imf_paris_finals_1">&bull; Direct access to the Finals of IMF Paris Competition</li>
-                            </ul>
+                            <div>
+                                <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="first_prize">1st Prize</h5>
+                                <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_b_p1_val">Valued at 650€</p>
+                                <ul class="text-sm space-y-4 text-stone-600 font-light">
+                                    <li data-i18n="cat_b_p1_1">&bull; €200 cash prize</li>
+                                    <li data-i18n="cat_b_p1_2">&bull; Concert with orchestra in October 2027 during the "CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027"</li>
+                                    <li data-i18n="cat_b_p1_3">&bull; €250 fee for concerto performance</li>
+                                    <li data-i18n="cat_b_p1_4">&bull; €200 Scholarship (CF Young Talents Festival)</li>
+                                    <li data-i18n="imf_paris_finals_1">&bull; Direct access to the Finals of IMF Paris Competition (for candidates wishing to participate)</li>
+                                </ul>
+                            </div>
+                            <div></div>
                         </div>
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="second_prize">2nd Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_d_p2_val">Valued at 600€</p>
-                            <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li data-i18n="cat_d_p2_1">&bull; €400 cash prize</li>
-                                <li data-i18n="cat_d_p2_2">&bull; €100 Scholarship (CF Young Talents Festival)</li>
-                                <li data-i18n="cat_d_p2_3">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
-                                <li data-i18n="imf_paris_finals_2">&bull; Direct access to the Finals of IMF Paris Competition</li>
-                            </ul>
+                            <div>
+                                <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="second_prize">2nd Prize</h5>
+                                <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_b_p2_val">Valued at 280€</p>
+                                <ul class="text-sm space-y-4 text-stone-600 font-light">
+                                    <li data-i18n="cat_b_p2_1">&bull; €80 cash prize</li>
+                                    <li data-i18n="cat_b_p2_2">&bull; €100 Scholarship (CF Young Talents Festival)</li>
+                                    <li data-i18n="cat_b_p2_3">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                    <li data-i18n="imf_paris_finals_2">&bull; Direct access to the Finals of IMF Paris Competition (for candidates wishing to participate)</li>
+                                </ul>
+                            </div>
+                            <div></div>
                         </div>
                         <div class="prize-column-box">
-                            <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="third_prize">3rd Prize</h5>
-                            <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_d_p3_val">Valued at 200€</p>
-                            <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                <li data-i18n="cat_d_p3_1">&bull; €100 Scholarship (CF Young Talents Festival)</li>
-                                <li data-i18n="cat_d_p3_2">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
-                            </ul>
+                            <div>
+                                <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="third_prize">3rd Prize</h5>
+                                <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_b_p3_val">Valued at 100€</p>
+                                <ul class="text-sm space-y-4 text-stone-600 font-light">
+                                    <li data-i18n="cat_b_p3_1">&bull; €200 Scholarship (CF Young Talents Festival)</li>
+                                    <li data-i18n="cat_b_p3_2">&bull; Invitation to CF Young Talents Festival 2027</li>
+                                </ul>
+                            </div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORY A PRIZES -->
+                <div class="mb-32">
+                    <div class="flex items-center gap-6 mb-12">
+                        <h3 class="serif text-5xl italic text-forest" data-i18n="cat_a_heading">Category A</h3>
+                        <div class="h-[1px] flex-grow bg-forest/5"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="prize-column-box">
+                            <div>
+                                <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="first_prize">1st Prize</h5>
+                                <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_a_p1_val">Valued at 550€</p>
+                                <ul class="text-sm space-y-4 text-stone-600 font-light">
+                                    <li data-i18n="cat_a_p1_1">&bull; €100 cash prize</li>
+                                    <li data-i18n="cat_a_p1_2">&bull; Concert with orchestra in October 2027 during the "CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027"</li>
+                                    <li data-i18n="cat_a_p1_3">&bull; €250 fee for concerto performance</li>
+                                    <li data-i18n="cat_a_p1_4">&bull; €200 Scholarship (CF Young Talents Festival)</li>
+                                    <li data-i18n="imf_paris_finals_1">&bull; Direct access to the Finals of IMF Paris Competition (for candidates wishing to participate)</li>
+                                </ul>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="prize-column-box">
+                            <div>
+                                <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="second_prize">2nd Prize</h5>
+                                <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_a_p2_val">Valued at 250€</p>
+                                <ul class="text-sm space-y-4 text-stone-600 font-light">
+                                    <li data-i18n="cat_a_p2_1">&bull; €50 cash prize</li>
+                                    <li data-i18n="cat_a_p2_2">&bull; €100 Scholarship (CF Young Talents Festival)</li>
+                                    <li data-i18n="cat_a_p2_3">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                    <li data-i18n="imf_paris_finals_2">&bull; Direct access to the Finals of IMF Paris Competition (for candidates wishing to participate)</li>
+                                </ul>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="prize-column-box">
+                            <div>
+                                <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="third_prize">3rd Prize</h5>
+                                <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_a_p3_val">Valued at 100€</p>
+                                <ul class="text-sm space-y-4 text-stone-600 font-light">
+                                    <li data-i18n="cat_a_p3_1">&bull; €100 Scholarship (IMF Paris Masterclass)</li>
+                                    <li data-i18n="cat_a_p3_2">&bull; Invitation to CF Young Talents Festival 2027</li>
+                                </ul>
+                            </div>
+                            <div></div>
                         </div>
                     </div>
                 </div>
@@ -532,7 +570,7 @@
                             <div class="w-12 h-12 rounded-full border border-copper flex items-center justify-center flex-shrink-0 text-copper italic serif text-2xl font-bold bg-copper/10">1</div>
                             <div>
                                 <h5 class="text-copper font-bold uppercase tracking-widest text-[12px] mb-1" data-i18n="sp_1_title">César Franck Chamber Orchestra Prize</h5>
-                                <p class="text-copper font-light text-sm" data-i18n="sp_1_desc">1st Prizewinners will perform with the orchestra conducted by Maestro Vahan Mardirossian in Brussels, April 2027.</p>
+                                <p class="text-copper font-light text-sm" data-i18n="sp_1_desc">1st Prizewinners will perform with the orchestra conducted by Maestro Vahan Mardirossian in Brussels, October 2027 during the "CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027".</p>
                             </div>
                         </div>
                         <div class="special-prize-card">
@@ -584,7 +622,6 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
     <footer class="bg-[#1B2A27] pt-24 pb-12 px-8">
         <div class="max-w-[1400px] mx-auto flex flex-col items-center gap-10">
             <div class="flex gap-6">
@@ -602,7 +639,6 @@
         </div>
     </footer>
 
-    <!-- CUSTOM FLOATING LANGUAGE WIDGET -->
     <div class="lang-widget-container">
         <div class="lang-dropdown-menu" id="langMenu">
             <button class="lang-option" onclick="setLanguage('en')">English</button>
@@ -620,7 +656,6 @@
     <script>
         lucide.createIcons();
 
-        // Professional Translations Dictionary for Prizes Page
         const translations = {
             en: {
                 nav_competition: "Competition",
@@ -653,7 +688,7 @@
                 third_prize: "3rd Prize",
                 cat_a_p1_val: "Valued at 550€",
                 cat_a_p1_1: "&bull; €100 cash prize",
-                cat_a_p1_2: "&bull; Concert with orchestra in April 2027",
+                cat_a_p1_2: "&bull; Concert with orchestra in October 2027 during the \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_a_p1_3: "&bull; €250 fee for concerto performance",
                 cat_a_p1_4: "&bull; €200 Scholarship (CF Young Talents Festival)",
                 cat_a_p2_val: "Valued at 250€",
@@ -665,7 +700,7 @@
                 cat_a_p3_2: "&bull; Invitation to CF Young Talents Festival 2027",
                 cat_b_p1_val: "Valued at 650€",
                 cat_b_p1_1: "&bull; €200 cash prize",
-                cat_b_p1_2: "&bull; Concert with orchestra in April 2027",
+                cat_b_p1_2: "&bull; Concert with orchestra in October 2027 during the \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_b_p1_3: "&bull; €250 fee for concerto performance",
                 cat_b_p1_4: "&bull; €200 Scholarship (CF Young Talents Festival)",
                 cat_b_p2_val: "Valued at 280€",
@@ -675,11 +710,13 @@
                 cat_b_p3_val: "Valued at 100€",
                 cat_b_p3_1: "&bull; €200 Scholarship (CF Young Talents Festival)",
                 cat_b_p3_2: "&bull; Invitation to CF Young Talents Festival 2027",
-                cat_c_p1_val: "Valued at 750€",
+                cat_c_p1_val: "Valued at 1400€",
                 cat_c_p1_1: "&bull; €300 cash prize",
-                cat_c_p1_2: "&bull; Concert with orchestra in April 2027",
+                cat_c_p1_2: "&bull; Concert with orchestra in October 2027 during the \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_c_p1_3: "&bull; €250 fee for concerto performance",
                 cat_c_p1_4: "&bull; €200 Scholarship (CF Young Talents Festival)",
+                cat_c_paid_concert: "&bull; Paid concert (650 eur*)",
+                asterisk_note_c: "*Subject to confirmation by the concert organizer; amounts reflect previous editions and are subject to change.",
                 cat_c_p2_val: "Valued at 320€",
                 cat_c_p2_1: "&bull; €120 cash prize",
                 cat_c_p2_2: "&bull; €100 Scholarship (CF Young Talents Festival)",
@@ -687,11 +724,13 @@
                 cat_c_p3_val: "Valued at 100€",
                 cat_c_p3_1: "&bull; €100 Scholarship (IMF Paris Masterclass)",
                 cat_c_p3_2: "&bull; Invitation to CF Young Talents Festival 2027",
-                cat_d_p1_val: "Valued at 1450€",
+                cat_d_p1_val: "Valued at 2000€",
                 cat_d_p1_1: "&bull; €1000 cash prize",
-                cat_d_p1_2: "&bull; Concert with orchestra in April 2027",
+                cat_d_p1_2: "&bull; Concert with orchestra in October 2027 during the \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_d_p1_3: "&bull; €250 fee for concerto performance",
                 cat_d_p1_4: "&bull; €200 Scholarship (CF Young Talents Festival)",
+                cat_d_paid_concert: "&bull; Paid concert (650 eur*)",
+                asterisk_note_d: "*Subject to confirmation by the concert organizer; amounts reflect previous editions and are subject to change.",
                 cat_d_p2_val: "Valued at 600€",
                 cat_d_p2_1: "&bull; €400 cash prize",
                 cat_d_p2_2: "&bull; €100 Scholarship (CF Young Talents Festival)",
@@ -699,12 +738,12 @@
                 cat_d_p3_val: "Valued at 200€",
                 cat_d_p3_1: "&bull; €100 Scholarship (CF Young Talents Festival)",
                 cat_d_p3_2: "&bull; €100 Scholarship (IMF Paris Masterclass)",
-                imf_paris_finals_1: "&bull; Direct access to the Finals of IMF Paris Competition",
-                imf_paris_finals_2: "&bull; Direct access to the Finals of IMF Paris Competition",
+                imf_paris_finals_1: "&bull; Direct access to the Finals of IMF Paris Competition (for candidates wishing to participate)",
+                imf_paris_finals_2: "&bull; Direct access to the Finals of IMF Paris Competition (for candidates wishing to participate)",
                 special_prizes_heading: "Special Prizes",
                 special_prizes_sub: "Prestigious Invitations & Performance Awards",
                 sp_1_title: "César Franck Chamber Orchestra Prize",
-                sp_1_desc: "1st Prizewinners will perform with the orchestra conducted by Maestro Vahan Mardirossian in Brussels, April 2027.",
+                sp_1_desc: "1st Prizewinners will perform with the orchestra conducted by Maestro Vahan Mardirossian in Brussels, October 2027 during the \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\".",
                 sp_2_title: "Piano Talents Milano Prize",
                 sp_2_desc: "Concert performance within the 2027 Concert Season of the Associazione PianoFriends Milano.",
                 sp_3_title: "MozArte Aachen Prize",
@@ -750,7 +789,7 @@
                 third_prize: "3e Prix",
                 cat_a_p1_val: "D'une valeur de 550€",
                 cat_a_p1_1: "&bull; Prix en espèces de 100€",
-                cat_a_p1_2: "&bull; Concert avec orchestre en avril 2027",
+                cat_a_p1_2: "&bull; Concert avec orchestre en octobre 2027 lors du \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_a_p1_3: "&bull; Cachet de 250€ pour la performance de concerto",
                 cat_a_p1_4: "&bull; Bourse de 200€ (Festival CF Young Talents)",
                 cat_a_p2_val: "D'une valeur de 250€",
@@ -762,7 +801,7 @@
                 cat_a_p3_2: "&bull; Invitation au Festival CF Young Talents 2027",
                 cat_b_p1_val: "D'une valeur de 650€",
                 cat_b_p1_1: "&bull; Prix en espèces de 200€",
-                cat_b_p1_2: "&bull; Concert avec orchestre en avril 2027",
+                cat_b_p1_2: "&bull; Concert avec orchestre en octobre 2027 lors du \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_b_p1_3: "&bull; Cachet de 250€ pour la performance de concerto",
                 cat_b_p1_4: "&bull; Bourse de 200€ (Festival CF Young Talents)",
                 cat_b_p2_val: "D'une valeur de 280€",
@@ -772,11 +811,13 @@
                 cat_b_p3_val: "D'une valeur de 100€",
                 cat_b_p3_1: "&bull; Bourse de 200€ (Festival CF Young Talents)",
                 cat_b_p3_2: "&bull; Invitation au Festival CF Young Talents 2027",
-                cat_c_p1_val: "D'une valeur de 750€",
+                cat_c_p1_val: "D'une valeur de 1400€",
                 cat_c_p1_1: "&bull; Prix en espèces de 300€",
-                cat_c_p1_2: "&bull; Concert avec orchestre en avril 2027",
+                cat_c_p1_2: "&bull; Concert avec orchestre en octobre 2027 lors du \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_c_p1_3: "&bull; Cachet de 250€ pour la performance de concerto",
                 cat_c_p1_4: "&bull; Bourse de 200€ (Festival CF Young Talents)",
+                cat_c_paid_concert: "&bull; Concert rémunéré (650 eur*)",
+                asterisk_note_c: "*Sous réserve de confirmation par l'organisateur du concert ; les montants reflètent les éditions précédentes et sont susceptibles d'être modifiés.",
                 cat_c_p2_val: "D'une valeur de 320€",
                 cat_c_p2_1: "&bull; Prix en espèces de 120€",
                 cat_c_p2_2: "&bull; Bourse de 100€ (Festival CF Young Talents)",
@@ -784,11 +825,13 @@
                 cat_c_p3_val: "D'une valeur de 100€",
                 cat_c_p3_1: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
                 cat_c_p3_2: "&bull; Invitation au Festival CF Young Talents 2027",
-                cat_d_p1_val: "D'une valeur de 1450€",
+                cat_d_p1_val: "D'une valeur de 2000€",
                 cat_d_p1_1: "&bull; Prix en espèces de 1000€",
-                cat_d_p1_2: "&bull; Concert avec orchestre en avril 2027",
+                cat_d_p1_2: "&bull; Concert avec orchestre en octobre 2027 lors du \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_d_p1_3: "&bull; Cachet de 250€ pour la performance de concerto",
                 cat_d_p1_4: "&bull; Bourse de 200€ (Festival CF Young Talents)",
+                cat_d_paid_concert: "&bull; Concert rémunéré (650 eur*)",
+                asterisk_note_d: "*Sous réserve de confirmation par l'organisateur du concert ; les montants reflètent les éditions précédentes et sont susceptibles d'être modifiés.",
                 cat_d_p2_val: "D'une valeur de 600€",
                 cat_d_p2_1: "&bull; Prix en espèces de 400€",
                 cat_d_p2_2: "&bull; Bourse de 100€ (Festival CF Young Talents)",
@@ -796,12 +839,12 @@
                 cat_d_p3_val: "D'une valeur de 200€",
                 cat_d_p3_1: "&bull; Bourse de 100€ (Festival CF Young Talents)",
                 cat_d_p3_2: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
-                imf_paris_finals_1: "&bull; Accès direct aux Finales du Concours IMF Paris",
-                imf_paris_finals_2: "&bull; Accès direct aux Finales du Concours IMF Paris",
+                imf_paris_finals_1: "&bull; Accès direct aux Finales du Concours IMF Paris (pour les candidats souhaitant participer)",
+                imf_paris_finals_2: "&bull; Accès direct aux Finales du Concours IMF Paris (pour les candidats souhaitant participer)",
                 special_prizes_heading: "Prix Spéciaux",
-                special_prizes_sub: "Invitations Prestigues & Prix de Performance",
+                special_prizes_sub: "Invitations Prestigieuses & Prix de Performance",
                 sp_1_title: "Prix de l'Orchestre de Chambre César Franck",
-                sp_1_desc: "Les 1ers prix se produiront avec l'orchestre dirigé par le Maestro Vahan Mardirossian à Bruxelles, en avril 2027.",
+                sp_1_desc: "Les 1ers prix se produiront avec l'orchestre dirigé par le Maestro Vahan Mardirossian à Bruxelles, en octobre 2027 lors du \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\".",
                 sp_2_title: "Prix Piano Talents Milano",
                 sp_2_desc: "Prestation de concert dans le cadre de la saison 2027 de l'Associazione PianoFriends Milano.",
                 sp_3_title: "Prix MozArte Aix-la-Chapelle",
@@ -847,7 +890,7 @@
                 third_prize: "3e Prijs",
                 cat_a_p1_val: "Waarde van 550€",
                 cat_a_p1_1: "&bull; €100 geldprijs",
-                cat_a_p1_2: "&bull; Concert met orkest in april 2027",
+                cat_a_p1_2: "&bull; Concert met orkest in oktober 2027 tijdens het \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_a_p1_3: "&bull; €250 honorarium voor concertouitvoering",
                 cat_a_p1_4: "&bull; €200 beurs (CF Young Talents Festival)",
                 cat_a_p2_val: "Waarde van 250€",
@@ -859,7 +902,7 @@
                 cat_a_p3_2: "&bull; Uitnodiging voor CF Young Talents Festival 2027",
                 cat_b_p1_val: "Waarde van 650€",
                 cat_b_p1_1: "&bull; €200 geldprijs",
-                cat_b_p1_2: "&bull; Concert met orkest in april 2027",
+                cat_b_p1_2: "&bull; Concert met orkest in oktober 2027 tijdens het \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_b_p1_3: "&bull; €250 honorarium voor concertouitvoering",
                 cat_b_p1_4: "&bull; €200 beurs (CF Young Talents Festival)",
                 cat_b_p2_val: "Waarde van 280€",
@@ -869,11 +912,13 @@
                 cat_b_p3_val: "Waarde van 100€",
                 cat_b_p3_1: "&bull; €200 beurs (CF Young Talents Festival)",
                 cat_b_p3_2: "&bull; Uitnodiging voor CF Young Talents Festival 2027",
-                cat_c_p1_val: "Waarde van 750€",
+                cat_c_p1_val: "Waarde van 1400€",
                 cat_c_p1_1: "&bull; €300 geldprijs",
-                cat_c_p1_2: "&bull; Concert met orkest in april 2027",
+                cat_c_p1_2: "&bull; Concert met orkest in oktober 2027 tijdens het \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_c_p1_3: "&bull; €250 honorarium voor concertouitvoering",
                 cat_c_p1_4: "&bull; €200 beurs (CF Young Talents Festival)",
+                cat_c_paid_concert: "&bull; Betaald concert (650 eur*)",
+                asterisk_note_c: "*Onder voorbehoud van bevestiging door de concertorganisator; bedragen weerspiegelen eerdere edities en kunnen worden gewijzigd.",
                 cat_c_p2_val: "Waarde van 320€",
                 cat_c_p2_1: "&bull; €120 geldprijs",
                 cat_c_p2_2: "&bull; €100 beurs (CF Young Talents Festival)",
@@ -881,11 +926,13 @@
                 cat_c_p3_val: "Waarde van 100€",
                 cat_c_p3_1: "&bull; €100 beurs (IMF Paris Masterclass)",
                 cat_c_p3_2: "&bull; Uitnodiging voor CF Young Talents Festival 2027",
-                cat_d_p1_val: "Waarde van 1450€",
+                cat_d_p1_val: "Waarde van 2000€",
                 cat_d_p1_1: "&bull; €1000 geldprijs",
-                cat_d_p1_2: "&bull; Concert met orkest in april 2027",
+                cat_d_p1_2: "&bull; Concert met orkest in oktober 2027 tijdens het \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_d_p1_3: "&bull; €250 honorarium voor concertouitvoering",
                 cat_d_p1_4: "&bull; €200 beurs (CF Young Talents Festival)",
+                cat_d_paid_concert: "&bull; Betaald concert (650 eur*)",
+                asterisk_note_d: "*Onder voorbehoud van bevestiging door de concertorganisator; bedragen weerspiegelen eerdere edities en kunnen worden gewijzigd.",
                 cat_d_p2_val: "Waarde van 600€",
                 cat_d_p2_1: "&bull; €400 geldprijs",
                 cat_d_p2_2: "&bull; €100 beurs (CF Young Talents Festival)",
@@ -893,12 +940,12 @@
                 cat_d_p3_val: "Waarde van 200€",
                 cat_d_p3_1: "&bull; €100 beurs (CF Young Talents Festival)",
                 cat_d_p3_2: "&bull; €100 beurs (IMF Paris Masterclass)",
-                imf_paris_finals_1: "&bull; Directe toegang tot de Finales van het IMF Paris Concours",
-                imf_paris_finals_2: "&bull; Directe toegang tot de Finales van het IMF Paris Concours",
+                imf_paris_finals_1: "&bull; Directe toegang tot de Finales van het IMF Paris Concours (voor kandidaten die willen deelnemen)",
+                imf_paris_finals_2: "&bull; Directe toegang tot de Finales van het IMF Paris Concours (voor kandidaten die willen deelnemen)",
                 special_prizes_heading: "Speciale Prijzen",
                 special_prizes_sub: "Prestigieuze Uitnodigingen & Concertprijzen",
                 sp_1_title: "César Franck Kamerorkest Prijs",
-                sp_1_desc: "1e Prijswinnaars treden op met het orkest onder leiding van Maestro Vahan Mardirossian in Brussel, april 2027.",
+                sp_1_desc: "1e Prijswinnaars treden op met het orkest onder leiding van Maestro Vahan Mardirossian in Brussel, oktober 2027 tijdens het \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\".",
                 sp_2_title: "Piano Talents Milano Prijs",
                 sp_2_desc: "Concertoptreden binnen het concertseizoen 2027 van Associazione PianoFriends Milano.",
                 sp_3_title: "MozArte Aachen Prijs",
@@ -944,7 +991,7 @@
                 third_prize: "3. Preis",
                 cat_a_p1_val: "Wert 550€",
                 cat_a_p1_1: "&bull; 100€ Geldpreis",
-                cat_a_p1_2: "&bull; Konzert mit Orchester im April 2027",
+                cat_a_p1_2: "&bull; Konzert mit Orchester im Oktober 2027 während des \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_a_p1_3: "&bull; 250€ Honorar für Konzertauftritt",
                 cat_a_p1_4: "&bull; 200€ Stipendium (CF Young Talents Festival)",
                 cat_a_p2_val: "Wert 250€",
@@ -956,7 +1003,7 @@
                 cat_a_p3_2: "&bull; Einladung zum CF Young Talents Festival 2027",
                 cat_b_p1_val: "Wert 650€",
                 cat_b_p1_1: "&bull; 200€ Geldpreis",
-                cat_b_p1_2: "&bull; Konzert mit Orchester im April 2027",
+                cat_b_p1_2: "&bull; Konzert mit Orchester im Oktober 2027 während des \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_b_p1_3: "&bull; 250€ Honorar für Konzertauftritt",
                 cat_b_p1_4: "&bull; 200€ Stipendium (CF Young Talents Festival)",
                 cat_b_p2_val: "Wert 280€",
@@ -966,11 +1013,13 @@
                 cat_b_p3_val: "Wert 100€",
                 cat_b_p3_1: "&bull; 200€ Stipendium (CF Young Talents Festival)",
                 cat_b_p3_2: "&bull; Einladung zum CF Young Talents Festival 2027",
-                cat_c_p1_val: "Wert 750€",
+                cat_c_p1_val: "Wert 1400€",
                 cat_c_p1_1: "&bull; 300€ Geldpreis",
-                cat_c_p1_2: "&bull; Konzert mit Orchester im April 2027",
+                cat_c_p1_2: "&bull; Konzert mit Orchester im Oktober 2027 während des \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_c_p1_3: "&bull; 250€ Honorar für Konzertauftritt",
                 cat_c_p1_4: "&bull; 200€ Stipendium (CF Young Talents Festival)",
+                cat_c_paid_concert: "&bull; Bezahltes Konzert (650 eur*)",
+                asterisk_note_c: "*Vorbehaltlich Bestätigung durch den Konzertveranstalter; Beträge spiegeln vorherige Ausgaben wider und können sich ändern.",
                 cat_c_p2_val: "Wert 320€",
                 cat_c_p2_1: "&bull; 120€ Geldpreis",
                 cat_c_p2_2: "&bull; 100€ Stipendium (CF Young Talents Festival)",
@@ -978,11 +1027,13 @@
                 cat_c_p3_val: "Wert 100€",
                 cat_c_p3_1: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
                 cat_c_p3_2: "&bull; Einladung zum CF Young Talents Festival 2027",
-                cat_d_p1_val: "Wert 1450€",
+                cat_d_p1_val: "Wert 2000€",
                 cat_d_p1_1: "&bull; 1000€ Geldpreis",
-                cat_d_p1_2: "&bull; Konzert mit Orchester im April 2027",
+                cat_d_p1_2: "&bull; Konzert mit Orchester im Oktober 2027 während des \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_d_p1_3: "&bull; 250€ Honorar für Konzertauftritt",
                 cat_d_p1_4: "&bull; 200€ Stipendium (CF Young Talents Festival)",
+                cat_d_paid_concert: "&bull; Bezahltes Konzert (650 eur*)",
+                asterisk_note_d: "*Vorbehaltlich Bestätigung durch den Konzertveranstalter; Beträge spiegeln vorherige Ausgaben wider und können sich ändern.",
                 cat_d_p2_val: "Wert 600€",
                 cat_d_p2_1: "&bull; 400€ Geldpreis",
                 cat_d_p2_2: "&bull; 100€ Stipendium (CF Young Talents Festival)",
@@ -990,12 +1041,12 @@
                 cat_d_p3_val: "Wert 200€",
                 cat_d_p3_1: "&bull; 100€ Stipendium (CF Young Talents Festival)",
                 cat_d_p3_2: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
-                imf_paris_finals_1: "&bull; Direkter Zugang zum Finale des IMF Paris Wettbewerbs",
-                imf_paris_finals_2: "&bull; Direkter Zugang zum Finale des IMF Paris Wettbewerbs",
+                imf_paris_finals_1: "&bull; Direkter Zugang zum Finale des IMF Paris Wettbewerbs (für teilnehmende Kandidaten)",
+                imf_paris_finals_2: "&bull; Direkter Zugang zum Finale des IMF Paris Wettbewerbs (für teilnehmende Kandidaten)",
                 special_prizes_heading: "Sonderpreise",
                 special_prizes_sub: "Prestigesache & Konzertpreise",
                 sp_1_title: "César Franck Kammerorchester Preis",
-                sp_1_desc: "1. Preisträger treten im April 2027 in Brüssel mit dem Orchester unter der Leitung von Maestro Vahan Mardirossian auf.",
+                sp_1_desc: "1. Preisträger treten im Oktober 2027 während des \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\" in Brüssel mit dem Orchester unter der Leitung von Maestro Vahan Mardirossian auf.",
                 sp_2_title: "Piano Talents Milano Preis",
                 sp_2_desc: "Konzertauftritt innerhalb der Konzertsaison 2027 der Associazione PianoFriends Milano.",
                 sp_3_title: "MozArte Aachen Preis",
@@ -1041,7 +1092,7 @@
                 third_prize: "3° Premio",
                 cat_a_p1_val: "Valore di 550€",
                 cat_a_p1_1: "&bull; Premio in denaro di 100€",
-                cat_a_p1_2: "&bull; Concerto con orchestra nell'aprile 2027",
+                cat_a_p1_2: "&bull; Concerto con orchestra nell'ottobre 2027 durante il \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_a_p1_3: "&bull; Compenso di 250€ per l'esecuzione del concerto",
                 cat_a_p1_4: "&bull; Borsa di studio di 200€ (Festival CF Young Talents)",
                 cat_a_p2_val: "Valore di 250€",
@@ -1053,7 +1104,7 @@
                 cat_a_p3_2: "&bull; Invito al Festival CF Young Talents 2027",
                 cat_b_p1_val: "Valore di 650€",
                 cat_b_p1_1: "&bull; Premio in denaro di 200€",
-                cat_b_p1_2: "&bull; Concerto con orchestra nell'aprile 2027",
+                cat_b_p1_2: "&bull; Concerto con orchestra nell'ottobre 2027 durante il \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_b_p1_3: "&bull; Compenso di 250€ per l'esecuzione del concerto",
                 cat_b_p1_4: "&bull; Borsa di studio di 200€ (Festival CF Young Talents)",
                 cat_b_p2_val: "Valore di 280€",
@@ -1063,11 +1114,13 @@
                 cat_b_p3_val: "Valore di 100€",
                 cat_b_p3_1: "&bull; Borsa di studio di 200€ (Festival CF Young Talents)",
                 cat_b_p3_2: "&bull; Invito al Festival CF Young Talents 2027",
-                cat_c_p1_val: "Valore di 750€",
+                cat_c_p1_val: "Valore di 1400€",
                 cat_c_p1_1: "&bull; Premio in denaro di 300€",
-                cat_c_p1_2: "&bull; Concerto con orchestra nell'aprile 2027",
+                cat_c_p1_2: "&bull; Concerto con orchestra nell'ottobre 2027 durante il \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_c_p1_3: "&bull; Compenso di 250€ per l'esecuzione del concerto",
                 cat_c_p1_4: "&bull; Borsa di studio di 200€ (Festival CF Young Talents)",
+                cat_c_paid_concert: "&bull; Concerto retribuito (650 eur*)",
+                asterisk_note_c: "*Salvo conferma da parte dell'organizzatore del concerto; gli importi riflettono le edizioni precedenti e sono soggetti a modifiche.",
                 cat_c_p2_val: "Valore di 320€",
                 cat_c_p2_1: "&bull; Premio in denaro di 120€",
                 cat_c_p2_2: "&bull; Borsa di studio di 100€ (Festival CF Young Talents)",
@@ -1075,11 +1128,13 @@
                 cat_c_p3_val: "Valore di 100€",
                 cat_c_p3_1: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
                 cat_c_p3_2: "&bull; Invito al Festival CF Young Talents 2027",
-                cat_d_p1_val: "Valore di 1450€",
+                cat_d_p1_val: "Valore di 2000€",
                 cat_d_p1_1: "&bull; Premio in denaro di 1000€",
-                cat_d_p1_2: "&bull; Concerto con orchestra nell'aprile 2027",
+                cat_d_p1_2: "&bull; Concerto con orchestra nell'ottobre 2027 durante il \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_d_p1_3: "&bull; Compenso di 250€ per l'esecuzione del concerto",
                 cat_d_p1_4: "&bull; Borsa di studio di 200€ (Festival CF Young Talents)",
+                cat_d_paid_concert: "&bull; Concerto retribuito (650 eur*)",
+                asterisk_note_d: "*Salvo conferma da parte dell'organizzatore del concerto; gli importi riflettono le edizioni precedenti e sono soggetti a modifiche.",
                 cat_d_p2_val: "Valore di 600€",
                 cat_d_p2_1: "&bull; Premio in denaro di 400€",
                 cat_d_p2_2: "&bull; Borsa di studio di 100€ (Festival CF Young Talents)",
@@ -1087,12 +1142,12 @@
                 cat_d_p3_val: "Valore di 200€",
                 cat_d_p3_1: "&bull; Borsa di studio di 100€ (Festival CF Young Talents)",
                 cat_d_p3_2: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
-                imf_paris_finals_1: "&bull; Accesso diretto alle Finali del Concorso IMF Paris",
-                imf_paris_finals_2: "&bull; Accesso diretto alle Finali del Concorso IMF Paris",
+                imf_paris_finals_1: "&bull; Accesso diretto alle Finali del Concorso IMF Paris (per i candidati che desiderano partecipare)",
+                imf_paris_finals_2: "&bull; Accesso diretto alle Finali del Concorso IMF Paris (per i candidati che desiderano partecipare)",
                 special_prizes_heading: "Premi Speciali",
                 special_prizes_sub: "Inviti Prestigiosi e Premi di Performance",
                 sp_1_title: "Premio Orchestra da Camera César Franck",
-                sp_1_desc: "I vincitori del 1° premio si esibiranno con l'orchestra diretta dal Maestro Vahan Mardirossian a Bruxelles, aprile 2027.",
+                sp_1_desc: "I vincitori del 1° premio si esibiranno con l'orchestra diretta dal Maestro Vahan Mardirossian a Bruxelles, ottobre 2027 durante il \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\".",
                 sp_2_title: "Premio Piano Talents Milano",
                 sp_2_desc: "Concerto all'interno della stagione concertistica 2027 dell'Associazione PianoFriends Milano.",
                 sp_3_title: "Premio MozArte Aquisgrana",
@@ -1138,7 +1193,7 @@
                 third_prize: "3er Premio",
                 cat_a_p1_val: "Valorado en 550€",
                 cat_a_p1_1: "&bull; Premio en efectivo de 100€",
-                cat_a_p1_2: "&bull; Concierto con orquesta en abril de 2027",
+                cat_a_p1_2: "&bull; Concierto con orquesta en octubre de 2027 durante el \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_a_p1_3: "&bull; Tarifa de 250€ por interpretación de concierto",
                 cat_a_p1_4: "&bull; Beca de 200€ (Festival CF Young Talents)",
                 cat_a_p2_val: "Valorado en 250€",
@@ -1150,7 +1205,7 @@
                 cat_a_p3_2: "&bull; Invitación al Festival CF Young Talents 2027",
                 cat_b_p1_val: "Valorado en 650€",
                 cat_b_p1_1: "&bull; Premio en efectivo de 200€",
-                cat_b_p1_2: "&bull; Concierto con orquesta en abril de 2027",
+                cat_b_p1_2: "&bull; Concierto con orquesta en octubre de 2027 durante el \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_b_p1_3: "&bull; Tarifa de 250€ por interpretación de concierto",
                 cat_b_p1_4: "&bull; Beca de 200€ (Festival CF Young Talents)",
                 cat_b_p2_val: "Valorado en 280€",
@@ -1160,11 +1215,13 @@
                 cat_b_p3_val: "Valorado en 100€",
                 cat_b_p3_1: "&bull; Beca de 200€ (Festival CF Young Talents)",
                 cat_b_p3_2: "&bull; Invitación al Festival CF Young Talents 2027",
-                cat_c_p1_val: "Valorado en 750€",
+                cat_c_p1_val: "Valorado en 1400€",
                 cat_c_p1_1: "&bull; Premio en efectivo de 300€",
-                cat_c_p1_2: "&bull; Concierto con orquesta en abril de 2027",
+                cat_c_p1_2: "&bull; Concierto con orquesta en octubre de 2027 durante el \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_c_p1_3: "&bull; Tarifa de 250€ por interpretación de concierto",
                 cat_c_p1_4: "&bull; Beca de 200€ (Festival CF Young Talents)",
+                cat_c_paid_concert: "&bull; Concierto remunerado (650 eur*)",
+                asterisk_note_c: "*Sujeto a confirmación por el organizador del concierto; los importes reflejan ediciones anteriores y están sujetos a cambios.",
                 cat_c_p2_val: "Valorado en 320€",
                 cat_c_p2_1: "&bull; Premio en efectivo de 120€",
                 cat_c_p2_2: "&bull; Beca de 100€ (Festival CF Young Talents)",
@@ -1172,11 +1229,13 @@
                 cat_c_p3_val: "Valorado en 100€",
                 cat_c_p3_1: "&bull; Beca de 100€ (Masterclass IMF Paris)",
                 cat_c_p3_2: "&bull; Invitación al Festival CF Young Talents 2027",
-                cat_d_p1_val: "Valorado en 1450€",
+                cat_d_p1_val: "Valorado en 2000€",
                 cat_d_p1_1: "&bull; Premio en efectivo de 1000€",
-                cat_d_p1_2: "&bull; Concierto con orquesta en abril de 2027",
+                cat_d_p1_2: "&bull; Concierto con orquesta en octubre de 2027 durante el \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\"",
                 cat_d_p1_3: "&bull; Tarifa de 250€ por interpretación de concierto",
                 cat_d_p1_4: "&bull; Beca de 200€ (Festival CF Young Talents)",
+                cat_d_paid_concert: "&bull; Concierto remunerado (650 eur*)",
+                asterisk_note_d: "*Sujeto a confirmación por el organizador del concierto; los importes reflejan ediciones anteriores y están sujetos a cambios.",
                 cat_d_p2_val: "Valorado en 600€",
                 cat_d_p2_1: "&bull; Premio en efectivo de 400€",
                 cat_d_p2_2: "&bull; Beca de 100€ (Festival CF Young Talents)",
@@ -1184,12 +1243,12 @@
                 cat_d_p3_val: "Valorado en 200€",
                 cat_d_p3_1: "&bull; Beca de 100€ (Festival CF Young Talents)",
                 cat_d_p3_2: "&bull; Beca de 100€ (Masterclass IMF Paris)",
-                imf_paris_finals_1: "&bull; Acceso directo a las Finales del Concurso IMF Paris",
-                imf_paris_finals_2: "&bull; Acceso directo a las Finales del Concurso IMF Paris",
+                imf_paris_finals_1: "&bull; Acceso directo a las Finales del Concurso IMF Paris (para los candidatos que deseen participar)",
+                imf_paris_finals_2: "&bull; Acceso directo a las Finales del Concurso IMF Paris (para los candidatos que deseen participar)",
                 special_prizes_heading: "Premios Especiales",
                 special_prizes_sub: "Invitaciones Prestigosas y Premios de Interpretación",
                 sp_1_title: "Premio Orquesta de Cámara César Franck",
-                sp_1_desc: "Los ganadores del 1er premio actuarán con la orquesta dirigida por el Maestro Vahan Mardirossian en Bruselas, abril de 2027.",
+                sp_1_desc: "Los ganadores del 1er premio actuarán con la orquesta dirigida por el Maestro Vahan Mardirossian en Bruselas, octubre de 2027 durante el \"CÉSAR FRANCK YOUNG TALENTS & ORCHESTRA FESTIVAL 2027\".",
                 sp_2_title: "Premio Piano Talents Milano",
                 sp_2_desc: "Concierto dentro de la temporada de conciertos 2027 de la Associazione PianoFriends Milano.",
                 sp_3_title: "Premio MozArte Aquisgrán",
@@ -1258,7 +1317,6 @@
             }
         };
 
-        // Auto-load user preference if previously saved
         window.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('cfipc_lang');
             if (savedLang && translations[savedLang]) {
