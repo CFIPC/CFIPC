@@ -504,7 +504,7 @@
                                 <h5 class="text-forest font-bold uppercase text-[11px] mb-4 tracking-widest" data-i18n="third_prize">3rd Prize</h5>
                                 <p class="text-copper font-bold text-2xl mb-8 border-b border-copper/20 pb-4 italic" data-i18n="cat_b_p3_val">Valued at 100€</p>
                                 <ul class="text-sm space-y-4 text-stone-600 font-light">
-                                    <li data-i18n="cat_b_p3_1">&bull; €200 Scholarship (CF Young Talents & Orchestra Festival)</li>
+                                    <li data-i18n="cat_b_p3_1">&bull; €100 Scholarship (CF Young Talents & Orchestra Festival)</li>
                                     <li data-i18n="cat_b_p3_2">&bull; Invitation to CF Young Talents & Orchestra Festival 2027</li>
                                 </ul>
                             </div>
@@ -714,7 +714,7 @@
                 cat_b_p2_2: "&bull; €100 Scholarship (CF Young Talents & Orchestra Festival)",
                 cat_b_p2_3: "&bull; €100 Scholarship (IMF Paris Masterclass)",
                 cat_b_p3_val: "Valued at 100€",
-                cat_b_p3_1: "&bull; €200 Scholarship (CF Young Talents & Orchestra Festival)",
+                cat_b_p3_1: "&bull; €100 Scholarship (CF Young Talents & Orchestra Festival)",
                 cat_b_p3_2: "&bull; Invitation to CF Young Talents & Orchestra Festival 2027",
                 cat_c_p1_val: "Valued at 1400€",
                 cat_c_p1_1: "&bull; €300 cash prize",
@@ -815,7 +815,7 @@
                 cat_b_p2_2: "&bull; Bourse de 100€ (Festival CF Young Talents & Orchestra)",
                 cat_b_p2_3: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
                 cat_b_p3_val: "D'une valeur de 100€",
-                cat_b_p3_1: "&bull; Bourse de 200€ (Festival CF Young Talents & Orchestra)",
+                cat_b_p3_1: "&bull; Bourse de 100€ (Festival CF Young Talents & Orchestra)",
                 cat_b_p3_2: "&bull; Invitation au Festival CF Young Talents & Orchestra 2027",
                 cat_c_p1_val: "D'une valeur de 1400€",
                 cat_c_p1_1: "&bull; Prix en espèces de 300€",
@@ -916,7 +916,7 @@
                 cat_b_p2_2: "&bull; €100 beurs (CF Young Talents & Orchestra Festival)",
                 cat_b_p2_3: "&bull; €100 beurs (IMF Paris Masterclass)",
                 cat_b_p3_val: "Waarde van 100€",
-                cat_b_p3_1: "&bull; €200 beurs (CF Young Talents & Orchestra Festival)",
+                cat_b_p3_1: "&bull; €100 beurs (CF Young Talents & Orchestra Festival)",
                 cat_b_p3_2: "&bull; Uitnodiging voor CF Young Talents & Orchestra Festival 2027",
                 cat_c_p1_val: "Waarde van 1400€",
                 cat_c_p1_1: "&bull; €300 geldprijs",
@@ -1017,7 +1017,7 @@
                 cat_b_p2_2: "&bull; 100€ Stipendium (CF Young Talents & Orchestra Festival)",
                 cat_b_p2_3: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
                 cat_b_p3_val: "Wert 100€",
-                cat_b_p3_1: "&bull; 200€ Stipendium (CF Young Talents & Orchestra Festival)",
+                cat_b_p3_1: "&bull; 100€ Stipendium (CF Young Talents & Orchestra Festival)",
                 cat_b_p3_2: "&bull; Einladung zum CF Young Talents & Orchestra Festival 2027",
                 cat_c_p1_val: "Wert 1400€",
                 cat_c_p1_1: "&bull; 300€ Geldpreis",
@@ -1118,7 +1118,7 @@
                 cat_b_p2_2: "&bull; Borsa di studio di 100€ (Festival CF Young Talents & Orchestra)",
                 cat_b_p2_3: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
                 cat_b_p3_val: "Valore di 100€",
-                cat_b_p3_1: "&bull; Borsa di studio di 200€ (Festival CF Young Talents & Orchestra)",
+                cat_b_p3_1: "&bull; Borsa di studio di 100€ (Festival CF Young Talents & Orchestra)",
                 cat_b_p3_2: "&bull; Invito al Festival CF Young Talents & Orchestra 2027",
                 cat_c_p1_val: "Valore di 1400€",
                 cat_c_p1_1: "&bull; Premio in denaro di 300€",
@@ -1219,7 +1219,7 @@
                 cat_b_p2_2: "&bull; Beca de 100€ (Festival CF Young Talents & Orchestra)",
                 cat_b_p2_3: "&bull; Beca de 100€ (Masterclass IMF Paris)",
                 cat_b_p3_val: "Valorado en 100€",
-                cat_b_p3_1: "&bull; Beca de 200€ (Festival CF Young Talents & Orchestra)",
+                cat_b_p3_1: "&bull; Beca de 100€ (Festival CF Young Talents & Orchestra)",
                 cat_b_p3_2: "&bull; Invitación al Festival CF Young Talents & Orchestra 2027",
                 cat_c_p1_val: "Valorado en 1400€",
                 cat_c_p1_1: "&bull; Premio en efectivo de 300€",
@@ -1249,7 +1249,7 @@
                 cat_d_p3_val: "Valorado en 200€",
                 cat_d_p3_1: "&bull; Beca de 100€ (Festival CF Young Talents & Orchestra)",
                 cat_d_p3_2: "&bull; Beca de 100€ (Masterclass IMF Paris)",
-                imf_paris_finals_1: "&bull; Acceso directo a las Finales del Concurso IMF Paris",
+                imf_paris_finals_1: "&bull; Acceso directo las Finales del Concurso IMF Paris",
                 imf_paris_finals_2: "&bull; Acceso directo a las Finales del Concurso IMF Paris",
                 special_prizes_heading: "Premios Especiales",
                 special_prizes_sub: "Invitaciones Prestigosas y Premios de Interpretación",
@@ -1270,4 +1270,34 @@
                 other_prizes: "Pronto se anunciarán otros premios especiales"
             }
         };
-// ... existing code ... -->
+
+        let currentLang = 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            toggleLangMenu();
+        }
+
+        function toggleLangMenu() {
+            const menu = document.getElementById('langMenu');
+            menu.classList.toggle('active');
+        }
+
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobile-nav-overlay');
+            overlay.classList.toggle('open');
+        }
+
+        function handleNavClick(event, el) {
+            // Placeholder navigation handler
+        }
+    </script>
+</body>
+</html>
