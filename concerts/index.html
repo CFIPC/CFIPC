@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concerts & Festival Programme | César Franck International Piano Competition</title>
+    <title>Concerts | César Franck International Piano Competition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600;1,700&family=Outfit:wght@200;300;400;600&display=swap" rel="stylesheet">
@@ -13,7 +13,6 @@
             --copper: #D4A373;
             --sage: #7D8B7A;
             --parchment: #F2F0E9;
-            --charcoal: #121B19;
             --dusty-white: #EAE8E1;
         }
 
@@ -23,7 +22,6 @@
             color: var(--forest);
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
         h1, h2, h3, h4, h5, .serif { font-family: 'Cormorant Garamond', serif; }
@@ -61,12 +59,11 @@
             transform: translateX(-50%);
             background: var(--parchment);
             border: 1px solid rgba(27, 42, 39, 0.1);
-            min-width: 220px;
+            min-width: 240px;
             display: none;
             box-shadow: 0 15px 30px rgba(0,0,0,0.15);
             z-index: 1000;
             padding: 0.75rem 0;
-            text-align: left;
         }
 
         @media (min-width: 1024px) {
@@ -88,14 +85,35 @@
             letter-spacing: 0.1em;
             color: var(--forest);
             transition: all 0.2s;
-            text-align: left;
+            text-align: center;
             text-decoration: none;
             width: 100%;
-            white-space: nowrap;
         }
         .dropdown-item:hover { 
             background: var(--forest); 
             color: var(--copper); 
+        }
+
+        /* Nested Submenu for Gallery inside About */
+        .dropdown-submenu-container {
+            position: relative;
+        }
+        .dropdown-submenu {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            background: var(--parchment);
+            border: 1px solid rgba(27, 42, 39, 0.1);
+            min-width: 180px;
+            display: none;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            padding: 0.5rem 0;
+            z-index: 1010;
+        }
+        @media (min-width: 1024px) {
+            .dropdown-submenu-container:hover .dropdown-submenu {
+                display: block;
+            }
         }
 
         #mobile-nav-overlay {
@@ -138,65 +156,64 @@
         }
 
         .bg-forest { background-color: var(--forest) !important; }
-        .bg-charcoal { background-color: var(--charcoal) !important; }
         .text-copper { color: var(--copper) !important; }
-        .border-copper { border-color: var(--copper) !important; }
         .btn-copper { background-color: var(--copper); color: white; transition: all 0.3s ease; }
-        .btn-copper:hover { background-color: var(--forest); }
+        .btn-copper:hover { background-color: var(--forest); color: var(--copper); }
 
-        /* Artist Cards & Programme Elements */
         .artist-card {
             background-color: white;
             border: 1px solid rgba(27, 42, 39, 0.08);
-            border-radius: 2px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            overflow: hidden;
+            transition: all 0.4s ease;
             cursor: pointer;
         }
         .dark-theme .artist-card {
             background-color: rgba(255, 255, 255, 0.03);
-            border-color: rgba(212, 163, 115, 0.15);
+            border: 1px solid rgba(212, 163, 115, 0.2);
         }
         .artist-card:hover {
             border-color: var(--copper);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(27, 42, 39, 0.08);
         }
 
-        /* Timeline Navigation Stave */
         .stave-line {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--copper), transparent);
+            width: 100%;
+            height: 2px;
+            background: var(--copper);
             position: relative;
         }
         .stave-node {
             width: 12px;
             height: 12px;
+            background: var(--forest);
+            border: 2px solid var(--copper);
             border-radius: 50%;
-            background-color: var(--copper);
             position: absolute;
             top: 50%;
-            transform: translate(-50%, -50%);
-            transition: transform 0.3s ease;
+            transform: translateY(-50%);
+            cursor: pointer;
+            transition: all 0.3s;
         }
-        .stave-node:hover { transform: translate(-50%, -50%) scale(1.4); }
+        .stave-node:hover {
+            background: var(--copper);
+            transform: translateY(-50%) scale(1.3);
+        }
 
         /* Modal Overlay */
-        #videoModal {
+        #artist-modal {
             position: fixed;
             inset: 0;
-            background: rgba(18, 27, 25, 0.92);
-            backdrop-filter: blur(12px);
-            z-index: 9999;
+            background: rgba(27, 42, 39, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 3000;
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
-            animation: fadeIn 0.3s ease;
+            padding: 1.5rem;
         }
-        #videoModal.open { display: flex; }
+        #artist-modal.open { display: flex; animation: fadeIn 0.3s ease; }
 
-        /* Custom Floating Language Widget Styling */
+        /* Custom Floating Language Widget */
         .lang-widget-container {
             position: fixed;
             bottom: 2rem;
@@ -234,7 +251,10 @@
             display: none;
             min-width: 150px;
         }
-        .lang-dropdown-menu.active { display: block; animation: fadeIn 0.2s ease; }
+        .lang-dropdown-menu.active {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
         .lang-option {
             display: block;
             width: 100%;
@@ -251,7 +271,10 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        .lang-option:hover { background: var(--forest); color: var(--copper); }
+        .lang-option:hover {
+            background: var(--forest);
+            color: var(--copper);
+        }
     </style>
 </head>
 <body>
@@ -259,7 +282,7 @@
     <!-- Mobile Navigation Overlay -->
     <div id="mobile-nav-overlay">
         <div class="flex justify-between items-center mb-12">
-            <span class="serif italic text-2xl text-parchment">Menu</span>
+            <span class="serif italic text-2xl text-parchment" data-i18n="menu_label">Menu</span>
             <button onclick="toggleMobileMenu()" class="text-copper text-4xl leading-none">&times;</button>
         </div>
         <div class="mobile-group">
@@ -271,16 +294,21 @@
             <a href="https://cfipc.com/laureates/" class="mobile-link" data-i18n="nav_laureates">Laureates</a>
         </div>
         <div class="mobile-group">
-            <span class="mobile-label" data-i18n="nav_concerts">Concerts</span>
-            <a href="#concert-1" onclick="toggleMobileMenu()" class="mobile-link">01 — Opening Concert</a>
-            <a href="#concert-2" onclick="toggleMobileMenu()" class="mobile-link">02 — Jury Members</a>
-            <a href="#concert-3" onclick="toggleMobileMenu()" class="mobile-link">03 — Gala Evening</a>
-        </div>
-        <div class="mobile-group">
             <span class="mobile-label" data-i18n="nav_masterclasses">Masterclasses</span>
             <a href="https://cfipc.com/winter-masterclass/" class="mobile-link" data-i18n="nav_winter">Winter Masterclass</a>
             <a href="https://cfipc.com/spring-masterclass/" class="mobile-link" data-i18n="nav_spring">Spring Masterclass</a>
             <a href="https://www.masterclass-volodos.com/" class="mobile-link" data-i18n="nav_volodos">Volodos Masterclass</a>
+        </div>
+        <div class="mobile-group">
+            <span class="mobile-label" data-i18n="nav_concerts_label">Concerts</span>
+            <a href="https://cfipc.com/concerts/" class="mobile-link" data-i18n="nav_concerts_link">Festival Programme</a>
+        </div>
+        <div class="mobile-group">
+            <span class="mobile-label" data-i18n="nav_about_label">About</span>
+            <a href="https://cfipc.com/contact/" class="mobile-link" data-i18n="nav_contact">Contact</a>
+            <a href="https://cfipc.com/about/" class="mobile-link" data-i18n="nav_legacy">Legacy</a>
+            <a href="https://cfipc.com/gallery/" class="mobile-link" data-i18n="nav_pictures">Pictures</a>
+            <a href="https://cfipc.com/media/" class="mobile-link" data-i18n="nav_media">Media</a>
         </div>
         <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold" data-i18n="nav_home">Return to Home</a>
     </div>
@@ -289,12 +317,15 @@
     <nav class="fixed w-full z-50 bg-[#F2F0E9]/95 backdrop-blur-md border-b border-forest/5">
         <div class="max-w-[1600px] mx-auto px-4 md:px-8">
             <div class="flex justify-between items-center h-32 md:h-48">
+                <!-- Left: Competition & Masterclasses -->
                 <div class="flex-1 flex justify-start items-center">
                     <button class="md:hidden flex flex-col items-center justify-center space-y-1 p-2" onclick="toggleMobileMenu()">
                         <div class="w-6 h-[1.5px] bg-black"></div>
                         <div class="w-6 h-[1.5px] bg-black"></div>
+                        <div class="w-6 h-[1.5px] bg-black"></div>
                     </button>
-                    <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
+                    <div class="hidden md:flex items-center space-x-8 lg:space-x-10">
+                        <!-- Competition Dropdown -->
                         <div class="dropdown-container">
                             <a href="https://cfipc.com/" class="nav-link"><span data-i18n="nav_competition">Competition</span> <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
                             <div class="dropdown-menu">
@@ -305,6 +336,7 @@
                                 <a href="https://cfipc.com/laureates/" class="dropdown-item" data-i18n="nav_laureates">Laureates</a>
                             </div>
                         </div>
+                        <!-- Masterclasses Dropdown -->
                         <div class="dropdown-container">
                             <a href="https://cfipc.com/winter-masterclass/" class="nav-link"><span data-i18n="nav_masterclasses">Masterclasses</span> <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
                             <div class="dropdown-menu">
@@ -315,21 +347,26 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Center: Logo -->
                 <a href="https://cfipc.com/" class="brand-logo px-2">
-                    <img src="https://cfipc.com/Logo26.png" alt="CFIPC Logo" class="logo-image">
+                    <img src="https://cfipc.com/Logo26.png" alt="CFIPC Logo" class="logo-image" onerror="this.src='https://placehold.co/150x100/1B2A27/D4A373?text=CFIPC'">
                 </a>
+
+                <!-- Right: Concerts & About -->
                 <div class="flex-1 flex justify-end items-center">
-                    <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
-                        <div class="dropdown-container">
-                            <a href="#concerts" class="nav-link text-copper"><span data-i18n="nav_concerts">Concerts</span></a>
-                        </div>
+                    <div class="hidden md:flex items-center space-x-8 lg:space-x-10">
+                        <!-- Concerts Link -->
+                        <a href="https://cfipc.com/concerts/" class="nav-link text-copper font-bold" data-i18n="nav_concerts_link">Concerts</a>
+                        
+                        <!-- About Dropdown with Submenus -->
                         <div class="dropdown-container">
                             <a href="#" class="nav-link" onclick="handleNavClick(event, this)"><span data-i18n="nav_about">About</span> <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/contact/" class="dropdown-item">Contact</a>
-                                <a href="https://cfipc.com/about/" class="dropdown-item">Legacy</a>
-                                <a href="https://cfipc.com/gallery/" class="dropdown-item">Pictures</a>
-                                <a href="https://cfipc.com/media/" class="dropdown-item">Media</a>
+                                <a href="https://cfipc.com/contact/" class="dropdown-item" data-i18n="nav_contact">Contact</a>
+                                <a href="https://cfipc.com/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
+                                <a href="https://cfipc.com/gallery/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
+                                <a href="https://cfipc.com/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
                             </div>
                         </div>
                     </div>
@@ -341,27 +378,23 @@
     <main class="pt-32 md:pt-48">
         
         <!-- HERO SECTION -->
-        <section class="page-section py-20 px-4 md:px-8 text-center bg-parchment relative overflow-hidden">
+        <section class="py-20 px-4 text-center bg-[#F2F0E9] border-b border-forest/5">
             <div class="max-w-[1200px] mx-auto">
-                <span class="text-copper uppercase tracking-[0.4em] text-[11px] font-bold block mb-4" data-i18n="hero_subtitle">14th Edition · 18–21 December 2026</span>
-                <h1 class="text-6xl md:text-8xl serif italic text-forest mb-6" data-i18n="hero_title">Concerts & Festival</h1>
-                <p class="text-copper uppercase tracking-[0.3em] text-xs font-semibold mb-12">GC De Lijsterbes · Kraainem · Belgium</p>
-                <div class="w-24 h-[1px] bg-copper mx-auto mb-12 opacity-50"></div>
-                <p class="max-w-2xl mx-auto text-stone-600 font-light text-base md:text-lg leading-relaxed" data-i18n="hero_desc">
-                    Step inside our interactive digital concert programme. Discover master pianists, world-class jury members, and extraordinary young talents through immersive performances and detailed repertoire.
-                </p>
+                <span class="text-copper uppercase tracking-[0.4em] text-[11px] font-bold block mb-4" data-i18n="hero_tag">Digital Festival Programme</span>
+                <h1 class="text-5xl md:text-8xl serif italic text-forest mb-6" data-i18n="hero_title">Concerts & Festival</h1>
+                <p class="text-stone-600 font-light tracking-[0.2em] uppercase text-xs md:text-sm mb-4" data-i18n="hero_edition">14TH EDITION · 18–21 DECEMBER 2026</p>
+                <p class="text-copper font-bold uppercase tracking-[0.3em] text-xs" data-i18n="hero_location">Kraainem · Belgium</p>
             </div>
         </section>
 
-        <!-- FESTIVAL TEASER (Compact Square Format) -->
+        <!-- FESTIVAL TEASER (16:9 Widescreen Format) -->
         <section class="py-16 px-4 bg-forest text-parchment text-center">
-            <div class="max-w-[600px] mx-auto">
-                <span class="text-copper uppercase tracking-[0.3em] text-xs font-bold block mb-3">Festival Preview</span>
-                <h3 class="serif text-3xl italic text-copper mb-6">Experience the Festival Climax</h3>
-                <p class="text-stone-300 font-light text-sm mb-8">Watch highlights from the last editions' 1st Prizewinners' Concert and preview the magnificence awaiting audiences this December in Kraainem.</p>
-                <!-- Container adapted for compact square format (1:1) -->
-                <div class="mx-auto max-w-[420px] bg-black rounded-sm overflow-hidden border border-copper/40 shadow-2xl" style="aspect-ratio: 1/1;">
-                    <video controls autoplay muted loop playsinline class="w-full h-full object-cover">
+            <div class="max-w-[900px] mx-auto">
+                <span class="text-copper uppercase tracking-[0.3em] text-xs font-bold block mb-3" data-i18n="teaser_tag">Festival Preview</span>
+                <h3 class="serif text-3xl italic text-copper mb-6" data-i18n="teaser_heading">Experience the Festival Climax</h3>
+                <p class="text-stone-300 font-light text-sm mb-8 max-w-xl mx-auto" data-i18n="teaser_desc">Watch highlights from the last editions' 1st Prizewinners' Concert and preview the magnificence awaiting audiences this December in Kraainem.</p>
+                <div class="max-w-3xl mx-auto mb-8 rounded-sm overflow-hidden border border-copper/40 bg-black aspect-video shadow-2xl">
+                    <video controls class="w-full h-full object-cover">
                         <source src="teaser.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -372,16 +405,16 @@
         <!-- THE MUSIC CONTINUES - INTERACTIVE STAVE TIMELINE -->
         <div class="py-12 bg-parchment px-4">
             <div class="max-w-[1000px] mx-auto text-center">
-                <p class="text-[10px] uppercase tracking-[0.3em] text-copper font-bold mb-6">The Music Continues</p>
+                <p class="text-[10px] uppercase tracking-[0.3em] text-copper font-bold mb-6" data-i18n="timeline_tag">The Music Continues</p>
                 <div class="stave-line my-6">
                     <div class="stave-node" style="left: 15%;" title="Opening Concert" onclick="scrollToSection('concert-1')"></div>
                     <div class="stave-node" style="left: 50%;" title="Jury Members' Concert" onclick="scrollToSection('concert-2')"></div>
                     <div class="stave-node" style="left: 85%;" title="Gala Evening" onclick="scrollToSection('concert-3')"></div>
                 </div>
                 <div class="flex flex-col md:flex-row justify-around text-xs uppercase tracking-[0.2em] font-semibold text-forest mt-4 gap-4">
-                    <a href="#concert-1" class="hover:text-copper transition">18 DEC → Opening Concert</a>
-                    <a href="#concert-2" class="hover:text-copper transition">19 DEC → Jury Members' Concert</a>
-                    <a href="#concert-3" class="hover:text-copper transition">20 DEC → Gala Evening</a>
+                    <a href="#concert-1" class="hover:text-copper transition" data-i18n="tl_1">18 DEC → Opening Concert</a>
+                    <a href="#concert-2" class="hover:text-copper transition" data-i18n="tl_2">19 DEC → Jury Members Concert</a>
+                    <a href="#concert-3" class="hover:text-copper transition" data-i18n="tl_3">20 DEC → Final Concert & Prizewinners' Ceremony</a>
                 </div>
             </div>
         </div>
@@ -391,10 +424,10 @@
             <div class="max-w-[1400px] mx-auto">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-forest/10 pb-8">
                     <div>
-                        <span class="text-copper uppercase tracking-[0.3em] text-xs font-bold block mb-2">01 — Opening Concert</span>
+                        <span class="text-copper uppercase tracking-[0.3em] text-xs font-bold block mb-2" data-i18n="c1_chap">01 — Opening Concert</span>
                         <h2 class="text-4xl md:text-6xl serif italic text-forest" data-i18n="c1_title">Friday · 18 December · 19:00</h2>
                     </div>
-                    <p class="text-stone-500 font-light text-sm mt-4 md:mt-0 italic serif text-xl" data-i18n="c1_subtitle">Six pianists. One stage. An extraordinary opening.</p>
+                    <p class="text-stone-500 font-light text-sm mt-4 md:mt-0 italic serif text-xl" data-i18n="c1_subtitle">Five pianists. One stage. An extraordinary opening.</p>
                 </div>
 
                 <!-- ARTIST CARDS GRID - ROW 1: OLGA & PHILIPPE -->
@@ -407,7 +440,7 @@
                                 <img src="olga.png" alt="olga" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/1B2A27/D4A373?text=olga.png'">
                             </div>
                             <h4 class="serif text-2xl font-bold text-forest mb-1">Olga Kern</h4>
-                            <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3">President of the Jury</p>
+                            <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3" data-i18n="olga_role">President of the Jury</p>
                             <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">USA / Russia</p>
                         </div>
                         <button class="w-full py-3 border border-forest/20 text-forest text-xs uppercase tracking-[0.2em] font-bold hover:bg-forest hover:text-copper transition">
@@ -422,7 +455,7 @@
                                 <img src="philippe.png" alt="philippe" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/1B2A27/D4A373?text=philippe.png'">
                             </div>
                             <h4 class="serif text-2xl font-bold text-forest mb-1">Philippe Raskin</h4>
-                            <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3">Artistic Director</p>
+                            <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3" data-i18n="philippe_role">Artistic Director</p>
                             <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">Belgium</p>
                         </div>
                         <button class="w-full py-3 border border-forest/20 text-forest text-xs uppercase tracking-[0.2em] font-bold hover:bg-forest hover:text-copper transition">
@@ -481,28 +514,28 @@
 
                 <!-- INTERACTIVE PROGRAMME SECTION -->
                 <div class="bg-[#F2F0E9] p-8 md:p-12 rounded-sm border border-forest/5 mb-16">
-                    <h3 class="serif text-3xl italic text-forest mb-2 text-center">Programme Highlights</h3>
-                    <p class="text-xs uppercase tracking-widest text-stone-500 text-center mb-6">A diverse selection of masterpieces. Additional works can also be discovered within the performances.</p>
+                    <h3 class="serif text-3xl italic text-forest mb-2 text-center" data-i18n="prog_heading">Programme Highlights</h3>
+                    <p class="text-xs uppercase tracking-widest text-stone-500 text-center mb-6" data-i18n="prog_sub">A diverse selection of masterpieces. Additional works can also be discovered within the performances.</p>
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
                         <div class="p-4 bg-white border border-forest/10 cursor-pointer hover:border-copper transition" onclick="toggleProgDetail('prog1')">
-                            <span class="text-copper uppercase text-[10px] tracking-widest block font-bold mb-1">Composer</span>
+                            <span class="text-copper uppercase text-[10px] tracking-widest block font-bold mb-1" data-i18n="comp_label">Composer</span>
                             <h5 class="serif text-xl font-bold text-forest">MOZART</h5>
-                            <p id="prog1" class="text-xs text-stone-500 mt-2 hidden">Sonata in D major, K. 570</p>
+                            <p id="prog1" class="text-xs text-stone-500 mt-2 hidden" data-i18n="p1_desc">Sonata in D major, K. 570</p>
                         </div>
                         <div class="p-4 bg-white border border-forest/10 cursor-pointer hover:border-copper transition" onclick="toggleProgDetail('prog2')">
-                            <span class="text-copper uppercase text-[10px] tracking-widest block font-bold mb-1">Composer</span>
+                            <span class="text-copper uppercase text-[10px] tracking-widest block font-bold mb-1" data-i18n="comp_label">Composer</span>
                             <h5 class="serif text-xl font-bold text-forest">RAVEL</h5>
-                            <p id="prog2" class="text-xs text-stone-500 mt-2 hidden">Gaspard de la nuit</p>
+                            <p id="prog2" class="text-xs text-stone-500 mt-2 hidden" data-i18n="p2_desc">Gaspard de la nuit</p>
                         </div>
                         <div class="p-4 bg-white border border-forest/10 cursor-pointer hover:border-copper transition" onclick="toggleProgDetail('prog3')">
-                            <span class="text-copper uppercase text-[10px] tracking-widest block font-bold mb-1">Composer</span>
+                            <span class="text-copper uppercase text-[10px] tracking-widest block font-bold mb-1" data-i18n="comp_label">Composer</span>
                             <h5 class="serif text-xl font-bold text-forest">GERSHWIN</h5>
-                            <p id="prog3" class="text-xs text-stone-500 mt-2 hidden">Three Preludes</p>
+                            <p id="prog3" class="text-xs text-stone-500 mt-2 hidden" data-i18n="p3_desc">Three Preludes</p>
                         </div>
                         <div class="p-4 bg-white border border-forest/10 cursor-pointer hover:border-copper transition" onclick="toggleProgDetail('prog4')">
-                            <span class="text-copper uppercase text-[10px] tracking-widest block font-bold mb-1">Composer</span>
+                            <span class="text-copper uppercase text-[10px] tracking-widest block font-bold mb-1" data-i18n="comp_label">Composer</span>
                             <h5 class="serif text-xl font-bold text-forest">LUTOSŁAWSKI</h5>
-                            <p id="prog4" class="text-xs text-stone-500 mt-2 hidden">Paganini Variations</p>
+                            <p id="prog4" class="text-xs text-stone-500 mt-2 hidden" data-i18n="p4_desc">Paganini Variations</p>
                         </div>
                     </div>
                 </div>
@@ -511,13 +544,20 @@
                 <div class="bg-forest text-parchment p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 rounded-sm">
                     <img src="daniel.png" alt="daniel" class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full border-2 border-copper" onerror="this.src='https://placehold.co/300x300/D4A373/1B2A27?text=daniel.png'">
                     <div class="flex-1 text-center md:text-left">
-                        <span class="text-copper uppercase tracking-[0.3em] text-[10px] font-bold block mb-1">SPECIAL GUEST - YOUNG TALENT</span>
-                        <h4 class="serif text-3xl italic mb-2 text-copper">Daniel Bertomeu · Spain · 17</h4>
-                        <p class="text-stone-300 font-light text-sm mb-6">First prizewinner of important competitions in Europe (such as the César Franck Competition, Spanish Composers, MozArte, and Piano Talents). Currently maintaining an active concert schedule in Spain and abroad, and a student of Philippe Raskin.</p>
-                        <button onclick="openArtistModal('Daniel Bertomeu', 'SPECIAL GUEST - YOUNG TALENT', 'Spain (Age 17)', 'daniel.png', 'Daniel Bertomeu is a laureate of multiple European piano competitions and studies under Philippe Raskin.', 'https://www.youtube.com/embed/XtlTVPIr468')" class="btn-copper px-6 py-3 text-xs uppercase tracking-widest font-bold">
+                        <span class="text-copper uppercase tracking-[0.3em] text-[10px] font-bold block mb-1" data-i18n="young_talent_badge">SPECIAL GUEST - YOUNG TALENT</span>
+                        <h4 class="serif text-3xl italic mb-2 text-copper" data-i18n="daniel_title">Daniel Bertomeu · Spain · 17</h4>
+                        <p class="text-stone-300 font-light text-sm mb-6" data-i18n="daniel_desc">First prizewinner of important competitions in Europe (such as the César Franck Competition, Spanish Composers, MozArte, and Piano Talents). Currently maintaining an active concert schedule in Spain and abroad, and a student of Philippe Raskin.</p>
+                        <button onclick="openArtistModal('Daniel Bertomeu', 'SPECIAL GUEST - YOUNG TALENT', 'Spain (Age 17)', 'daniel.png', 'Daniel Bertomeu is a laureate of multiple European piano competitions and studies under Philippe Raskin.', 'https://www.youtube.com/embed/XtlTVPIr468')" class="btn-copper px-6 py-3 text-xs uppercase tracking-widest font-bold" data-i18n="watch_perf_btn">
                             ▶ Watch Performance
                         </button>
                     </div>
+                </div>
+
+                <!-- BOOK TICKETS BUTTON -->
+                <div class="text-center mt-12">
+                    <a href="https://www.delijsterbes.be/nl/programma/cesar-franck-international-piano-competition-0" target="_blank" class="btn-copper px-10 py-4 text-xs uppercase tracking-[0.25em] font-bold inline-block shadow-lg" data-i18n="book_tickets">
+                        Book Tickets for Opening Concert
+                    </a>
                 </div>
 
             </div>
@@ -528,10 +568,10 @@
             <div class="max-w-[1400px] mx-auto">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-copper/20 pb-8">
                     <div>
-                        <span class="text-copper uppercase tracking-[0.3em] text-xs font-bold block mb-2">02 — Jury Members' Concert</span>
-                        <h2 class="text-4xl md:text-6xl serif italic text-copper">Saturday · 19 December · 19:00</h2>
+                        <span class="text-copper uppercase tracking-[0.3em] text-xs font-bold block mb-2" data-i18n="c2_chap">02 — Jury Members Concert</span>
+                        <h2 class="text-4xl md:text-6xl serif italic text-copper" data-i18n="c2_title">Saturday · 19 December · 19:00</h2>
                     </div>
-                    <p class="text-stone-300 font-light text-sm mt-4 md:mt-0 italic serif text-xl">Five distinguished artists. Five perspectives.</p>
+                    <p class="text-stone-300 font-light text-sm mt-4 md:mt-0 italic serif text-xl" data-i18n="c2_subtitle">Five distinguished artists. Five perspectives.</p>
                 </div>
 
                 <!-- JURY CARDS GRID -->
@@ -547,7 +587,7 @@
                             <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">Hotchkiss School</p>
                             <p class="text-stone-400 text-xs uppercase tracking-wider mb-4">Connecticut, USA</p>
                         </div>
-                        <button class="w-full py-3 border border-copper/40 text-copper text-xs uppercase tracking-[0.2em] font-bold hover:bg-copper hover:text-forest transition">
+                        <button class="w-full py-3 border border-copper/40 text-copper text-xs uppercase tracking-[0.2em] font-bold hover:bg-copper hover:text-forest transition" data-i18n="watch_perf">
                             ▶ Watch Performance
                         </button>
                     </div>
@@ -562,7 +602,7 @@
                             <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">Hotchkiss School</p>
                             <p class="text-stone-400 text-xs uppercase tracking-wider mb-4">Connecticut, USA</p>
                         </div>
-                        <button class="w-full py-3 border border-copper/40 text-copper text-xs uppercase tracking-[0.2em] font-bold hover:bg-copper hover:text-forest transition">
+                        <button class="w-full py-3 border border-copper/40 text-copper text-xs uppercase tracking-[0.2em] font-bold hover:bg-copper hover:text-forest transition" data-i18n="watch_perf">
                             ▶ Watch Performance
                         </button>
                     </div>
@@ -574,131 +614,149 @@
                                 <img src="andreas.png" alt="andreas" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/D4A373/1B2A27?text=andreas.png'">
                             </div>
                             <h4 class="serif text-2xl font-bold text-copper mb-1">Andreas Frölich</h4>
-                            <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">HfMT Köln</p>
+                            <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">Hochschule für Musik und Tanz Köln</p>
                             <p class="text-stone-400 text-xs uppercase tracking-wider mb-4">Germany</p>
                         </div>
-                        <button class="w-full py-3 border border-copper/40 text-copper text-xs uppercase tracking-[0.2em] font-bold hover:bg-copper hover:text-forest transition">
+                        <button class="w-full py-3 border border-copper/40 text-copper text-xs uppercase tracking-[0.2em] font-bold hover:bg-copper hover:text-forest transition" data-i18n="watch_perf">
                             ▶ Watch Performance
                         </button>
                     </div>
 
                     <!-- Leonel Morales -->
-                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Leonel Morales', 'Universidad Alfonso X el Sabio', 'Madrid, Spain', 'leonel.png', 'Leonel Morales is a distinguished Spanish-Cuban pianist and professor, renowned internationally for his masterclasses and performances across global stages.', 'https://www.youtube.com/embed/4CjazkgDrgQ')">
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Leonel Morales', 'Universidad Alfonso X el Sabio', 'Madrid, Spain', 'leonel.png', 'Leonel Morales is a distinguished Spanish-Cuban pianist and professor, highly sought after for masterclasses and international juries.', 'https://www.youtube.com/embed/4CjazkgDrgQ')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
-                                <img src="leonel.png" alt="leonel" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/1B2A27/D4A373?text=leonel.png'">
+                                <img src="leonel.png" alt="leonel" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/D4A373/1B2A27?text=leonel.png'">
                             </div>
                             <h4 class="serif text-2xl font-bold text-copper mb-1">Leonel Morales</h4>
-                            <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">Universidad Alfonso X</p>
+                            <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">Universidad Alfonso X el Sabio</p>
                             <p class="text-stone-400 text-xs uppercase tracking-wider mb-4">Madrid, Spain</p>
                         </div>
-                        <button class="w-full py-3 border border-copper/40 text-copper text-xs uppercase tracking-[0.2em] font-bold hover:bg-copper hover:text-forest transition">
+                        <button class="w-full py-3 border border-copper/40 text-copper text-xs uppercase tracking-[0.2em] font-bold hover:bg-copper hover:text-forest transition" data-i18n="watch_perf">
                             ▶ Watch Performance
                         </button>
                     </div>
 
                     <!-- Vincenzo Balzani -->
-                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Vincenzo Balzani', 'Conservatorio Verdi di Milano', 'Milan, Italy', 'vincenzo.png', 'Legendary Italian pedagogue and concert pianist Vincenzo Balzani has nurtured generations of laureates across global stages from Milan to Tokyo.', 'https://www.youtube.com/embed/f6WmrmEgHac')">
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Vincenzo Balzani', 'Conservatorio Verdi', 'Milan, Italy', 'vincenzo.png', 'Vincenzo Balzani is a distinguished professor at the Conservatorio Verdi in Milan and artistic director of numerous piano competitions.', 'https://www.youtube.com/embed/f6WmrmEgHac')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
-                                <img src="vincenzo.png" alt="vincenzo" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/1B2A27/D4A373?text=vincenzo.png'">
+                                <img src="vincenzo.png" alt="vincenzo" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/D4A373/1B2A27?text=vincenzo.png'">
                             </div>
                             <h4 class="serif text-2xl font-bold text-copper mb-1">Vincenzo Balzani</h4>
                             <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">Conservatorio Verdi</p>
                             <p class="text-stone-400 text-xs uppercase tracking-wider mb-4">Milan, Italy</p>
                         </div>
-                        <button class="w-full py-3 border border-copper/40 text-copper text-xs uppercase tracking-[0.2em] font-bold hover:bg-copper hover:text-forest transition">
+                        <button class="w-full py-3 border border-copper/40 text-copper text-xs uppercase tracking-[0.2em] font-bold hover:bg-copper hover:text-forest transition" data-i18n="watch_perf">
                             ▶ Watch Performance
                         </button>
                     </div>
 
                 </div>
 
-                <!-- YOUNG TALENT SPOTLIGHT 2 -->
-                <div class="bg-charcoal text-parchment p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 rounded-sm border border-copper/20">
-                    <img src="margherita.png" alt="margherita" class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full border-2 border-copper" onerror="this.src='https://placehold.co/300x300/1B2A27/D4A373?text=margherita.png'">
+                <!-- YOUNG TALENT SPOTLIGHT - MARGHERITA -->
+                <div class="bg-forest/60 border border-copper/30 text-parchment p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 rounded-sm">
+                    <img src="margherita.png" alt="margherita" class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full border-2 border-copper" onerror="this.src='https://placehold.co/300x300/D4A373/1B2A27?text=margherita.png'">
                     <div class="flex-1 text-center md:text-left">
-                        <span class="text-copper uppercase tracking-[0.3em] text-[10px] font-bold block mb-1">SPECIAL GUEST - YOUNG TALENT</span>
-                        <h4 class="serif text-3xl italic mb-2 text-copper">Margherita Rordorf · Italy · 13</h4>
-                        <p class="text-stone-300 font-light text-sm mb-6">Margherita studies at the Milan Conservatory under Maestro Vincenzo Balzani and has won multiple national and international prizes.</p>
-                        <button onclick="openArtistModal('Margherita Rordorf', 'SPECIAL GUEST - YOUNG TALENT', 'Italy (Age 13)', 'margherita.png', 'Margherita Rordorf studies at the Milan Conservatory under Maestro Vincenzo Balzani and has won multiple national and international prizes.', 'https://www.youtube.com/embed/S5rA-8mOPOI')" class="btn-copper px-6 py-3 text-xs uppercase tracking-widest font-bold">
+                        <span class="text-copper uppercase tracking-[0.3em] text-[10px] font-bold block mb-1" data-i18n="young_talent_badge">SPECIAL GUEST - YOUNG TALENT</span>
+                        <h4 class="serif text-3xl italic mb-2 text-copper" data-i18n="margherita_title">Margherita Rordorf · Italy · 13</h4>
+                        <p class="text-stone-300 font-light text-sm mb-6" data-i18n="margherita_desc">Margherita studies in Milan under Maestro Vincenzo Balzani and has won multiple national and international prizes with extraordinary musical maturity.</p>
+                        <button onclick="openArtistModal('Margherita Rordorf', 'SPECIAL GUEST - YOUNG TALENT', 'Italy (Age 13)', 'margherita.png', 'Margherita Rordorf is a brilliant young pianist studying under Vincenzo Balzani in Milan.', 'https://www.youtube.com/embed/S5rA-8mOPOI')" class="border border-copper text-copper px-6 py-3 text-xs uppercase tracking-widest font-bold hover:bg-copper hover:text-forest transition" data-i18n="watch_perf_btn">
                             ▶ Watch Performance
                         </button>
                     </div>
+                </div>
+
+                <!-- BOOK TICKETS BUTTON -->
+                <div class="text-center mt-12">
+                    <a href="https://www.delijsterbes.be/nl/programma/cesar-franck-international-piano-competition-0" target="_blank" class="btn-copper px-10 py-4 text-xs uppercase tracking-[0.25em] font-bold inline-block shadow-lg" data-i18n="book_tickets_jury">
+                        Book Tickets for Jury Members Concert
+                    </a>
                 </div>
 
             </div>
         </section>
 
-        <!-- CHAPTER 03 — GALA EVENING (WARM EXCLUSIVE THEME) -->
+        <!-- CHAPTER 03 — GALA EVENING (LIGHT THEME) -->
         <section id="concert-3" class="page-section py-24 px-4 md:px-12 bg-white">
             <div class="max-w-[1400px] mx-auto">
-                <div class="text-center mb-16">
-                    <span class="text-copper uppercase tracking-[0.4em] text-xs font-bold block mb-2">03 — Gala Evening</span>
-                    <h2 class="text-5xl md:text-7xl serif italic text-forest mb-4">Sunday · 20 December · 19:00</h2>
-                    <p class="text-copper uppercase tracking-[0.2em] text-sm font-semibold">An Evening of Pianistic Virtuosity</p>
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-forest/10 pb-8">
+                    <div>
+                        <span class="text-copper uppercase tracking-[0.3em] text-xs font-bold block mb-2" data-i18n="c3_chap">03 — Final Concert & Prizewinners' Ceremony</span>
+                        <h2 class="text-4xl md:text-6xl serif italic text-forest" data-i18n="c3_title">Sunday · 20 December · 19:00</h2>
+                    </div>
+                    <p class="text-stone-500 font-light text-sm mt-4 md:mt-0 italic serif text-xl" data-i18n="c3_subtitle">An evening of pianistic virtuosity and triumph.</p>
                 </div>
 
-                <!-- TWO HUGE ARTIST CARDS -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+                <!-- TWO HUGE HEADLINER ARTISTS -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 max-w-5xl mx-auto">
                     
                     <!-- Paulius Andersson -->
-                    <div class="artist-card p-8 flex flex-col justify-between" onclick="openArtistModal('Paulius Andersson', 'Lithuania', 'Denmark / Lithuania', 'paulius.png', 'Paulius Andersson has a vibrant international career with numerous concerts across Europe. He has won important prizes such as the Lyon International Piano Competition, MozArte, and others.', 'https://www.youtube.com/embed/HaCOnnsA1_8')">
+                    <div class="artist-card p-8 flex flex-col justify-between text-center" onclick="openArtistModal('Paulius Andersson', 'Lithuania', 'Lithuania', 'paulius.png', 'Paulius Andersson maintains an active international career with major orchestra appearances and prestigious competition triumphs including the Lyon Competition and MozArte.', 'https://youtu.be/HaCOnnsA1_8')">
                         <div>
-                            <div class="overflow-hidden mb-6 aspect-[16/10] bg-stone-200">
-                                <img src="paulius.png" alt="paulius" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x600/1B2A27/D4A373?text=paulius.png'">
+                            <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
+                                <img src="paulius.png" alt="paulius" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/1B2A27/D4A373?text=paulius.png'">
                             </div>
-                            <h4 class="serif text-3xl font-bold text-forest mb-1">Paulius Andersson</h4>
-                            <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">Lithuania</p>
+                            <h4 class="serif text-3xl font-bold text-forest mb-2">Paulius Andersson</h4>
+                            <p class="text-stone-500 text-xs uppercase tracking-widest mb-6" data-i18n="paulius_country">Lithuania</p>
                         </div>
-                        <button class="w-full py-3 border border-forest/20 text-forest text-xs uppercase tracking-[0.2em] font-bold hover:bg-forest hover:text-copper transition">
-                            ▶ Watch Gala Performance
+                        <button class="w-full py-4 border border-forest/20 text-forest text-xs uppercase tracking-[0.2em] font-bold hover:bg-forest hover:text-copper transition">
+                            ▶ <span data-i18n="watch_perf">Watch Performance</span>
                         </button>
                     </div>
 
                     <!-- Leo Di Maria -->
-                    <div class="artist-card p-8 flex flex-col justify-between" onclick="openArtistModal('Leo Di Maria', 'Italy', 'Italy', 'leo.png', 'Leo Di Maria has won many important competitions, including the UNISA International Piano Competition in Pretoria, Ciudad de Ferrol International Piano Competition in Spain, MozArte Competition in Germany, and the Grand Prix de Lyon in France. He performs around the world, from Europe to Asia, Africa, and America.', 'https://www.youtube.com/embed/0dDH354PU-Y')">
+                    <div class="artist-card p-8 flex flex-col justify-between text-center" onclick="openArtistModal('Leo Di Maria', 'Italy', 'Italy', 'leo.png', 'Leo Di Maria has won multiple major international competitions including UNISA Pretoria, Ciudad de Ferrol, MozArte, and the Grand Prix de Lyon, performing across Europe, Asia, Africa, and America.', 'https://youtu.be/0dDH354PU-Y')">
                         <div>
-                            <div class="overflow-hidden mb-6 aspect-[16/10] bg-stone-200">
-                                <img src="leo.png" alt="leo" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x600/1B2A27/D4A373?text=leo.png'">
+                            <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
+                                <img src="leo.png" alt="leo" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/1B2A27/D4A373?text=leo.png'">
                             </div>
-                            <h4 class="serif text-3xl font-bold text-forest mb-1">Leo Di Maria</h4>
-                            <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">Italy</p>
+                            <h4 class="serif text-3xl font-bold text-forest mb-2">Leo Di Maria</h4>
+                            <p class="text-stone-500 text-xs uppercase tracking-widest mb-6" data-i18n="leo_country">Italy</p>
                         </div>
-                        <button class="w-full py-3 border border-forest/20 text-forest text-xs uppercase tracking-[0.2em] font-bold hover:bg-forest hover:text-copper transition">
-                            ▶ Watch Gala Performance
+                        <button class="w-full py-4 border border-forest/20 text-forest text-xs uppercase tracking-[0.2em] font-bold hover:bg-forest hover:text-copper transition">
+                            ▶ <span data-i18n="watch_perf">Watch Performance</span>
                         </button>
                     </div>
 
                 </div>
 
+                <!-- BOOK TICKETS BUTTON -->
+                <div class="text-center mt-12">
+                    <a href="https://www.delijsterbes.be/nl/programma/cesar-franck-international-piano-competition-0" target="_blank" class="btn-copper px-10 py-4 text-xs uppercase tracking-[0.25em] font-bold inline-block shadow-lg" data-i18n="book_tickets_gala">
+                        Book Tickets for Final Concert
+                    </a>
+                </div>
+
             </div>
         </section>
 
-        <!-- PLAN YOUR EVENING / TICKETS BLOCK -->
-        <section class="py-24 px-4 bg-parchment border-t border-forest/5">
-            <div class="max-w-[1000px] mx-auto text-center bg-white p-12 md:p-16 border border-copper/30 shadow-xl">
-                <span class="text-copper uppercase tracking-[0.4em] text-xs font-bold block mb-4">Box Office</span>
-                <h3 class="serif text-4xl md:text-5xl italic text-forest mb-6">Plan Your Evening</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8 text-left border-y border-forest/10 py-8">
-                    <div>
-                        <p class="text-copper font-bold text-xs uppercase tracking-widest mb-1">18 DECEMBER</p>
-                        <h5 class="serif text-xl font-bold text-forest">Opening Concert</h5>
-                        <p class="text-stone-500 text-xs mt-1">19:00 · GC De Lijsterbes</p>
+        <!-- PLAN YOUR EVENING / BOTTOM SCHEDULE -->
+        <section class="py-24 bg-forest text-parchment text-center px-4">
+            <div class="max-w-[1000px] mx-auto">
+                <span class="text-copper uppercase tracking-[0.3em] text-xs font-bold block mb-4" data-i18n="plan_tag">Plan Your Evening</span>
+                <h2 class="text-4xl md:text-5xl serif italic text-copper mb-16" data-i18n="plan_heading">Festival Schedule & Venue</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 text-left">
+                    <div class="p-6 bg-forest/40 border border-copper/30 rounded-sm">
+                        <span class="text-copper uppercase text-[11px] tracking-widest font-bold block mb-2" data-i18n="sch_d1">18 December</span>
+                        <h4 class="serif text-2xl font-bold mb-1" data-i18n="sch_t1">Opening Concert</h4>
+                        <p class="text-xs text-stone-300">19:00 · GC De Lijsterbes, Belgium</p>
                     </div>
-                    <div>
-                        <p class="text-copper font-bold text-xs uppercase tracking-widest mb-1">19 DECEMBER</p>
-                        <h5 class="serif text-xl font-bold text-forest">Jury Members Concert</h5>
-                        <p class="text-stone-500 text-xs mt-1">19:00 · GC De Lijsterbes</p>
+                    <div class="p-6 bg-forest/40 border border-copper/30 rounded-sm">
+                        <span class="text-copper uppercase text-[11px] tracking-widest font-bold block mb-2" data-i18n="sch_d2">19 December</span>
+                        <h4 class="serif text-2xl font-bold mb-1" data-i18n="sch_t2">Jury Members Concert</h4>
+                        <p class="text-xs text-stone-300">19:00 · GC De Lijsterbes, Belgium</p>
                     </div>
-                    <div>
-                        <p class="text-copper font-bold text-xs uppercase tracking-widest mb-1">20 DECEMBER</p>
-                        <h5 class="serif text-xl font-bold text-forest">Final Concert & Prizewinners' Ceremony</h5>
-                        <p class="text-stone-500 text-xs mt-1">19:00 · GC De Lijsterbes</p>
+                    <div class="p-6 bg-forest/40 border border-copper/30 rounded-sm">
+                        <span class="text-copper uppercase text-[11px] tracking-widest font-bold block mb-2" data-i18n="sch_d3">20 December</span>
+                        <h4 class="serif text-2xl font-bold mb-1" data-i18n="sch_t3">Final Concert & Ceremony</h4>
+                        <p class="text-xs text-stone-300">19:00 · GC De Lijsterbes, Belgium</p>
                     </div>
                 </div>
-                <a href="https://www.delijsterbes.be/nl/programma/cesar-franck-international-piano-competition-0" target="_blank" class="btn-copper px-10 py-5 text-xs uppercase tracking-[0.3em] font-bold inline-block">
-                    BOOK TICKETS FOR CONCERT
+
+                <a href="https://www.delijsterbes.be/nl/programma/cesar-franck-international-piano-competition-0" target="_blank" class="btn-copper px-10 py-5 text-xs uppercase tracking-[0.3em] font-bold inline-block shadow-2xl" data-i18n="book_all_tickets">
+                    Book Your Festival Tickets
                 </a>
             </div>
         </section>
@@ -706,7 +764,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-[#1B2A27] pt-24 pb-12 px-8">
+    <footer class="bg-[#1B2A27] pt-24 pb-12 px-8 border-t border-copper/20">
         <div class="max-w-[1400px] mx-auto flex flex-col items-center gap-10">
             <div class="flex gap-6">
                 <a href="https://www.facebook.com/cfipc" target="_blank" class="social-circle-footer" aria-label="Facebook">
@@ -723,13 +781,24 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVE VIDEO & ARTIST MODAL -->
-    <div id="videoModal" onclick="closeArtistModal(event)">
-        <div class="bg-[#1B2A27] border border-copper/40 max-w-4xl w-full p-8 relative rounded-sm text-parchment shadow-2xl max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
-            <button onclick="closeArtistModalDirect()" class="absolute top-6 right-6 text-copper text-3xl leading-none">&times;</button>
-            
-            <div id="modalContent" class="space-y-6">
-                <!-- Dynamically populated via JS -->
+    <!-- ARTIST MODAL OVERLAY -->
+    <div id="artist-modal" onclick="closeArtistModal(event)">
+        <div class="bg-parchment text-forest max-w-2xl w-full p-8 md:p-12 rounded-sm relative shadow-2xl border border-copper/40" onclick="event.stopPropagation()">
+            <button onclick="closeArtistModalDirect()" class="absolute top-4 right-4 text-forest text-3xl font-light hover:text-copper">&times;</button>
+            <div class="flex flex-col md:flex-row gap-6 items-center mb-6">
+                <img id="modal-img" src="" alt="" class="w-32 h-32 object-cover rounded-full border-2 border-copper" onerror="this.src='https://placehold.co/200x200/1B2A27/D4A373?text=Artist'">
+                <div>
+                    <h3 id="modal-name" class="serif text-3xl font-bold text-forest mb-1"></h3>
+                    <p id="modal-role" class="text-copper text-xs uppercase tracking-widest font-semibold mb-1"></p>
+                    <p id="modal-country" class="text-stone-500 text-xs uppercase tracking-wider"></p>
+                </div>
+            </div>
+            <p id="modal-bio" class="text-stone-700 text-sm font-light leading-relaxed mb-6"></p>
+            <div id="modal-video-container" class="aspect-video w-full bg-black rounded-sm overflow-hidden mb-6 hidden">
+                <iframe id="modal-iframe" src="" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="text-right">
+                <button onclick="closeArtistModalDirect()" class="btn-copper px-6 py-2.5 text-xs uppercase tracking-widest font-bold" data-i18n="close_btn">Close</button>
             </div>
         </div>
     </div>
@@ -752,11 +821,11 @@
     <script>
         lucide.createIcons();
 
-        // Translations Dictionary for Concerts Page
+        // Comprehensive Multilingual Dictionary for Concerts Page
         const translations = {
             en: {
+                menu_label: "Menu",
                 nav_competition: "Competition",
-                nav_concerts: "Concerts",
                 nav_rules: "Rules",
                 nav_prizes: "Prizes",
                 nav_application: "Application",
@@ -766,16 +835,70 @@
                 nav_winter: "Winter Masterclass",
                 nav_spring: "Spring Masterclass",
                 nav_volodos: "Volodos Masterclass",
+                nav_concerts_label: "Concerts",
+                nav_concerts_link: "Concerts",
+                nav_about_label: "About",
+                nav_about: "About",
                 nav_contact: "Contact",
+                nav_legacy: "Legacy",
+                nav_pictures: "Pictures",
+                nav_media: "Media",
                 nav_home: "Return to Home",
-                hero_subtitle: "14th Edition · 18–21 December 2026",
+                hero_tag: "Digital Festival Programme",
                 hero_title: "Concerts & Festival",
-                hero_desc: "Step inside our interactive digital concert programme. Discover master pianists, world-class jury members, and extraordinary young talents through immersive performances and detailed repertoire.",
-                watch_perf: "Watch Performance"
+                hero_edition: "14TH EDITION · 18–21 DECEMBER 2026",
+                hero_location: "Kraainem · Belgium",
+                teaser_tag: "Festival Preview",
+                teaser_heading: "Experience the Festival Climax",
+                teaser_desc: "Watch highlights from the last editions' 1st Prizewinners' Concert and preview the magnificence awaiting audiences this December in Kraainem.",
+                timeline_tag: "The Music Continues",
+                tl_1: "18 DEC → Opening Concert",
+                tl_2: "19 DEC → Jury Members Concert",
+                tl_3: "20 DEC → Final Concert & Prizewinners' Ceremony",
+                c1_chap: "01 — Opening Concert",
+                c1_title: "Friday · 18 December · 19:00",
+                c1_subtitle: "Five pianists. One stage. An extraordinary opening.",
+                olga_role: "President of the Jury",
+                philippe_role: "Artistic Director",
+                watch_perf: "Watch Performance",
+                prog_heading: "Programme Highlights",
+                prog_sub: "A diverse selection of masterpieces. Additional works can also be discovered within the performances.",
+                comp_label: "Composer",
+                p1_desc: "Sonata in D major, K. 570",
+                p2_desc: "Gaspard de la nuit",
+                p3_desc: "Three Preludes",
+                p4_desc: "Paganini Variations",
+                young_talent_badge: "SPECIAL GUEST - YOUNG TALENT",
+                daniel_title: "Daniel Bertomeu · Spain · 17",
+                daniel_desc: "First prizewinner of important competitions in Europe (such as the César Franck Competition, Spanish Composers, MozArte, and Piano Talents). Currently maintaining an active concert schedule in Spain and abroad, and a student of Philippe Raskin.",
+                watch_perf_btn: "▶ Watch Performance",
+                book_tickets: "Book Tickets for Opening Concert",
+                c2_chap: "02 — Jury Members Concert",
+                c2_title: "Saturday · 19 December · 19:00",
+                c2_subtitle: "Five distinguished artists. Five perspectives.",
+                book_tickets_jury: "Book Tickets for Jury Members Concert",
+                margherita_title: "Margherita Rordorf · Italy · 13",
+                margherita_desc: "Margherita studies in Milan under Maestro Vincenzo Balzani and has won multiple national and international prizes with extraordinary musical maturity.",
+                c3_chap: "03 — Final Concert & Prizewinners' Ceremony",
+                c3_title: "Sunday · 20 December · 19:00",
+                c3_subtitle: "An evening of pianistic virtuosity and triumph.",
+                paulius_country: "Lithuania",
+                leo_country: "Italy",
+                book_tickets_gala: "Book Tickets for Final Concert",
+                plan_tag: "Plan Your Evening",
+                plan_heading: "Festival Schedule & Venue",
+                sch_d1: "18 December",
+                sch_t1: "Opening Concert",
+                sch_d2: "19 December",
+                sch_t2: "Jury Members Concert",
+                sch_d3: "20 December",
+                sch_t3: "Final Concert & Ceremony",
+                book_all_tickets: "Book Your Festival Tickets",
+                close_btn: "Close"
             },
             fr: {
+                menu_label: "Menu",
                 nav_competition: "Concours",
-                nav_concerts: "Concerts",
                 nav_rules: "Règlement",
                 nav_prizes: "Prix",
                 nav_application: "Inscription",
@@ -785,16 +908,70 @@
                 nav_winter: "Masterclass d'Hiver",
                 nav_spring: "Masterclass de Printemps",
                 nav_volodos: "Masterclass Volodos",
+                nav_concerts_label: "Concerts",
+                nav_concerts_link: "Concerts",
+                nav_about_label: "À propos",
+                nav_about: "À propos",
                 nav_contact: "Contact",
+                nav_legacy: "Héritage",
+                nav_pictures: "Photos",
+                nav_media: "Médias",
                 nav_home: "Retour à l'accueil",
-                hero_subtitle: "14e Édition · 18–21 Décembre 2026",
+                hero_tag: "Programme Numérique du Festival",
                 hero_title: "Concerts & Festival",
-                hero_desc: "Plongez dans notre programme numérique interactif. Découvrez des pianistes d'exception à travers des performances immersives.",
-                watch_perf: "Voir la performance"
+                hero_edition: "14E ÉDITION · 18–21 DÉCEMBRE 2026",
+                hero_location: "Kraainem · Belgique",
+                teaser_tag: "Aperçu du Festival",
+                teaser_heading: "Vivez le Climax du Festival",
+                teaser_desc: "Regardez les temps forts du concert des 1er prix des dernières éditions et découvrez la magnificence qui attend le public ce mois de décembre à Kraainem.",
+                timeline_tag: "La Musique Continue",
+                tl_1: "18 DÉC → Concert d'Ouverture",
+                tl_2: "19 DÉC → Concert des Membres du Jury",
+                tl_3: "20 DÉC → Concert de Finale & Cérémonie",
+                c1_chap: "01 — Concert d'Ouverture",
+                c1_title: "Vendredi · 18 Décembre · 19:00",
+                c1_subtitle: "Cinq pianistes. Une scène. Une ouverture extraordinaire.",
+                olga_role: "Présidente du Jury",
+                philippe_role: "Directeur Artistique",
+                watch_perf: "Voir la Performance",
+                prog_heading: "Faits Saillants du Programme",
+                prog_sub: "Une sélection variée de chefs-d'œuvre. D'autres œuvres peuvent également être découvertes lors des représentations.",
+                comp_label: "Compositeur",
+                p1_desc: "Sonate en ré majeur, K. 570",
+                p2_desc: "Gaspard de la nuit",
+                p3_desc: "Trois Préludes",
+                p4_desc: "Variations Paganini",
+                young_talent_badge: "INVITÉ SPÉCIAL - JEUNE TALENT",
+                daniel_title: "Daniel Bertomeu · Espagne · 17",
+                daniel_desc: "Premier prix de concours importants en Europe (Concours César Franck, Compositeurs Espagnols, MozArte, Piano Talents). Actuellement en tournée active et étudiant de Philippe Raskin.",
+                watch_perf_btn: "▶ Voir la Performance",
+                book_tickets: "Réserver pour le Concert d'Ouverture",
+                c2_chap: "02 — Concert des Membres du Jury",
+                c2_title: "Samedi · 19 Décembre · 19:00",
+                c2_subtitle: "Cinq artistes distingués. Cinq perspectives.",
+                book_tickets_jury: "Réserver pour le Concert du Jury",
+                margherita_title: "Margherita Rordorf · Italie · 13",
+                margherita_desc: "Margherita étudie à Milan sous la direction du Maestro Vincenzo Balzani et a remporté de nombreux prix nationaux et internationaux avec une maturité musicale extraordinaire.",
+                c3_chap: "03 — Concert de Finale & Cérémonie des Prix",
+                c3_title: "Dimanche · 20 Décembre · 19:00",
+                c3_subtitle: "Une soirée de virtuosité pianistique et de triomphe.",
+                paulius_country: "Lituanie",
+                leo_country: "Italie",
+                book_tickets_gala: "Réserver pour le Concert de Finale",
+                plan_tag: "Préparez Votre Soirée",
+                plan_heading: "Programme & Lieu du Festival",
+                sch_d1: "18 Décembre",
+                sch_t1: "Concert d'Ouverture",
+                sch_d2: "19 Décembre",
+                sch_t2: "Concert du Jury",
+                sch_d3: "20 Décembre",
+                sch_t3: "Concert de Finale & Cérémonie",
+                book_all_tickets: "Réservez Vos Billets de Festival",
+                close_btn: "Fermer"
             },
             nl: {
+                menu_label: "Menu",
                 nav_competition: "Competitie",
-                nav_concerts: "Concerten",
                 nav_rules: "Reglement",
                 nav_prizes: "Prijzen",
                 nav_application: "Inschrijving",
@@ -804,16 +981,70 @@
                 nav_winter: "Winter Masterclass",
                 nav_spring: "Lente Masterclass",
                 nav_volodos: "Volodos Masterclass",
+                nav_concerts_label: "Concerts",
+                nav_concerts_link: "Concerten",
+                nav_about_label: "Over Ons",
+                nav_about: "Over Ons",
                 nav_contact: "Contact",
+                nav_legacy: "Erfenis",
+                nav_pictures: "Foto's",
+                nav_media: "Media",
                 nav_home: "Terug naar Home",
-                hero_subtitle: "14e Editie · 18–21 december 2026",
+                hero_tag: "Digitaal Festivalprogramma",
                 hero_title: "Concerten & Festival",
-                hero_desc: "Ontdek ons interactieve digitale concertprogramma met meesterpianisten en toptalenten.",
-                watch_perf: "Bekijk optreden"
+                hero_edition: "14E EDITIE · 18–21 DECEMBER 2026",
+                hero_location: "Kraainem · België",
+                teaser_tag: "Festival Preview",
+                teaser_heading: "Beleef de Festivalclimax",
+                teaser_desc: "Bekijk hoogtepunten van het concert van de 1e prijewinnaars van de vorige edities en ervaar de pracht die het publiek dit jaar te wachten staat in Kraainem.",
+                timeline_tag: "De Muziek Gaat Door",
+                tl_1: "18 DEC → Openingsconcert",
+                tl_2: "19 DEC → Juryledenconcert",
+                tl_3: "20 DEC → Finale & Prijsuitreiking",
+                c1_chap: "01 — Openingsconcert",
+                c1_title: "Vrijdag · 18 December · 19:00",
+                c1_subtitle: "Vijf pianisten. Één podium. Een buitengewone opening.",
+                olga_role: "Juryvoorzitter",
+                philippe_role: "Artistiek Directeur",
+                watch_perf: "Bekijk Uitvoering",
+                prog_heading: "Programmahoogtepunten",
+                prog_sub: "Een diverseselectie van meesterwerken. Aanvullende werken kunnen ook tijdens de optredens worden ontdekt.",
+                comp_label: "Componist",
+                p1_desc: "Sonate in D groot, K. 570",
+                p2_desc: "Gaspard de la nuit",
+                p3_desc: "Drie Preludes",
+                p4_desc: "Paganini Variaties",
+                young_talent_badge: "SPECIALE GAST - JONG TALENT",
+                daniel_title: "Daniel Bertomeu · Spanje · 17",
+                daniel_desc: "Eerste prijsprijswinnaar van belangrijke competities in Europa (zoals de César Franck Competitie, Spaanse Componisten, MozArte, Piano Talents). Studeert bij Philippe Raskin.",
+                watch_perf_btn: "▶ Bekijk Uitvoering",
+                book_tickets: "Tickets voor Openingsconcert",
+                c2_chap: "02 — Juryledenconcert",
+                c2_title: "Zaterdag · 19 December · 19:00",
+                c2_subtitle: "Vijf vooraanstaande artiesten. Vijf perspectieven.",
+                book_tickets_jury: "Tickets voor Juryledenconcert",
+                margherita_title: "Margherita Rordorf · Italië · 13",
+                margherita_desc: "Margherita studeert in Milaan bij Maestro Vincenzo Balzani en heeft meerdere nationale en internationale prijzen gewonnen met buitengewone muzikale rijpheid.",
+                c3_chap: "03 — Finale & Prijsuitreiking",
+                c3_title: "Zondag · 20 December · 19:00",
+                c3_subtitle: "Een avond van pianistische virtuositeit en triomf.",
+                paulius_country: "Litouwen",
+                leo_country: "Italië",
+                book_tickets_gala: "Tickets voor Finale",
+                plan_tag: "Plan Uw Avond",
+                plan_heading: "Festival Schema & Locatie",
+                sch_d1: "18 December",
+                sch_t1: "Openingsconcert",
+                sch_d2: "19 December",
+                sch_t2: "Juryledenconcert",
+                sch_d3: "20 December",
+                sch_t3: "Finale & Prijsuitreiking",
+                book_all_tickets: "Boek Uw Festivaltickets",
+                close_btn: "Sluiten"
             },
             de: {
+                menu_label: "Menü",
                 nav_competition: "Wettbewerb",
-                nav_concerts: "Konzerte",
                 nav_rules: "Regeln",
                 nav_prizes: "Preise",
                 nav_application: "Bewerbung",
@@ -823,16 +1054,70 @@
                 nav_winter: "Winter-Meisterkurs",
                 nav_spring: "Frühlings-Meisterkurs",
                 nav_volodos: "Volodos Meisterkurs",
+                nav_concerts_label: "Konzerte",
+                nav_concerts_link: "Konzerte",
+                nav_about_label: "Über Uns",
+                nav_about: "Über Uns",
                 nav_contact: "Kontakt",
+                nav_legacy: "Vermächtnis",
+                nav_pictures: "Bilder",
+                nav_media: "Medien",
                 nav_home: "Zur Startseite",
-                hero_subtitle: "14. Edition · 18.–21. Dezember 2026",
+                hero_tag: "Digitales Festivalprogramm",
                 hero_title: "Konzerte & Festival",
-                hero_desc: "Erleben Sie unser interaktives digitales Konzertprogramm mit Meisterpianisten.",
-                watch_perf: "Auftritt ansehen"
+                hero_edition: "14. EDITION · 18.–21. DEZEMBER 2026",
+                hero_location: "Kraainem · Belgien",
+                teaser_tag: "Festivalvorschau",
+                teaser_heading: "Erleben Sie den Festival-Höhepunkt",
+                teaser_desc: "Sehen Sie Höhepunkte des Preisträgerkonzerts der letzten Ausgaben und erleben Sie die Pracht, die das Publikum diesen Dezember in Kraainem erwartet.",
+                timeline_tag: "Die Musik Geht Weiter",
+                tl_1: "18. DEZ → Eröffnungskonzert",
+                tl_2: "19. DEZ → Jurorenkonzert",
+                tl_3: "20. DEZ → Finalkonzert & Zeremonie",
+                c1_chap: "01 — Eröffnungskonzert",
+                c1_title: "Freitag · 18. Dezember · 19:00",
+                c1_subtitle: "Fünf Pianisten. Eine Bühne. Eine außergewöhnliche Eröffnung.",
+                olga_role: "Jurypräsidentin",
+                philippe_role: "Künstlerischer Leiter",
+                watch_perf: "Auftritt Ansehen",
+                prog_heading: "Programm-Highlights",
+                prog_sub: "Eine diverse Auswahl an Meisterwerken. Weitere Werke können auch während der Aufführungen entdeckt werden.",
+                comp_label: "Komponist",
+                p1_desc: "Sonate in D-Dur, K. 570",
+                p2_desc: "Gaspard de la nuit",
+                p3_desc: "Drei Präludien",
+                p4_desc: "Paganini-Variationen",
+                young_talent_badge: "SONDERGAST - JUNGES TALENT",
+                daniel_title: "Daniel Bertomeu · Spanien · 17",
+                daniel_desc: "Erster Preisträger bedeutender europäischer Wettbewerbe (César Franck Wettbewerb, Spanische Komponisten, MozArte, Piano Talents). Student von Philippe Raskin.",
+                watch_perf_btn: "▶ Auftritt Ansehen",
+                book_tickets: "Tickets für Eröffnungskonzert",
+                c2_chap: "02 — Jurorenkonzert",
+                c2_title: "Samstag · 19. Dezember · 19:00",
+                c2_subtitle: "Fünf herausragende Künstler. Fünf Perspektiven.",
+                book_tickets_jury: "Tickets für Jurorenkonzert",
+                margherita_title: "Margherita Rordorf · Italien · 13",
+                margherita_desc: "Margherita studiert in Mailand bei Maestro Vincenzo Balzani und hat zahlreiche nationale und internationale Preise gewonnen.",
+                c3_chap: "03 — Finalkonzert & Preisverleihung",
+                c3_title: "Sonntag · 20. Dezember · 19:00",
+                c3_subtitle: "Ein Abend pianistischer Virtuosität und Triumphe.",
+                paulius_country: "Litauen",
+                leo_country: "Italien",
+                book_tickets_gala: "Tickets für Finalkonzert",
+                plan_tag: "Planen Sie Ihren Abend",
+                plan_heading: "Festivalplan & Spielort",
+                sch_d1: "18. Dezember",
+                sch_t1: "Eröffnungskonzert",
+                sch_d2: "19. Dezember",
+                sch_t2: "Jurorenkonzert",
+                sch_d3: "20. Dezember",
+                sch_t3: "Finalkonzert & Zeremonie",
+                book_all_tickets: "Festivaltickets Buchen",
+                close_btn: "Schließen"
             },
             it: {
+                menu_label: "Menu",
                 nav_competition: "Concorso",
-                nav_concerts: "Concerti",
                 nav_rules: "Regolamento",
                 nav_prizes: "Premi",
                 nav_application: "Iscrizione",
@@ -842,16 +1127,70 @@
                 nav_winter: "Masterclass Invernale",
                 nav_spring: "Masterclass Primaverile",
                 nav_volodos: "Masterclass Volodos",
+                nav_concerts_label: "Concerti",
+                nav_concerts_link: "Concerti",
+                nav_about_label: "Chi Siamo",
+                nav_about: "Chi Siamo",
                 nav_contact: "Contatti",
+                nav_legacy: "Eredità",
+                nav_pictures: "Foto",
+                nav_media: "Media",
                 nav_home: "Torna alla Home",
-                hero_subtitle: "14ª Edizione · 18–21 Dicembre 2026",
+                hero_tag: "Programma Digitale del Festival",
                 hero_title: "Concerti & Festival",
-                hero_desc: "Entra nel nostro programma digitale interattivo e scopri i grandi pianisti ospiti.",
-                watch_perf: "Guarda l'esibizione"
+                hero_edition: "14ª EDIZIONE · 18–21 DICEMBRE 2026",
+                hero_location: "Kraainem · Belgio",
+                teaser_tag: "Anteprima del Festival",
+                teaser_heading: "Vivi il Climax del Festival",
+                teaser_desc: "Guarda i momenti salienti del concerto dei primi premi delle ultime edizioni e scopri la magnificenza che attende il pubblico questo dicembre a Kraainem.",
+                timeline_tag: "La Musica Continua",
+                tl_1: "18 DIC → Concerto d'Apertura",
+                tl_2: "19 DIC → Concerto dei Membri della Giuria",
+                tl_3: "20 DIC → Concerto Finale & Cerimonia",
+                c1_chap: "01 — Concerto d'Apertura",
+                c1_title: "Venerdì · 18 Dicembre · 19:00",
+                c1_subtitle: "Cinque pianisti. Un palcoscenico. Un'apertura straordinaria.",
+                olga_role: "Presidente della Giuria",
+                philippe_role: "Direttore Artistico",
+                watch_perf: "Guarda l'Esibizione",
+                prog_heading: "Punti Salienti del Programma",
+                prog_sub: "Una selezione diversificata di capolavori. Ulteriori opere possono essere scoperte durante le esibizioni.",
+                comp_label: "Compositore",
+                p1_desc: "Sonata in re maggiore, K. 570",
+                p2_desc: "Gaspard de la nuit",
+                p3_desc: "Tre Preludi",
+                p4_desc: "Variazioni Paganini",
+                young_talent_badge: "OSPITE SPECIALE - GIOVANE TALENTO",
+                daniel_title: "Daniel Bertomeu · Spagna · 17",
+                daniel_desc: "Primo premio in importanti concorsi europei (César Franck, Compositori Spagnoli, MozArte, Piano Talents). Studente di Philippe Raskin.",
+                watch_perf_btn: "▶ Guarda l'Esibizione",
+                book_tickets: "Prenota per il Concerto d'Apertura",
+                c2_chap: "02 — Concerto dei Membri della Giuria",
+                c2_title: "Sabato · 19 Dicembre · 19:00",
+                c2_subtitle: "Cinque artisti illustri. Cinque prospettive.",
+                book_tickets_jury: "Prenota per il Concerto della Giuria",
+                margherita_title: "Margherita Rordorf · Italia · 13",
+                margherita_desc: "Margherita studia a Milano con il Maestro Vincenzo Balzani e ha vinto numerosi premi nazionali e internazionali.",
+                c3_chap: "03 — Concerto Finale & Cerimonia dei Premi",
+                c3_title: "Domenica · 20 Dicembre · 19:00",
+                c3_subtitle: "Una serata di virtuosismo pianistiko e trionfo.",
+                paulius_country: "Lituania",
+                leo_country: "Italia",
+                book_tickets_gala: "Prenota per il Concerto Finale",
+                plan_tag: "Pianifica la Tua Sera",
+                plan_heading: "Programma e Sede del Festival",
+                sch_d1: "18 Dicembre",
+                sch_t1: "Concerto d'Apertura",
+                sch_d2: "19 Dicembre",
+                sch_t2: "Concerto della Giuria",
+                sch_d3: "20 Dicembre",
+                sch_t3: "Concerto Finale & Cerimonia",
+                book_all_tickets: "Prenota i Biglietti per il Festival",
+                close_btn: "Chiudi"
             },
             es: {
+                menu_label: "Menú",
                 nav_competition: "Concurso",
-                nav_concerts: "Conciertos",
                 nav_rules: "Reglas",
                 nav_prizes: "Premios",
                 nav_application: "Inscripción",
@@ -861,12 +1200,66 @@
                 nav_winter: "Clase Magistral de Invierno",
                 nav_spring: "Clase Magistral de Primavera",
                 nav_volodos: "Clase Magistral Volodos",
+                nav_concerts_label: "Conciertos",
+                nav_concerts_link: "Conciertos",
+                nav_about_label: "Acerca de",
+                nav_about: "Acerca de",
                 nav_contact: "Contacto",
+                nav_legacy: "Legado",
+                nav_pictures: "Imágenes",
+                nav_media: "Medios",
                 nav_home: "Volver al Inicio",
-                hero_subtitle: "14ª Edición · 18–21 de Diciembre de 2026",
+                hero_tag: "Programa Digital del Festival",
                 hero_title: "Conciertos y Festival",
-                hero_desc: "Explore nuestro programa de conciertos digital e interactivo.",
-                watch_perf: "Ver interpretación"
+                hero_edition: "14ª EDICIÓN · 18–21 DICIEMBRE 2026",
+                hero_location: "Kraainem · Bélgica",
+                teaser_tag: "Avance del Festival",
+                teaser_heading: "Vive el Clímax del Festival",
+                teaser_desc: "Disfruta de los momentos destacados del concierto de ganadores del primer premio de ediciones anteriores y descubre la magnificencia que espera al público este diciembre en Kraainem.",
+                timeline_tag: "La Música Continúa",
+                tl_1: "18 DIC → Concierto Inaugural",
+                tl_2: "19 DIC → Concierto del Jurado",
+                tl_3: "20 DIC → Concierto Final y Ceremonia",
+                c1_chap: "01 — Concierto Inaugural",
+                c1_title: "Viernes · 18 de Diciembre · 19:00",
+                c1_subtitle: "Cinco pianistas. Un escenario. Una apertura extraordinaria.",
+                olga_role: "Presidenta del Jurado",
+                philippe_role: "Director Artístico",
+                watch_perf: "Ver Actuación",
+                prog_heading: "Obras Destacadas del Programa",
+                prog_sub: "Una selección diversa de obras maestras. Se pueden descubrir piezas adicionales durante las actuaciones.",
+                comp_label: "Compositor",
+                p1_desc: "Sonata en re mayor, K. 570",
+                p2_desc: "Gaspard de la nuit",
+                p3_desc: "Tres Preludios",
+                p4_desc: "Variaciones Paganini",
+                young_talent_badge: "INVITADO ESPECIAL - JOVEN TALENTO",
+                daniel_title: "Daniel Bertomeu · España · 17",
+                daniel_desc: "Primer premio en importantes concursos europeos (César Franck, Compositores Españoles, MozArte, Piano Talents). Estudiante de Philippe Raskin.",
+                watch_perf_btn: "▶ Ver Actuación",
+                book_tickets: "Reservar para el Concierto Inaugural",
+                c2_chap: "02 — Concierto del Jurado",
+                c2_title: "Sábado · 19 de Diciembre · 19:00",
+                c2_subtitle: "Cinco artistas distinguidos. Cinco perspectivas.",
+                book_tickets_jury: "Reservar para el Concierto del Jurado",
+                margherita_title: "Margherita Rordorf · Italia · 13",
+                margherita_desc: "Margherita estudia en Milán bajo la tutela del Maestro Vincenzo Balzani y ha ganado múltiples premios nacionales e internacionales.",
+                c3_chap: "03 — Concierto Final y Ceremonia de Premios",
+                c3_title: "Domingo · 20 de Diciembre · 19:00",
+                c3_subtitle: "Una noche de virtuosismo pianístico y triunfo.",
+                paulius_country: "Lituania",
+                leo_country: "Italia",
+                book_tickets_gala: "Reservar para el Concierto Final",
+                plan_tag: "Planifica Tu Noche",
+                plan_heading: "Horario y Sede del Festival",
+                sch_d1: "18 de Diciembre",
+                sch_t1: "Concierto Inaugural",
+                sch_d2: "19 de Diciembre",
+                sch_t2: "Concierto del Jurado",
+                sch_d3: "20 de Diciembre",
+                sch_t3: "Concierto Final y Ceremonia",
+                book_all_tickets: "Reservar Entradas del Festival",
+                close_btn: "Cerrar"
             }
         };
 
@@ -882,6 +1275,11 @@
             localStorage.setItem('cfipc_lang', lang);
         }
 
+        function toggleLangMenu() {
+            const menu = document.getElementById('langMenu');
+            menu.classList.toggle('active');
+        }
+
         function toggleMobileMenu() {
             const overlay = document.getElementById('mobile-nav-overlay');
             if (overlay.classList.contains('open')) {
@@ -893,11 +1291,6 @@
                 setTimeout(() => { overlay.classList.add('open'); }, 10);
                 document.body.style.overflow = 'hidden';
             }
-        }
-
-        function toggleLangMenu() {
-            const menu = document.getElementById('langMenu');
-            menu.classList.toggle('active');
         }
 
         function handleNavClick(event, btn) {
@@ -929,48 +1322,42 @@
             }
         }
 
-        // Modal Logic
-        function openArtistModal(name, role, origin, image, bio, videoUrl) {
-            const modal = document.getElementById('videoModal');
-            const content = document.getElementById('modalContent');
+        function openArtistModal(name, role, country, img, bio, videoUrl) {
+            document.getElementById('modal-name').innerText = name;
+            document.getElementById('modal-role').innerText = role;
+            document.getElementById('modal-country').innerText = country;
+            document.getElementById('modal-img').src = img;
+            document.getElementById('modal-bio').innerText = bio;
             
-            content.innerHTML = `
-                <div class="aspect-video bg-black w-full mb-6 rounded-sm overflow-hidden">
-                    <iframe src="${videoUrl}" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="space-y-4">
-                    <div>
-                        <span class="text-copper text-xs uppercase tracking-widest font-bold">${role} · ${origin}</span>
-                        <h3 class="serif text-4xl italic text-copper mt-1">${name}</h3>
-                    </div>
-                    <p class="text-stone-300 font-light text-sm leading-relaxed">${bio}</p>
-                    <div class="pt-4 flex justify-end">
-                        <a href="https://www.delijsterbes.be/nl/programma/cesar-franck-international-piano-competition-0" target="_blank" class="btn-copper px-6 py-3 text-xs uppercase tracking-widest font-bold">BOOK TICKETS FOR CONCERT</a>
-                    </div>
-                </div>
-            `;
-            modal.classList.add('open');
+            const iframeContainer = document.getElementById('modal-video-container');
+            const iframe = document.getElementById('modal-iframe');
+            if (videoUrl) {
+                iframe.src = videoUrl;
+                iframeContainer.classList.remove('hidden');
+            } else {
+                iframe.src = '';
+                iframeContainer.classList.add('hidden');
+            }
+            document.getElementById('artist-modal').classList.add('open');
             document.body.style.overflow = 'hidden';
         }
 
         function closeArtistModal(event) {
-            const modal = document.getElementById('videoModal');
-            modal.classList.remove('open');
+            document.getElementById('artist-modal').classList.remove('open');
+            document.getElementById('modal-iframe').src = '';
             document.body.style.overflow = 'auto';
-            document.getElementById('modalContent').innerHTML = '';
         }
 
         function closeArtistModalDirect() {
-            const modal = document.getElementById('videoModal');
-            modal.classList.remove('open');
+            document.getElementById('artist-modal').classList.remove('open');
+            document.getElementById('modal-iframe').src = '';
             document.body.style.overflow = 'auto';
-            document.getElementById('modalContent').innerHTML = '';
         }
 
         window.onclick = (event) => {
+            document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
             if (!event.target.closest('.lang-widget-container')) {
-                const langMenu = document.getElementById('langMenu');
-                if(langMenu) langMenu.classList.remove('active');
+                document.getElementById('langMenu').classList.remove('active');
             }
         };
 
@@ -981,6 +1368,5 @@
             }
         });
     </script>
-    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ad3becddcd7249d19a31f20ef5fccc08"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
