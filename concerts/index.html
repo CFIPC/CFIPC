@@ -69,37 +69,15 @@
             text-align: left;
         }
 
-        /* Fixed dropdown submenu behavior - aligned cleanly to the left */
-        .dropdown-submenu-container {
-            position: relative;
-        }
-        .dropdown-submenu {
-            position: absolute;
-            top: 0;
-            left: 100%;
-            background: var(--parchment);
-            border: 1px solid rgba(27, 42, 39, 0.1);
-            min-width: 180px;
-            display: none;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            padding: 0.75rem 0;
-            z-index: 1010;
-        }
         @media (min-width: 1024px) {
             .dropdown-container:hover > .dropdown-menu { display: block; animation: fadeIn 0.3s ease; }
-            .dropdown-submenu-container:hover > .dropdown-submenu { display: block; animation: fadeInSub 0.3s ease; }
         }
         
-        .dropdown-menu.is-visible, .dropdown-submenu.is-visible { display: block !important; }
+        .dropdown-menu.is-visible { display: block !important; }
 
         @keyframes fadeIn { 
             from { opacity: 0; transform: translate(-50%, 10px); } 
             to { opacity: 1; transform: translate(-50%, 0); } 
-        }
-
-        @keyframes fadeInSub { 
-            from { opacity: 0; transform: translateX(10px); } 
-            to { opacity: 1; transform: translateX(0); } 
         }
 
         .dropdown-item {
@@ -348,15 +326,10 @@
                         <div class="dropdown-container">
                             <a href="#" class="nav-link" onclick="handleNavClick(event, this)"><span data-i18n="nav_about">About</span> <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
                             <div class="dropdown-menu">
-                                <a href="https://cfipc.com/contact/" class="dropdown-item" data-i18n="nav_contact">Contact Us</a>
-                                <a href="https://cfipc.com/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
-                                <div class="dropdown-submenu-container w-full">
-                                    <a href="https://cfipc.com/gallery/" class="dropdown-item flex justify-between items-center" onclick="handleNavClick(event, this)"><span data-i18n="nav_gallery">Gallery</span> &rsaquo;</a>
-                                    <div class="dropdown-submenu">
-                                        <a href="https://cfipc.com/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
-                                        <a href="https://cfipc.com/pictures/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
-                                    </div>
-                                </div>
+                                <a href="https://cfipc.com/contact/" class="dropdown-item">Contact</a>
+                                <a href="https://cfipc.com/about/" class="dropdown-item">Legacy</a>
+                                <a href="https://cfipc.com/gallery/" class="dropdown-item">Pictures</a>
+                                <a href="https://cfipc.com/media/" class="dropdown-item">Media</a>
                             </div>
                         </div>
                     </div>
@@ -377,6 +350,22 @@
                 <p class="max-w-2xl mx-auto text-stone-600 font-light text-base md:text-lg leading-relaxed" data-i18n="hero_desc">
                     Step inside our interactive digital concert programme. Discover master pianists, world-class jury members, and extraordinary young talents through immersive performances and detailed repertoire.
                 </p>
+            </div>
+        </section>
+
+        <!-- FESTIVAL TEASER (720x1280 Vertical Format) -->
+        <section class="py-16 px-4 bg-forest text-parchment text-center">
+            <div class="max-w-[600px] mx-auto">
+                <span class="text-copper uppercase tracking-[0.3em] text-xs font-bold block mb-3">Festival Preview</span>
+                <h3 class="serif text-3xl italic text-copper mb-6">Experience the Festival Climax</h3>
+                <p class="text-stone-300 font-light text-sm mb-8">Watch highlights from the last editions' 1st Prizewinners' Concert and preview the magnificence awaiting audiences this December in Kraainem.</p>
+                <!-- Container adapted for 720x1280 vertical video -->
+                <div class="mx-auto max-w-[360px] bg-black rounded-sm overflow-hidden border border-copper/40 shadow-2xl" style="aspect-ratio: 9/16;">
+                    <video controls autoplay muted loop playsinline class="w-full h-full object-contain">
+                        <source src="teaser.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
         </section>
 
@@ -415,7 +404,7 @@
                     <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Olga Kern', 'President of the Jury', 'USA / Russia', 'olga.png', 'Internationally acclaimed pianist Olga Kern is recognized as one of her generation\'s great artists. First prize winner of the Van Cliburn International Piano Competition.', 'https://www.youtube.com/embed/S4GXM1DKefw')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
-                                <img src="https://placehold.co/600x800/1B2A27/D4A373?text=olga" alt="olga" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='olga.png'">
+                                <img src="olga.png" alt="olga" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/1B2A27/D4A373?text=olga.png'">
                             </div>
                             <h4 class="serif text-2xl font-bold text-forest mb-1">Olga Kern</h4>
                             <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3">President of the Jury</p>
@@ -427,10 +416,10 @@
                     </div>
 
                     <!-- Philippe Raskin -->
-                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Philippe Raskin', 'Artistic Director', 'Belgium', 'philippe.png', 'Belgian concert pianist Philippe Raskin is known as an eclectic and versatile musician, active internationally as a soloist. He is currently a professor at the \"Friedrich Gulda\" Conservatory (Vienna), the Royal Superior Institute of Music and Pedagogy (IMEP), and the \"Talent Music Master Courses\" University of Music (Brescia).', 'https://www.youtube.com/embed/90DGmVUz2b4')">
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Philippe Raskin', 'Artistic Director', 'Belgium', 'philippe.png', 'Belgian concert pianist Philippe Raskin is known as an eclectic and versatile musician, active internationally as a soloist. He is currently a professor at the &quot;Friedrich Gulda&quot; Conservatory (Vienna), the Royal Superior Institute of Music and Pedagogy (IMEP), and the &quot;Talent Music Master Courses&quot; University of Music (Brescia).', 'https://www.youtube.com/embed/90DGmVUz2b4')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
-                                <img src="https://placehold.co/600x800/1B2A27/D4A373?text=philippe" alt="philippe" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='philippe.png'">
+                                <img src="philippe.png" alt="philippe" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/1B2A27/D4A373?text=philippe.png'">
                             </div>
                             <h4 class="serif text-2xl font-bold text-forest mb-1">Philippe Raskin</h4>
                             <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3">Artistic Director</p>
@@ -450,7 +439,7 @@
                     <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Mitsuru Yamakawa', 'Sendai, Japan', 'Japan', 'mitsuru.png', 'Mitsuru Yamakawa enjoys a fantastic career in Japan, performing in concerts across the most important halls in Asia and dedicating time to teaching in Sendai.', 'https://www.youtube.com/embed/4qbSEFS5LVw')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
-                                <img src="https://placehold.co/600x800/1B2A27/D4A373?text=mitsuru" alt="mitsuru" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='mitsuru.png'">
+                                <img src="mitsuru.png" alt="mitsuru" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/1B2A27/D4A373?text=mitsuru.png'">
                             </div>
                             <h4 class="serif text-2xl font-bold text-forest mb-1">Mitsuru Yamakawa</h4>
                             <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">Sendai, Japan</p>
@@ -464,7 +453,7 @@
                     <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Mayumi Iwata', 'Sapporo, Japan', 'Japan', 'mayumi.png', 'Mayumi Iwata is an accomplished concert pianist and teacher based in Sapporo, widely praised by critics and audiences for her refined and poetic sensibilities.', 'https://www.youtube.com/embed/q8UtH_lVRJw')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
-                                <img src="https://placehold.co/600x800/1B2A27/D4A373?text=mayumi" alt="mayumi" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='mayumi.png'">
+                                <img src="mayumi.png" alt="mayumi" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/1B2A27/D4A373?text=mayumi.png'">
                             </div>
                             <h4 class="serif text-2xl font-bold text-forest mb-1">Mayumi Iwata</h4>
                             <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">Sapporo, Japan</p>
@@ -478,7 +467,7 @@
                     <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Kenta Koketsu', 'Tokyo, Japan', 'Japan', 'kenta.png', 'Kenta Koketsu balances active recording schedules with masterclasses and concerts across Japan and international stages.', 'https://www.stage-plus.com/de/video/vod_concert_APNM8GRFDPHMASJKBSOJ4D9I')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
-                                <img src="https://placehold.co/600x800/1B2A27/D4A373?text=kenta" alt="kenta" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='kenta.png'">
+                                <img src="kenta.png" alt="kenta" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/1B2A27/D4A373?text=kenta.png'">
                             </div>
                             <h4 class="serif text-2xl font-bold text-forest mb-1">Kenta Koketsu</h4>
                             <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">Tokyo, Japan</p>
@@ -520,7 +509,7 @@
 
                 <!-- YOUNG TALENT SPOTLIGHT -->
                 <div class="bg-forest text-parchment p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 rounded-sm">
-                    <img src="https://placehold.co/300x300/D4A373/1B2A27?text=daniel" alt="daniel" class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full border-2 border-copper" onerror="this.src='daniel.png'">
+                    <img src="daniel.png" alt="daniel" class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full border-2 border-copper" onerror="this.src='https://placehold.co/300x300/D4A373/1B2A27?text=daniel.png'">
                     <div class="flex-1 text-center md:text-left">
                         <span class="text-copper uppercase tracking-[0.3em] text-[10px] font-bold block mb-1">SPECIAL GUEST - YOUNG TALENT</span>
                         <h4 class="serif text-3xl italic mb-2 text-copper">Daniel Bertomeu · Spain · 17</h4>
@@ -552,7 +541,7 @@
                     <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Fabio Witkowski', 'Hotchkiss School', 'Connecticut, USA', 'fabio.png', 'Fabio Witkowski is Chair of the Visual and Performing Arts Department at The Hotchkiss School and performs extensively as soloist and chamber musician.', 'https://www.youtube.com/embed/7TxL19NgYBY')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
-                                <img src="https://placehold.co/600x800/D4A373/1B2A27?text=fabio" alt="fabio" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='fabio.png'">
+                                <img src="fabio.png" alt="fabio" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/D4A373/1B2A27?text=fabio.png'">
                             </div>
                             <h4 class="serif text-2xl font-bold text-copper mb-1">Fabio Witkowski</h4>
                             <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">Hotchkiss School</p>
@@ -567,7 +556,7 @@
                     <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Gisele Witkowski', 'Hotchkiss School', 'Connecticut, USA', 'gisele.png', 'Renowned piano faculty member at Hotchkiss, Gisele Witkowski performs worldwide and adjudicates prominent international piano competitions.', 'https://www.youtube.com/embed/3Ifutu-1WzI')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
-                                <img src="https://placehold.co/600x800/D4A373/1B2A27?text=gisele" alt="gisele" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='gisele.png'">
+                                <img src="gisele.png" alt="gisele" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/D4A373/1B2A27?text=gisele.png'">
                             </div>
                             <h4 class="serif text-2xl font-bold text-copper mb-1">Gisele Witkowski</h4>
                             <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">Hotchkiss School</p>
@@ -582,7 +571,7 @@
                     <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Andreas Frölich', 'Hochschule für Musik und Tanz Köln', 'Germany', 'andreas.png', 'Professor at the Cologne University of Music, Andreas Frölich has won prizes at major international competitions including Senigallia and Maria Canals.', 'https://www.youtube.com/embed/Zx_in3Rqqlw')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
-                                <img src="https://placehold.co/600x800/D4A373/1B2A27?text=andreas" alt="andreas" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='andreas.png'">
+                                <img src="andreas.png" alt="andreas" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/D4A373/1B2A27?text=andreas.png'">
                             </div>
                             <h4 class="serif text-2xl font-bold text-copper mb-1">Andreas Frölich</h4>
                             <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">HfMT Köln</p>
@@ -597,7 +586,7 @@
                     <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Leonel Morales', 'Universidad Alfonso X el Sabio', 'Madrid, Spain', 'leonel.png', 'Leonel Morales is a distinguished Spanish-Cuban pianist and professor, renowned internationally for his masterclasses and performances across global stages.', 'https://www.youtube.com/embed/4CjazkgDrgQ')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
-                                <img src="https://placehold.co/600x800/D4A373/1B2A27?text=leonel" alt="leonel" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='leonel.png'">
+                                <img src="leonel.png" alt="leonel" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/1B2A27/D4A373?text=leonel.png'">
                             </div>
                             <h4 class="serif text-2xl font-bold text-copper mb-1">Leonel Morales</h4>
                             <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">Universidad Alfonso X</p>
@@ -612,7 +601,7 @@
                     <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Vincenzo Balzani', 'Conservatorio Verdi di Milano', 'Milan, Italy', 'vincenzo.png', 'Legendary Italian pedagogue and concert pianist Vincenzo Balzani has nurtured generations of laureates across global stages from Milan to Tokyo.', 'https://www.youtube.com/embed/f6WmrmEgHac')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
-                                <img src="https://placehold.co/600x800/D4A373/1B2A27?text=vincenzo" alt="vincenzo" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='vincenzo.png'">
+                                <img src="vincenzo.png" alt="vincenzo" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x800/1B2A27/D4A373?text=vincenzo.png'">
                             </div>
                             <h4 class="serif text-2xl font-bold text-copper mb-1">Vincenzo Balzani</h4>
                             <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">Conservatorio Verdi</p>
@@ -627,7 +616,7 @@
 
                 <!-- YOUNG TALENT SPOTLIGHT 2 -->
                 <div class="bg-charcoal text-parchment p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 rounded-sm border border-copper/20">
-                    <img src="https://placehold.co/300x300/1B2A27/D4A373?text=margherita" alt="margherita" class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full border-2 border-copper" onerror="this.src='margherita.png'">
+                    <img src="margherita.png" alt="margherita" class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full border-2 border-copper" onerror="this.src='https://placehold.co/300x300/1B2A27/D4A373?text=margherita.png'">
                     <div class="flex-1 text-center md:text-left">
                         <span class="text-copper uppercase tracking-[0.3em] text-[10px] font-bold block mb-1">SPECIAL GUEST - YOUNG TALENT</span>
                         <h4 class="serif text-3xl italic mb-2 text-copper">Margherita Rordorf · Italy · 13</h4>
@@ -657,7 +646,7 @@
                     <div class="artist-card p-8 flex flex-col justify-between" onclick="openArtistModal('Paulius Andersson', 'Lithuania', 'Denmark / Lithuania', 'paulius.png', 'Paulius Andersson has a vibrant international career with numerous concerts across Europe. He has won important prizes such as the Lyon International Piano Competition, MozArte, and others.', 'https://www.youtube.com/embed/HaCOnnsA1_8')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[16/10] bg-stone-200">
-                                <img src="https://placehold.co/800x600/1B2A27/D4A373?text=paulius" alt="paulius" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='paulius.png'">
+                                <img src="paulius.png" alt="paulius" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x600/1B2A27/D4A373?text=paulius.png'">
                             </div>
                             <h4 class="serif text-3xl font-bold text-forest mb-1">Paulius Andersson</h4>
                             <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">Lithuania</p>
@@ -671,7 +660,7 @@
                     <div class="artist-card p-8 flex flex-col justify-between" onclick="openArtistModal('Leo Di Maria', 'Italy', 'Italy', 'leo.png', 'Leo Di Maria has won many important competitions, including the UNISA International Piano Competition in Pretoria, Ciudad de Ferrol International Piano Competition in Spain, MozArte Competition in Germany, and the Grand Prix de Lyon in France. He performs around the world, from Europe to Asia, Africa, and America.', 'https://www.youtube.com/embed/0dDH354PU-Y')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[16/10] bg-stone-200">
-                                <img src="https://placehold.co/800x600/1B2A27/D4A373?text=leo" alt="leo" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='leo.png'">
+                                <img src="leo.png" alt="leo" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x600/1B2A27/D4A373?text=leo.png'">
                             </div>
                             <h4 class="serif text-3xl font-bold text-forest mb-1">Leo Di Maria</h4>
                             <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">Italy</p>
@@ -681,18 +670,6 @@
                         </button>
                     </div>
 
-                </div>
-
-                <!-- FULL WIDTH LOCAL VIDEO TEASER FEATURE -->
-                <div class="bg-forest p-12 text-center rounded-sm text-parchment relative overflow-hidden">
-                    <h3 class="serif text-3xl italic text-copper mb-4">Experience the Festival Climax</h3>
-                    <p class="text-stone-300 font-light text-sm max-w-xl mx-auto mb-8">Watch highlights from the last editions' 1st Prizewinners' Concert and preview the magnificence awaiting audiences this December in Kraainem.</p>
-                    <div class="max-w-3xl mx-auto mb-8 rounded-sm overflow-hidden border border-copper/40 bg-black aspect-video">
-                        <video controls class="w-full h-full object-cover">
-                            <source src="teaser.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
                 </div>
 
             </div>
