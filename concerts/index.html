@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concerts & Festival Programme | César Franck International Piano Competition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600;1,700&family=Outfit:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest: #1B2A27;
+            --copper: #D4A373;
+            --sage: #7D8B7A;
+            --parchment: #F2F0E9;
+            --charcoal: #121B19;
+            --dusty-white: #EAE8E1;
+        }
+
+        body { 
+            font-family: 'Outfit', sans-serif; 
+            background-color: var(--parchment);
+            color: var(--forest);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, .serif { font-family: 'Cormorant Garamond', serif; }
+        
+        .page-section { display: block; animation: sectionFade 0.6s ease-out; }
+
+        @keyframes sectionFade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-link {
+            letter-spacing: 0.12em;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--forest);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            background: none;
+            border: none;
+            text-decoration: none;
+        }
+        .nav-link:hover { color: var(--copper); }
+
+        .dropdown-container { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--parchment);
+            border: 1px solid rgba(27, 42, 39, 0.1);
+            min-width: 220px;
+            display: none;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            z-index: 1000;
+            padding: 0.75rem 0;
+        }
+
+        @media (min-width: 1024px) {
+            .dropdown-container:hover .dropdown-menu { display: block; animation: fadeIn 0.3s ease; }
+        }
+        
+        .dropdown-menu.is-visible { display: block !important; }
+
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translate(-50%, 10px); } 
+            to { opacity: 1; transform: translate(-50%, 0); } 
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--forest);
+            transition: all 0.2s;
+            text-align: center;
+            text-decoration: none;
+            width: 100%;
+        }
+        .dropdown-item:hover { 
+            background: var(--forest); 
+            color: var(--copper); 
+        }
+
+        #mobile-nav-overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--forest);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            padding: 4rem 2rem;
+            overflow-y: auto;
+            color: var(--parchment);
+        }
+        #mobile-nav-overlay.open { display: flex; animation: overlayIn 0.4s ease forwards; }
+        
+        @keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .mobile-group { margin-bottom: 2.5rem; }
+        .mobile-label { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-style: italic; color: var(--copper); margin-bottom: 0.5rem; display: block; border-bottom: 1px solid rgba(212, 163, 115, 0.2); }
+        .mobile-link { display: block; padding: 0.75rem 0; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.8; width: 100%; text-align: left; background: none; border: none; color: inherit; text-decoration: none; }
+
+        .brand-logo {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        
+        .logo-image {
+            height: 100px;
+            width: auto;
+            object-fit: contain;
+            transition: height 0.3s ease;
+        }
+        
+        @media (min-width: 768px) {
+            .logo-image { height: 150px; }
+        }
+
+        .bg-forest { background-color: var(--forest) !important; }
+        .bg-charcoal { background-color: var(--charcoal) !important; }
+        .text-copper { color: var(--copper) !important; }
+        .border-copper { border-color: var(--copper) !important; }
+        .btn-copper { background-color: var(--copper); color: white; transition: all 0.3s ease; }
+        .btn-copper:hover { background-color: var(--forest); }
+
+        /* Artist Cards & Programme Elements */
+        .artist-card {
+            background-color: white;
+            border: 1px solid rgba(27, 42, 39, 0.08);
+            border-radius: 2px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .dark-theme .artist-card {
+            background-color: rgba(255, 255, 255, 0.03);
+            border-color: rgba(212, 163, 115, 0.15);
+        }
+        .artist-card:hover {
+            border-color: var(--copper);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        /* Timeline Navigation Stave */
+        .stave-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--copper), transparent);
+            position: relative;
+        }
+        .stave-node {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--copper);
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease;
+        }
+        .stave-node:hover { transform: translate(-50%, -50%) scale(1.4); }
+
+        /* Modal Overlay */
+        #videoModal {
+            position: fixed;
+            inset: 0;
+            background: rgba(18, 27, 25, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            animation: fadeIn 0.3s ease;
+        }
+        #videoModal.open { display: flex; }
+
+        /* Custom Floating Language Widget Styling */
+        .lang-widget-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+        }
+        .lang-toggle-btn {
+            background-color: var(--forest);
+            color: var(--copper);
+            border: 1.5px solid var(--copper);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-toggle-btn:hover {
+            background-color: var(--copper);
+            color: var(--forest);
+            transform: scale(1.05);
+        }
+        .lang-dropdown-menu {
+            position: absolute;
+            bottom: 65px;
+            right: 0;
+            background: var(--parchment);
+            border: 1px solid rgba(212, 163, 115, 0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            padding: 0.5rem 0;
+            display: none;
+            min-width: 150px;
+        }
+        .lang-dropdown-menu.active { display: block; animation: fadeIn 0.2s ease; }
+        .lang-option {
+            display: block;
+            width: 100%;
+            padding: 0.6rem 1rem;
+            text-align: left;
+            background: none;
+            border: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--forest);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-option:hover { background: var(--forest); color: var(--copper); }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-nav-overlay">
+        <div class="flex justify-between items-center mb-12">
+            <span class="serif italic text-2xl text-parchment">Menu</span>
+            <button onclick="toggleMobileMenu()" class="text-copper text-4xl leading-none">&times;</button>
+        </div>
+        <div class="mobile-group">
+            <span class="mobile-label" data-i18n="nav_competition">Competition</span>
+            <a href="https://cfipc.com/rules/" class="mobile-link" data-i18n="nav_rules">Rules</a>
+            <a href="https://cfipc.com/prizes/" class="mobile-link" data-i18n="nav_prizes">Prizes</a>
+            <a href="https://cfipc.com/application/" class="mobile-link" data-i18n="nav_application">Application</a>
+            <a href="https://cfipc.com/jury/" class="mobile-link" data-i18n="nav_jury">Jury</a>
+            <a href="https://cfipc.com/laureates/" class="mobile-link" data-i18n="nav_laureates">Laureates</a>
+        </div>
+        <div class="mobile-group">
+            <span class="mobile-label" data-i18n="nav_concerts">Concerts</span>
+            <a href="#concert-1" onclick="toggleMobileMenu()" class="mobile-link">01 — Opening Concert</a>
+            <a href="#concert-2" onclick="toggleMobileMenu()" class="mobile-link">02 — Jury Members</a>
+            <a href="#concert-3" onclick="toggleMobileMenu()" class="mobile-link">03 — Gala Evening</a>
+        </div>
+        <div class="mobile-group">
+            <span class="mobile-label" data-i18n="nav_masterclasses">Masterclasses</span>
+            <a href="https://cfipc.com/winter-masterclass/" class="mobile-link" data-i18n="nav_winter">Winter Masterclass</a>
+            <a href="https://cfipc.com/spring-masterclass/" class="mobile-link" data-i18n="nav_spring">Spring Masterclass</a>
+            <a href="https://www.masterclass-volodos.com/" class="mobile-link" data-i18n="nav_volodos">Volodos Masterclass</a>
+        </div>
+        <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold" data-i18n="nav_home">Return to Home</a>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <nav class="fixed w-full z-50 bg-[#F2F0E9]/95 backdrop-blur-md border-b border-forest/5">
+        <div class="max-w-[1600px] mx-auto px-4 md:px-8">
+            <div class="flex justify-between items-center h-32 md:h-48">
+                <div class="flex-1 flex justify-start items-center">
+                    <button class="md:hidden flex flex-col items-center justify-center space-y-1 p-2" onclick="toggleMobileMenu()">
+                        <div class="w-6 h-[1.5px] bg-black"></div>
+                        <div class="w-6 h-[1.5px] bg-black"></div>
+                    </button>
+                    <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
+                        <div class="dropdown-container">
+                            <a href="https://cfipc.com/" class="nav-link"><span data-i18n="nav_competition">Competition</span> <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
+                            <div class="dropdown-menu">
+                                <a href="https://cfipc.com/rules/" class="dropdown-item" data-i18n="nav_rules">Rules</a>
+                                <a href="https://cfipc.com/prizes/" class="dropdown-item" data-i18n="nav_prizes">Prizes</a>
+                                <a href="https://cfipc.com/application/" class="dropdown-item" data-i18n="nav_application">Application</a>
+                                <a href="https://cfipc.com/jury/" class="dropdown-item" data-i18n="nav_jury">Jury</a>
+                                <a href="https://cfipc.com/laureates/" class="dropdown-item" data-i18n="nav_laureates">Laureates</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-container">
+                            <a href="https://cfipc.com/winter-masterclass/" class="nav-link"><span data-i18n="nav_masterclasses">Masterclasses</span> <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
+                            <div class="dropdown-menu">
+                                <a href="https://cfipc.com/winter-masterclass/" class="dropdown-item" data-i18n="nav_winter">Winter Masterclass</a>
+                                <a href="https://cfipc.com/spring-masterclass/" class="dropdown-item" data-i18n="nav_spring">Spring Masterclass</a>
+                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item" data-i18n="nav_volodos">Volodos Masterclass</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://cfipc.com/" class="brand-logo px-2">
+                    <img src="https://cfipc.com/Logo26.png" alt="CFIPC Logo" class="logo-image">
+                </a>
+                <div class="flex-1 flex justify-end items-center">
+                    <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
+                        <div class="dropdown-container">
+                            <a href="#concerts" class="nav-link text-copper"><span data-i18n="nav_concerts">Concerts</span></a>
+                        </div>
+                        <div class="dropdown-container">
+                            <a href="#" class="nav-link" onclick="handleNavClick(event, this)"><span data-i18n="nav_about">About</span> <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
+                            <div class="dropdown-menu">
+                                <a href="https://cfipc.com/contact/" class="dropdown-item" data-i18n="nav_contact">Contact Us</a>
+                                <a href="https://cfipc.com/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
+                                <div class="dropdown-container w-full">
+                                    <a href="https://cfipc.com/gallery/" class="dropdown-item flex justify-between items-center"><span data-i18n="nav_gallery">Gallery</span> &rsaquo;</a>
+                                    <div class="dropdown-menu" style="left: -100%; top: 0;">
+                                        <a href="https://cfipc.com/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
+                                        <a href="https://cfipc.com/pictures/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 md:pt-48">
+        
+        <!-- HERO SECTION -->
+        <section class="page-section py-20 px-4 md:px-8 text-center bg-parchment relative overflow-hidden">
+            <div class="max-w-[1200px] mx-auto">
+                <span class="text-copper uppercase tracking-[0.4em] text-[11px] font-bold block mb-4" data-i18n="hero_subtitle">14th Edition · 18–20 December 2026</span>
+                <h1 class="text-6xl md:text-8xl serif italic text-forest mb-6" data-i18n="hero_title">Concerts & Festival</h1>
+                <p class="text-copper uppercase tracking-[0.3em] text-xs font-semibold mb-12">GC De Lijsterbes · Kraainem · Belgium</p>
+                <div class="w-24 h-[1px] bg-copper mx-auto mb-12 opacity-50"></div>
+                <p class="max-w-2xl mx-auto text-stone-600 font-light text-base md:text-lg leading-relaxed" data-i18n="hero_desc">
+                    Step inside our interactive digital concert programme. Discover master pianists, world-class jury members, and extraordinary young talents through immersive performances and detailed repertoire.
+                </p>
+            </div>
+        </section>
+
+        <!-- THE MUSIC CONTINUES - INTERACTIVE STAVE TIMELINE -->
+        <div class="py-12 bg-parchment px-4">
+            <div class="max-w-[1000px] mx-auto text-center">
+                <p class="text-[10px] uppercase tracking-[0.3em] text-copper font-bold mb-6">The Music Continues</p>
+                <div class="stave-line my-6">
+                    <div class="stave-node" style="left: 15%;" title="Opening Concert" onclick="scrollToSection('concert-1')"></div>
+                    <div class="stave-node" style="left: 50%;" title="Jury Members' Concert" onclick="scrollToSection('concert-2')"></div>
+                    <div class="stave-node" style="left: 85%;" title="Gala Evening" onclick="scrollToSection('concert-3')"></div>
+                </div>
+                <div class="flex flex-col md:flex-row justify-around text-xs uppercase tracking-[0.2em] font-semibold text-forest mt-4 gap-4">
+                    <a href="#concert-1" class="hover:text-copper transition">18 DEC → Opening Concert</a>
+                    <a href="#concert-2" class="hover:text-copper transition">19 DEC → Jury Members' Concert</a>
+                    <a href="#concert-3" class="hover:text-copper transition">20 DEC → Gala Evening</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHAPTER 01 — OPENING CONCERT (LIGHT THEME) -->
+        <section id="concert-1" class="page-section py-24 px-4 md:px-12 bg-white">
+            <div class="max-w-[1400px] mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-forest/10 pb-8">
+                    <div>
+                        <span class="text-copper uppercase tracking-[0.3em] text-xs font-bold block mb-2">01 — Opening Concert</span>
+                        <h2 class="text-4xl md:text-6xl serif italic text-forest" data-i18n="c1_title">Friday · 18 December · 19:00</h2>
+                    </div>
+                    <p class="text-stone-500 font-light text-sm mt-4 md:mt-0 italic serif text-xl" data-i18n="c1_subtitle">Six pianists. One stage. An extraordinary opening.</p>
+                </div>
+
+                <!-- ARTIST CARDS GRID -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 mb-20">
+                    
+                    <!-- Olga Kern -->
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Olga Kern', 'President of the Jury', 'USA / Russia', 'olga.jpg', 'Internationally acclaimed pianist Olga Kern is recognized as one of her generation\'s great artists. First prize winner of the Van Cliburn International Piano Competition.', 'W.A. Mozart: Piano Sonata No. 18 in D major, K. 570\nS. Rachmaninoff: Variations on a Theme of Corelli, Op. 42', 'https://www.youtube.com/embed/S4GXM1DKefw')">
+                        <div>
+                            <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
+                                <img src="https://placehold.co/600x800/1B2A27/D4A373?text=olga" alt="olga" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <h4 class="serif text-2xl font-bold text-forest mb-1">Olga Kern</h4>
+                            <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3">President of the Jury</p>
+                            <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">USA / Russia</p>
+                        </div>
+                        <button class="w-full py-3 border border-forest/20 text-forest text-xs uppercase tracking-[0.2em] font-bold hover:bg-forest hover:text-copper transition">
+                            ▶ <span data-i18n="watch_perf">Watch Performance</span>
+                        </button>
+                    </div>
+
+                    <!-- Philippe Raskin -->
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Philippe Raskin', 'Concert Pianist & Artistic Director', 'Belgium', 'philippe.jpg', 'Belgian concert pianist Philippe Raskin has performed in major venues worldwide and is the founder of the César Franck International Piano Competition.', 'C. Franck: Prélude, Choral et Fugue\nL.v. Beethoven: Sonata Op. 110', 'https://www.youtube.com/embed/90DGmVUz2b4')">
+                        <div>
+                            <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
+                                <img src="https://placehold.co/600x800/1B2A27/D4A373?text=philippe" alt="philippe" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <h4 class="serif text-2xl font-bold text-forest mb-1">Philippe Raskin</h4>
+                            <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3">Concert Pianist</p>
+                            <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">Belgium</p>
+                        </div>
+                        <button class="w-full py-3 border border-forest/20 text-forest text-xs uppercase tracking-[0.2em] font-bold hover:bg-forest hover:text-copper transition">
+                            ▶ <span data-i18n="watch_perf">Watch Performance</span>
+                        </button>
+                    </div>
+
+                    <!-- Mitsuru Yamakawa -->
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Mitsuru Yamakawa', 'Concert Pianist', 'Sendai, Japan', 'mitsuru.jpg', 'Mitsuru Yamakawa has performed globally with prestigious orchestras and is celebrated for exquisite touch and deep interpretations of Chopin and Ravel.', 'M. Ravel: Gaspard de la nuit\nF. Chopin: Ballade No. 4 in F minor, Op. 52', 'https://www.youtube.com/embed/4qbSEFS5LVw')">
+                        <div>
+                            <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
+                                <img src="https://placehold.co/600x800/1B2A27/D4A373?text=mitsuru" alt="mitsuru" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <h4 class="serif text-2xl font-bold text-forest mb-1">Mitsuru Yamakawa</h4>
+                            <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3">Concert Pianist</p>
+                            <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">Sendai, Japan</p>
+                        </div>
+                        <button class="w-full py-3 border border-forest/20 text-forest text-xs uppercase tracking-[0.2em] font-bold hover:bg-forest hover:text-copper transition">
+                            ▶ <span data-i18n="watch_perf">Watch Performance</span>
+                        </button>
+                    </div>
+
+                    <!-- Mayumi Iwata -->
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Mayumi Iwata', 'Guest Soloist', 'Sapporo, Japan', 'mayumi.jpg', 'Winner of multiple international competitions in Europe and Asia, Mayumi Iwata is praised for her dazzling virtuosity and poetic sensibilities.', 'L.v. Beethoven: Piano Sonata No. 31 in A-flat major, Op. 110\nC. Debussy: L\'Isle Joyeuse', 'https://www.youtube.com/embed/q8UtH_lVRJw')">
+                        <div>
+                            <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
+                                <img src="https://placehold.co/600x800/1B2A27/D4A373?text=mayumi" alt="mayumi" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <h4 class="serif text-2xl font-bold text-forest mb-1">Mayumi Iwata</h4>
+                            <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3">Guest Soloist</p>
+                            <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">Sapporo, Japan</p>
+                        </div>
+                        <button class="w-full py-3 border border-forest/20 text-forest text-xs uppercase tracking-[0.2em] font-bold hover:bg-forest hover:text-copper transition">
+                            ▶ <span data-i18n="watch_perf">Watch Performance</span>
+                        </button>
+                    </div>
+
+                    <!-- Kenta Koketsu -->
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Kenta Koketsu', 'Concert Pianist', 'Tokyo, Japan', 'kenta.jpg', 'Kenta Koketsu balances active recording schedules with masterclasses across major conservatories in Tokyo and Paris.', 'J. Brahms: Variations and Fugue on a Theme by Handel, Op. 24\nF. Liszt: Mephisto Waltz No. 1', 'https://www.instagram.com/p/DezAKLqzD33/')">
+                        <div>
+                            <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
+                                <img src="https://placehold.co/600x800/1B2A27/D4A373?text=kenta" alt="kenta" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <h4 class="serif text-2xl font-bold text-forest mb-1">Kenta Koketsu</h4>
+                            <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3">Concert Pianist</p>
+                            <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">Tokyo, Japan</p>
+                        </div>
+                        <button class="w-full py-3 border border-forest/20 text-forest text-xs uppercase tracking-[0.2em] font-bold hover:bg-forest hover:text-copper transition">
+                            ▶ <span data-i18n="watch_perf">Watch Performance</span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- INTERACTIVE PROGRAMME SECTION -->
+                <div class="bg-[#F2F0E9] p-8 md:p-12 rounded-sm border border-forest/5 mb-16">
+                    <h3 class="serif text-3xl italic text-forest mb-2 text-center">Programme Highlights</h3>
+                    <p class="text-xs uppercase tracking-widest text-stone-500 text-center mb-6">There are also other works to be discovered there</p>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+                        <div class="p-4 bg-white border border-forest/10 cursor-pointer hover:border-copper transition" onclick="toggleProgDetail('prog1')">
+                            <span class="text-copper uppercase text-[10px] tracking-widest block font-bold mb-1">Composer</span>
+                            <h5 class="serif text-xl font-bold text-forest">MOZART</h5>
+                            <p id="prog1" class="text-xs text-stone-500 mt-2 hidden">Sonata in D major, K. 570</p>
+                        </div>
+                        <div class="p-4 bg-white border border-forest/10 cursor-pointer hover:border-copper transition" onclick="toggleProgDetail('prog2')">
+                            <span class="text-copper uppercase text-[10px] tracking-widest block font-bold mb-1">Composer</span>
+                            <h5 class="serif text-xl font-bold text-forest">RAVEL</h5>
+                            <p id="prog2" class="text-xs text-stone-500 mt-2 hidden">Gaspard de la nuit</p>
+                        </div>
+                        <div class="p-4 bg-white border border-forest/10 cursor-pointer hover:border-copper transition" onclick="toggleProgDetail('prog3')">
+                            <span class="text-copper uppercase text-[10px] tracking-widest block font-bold mb-1">Composer</span>
+                            <h5 class="serif text-xl font-bold text-forest">GERSHWIN</h5>
+                            <p id="prog3" class="text-xs text-stone-500 mt-2 hidden">Three Preludes</p>
+                        </div>
+                        <div class="p-4 bg-white border border-forest/10 cursor-pointer hover:border-copper transition" onclick="toggleProgDetail('prog4')">
+                            <span class="text-copper uppercase text-[10px] tracking-widest block font-bold mb-1">Composer</span>
+                            <h5 class="serif text-xl font-bold text-forest">LUTOSŁAWSKI</h5>
+                            <p id="prog4" class="text-xs text-stone-500 mt-2 hidden">Paganini Variations</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- YOUNG TALENT SPOTLIGHT -->
+                <div class="bg-forest text-parchment p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 rounded-sm">
+                    <img src="https://placehold.co/300x300/D4A373/1B2A27?text=daniel" alt="daniel" class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full border-2 border-copper">
+                    <div class="flex-1 text-center md:text-left">
+                        <span class="text-copper uppercase tracking-[0.3em] text-[10px] font-bold block mb-1">SPECIAL GUEST - YOUNG TALENT</span>
+                        <h4 class="serif text-3xl italic mb-2 text-copper">Daniel Bertomeu · Spain · 16</h4>
+                        <p class="text-stone-300 font-light text-sm mb-6">First Prize laureate of regional European youth competitions, presenting an inspiring prelude before the main evening concert.</p>
+                        <button onclick="openArtistModal('Daniel Bertomeu', 'SPECIAL GUEST - YOUNG TALENT', 'Spain (Age 16)', 'daniel.jpg', 'Daniel Bertomeu began piano studies at age 5 in Valencia and currently studies under master faculty mentorship.', 'F. Chopin: Etude Op. 25 No. 11 in A minor\nS. Prokofiev: Suggestion Fugitive', 'https://www.youtube.com/watch?v=XtlTVPIr468')" class="btn-copper px-6 py-3 text-xs uppercase tracking-widest font-bold">
+                            ▶ Watch Performance
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CHAPTER 02 — JURY MEMBERS' CONCERT (DARK THEME) -->
+        <section id="concert-2" class="page-section py-24 px-4 md:px-12 bg-forest text-parchment dark-theme">
+            <div class="max-w-[1400px] mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-copper/20 pb-8">
+                    <div>
+                        <span class="text-copper uppercase tracking-[0.3em] text-xs font-bold block mb-2">02 — Jury Members' Concert</span>
+                        <h2 class="text-4xl md:text-6xl serif italic text-copper">Saturday · 19 December · 19:00</h2>
+                    </div>
+                    <p class="text-stone-300 font-light text-sm mt-4 md:mt-0 italic serif text-xl">Five distinguished artists. Five perspectives.</p>
+                </div>
+
+                <!-- JURY CARDS GRID -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 mb-20">
+                    
+                    <!-- Fabio Witkowski -->
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Fabio Witkowski', 'Hotchkiss School', 'Connecticut, USA', 'fabio.jpg', 'Fabio Witkowski is Chair of the Visual and Performing Arts Department at The Hotchkiss School and performs extensively as soloist and chamber musician.', 'J.S. Bach: Goldberg Variations, BWV 988 (Aria & selected variations)', 'https://www.youtube.com/embed/7TxL19NgYBY')">
+                        <div>
+                            <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
+                                <img src="https://placehold.co/600x800/D4A373/1B2A27?text=fabio" alt="fabio" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <h4 class="serif text-2xl font-bold text-copper mb-1">Fabio Witkowski</h4>
+                            <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">Hotchkiss School</p>
+                            <p class="text-stone-400 text-xs uppercase tracking-wider mb-4">Connecticut, USA</p>
+                        </div>
+                        <button class="w-full py-3 border border-copper/40 text-copper text-xs uppercase tracking-[0.2em] font-bold hover:bg-copper hover:text-forest transition">
+                            ▶ Watch Performance
+                        </button>
+                    </div>
+
+                    <!-- Gisele Witkowski -->
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Gisele Witkowski', 'Hotchkiss School', 'Connecticut, USA', 'gisele.jpg', 'Renowned piano faculty member at Hotchkiss, Gisele Witkowski performs worldwide and adjudicates prominent international piano competitions.', 'F. Chopin: Nocturnes Op. 48 & Scherzo No. 2 in B-flat minor', 'https://www.youtube.com/embed/3Ifutu-1WzI')">
+                        <div>
+                            <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
+                                <img src="https://placehold.co/600x800/D4A373/1B2A27?text=gisele" alt="gisele" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <h4 class="serif text-2xl font-bold text-copper mb-1">Gisele Witkowski</h4>
+                            <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">Hotchkiss School</p>
+                            <p class="text-stone-400 text-xs uppercase tracking-wider mb-4">Connecticut, USA</p>
+                        </div>
+                        <button class="w-full py-3 border border-copper/40 text-copper text-xs uppercase tracking-[0.2em] font-bold hover:bg-copper hover:text-forest transition">
+                            ▶ Watch Performance
+                        </button>
+                    </div>
+
+                    <!-- Andreas Frölich -->
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Andreas Frölich', 'Hochschule für Musik und Tanz Köln', 'Germany', 'andreas.jpg', 'Professor at the Cologne University of Music, Andreas Frölich has won prizes at major international competitions including Senigallia and Maria Canals.', 'L.v. Beethoven: Piano Sonata No. 23 in F minor, Op. 57 "Appassionata"', 'https://www.stage-plus.com/de/video/vod_concert_APNM8GRFDPHMASJKBSOJ4D9I')">
+                        <div>
+                            <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
+                                <img src="https://placehold.co/600x800/D4A373/1B2A27?text=andreas" alt="andreas" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <h4 class="serif text-2xl font-bold text-copper mb-1">Andreas Frölich</h4>
+                            <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">HfMT Köln</p>
+                            <p class="text-stone-400 text-xs uppercase tracking-wider mb-4">Germany</p>
+                        </div>
+                        <button class="w-full py-3 border border-copper/40 text-copper text-xs uppercase tracking-[0.2em] font-bold hover:bg-copper hover:text-forest transition">
+                            ▶ Watch Performance
+                        </button>
+                    </div>
+
+                    <!-- Leonel Morales -->
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Leonel Morales', 'Universidad Alfonso X el Sabio', 'Madrid, Spain', 'leonel.jpg', 'Distinguished Spanish-Cuban pianist and professor Leonel Morales is celebrated for fiery interpretations of Spanish repertoire and Liszt.', 'I. Albéniz: Iberia, Book 1\nF. Liszt: Hungarian Rhapsody No. 2', 'https://www.youtube.com/embed/4CjazkgDrgQ')">
+                        <div>
+                            <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
+                                <img src="https://placehold.co/600x800/D4A373/1B2A27?text=leonel" alt="leonel" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <h4 class="serif text-2xl font-bold text-copper mb-1">Leonel Morales</h4>
+                            <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">Universidad Alfonso X</p>
+                            <p class="text-stone-400 text-xs uppercase tracking-wider mb-4">Madrid, Spain</p>
+                        </div>
+                        <button class="w-full py-3 border border-copper/40 text-copper text-xs uppercase tracking-[0.2em] font-bold hover:bg-copper hover:text-forest transition">
+                            ▶ Watch Performance
+                        </button>
+                    </div>
+
+                    <!-- Vincenzo Balzani -->
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Vincenzo Balzani', 'Conservatorio Verdi di Milano', 'Milan, Italy', 'vincenzo.jpg', 'Legendary Italian pedagogue and concert pianist Vincenzo Balzani has nurtured generations of laureates across global stages from Milan to Tokyo.', 'C. Franck: Prélude, Choral et Fugue, Op. 21', 'https://www.youtube.com/embed/f6WmrmEgHac')">
+                        <div>
+                            <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
+                                <img src="https://placehold.co/600x800/D4A373/1B2A27?text=vincenzo" alt="vincenzo" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <h4 class="serif text-2xl font-bold text-copper mb-1">Vincenzo Balzani</h4>
+                            <p class="text-stone-300 text-xs uppercase tracking-widest font-semibold mb-3">Conservatorio Verdi</p>
+                            <p class="text-stone-400 text-xs uppercase tracking-wider mb-4">Milan, Italy</p>
+                        </div>
+                        <button class="w-full py-3 border border-copper/40 text-copper text-xs uppercase tracking-[0.2em] font-bold hover:bg-copper hover:text-forest transition">
+                            ▶ Watch Performance
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- YOUNG TALENT SPOTLIGHT 2 -->
+                <div class="bg-charcoal text-parchment p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 rounded-sm border border-copper/20">
+                    <img src="https://placehold.co/300x300/1B2A27/D4A373?text=margherita" alt="margherita" class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full border-2 border-copper">
+                    <div class="flex-1 text-center md:text-left">
+                        <span class="text-copper uppercase tracking-[0.3em] text-[10px] font-bold block mb-1">SPECIAL GUEST - YOUNG TALENT</span>
+                        <h4 class="serif text-3xl italic mb-2 text-copper">Margherita Rordorf · Italy · 13</h4>
+                        <p class="text-stone-300 font-light text-sm mb-6">Exceptional young Italian virtuoso performing works by Bach and Scarlatti prior to the jury gala performances.</p>
+                        <button onclick="openArtistModal('Margherita Rordorf', 'SPECIAL GUEST - YOUNG TALENT', 'Italy (Age 13)', 'margherita.jpg', 'Margherita Rordorf studies at the Milan Conservatory under master guidance and has won multiple national prizes.', 'D. Scarlatti: Sonatas K. 9 & K. 380\nJ.S. Bach: Sinfonia in F minor', 'https://www.youtube.com/watch?v=S5rA-8mOPOI')" class="btn-copper px-6 py-3 text-xs uppercase tracking-widest font-bold">
+                            ▶ Watch Performance
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CHAPTER 03 — GALA EVENING (WARM EXCLUSIVE THEME) -->
+        <section id="concert-3" class="page-section py-24 px-4 md:px-12 bg-white">
+            <div class="max-w-[1400px] mx-auto">
+                <div class="text-center mb-16">
+                    <span class="text-copper uppercase tracking-[0.4em] text-xs font-bold block mb-2">03 — Gala Evening</span>
+                    <h2 class="text-5xl md:text-7xl serif italic text-forest mb-4">Sunday · 20 December · 19:00</h2>
+                    <p class="text-copper uppercase tracking-[0.2em] text-sm font-semibold">An Evening of Pianistic Virtuosity</p>
+                </div>
+
+                <!-- TWO HUGE ARTIST CARDS -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+                    
+                    <!-- Paulius Andersson -->
+                    <div class="artist-card p-8 flex flex-col justify-between" onclick="openArtistModal('Paulius Andersson', 'Gala Headliner', 'Denmark / Lithuania', 'paulius.jpg', 'Paulius Andersson is internationally celebrated for breathtaking mastery, profound musical depth, and spellbinding recital programmes across European concert halls.', 'S. Rachmaninoff: Piano Sonata No. 2 in B-flat minor, Op. 36\nS. Prokofiev: Sonata No. 7 in B-flat major, Op. 83', 'https://www.youtube.com/embed/HaCOnnsA1_8')">
+                        <div>
+                            <div class="overflow-hidden mb-6 aspect-[16/10] bg-stone-200">
+                                <img src="https://placehold.co/800x600/1B2A27/D4A373?text=paulius" alt="paulius" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <h4 class="serif text-3xl font-bold text-forest mb-1">Paulius Andersson</h4>
+                            <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3">Gala Headliner</p>
+                            <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">Denmark / Lithuania</p>
+                        </div>
+                        <button class="w-full py-3 border border-forest/20 text-forest text-xs uppercase tracking-[0.2em] font-bold hover:bg-forest hover:text-copper transition">
+                            ▶ Watch Gala Performance
+                        </button>
+                    </div>
+
+                    <!-- Leo Di Maria -->
+                    <div class="artist-card p-8 flex flex-col justify-between" onclick="openArtistModal('Leo Di Maria', 'Gala Headliner', 'Italy', 'leo.jpg', 'Leo Di Maria has captured international acclaim for commanding performances and lyrical brilliance, performing as soloist with leading symphonies.', 'F. Liszt: Sonata in B minor, S. 178\nC. Franck: Prélude, Aria et Finale', 'https://www.youtube.com/embed/0dDH354PU-Y')">
+                        <div>
+                            <div class="overflow-hidden mb-6 aspect-[16/10] bg-stone-200">
+                                <img src="https://placehold.co/800x600/1B2A27/D4A373?text=leo" alt="leo" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <h4 class="serif text-3xl font-bold text-forest mb-1">Leo Di Maria</h4>
+                            <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3">Gala Headliner</p>
+                            <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">Italy</p>
+                        </div>
+                        <button class="w-full py-3 border border-forest/20 text-forest text-xs uppercase tracking-[0.2em] font-bold hover:bg-forest hover:text-copper transition">
+                            ▶ Watch Gala Performance
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- FULL WIDTH VIDEO FEATURE -->
+                <div class="bg-forest p-12 text-center rounded-sm text-parchment relative overflow-hidden">
+                    <h3 class="serif text-3xl italic text-copper mb-4">Experience the Festival Climax</h3>
+                    <p class="text-stone-300 font-light text-sm max-w-xl mx-auto mb-8">Watch highlights from the last editions' 1st Prizewinners' Concert and preview the magnificence awaiting audiences this December in Kraainem.</p>
+                    <button onclick="openArtistModal('1st Prizewinners Highlights', 'Official Festival Teaser', 'Kraainem, Belgium', 'https://placehold.co/800x450/1B2A27/D4A373?text=Prizewinners+Concert', 'A look back at unforgettable moments from previous editions featuring our stellar prizewinners.', 'Selected works by César Franck, Chopin, and Liszt.', 'https://www.youtube.com/embed/HaCOnnsA1_8')" class="btn-copper px-8 py-4 text-xs uppercase tracking-[0.25em] font-bold inline-flex items-center gap-3">
+                        ▶ Watch Full Teaser Performance
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PLAN YOUR EVENING / TICKETS BLOCK -->
+        <section class="py-24 px-4 bg-parchment border-t border-forest/5">
+            <div class="max-w-[1000px] mx-auto text-center bg-white p-12 md:p-16 border border-copper/30 shadow-xl">
+                <span class="text-copper uppercase tracking-[0.4em] text-xs font-bold block mb-4">Box Office</span>
+                <h3 class="serif text-4xl md:text-5xl italic text-forest mb-6">Plan Your Evening</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8 text-left border-y border-forest/10 py-8">
+                    <div>
+                        <p class="text-copper font-bold text-xs uppercase tracking-widest mb-1">18 December</p>
+                        <h5 class="serif text-xl font-bold text-forest">Opening Concert</h5>
+                        <p class="text-stone-500 text-xs mt-1">19:00 · GC De Lijsterbes</p>
+                    </div>
+                    <div>
+                        <p class="text-copper font-bold text-xs uppercase tracking-widest mb-1">19 December</p>
+                        <h5 class="serif text-xl font-bold text-forest">Jury Members</h5>
+                        <p class="text-stone-500 text-xs mt-1">19:00 · GC De Lijsterbes</p>
+                    </div>
+                    <div>
+                        <p class="text-copper font-bold text-xs uppercase tracking-widest mb-1">20 December</p>
+                        <h5 class="serif text-xl font-bold text-forest">Gala Evening</h5>
+                        <p class="text-stone-500 text-xs mt-1">19:00 · GC De Lijsterbes</p>
+                    </div>
+                </div>
+                <a href="https://www.delijsterbes.be/nl/programma/cesar-franck-international-piano-competition-0" target="_blank" class="btn-copper px-10 py-5 text-xs uppercase tracking-[0.3em] font-bold inline-block">
+                    Book Your Festival Tickets
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#1B2A27] pt-24 pb-12 px-8">
+        <div class="max-w-[1400px] mx-auto flex flex-col items-center gap-10">
+            <div class="flex gap-6">
+                <a href="https://www.facebook.com/cfipc" target="_blank" class="social-circle-footer" aria-label="Facebook">
+                    <svg class="w-5 h-5 text-copper" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="https://www.instagram.com/cfipc_official/" target="_blank" class="social-circle-footer" aria-label="Instagram">
+                    <svg class="w-5 h-5 text-copper" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="mailto:office@cfipc.com" class="social-circle-footer" aria-label="Email">
+                    <svg class="w-5 h-5 text-copper" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
+            </div>
+            <p class="text-[9px] uppercase tracking-[0.3em] font-light text-copper">&copy; THE MUSIC AGENCY 2026</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE VIDEO & ARTIST MODAL -->
+    <div id="videoModal" onclick="closeArtistModal(event)">
+        <div class="bg-[#1B2A27] border border-copper/40 max-w-4xl w-full p-8 relative rounded-sm text-parchment shadow-2xl max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+            <button onclick="closeArtistModalDirect()" class="absolute top-6 right-6 text-copper text-3xl leading-none">&times;</button>
+            
+            <div id="modalContent" class="space-y-6">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- CUSTOM FLOATING LANGUAGE WIDGET -->
+    <div class="lang-widget-container">
+        <div class="lang-dropdown-menu" id="langMenu">
+            <button class="lang-option" onclick="setLanguage('en')">English</button>
+            <button class="lang-option" onclick="setLanguage('fr')">Français</button>
+            <button class="lang-option" onclick="setLanguage('nl')">Nederlands</button>
+            <button class="lang-option" onclick="setLanguage('de')">Deutsch</button>
+            <button class="lang-option" onclick="setLanguage('it')">Italiano</button>
+            <button class="lang-option" onclick="setLanguage('es')">Español</button>
+        </div>
+        <button class="lang-toggle-btn" onclick="toggleLangMenu()" aria-label="Change Language">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </button>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Translations Dictionary for Concerts Page
+        const translations = {
+            en: {
+                nav_competition: "Competition",
+                nav_concerts: "Concerts",
+                nav_rules: "Rules",
+                nav_prizes: "Prizes",
+                nav_application: "Application",
+                nav_jury: "Jury",
+                nav_laureates: "Laureates",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Winter Masterclass",
+                nav_spring: "Spring Masterclass",
+                nav_volodos: "Volodos Masterclass",
+                nav_contact: "Contact",
+                nav_home: "Return to Home",
+                hero_subtitle: "14th Edition · 18–20 December 2026",
+                hero_title: "Concerts & Festival",
+                hero_desc: "Step inside our interactive digital concert programme. Discover master pianists, world-class jury members, and extraordinary young talents through immersive performances and detailed repertoire.",
+                watch_perf: "Watch Performance"
+            },
+            fr: {
+                nav_competition: "Concours",
+                nav_concerts: "Concerts",
+                nav_rules: "Règlement",
+                nav_prizes: "Prix",
+                nav_application: "Inscription",
+                nav_jury: "Jury",
+                nav_laureates: "Lauréats",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Masterclass d'Hiver",
+                nav_spring: "Masterclass de Printemps",
+                nav_volodos: "Masterclass Volodos",
+                nav_contact: "Contact",
+                nav_home: "Retour à l'accueil",
+                hero_subtitle: "14e Édition · 18–20 Décembre 2026",
+                hero_title: "Concerts & Festival",
+                hero_desc: "Plongez dans notre programme numérique interactif. Découvrez des pianistes d'exception à travers des performances immersives.",
+                watch_perf: "Voir la performance"
+            },
+            nl: {
+                nav_competition: "Competitie",
+                nav_concerts: "Concerten",
+                nav_rules: "Reglement",
+                nav_prizes: "Prijzen",
+                nav_application: "Inschrijving",
+                nav_jury: "Jury",
+                nav_laureates: "Laureaten",
+                nav_masterclasses: "Masterclasses",
+                nav_winter: "Winter Masterclass",
+                nav_spring: "Lente Masterclass",
+                nav_volodos: "Volodos Masterclass",
+                nav_contact: "Contact",
+                nav_home: "Terug naar Home",
+                hero_subtitle: "14e Editie · 18–20 december 2026",
+                hero_title: "Concerten & Festival",
+                hero_desc: "Ontdek ons interactieve digitale concertprogramma met meesterpianisten en toptalenten.",
+                watch_perf: "Bekijk optreden"
+            },
+            de: {
+                nav_competition: "Wettbewerb",
+                nav_concerts: "Konzerte",
+                nav_rules: "Regeln",
+                nav_prizes: "Preise",
+                nav_application: "Bewerbung",
+                nav_jury: "Jury",
+                nav_laureates: "Preisträger",
+                nav_masterclasses: "Meisterkurse",
+                nav_winter: "Winter-Meisterkurs",
+                nav_spring: "Frühlings-Meisterkurs",
+                nav_volodos: "Volodos Meisterkurs",
+                nav_contact: "Kontakt",
+                nav_home: "Zur Startseite",
+                hero_subtitle: "14. Edition · 18.–20. Dezember 2026",
+                hero_title: "Konzerte & Festival",
+                hero_desc: "Erleben Sie unser interaktives digitales Konzertprogramm mit Meisterpianisten.",
+                watch_perf: "Auftritt ansehen"
+            },
+            it: {
+                nav_competition: "Concorso",
+                nav_concerts: "Concerti",
+                nav_rules: "Regolamento",
+                nav_prizes: "Premi",
+                nav_application: "Iscrizione",
+                nav_jury: "Giuria",
+                nav_laureates: "Vincitori",
+                nav_masterclasses: "Masterclass",
+                nav_winter: "Masterclass Invernale",
+                nav_spring: "Masterclass Primaverile",
+                nav_volodos: "Masterclass Volodos",
+                nav_contact: "Contatti",
+                nav_home: "Torna alla Home",
+                hero_subtitle: "14ª Edizione · 18–20 Dicembre 2026",
+                hero_title: "Concerti & Festival",
+                hero_desc: "Entra nel nostro programma digitale interattivo e scopri i grandi pianisti ospiti.",
+                watch_perf: "Guarda l'esibizione"
+            },
+            es: {
+                nav_competition: "Concurso",
+                nav_concerts: "Conciertos",
+                nav_rules: "Reglas",
+                nav_prizes: "Premios",
+                nav_application: "Inscripción",
+                nav_jury: "Jurado",
+                nav_laureates: "Laureados",
+                nav_masterclasses: "Clases Magistrales",
+                nav_winter: "Clase Magistral de Invierno",
+                nav_spring: "Clase Magistral de Primavera",
+                nav_volodos: "Clase Magistral Volodos",
+                nav_contact: "Contacto",
+                nav_home: "Volver al Inicio",
+                hero_subtitle: "14ª Edición · 18–20 de Diciembre de 2026",
+                hero_title: "Conciertos y Festival",
+                hero_desc: "Explore nuestro programa de conciertos digital e interactivo.",
+                watch_perf: "Ver interpretación"
+            }
+        };
+
+        function setLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.getElementById('langMenu').classList.remove('active');
+            localStorage.setItem('cfipc_lang', lang);
+        }
+
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobile-nav-overlay');
+            if (overlay.classList.contains('open')) {
+                overlay.classList.remove('open');
+                setTimeout(() => { overlay.style.display = 'none'; }, 400);
+                document.body.style.overflow = 'auto';
+            } else {
+                overlay.style.display = 'flex';
+                setTimeout(() => { overlay.classList.add('open'); }, 10);
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function toggleLangMenu() {
+            const menu = document.getElementById('langMenu');
+            menu.classList.toggle('active');
+        }
+
+        function handleNavClick(event, btn) {
+            const menu = btn.nextElementSibling;
+            if (!menu || !menu.classList.contains('dropdown-menu')) return;
+            const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+            if (isTouch) {
+                const wasVisible = menu.classList.contains('is-visible');
+                document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
+                if (!wasVisible) {
+                    event.preventDefault(); 
+                    menu.classList.add('is-visible');
+                }
+            }
+            event.stopPropagation();
+        }
+
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function toggleProgDetail(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.toggle('hidden');
+            }
+        }
+
+        // Modal Logic
+        function openArtistModal(name, role, origin, image, bio, repertoire, videoUrl) {
+            const modal = document.getElementById('videoModal');
+            const content = document.getElementById('modalContent');
+            
+            content.innerHTML = `
+                <div class="aspect-video bg-black w-full mb-6 rounded-sm overflow-hidden">
+                    <iframe src="${videoUrl}" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <span class="text-copper text-xs uppercase tracking-widest font-bold">${role} · ${origin}</span>
+                        <h3 class="serif text-4xl italic text-copper mt-1">${name}</h3>
+                    </div>
+                    <p class="text-stone-300 font-light text-sm leading-relaxed">${bio}</p>
+                    <div class="border-t border-copper/20 pt-4">
+                        <h5 class="text-xs uppercase tracking-widest font-bold text-copper mb-2">Concert Programme</h5>
+                        <p class="text-stone-300 text-sm font-light whitespace-pre-line">${repertoire}</p>
+                    </div>
+                    <div class="pt-4 flex justify-end">
+                        <a href="https://cfipc.com/application/" class="btn-copper px-6 py-3 text-xs uppercase tracking-widest font-bold">Book Tickets for Concert</a>
+                    </div>
+                </div>
+            `;
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeArtistModal(event) {
+            const modal = document.getElementById('videoModal');
+            modal.classList.remove('open');
+            document.body.style.overflow = 'auto';
+            document.getElementById('modalContent').innerHTML = '';
+        }
+
+        function closeArtistModalDirect() {
+            const modal = document.getElementById('videoModal');
+            modal.classList.remove('open');
+            document.body.style.overflow = 'auto';
+            document.getElementById('modalContent').innerHTML = '';
+        }
+
+        window.onclick = (event) => {
+            if (!event.target.closest('.lang-widget-container')) {
+                const langMenu = document.getElementById('langMenu');
+                if(langMenu) langMenu.classList.remove('active');
+            }
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('cfipc_lang');
+            if (savedLang && translations[savedLang]) {
+                setLanguage(savedLang);
+            }
+        });
+    </script>
+    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ad3becddcd7249d19a31f20ef5fccc08"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
