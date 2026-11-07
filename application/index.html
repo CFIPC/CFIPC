@@ -324,6 +324,17 @@
 
                 <div class="flex-1 flex justify-end items-center">
                     <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
+                        <a href="https://cfipc.com/concerts/" class="nav-link" data-i18n="nav_concerts_link">Concerts</a>
+                        <div class="dropdown-container">
+                            <a href="https://cfipc.com/gallery/" class="nav-link" onclick="handleNavClick(event, this)">
+                                <span data-i18n="nav_gallery">Gallery</span> 
+                                <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="https://cfipc.com/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
+                                <a href="https://cfipc.com/gallery/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
+                            </div>
+                        </div>
                         <div class="dropdown-container">
                             <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
                                 <span data-i18n="nav_about">About</span> 
@@ -332,16 +343,7 @@
                             <div class="dropdown-menu">
                                 <a href="https://cfipc.com/contact/" class="dropdown-item" data-i18n="nav_contact">Contact Us</a>
                                 <a href="https://cfipc.com/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-container">
-                            <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
-                                <span data-i18n="nav_gallery">Gallery</span> 
-                                <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a href="https://cfipc.com/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
-                                <a href="https://cfipc.com/gallery/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
+                                <a href="https://cfipc.com/partnership/" class="dropdown-item" data-i18n="nav_partners">Partners</a>
                             </div>
                         </div>
                     </div>
@@ -630,9 +632,9 @@
                 portal_title: "Bewerbung 2026",
                 portal_deadline: "Frist : 1. November 2026",
                 doc_heading: "Erforderliche Dokumente für minderjährige Teilnehmer",
-                doc_sub: "Teilnehmer der Kategorien A, B und C müssen ein unterschriebenes Elterneinverständnis einreichen.",
-                download_btn: "Einverständniserklärung herunterladen",
-                cats_heading: "Alterskategorien & Programmdauer",
+                doc_sub: "Teilnehmer der Kategorien A, B und C müssen ein unterzeichnetes Formular zur elterlichen Einwilligung einreichen.",
+                download_btn: "Elterliche Einwilligung herunterladen",
+                cats_heading: "Altersgruppen & Spieldauer",
                 cat_a_title: "Kategorie A",
                 cat_a_age: "10 & jünger",
                 cat_a_fee: "Gebühr : €80",
@@ -648,8 +650,8 @@
                 semi_final: "Halbfinale :",
                 finals: "Finale :",
                 payment_info_1: "Die Zahlung wird im letzten Schritt der Bewerbung angefordert und kann per Mastercard, Visa, American Express und Discover erfolgen.",
-                payment_info_2: "Bei Zahlungsproblemen wenden Sie sich bitte direkt an office@cfipc.com, um Banküberweisungsinformationen zu erhalten.",
-                form_heading: "Anmeldeformular"
+                payment_info_2: "Bei Zahlungsproblemen wenden Sie sich bitte direkt an office@cfipc.com.",
+                form_heading: "Bewerbungsformular"
             },
             it: {
                 nav_competition: "Concorso",
@@ -670,15 +672,15 @@
                 nav_media: "Media",
                 nav_pictures: "Foto",
                 nav_home: "Torna alla Home",
-                portal_tag: "Portale di Registrazione",
+                portal_tag: "Portale di Iscrizione",
                 portal_title: "Candidatura 2026",
-                portal_deadline: "Scadenza : 1° novembre 2026",
+                portal_deadline: "Scadenza : 1 Novembre 2026",
                 doc_heading: "Documentazione richiesta per i partecipanti minorenni",
                 doc_sub: "I concorrenti delle categorie A, B e C devono presentare un modulo di consenso genitoriale firmato.",
-                download_btn: "Scarica modulo di consenso genitoriale",
-                cats_heading: "Categorie d'età e durata delle esibizioni",
+                download_btn: "Scarica il modulo di consenso",
+                cats_heading: "Categorie d'Età e Durata",
                 cat_a_title: "Categoria A",
-                cat_a_age: "10 anni e meno",
+                cat_a_age: "10 e meno",
                 cat_a_fee: "Quota : €80",
                 cat_b_title: "Categoria B",
                 cat_b_age: "11 - 13",
@@ -691,9 +693,9 @@
                 cat_d_fee: "Quota : €110",
                 semi_final: "Semifinale :",
                 finals: "Finali :",
-                payment_info_1: "Il pagamento verrà richiesto nell'ultimo passaggio della candidatura e potrà essere effettuato tramite Mastercard, Visa, American Express e Discover.",
-                payment_info_2: "In caso di problemi con il pagamento, si prega di contattare direttamente office@cfipc.com che fornirà le informazioni per il bonifico bancario.",
-                form_heading: "Modulo di Domanda"
+                payment_info_1: "Il pagamento verrà richiesto nell'ultimo passaggio della candidatura.",
+                payment_info_2: "In caso di problemi, contattare office@cfipc.com.",
+                form_heading: "Modulo di Iscrizione"
             },
             es: {
                 nav_competition: "Concurso",
@@ -715,12 +717,12 @@
                 nav_pictures: "Imágenes",
                 nav_home: "Volver al Inicio",
                 portal_tag: "Portal de Inscripción",
-                portal_title: "Solicitud 2026",
+                portal_title: "Inscripción 2026",
                 portal_deadline: "Fecha límite : 1 de noviembre de 2026",
-                doc_heading: "Documentación requerida para participantes menores de edad",
-                doc_sub: "Los concursantes de las categorías A, B y C deben presentar un formulario de consentimiento parental firmado.",
+                doc_heading: "Documentación requerida para menores de edad",
+                doc_sub: "Los concursantes en las categorías A, B y C deben presentar un formulario de consentimiento parental firmado.",
                 download_btn: "Descargar formulario de consentimiento parental",
-                cats_heading: "Categorías de edad y duración de la interpretación",
+                cats_heading: "Categorías de edad y duración",
                 cat_a_title: "Categoría A",
                 cat_a_age: "10 y menos",
                 cat_a_fee: "Cuota : €80",
@@ -735,8 +737,8 @@
                 cat_d_fee: "Cuota : €110",
                 semi_final: "Semifinal :",
                 finals: "Finales :",
-                payment_info_1: "El pago se solicitará en el último paso de la solicitud y se puede realizar mediante Mastercard, Visa, American Express y Discover.",
-                payment_info_2: "Si tiene problemas con el pago, comuníquese directamente con office@cfipc.com, quien le ofrecerá información sobre transferencia bancaria.",
+                payment_info_1: "El pago se solicitará en el último paso de la solicitud.",
+                payment_info_2: "Si tiene problemas con el pago, comuníquese con office@cfipc.com.",
                 form_heading: "Formulario de Solicitud"
             }
         };
@@ -751,6 +753,24 @@
             });
             document.getElementById('langMenu').classList.remove('active');
             localStorage.setItem('cfipc_lang', lang);
+        }
+
+        function toggleLangMenu() {
+            const menu = document.getElementById('langMenu');
+            menu.classList.toggle('active');
+        }
+
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobile-nav-overlay');
+            if (overlay.classList.contains('open')) {
+                overlay.classList.remove('open');
+                setTimeout(() => { overlay.style.display = 'none'; }, 400);
+                document.body.style.overflow = 'auto';
+            } else {
+                overlay.style.display = 'flex';
+                setTimeout(() => { overlay.classList.add('open'); }, 10);
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         function handleNavClick(event, btn) {
@@ -768,24 +788,6 @@
             event.stopPropagation();
         }
 
-        function toggleMobileMenu() {
-            const overlay = document.getElementById('mobile-nav-overlay');
-            if (overlay.classList.contains('open')) {
-                overlay.classList.remove('open');
-                setTimeout(() => { overlay.style.display = 'none'; }, 400);
-                document.body.style.overflow = 'auto';
-            } else {
-                overlay.style.display = 'flex';
-                setTimeout(() => { overlay.classList.add('open'); }, 10);
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function toggleLangMenu() {
-            const menu = document.getElementById('langMenu');
-            menu.classList.toggle('active');
-        }
-
         window.onclick = (event) => {
             document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
             if (!event.target.closest('.lang-widget-container')) {
@@ -793,7 +795,6 @@
             }
         };
 
-        // Auto-load user preference if previously saved
         window.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('cfipc_lang');
             if (savedLang && translations[savedLang]) {
@@ -801,6 +802,5 @@
             }
         });
     </script>
-    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ad3becddcd7249d19a31f20ef5fccc08"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
