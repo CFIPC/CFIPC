@@ -68,14 +68,14 @@
             padding: 0.75rem 0;
         }
 
-        /* Fixed dropdown submenu behavior */
+        /* Fixed dropdown submenu behavior - aligned to the left */
         .dropdown-submenu-container {
             position: relative;
         }
         .dropdown-submenu {
             position: absolute;
             top: 0;
-            left: 100%;
+            right: 100%;
             background: var(--parchment);
             border: 1px solid rgba(27, 42, 39, 0.1);
             min-width: 200px;
@@ -344,7 +344,7 @@
                                 <a href="https://cfipc.com/contact/" class="dropdown-item" data-i18n="nav_contact">Contact Us</a>
                                 <a href="https://cfipc.com/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
                                 <div class="dropdown-submenu-container w-full">
-                                    <a href="https://cfipc.com/gallery/" class="dropdown-item flex justify-between items-center" onclick="handleNavClick(event, this)"><span data-i18n="nav_gallery">Gallery</span> &rsaquo;</a>
+                                    <a href="https://cfipc.com/gallery/" class="dropdown-item flex justify-between items-center" onclick="handleNavClick(event, this)">&lsaquo; <span data-i18n="nav_gallery">Gallery</span></a>
                                     <div class="dropdown-submenu">
                                         <a href="https://cfipc.com/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
                                         <a href="https://cfipc.com/pictures/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
@@ -405,7 +405,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 max-w-4xl mx-auto">
                     
                     <!-- Olga Kern -->
-                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Olga Kern', 'President of the Jury', 'USA / Russia', 'olga.jpg', 'Internationally acclaimed pianist Olga Kern is recognized as one of her generation\'s great artists. First prize winner of the Van Cliburn International Piano Competition.', 'W.A. Mozart: Piano Sonata No. 18 in D major, K. 570\nS. Rachmaninoff: Variations on a Theme of Corelli, Op. 42', 'https://www.youtube.com/embed/S4GXM1DKefw')">
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Olga Kern', 'President of the Jury', 'USA / Russia', 'olga.jpg', 'Internationally acclaimed pianist Olga Kern is recognized as one of her generation\'s great artists. First prize winner of the Van Cliburn International Piano Competition.', 'https://www.youtube.com/embed/S4GXM1DKefw')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
                                 <img src="https://placehold.co/600x800/1B2A27/D4A373?text=olga" alt="olga" class="w-full h-full object-cover hover:scale-105 transition duration-500">
@@ -420,7 +420,7 @@
                     </div>
 
                     <!-- Philippe Raskin -->
-                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Philippe Raskin', 'Concert Pianist & Artistic Director', 'Belgium', 'philippe.jpg', 'Belgian concert pianist Philippe Raskin has performed in major venues worldwide and is the founder of the César Franck International Piano Competition.', 'C. Franck: Prélude, Choral et Fugue\nL.v. Beethoven: Sonata Op. 110', 'https://www.youtube.com/embed/90DGmVUz2b4')">
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Philippe Raskin', 'Concert Pianist & Artistic Director', 'Belgium', 'philippe.jpg', 'Belgian concert pianist Philippe Raskin is known as an eclectic and versatile musician, active internationally as a soloist and renowned professor teaching at prestigious institutions.', 'https://www.youtube.com/embed/90DGmVUz2b4')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
                                 <img src="https://placehold.co/600x800/1B2A27/D4A373?text=philippe" alt="philippe" class="w-full h-full object-cover hover:scale-105 transition duration-500">
@@ -440,13 +440,13 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 max-w-6xl mx-auto">
                     
                     <!-- Mitsuru Yamakawa -->
-                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Mitsuru Yamakawa', 'Concert Pianist', 'Sendai, Japan', 'mitsuru.jpg', 'Mitsuru Yamakawa has performed globally with prestigious orchestras and is celebrated for exquisite touch and deep interpretations of Chopin and Ravel.', 'M. Ravel: Gaspard de la nuit\nF. Chopin: Ballade No. 4 in F minor, Op. 52', 'https://www.youtube.com/embed/4qbSEFS5LVw')">
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Mitsuru Yamakawa', 'Concert Pianist & Professor', 'Sendai, Japan', 'mitsuru.jpg', 'Mitsuru Yamakawa enjoys a fantastic career in Japan, performing in concerts across the most important halls in Asia and dedicating time to teaching in Sendai.', 'https://www.youtube.com/embed/4qbSEFS5LVw')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
                                 <img src="https://placehold.co/600x800/1B2A27/D4A373?text=mitsuru" alt="mitsuru" class="w-full h-full object-cover hover:scale-105 transition duration-500">
                             </div>
                             <h4 class="serif text-2xl font-bold text-forest mb-1">Mitsuru Yamakawa</h4>
-                            <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3">Concert Pianist</p>
+                            <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3">Concert Pianist & Professor</p>
                             <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">Sendai, Japan</p>
                         </div>
                         <button class="w-full py-3 border border-forest/20 text-forest text-xs uppercase tracking-[0.2em] font-bold hover:bg-forest hover:text-copper transition">
@@ -455,13 +455,13 @@
                     </div>
 
                     <!-- Mayumi Iwata -->
-                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Mayumi Iwata', 'Guest Soloist', 'Sapporo, Japan', 'mayumi.jpg', 'Winner of multiple international competitions in Europe and Asia, Mayumi Iwata is praised for her dazzling virtuosity and poetic sensibilities.', 'L.v. Beethoven: Piano Sonata No. 31 in A-flat major, Op. 110\nC. Debussy: L\'Isle Joyeuse', 'https://www.youtube.com/embed/q8UtH_lVRJw')">
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Mayumi Iwata', 'Concert Pianist & Teacher', 'Sapporo, Japan', 'mayumi.jpg', 'Mayumi Iwata is an accomplished concert pianist and teacher based in Sapporo, widely praised by critics and audiences for her refined and poetic sensibilities.', 'https://www.youtube.com/embed/q8UtH_lVRJw')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
                                 <img src="https://placehold.co/600x800/1B2A27/D4A373?text=mayumi" alt="mayumi" class="w-full h-full object-cover hover:scale-105 transition duration-500">
                             </div>
                             <h4 class="serif text-2xl font-bold text-forest mb-1">Mayumi Iwata</h4>
-                            <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3">Guest Soloist</p>
+                            <p class="text-copper text-xs uppercase tracking-widest font-semibold mb-3">Concert Pianist & Teacher</p>
                             <p class="text-stone-500 text-xs uppercase tracking-wider mb-4">Sapporo, Japan</p>
                         </div>
                         <button class="w-full py-3 border border-forest/20 text-forest text-xs uppercase tracking-[0.2em] font-bold hover:bg-forest hover:text-copper transition">
@@ -470,7 +470,7 @@
                     </div>
 
                     <!-- Kenta Koketsu -->
-                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Kenta Koketsu', 'Concert Pianist', 'Tokyo, Japan', 'kenta.jpg', 'Kenta Koketsu balances active recording schedules with masterclasses across major conservatories in Tokyo and Paris.', 'J. Brahms: Variations and Fugue on a Theme by Handel, Op. 24\nF. Liszt: Mephisto Waltz No. 1', 'https://www.stage-plus.com/de/video/vod_concert_APNM8GRFDPHMASJKBSOJ4D9I')">
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Kenta Koketsu', 'Concert Pianist', 'Tokyo, Japan', 'kenta.jpg', 'Kenta Koketsu balances active recording schedules with masterclasses and concerts across Japan and international stages.', 'https://www.stage-plus.com/de/video/vod_concert_APNM8GRFDPHMASJKBSOJ4D9I')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-200">
                                 <img src="https://placehold.co/600x800/1B2A27/D4A373?text=kenta" alt="kenta" class="w-full h-full object-cover hover:scale-105 transition duration-500">
@@ -489,7 +489,7 @@
                 <!-- INTERACTIVE PROGRAMME SECTION -->
                 <div class="bg-[#F2F0E9] p-8 md:p-12 rounded-sm border border-forest/5 mb-16">
                     <h3 class="serif text-3xl italic text-forest mb-2 text-center">Programme Highlights</h3>
-                    <p class="text-xs uppercase tracking-widest text-stone-500 text-center mb-6">There are also other works to be discovered there</p>
+                    <p class="text-xs uppercase tracking-widest text-stone-500 text-center mb-6">A diverse selection of masterpieces. Additional works can also be discovered within the performances.</p>
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
                         <div class="p-4 bg-white border border-forest/10 cursor-pointer hover:border-copper transition" onclick="toggleProgDetail('prog1')">
                             <span class="text-copper uppercase text-[10px] tracking-widest block font-bold mb-1">Composer</span>
@@ -519,9 +519,9 @@
                     <img src="https://placehold.co/300x300/D4A373/1B2A27?text=daniel" alt="daniel" class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full border-2 border-copper">
                     <div class="flex-1 text-center md:text-left">
                         <span class="text-copper uppercase tracking-[0.3em] text-[10px] font-bold block mb-1">SPECIAL GUEST - YOUNG TALENT</span>
-                        <h4 class="serif text-3xl italic mb-2 text-copper">Daniel Bertomeu · Spain · 16</h4>
-                        <p class="text-stone-300 font-light text-sm mb-6">First Prize laureate of regional European youth competitions, presenting an inspiring prelude before the main evening concert.</p>
-                        <button onclick="openArtistModal('Daniel Bertomeu', 'SPECIAL GUEST - YOUNG TALENT', 'Spain (Age 16)', 'daniel.jpg', 'Daniel Bertomeu began piano studies at age 5 in Valencia and currently studies under master faculty mentorship.', 'F. Chopin: Etude Op. 25 No. 11 in A minor\nS. Prokofiev: Suggestion Fugitive', 'https://www.youtube.com/embed/XtlTVPIr468')" class="btn-copper px-6 py-3 text-xs uppercase tracking-widest font-bold">
+                        <h4 class="serif text-3xl italic mb-2 text-copper">Daniel Bertomeu · Spain · 17</h4>
+                        <p class="text-stone-300 font-light text-sm mb-6">First prizewinner of important competitions in Europe (such as the César Franck Competition, Spanish Composers, MozArte, and Piano Talents). Currently maintaining an active concert schedule in Spain and abroad, and a student of Philippe Raskin.</p>
+                        <button onclick="openArtistModal('Daniel Bertomeu', 'SPECIAL GUEST - YOUNG TALENT', 'Spain (Age 17)', 'daniel.jpg', 'Daniel Bertomeu is a laureate of multiple European piano competitions and studies under Philippe Raskin.', 'https://www.youtube.com/embed/XtlTVPIr468')" class="btn-copper px-6 py-3 text-xs uppercase tracking-widest font-bold">
                             ▶ Watch Performance
                         </button>
                     </div>
@@ -545,7 +545,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 mb-20">
                     
                     <!-- Fabio Witkowski -->
-                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Fabio Witkowski', 'Hotchkiss School', 'Connecticut, USA', 'fabio.jpg', 'Fabio Witkowski is Chair of the Visual and Performing Arts Department at The Hotchkiss School and performs extensively as soloist and chamber musician.', 'J.S. Bach: Goldberg Variations, BWV 988 (Aria & selected variations)', 'https://www.youtube.com/embed/7TxL19NgYBY')">
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Fabio Witkowski', 'Hotchkiss School', 'Connecticut, USA', 'fabio.jpg', 'Fabio Witkowski is Chair of the Visual and Performing Arts Department at The Hotchkiss School and performs extensively as soloist and chamber musician.', 'https://www.youtube.com/embed/7TxL19NgYBY')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
                                 <img src="https://placehold.co/600x800/D4A373/1B2A27?text=fabio" alt="fabio" class="w-full h-full object-cover hover:scale-105 transition duration-500">
@@ -560,7 +560,7 @@
                     </div>
 
                     <!-- Gisele Witkowski -->
-                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Gisele Witkowski', 'Hotchkiss School', 'Connecticut, USA', 'gisele.jpg', 'Renowned piano faculty member at Hotchkiss, Gisele Witkowski performs worldwide and adjudicates prominent international piano competitions.', 'F. Chopin: Nocturnes Op. 48 & Scherzo No. 2 in B-flat minor', 'https://www.youtube.com/embed/3Ifutu-1WzI')">
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Gisele Witkowski', 'Hotchkiss School', 'Connecticut, USA', 'gisele.jpg', 'Renowned piano faculty member at Hotchkiss, Gisele Witkowski performs worldwide and adjudicates prominent international piano competitions.', 'https://www.youtube.com/embed/3Ifutu-1WzI')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
                                 <img src="https://placehold.co/600x800/D4A373/1B2A27?text=gisele" alt="gisele" class="w-full h-full object-cover hover:scale-105 transition duration-500">
@@ -575,7 +575,7 @@
                     </div>
 
                     <!-- Andreas Frölich -->
-                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Andreas Frölich', 'Hochschule für Musik und Tanz Köln', 'Germany', 'andreas.jpg', 'Professor at the Cologne University of Music, Andreas Frölich has won prizes at major international competitions including Senigallia and Maria Canals.', 'L.v. Beethoven: Piano Sonata No. 23 in F minor, Op. 57 "Appassionata"', 'https://www.youtube.com/embed/Zx_in3Rqqlw')">
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Andreas Frölich', 'Hochschule für Musik und Tanz Köln', 'Germany', 'andreas.jpg', 'Professor at the Cologne University of Music, Andreas Frölich has won prizes at major international competitions including Senigallia and Maria Canals.', 'https://www.youtube.com/embed/Zx_in3Rqqlw')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
                                 <img src="https://placehold.co/600x800/D4A373/1B2A27?text=andreas" alt="andreas" class="w-full h-full object-cover hover:scale-105 transition duration-500">
@@ -590,7 +590,7 @@
                     </div>
 
                     <!-- Leonel Morales -->
-                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Leonel Morales', 'Universidad Alfonso X el Sabio', 'Madrid, Spain', 'leonel.jpg', 'Distinguished Spanish-Cuban pianist and professor Leonel Morales is celebrated for fiery interpretations of Spanish repertoire and Liszt.', 'I. Albéniz: Iberia, Book 1\nF. Liszt: Hungarian Rhapsody No. 2', 'https://www.youtube.com/embed/4CjazkgDrgQ')">
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Leonel Morales', 'Universidad Alfonso X el Sabio', 'Madrid, Spain', 'leonel.jpg', 'Leonel Morales is a distinguished Spanish-Cuban pianist and professor, renowned internationally for his masterclasses and performances across global stages.', 'https://www.youtube.com/embed/4CjazkgDrgQ')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
                                 <img src="https://placehold.co/600x800/D4A373/1B2A27?text=leonel" alt="leonel" class="w-full h-full object-cover hover:scale-105 transition duration-500">
@@ -605,7 +605,7 @@
                     </div>
 
                     <!-- Vincenzo Balzani -->
-                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Vincenzo Balzani', 'Conservatorio Verdi di Milano', 'Milan, Italy', 'vincenzo.jpg', 'Legendary Italian pedagogue and concert pianist Vincenzo Balzani has nurtured generations of laureates across global stages from Milan to Tokyo.', 'C. Franck: Prélude, Choral et Fugue, Op. 21', 'https://www.youtube.com/embed/f6WmrmEgHac')">
+                    <div class="artist-card p-6 flex flex-col justify-between" onclick="openArtistModal('Vincenzo Balzani', 'Conservatorio Verdi di Milano', 'Milan, Italy', 'vincenzo.jpg', 'Legendary Italian pedagogue and concert pianist Vincenzo Balzani has nurtured generations of laureates across global stages from Milan to Tokyo.', 'https://www.youtube.com/embed/f6WmrmEgHac')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-800">
                                 <img src="https://placehold.co/600x800/D4A373/1B2A27?text=vincenzo" alt="vincenzo" class="w-full h-full object-cover hover:scale-105 transition duration-500">
@@ -627,8 +627,8 @@
                     <div class="flex-1 text-center md:text-left">
                         <span class="text-copper uppercase tracking-[0.3em] text-[10px] font-bold block mb-1">SPECIAL GUEST - YOUNG TALENT</span>
                         <h4 class="serif text-3xl italic mb-2 text-copper">Margherita Rordorf · Italy · 13</h4>
-                        <p class="text-stone-300 font-light text-sm mb-6">Exceptional young Italian virtuoso performing works by Bach and Scarlatti prior to the jury gala performances.</p>
-                        <button onclick="openArtistModal('Margherita Rordorf', 'SPECIAL GUEST - YOUNG TALENT', 'Italy (Age 13)', 'margherita.jpg', 'Margherita Rordorf studies at the Milan Conservatory under master guidance and has won multiple national prizes.', 'D. Scarlatti: Sonatas K. 9 & K. 380\nJ.S. Bach: Sinfonia in F minor', 'https://www.youtube.com/embed/S5rA-8mOPOI')" class="btn-copper px-6 py-3 text-xs uppercase tracking-widest font-bold">
+                        <p class="text-stone-300 font-light text-sm mb-6">Margherita studies at the Milan Conservatory under Maestro Vincenzo Balzani and has won multiple national and international prizes.</p>
+                        <button onclick="openArtistModal('Margherita Rordorf', 'SPECIAL GUEST - YOUNG TALENT', 'Italy (Age 13)', 'margherita.jpg', 'Margherita Rordorf studies at the Milan Conservatory under Maestro Vincenzo Balzani and has won multiple national and international prizes.', 'https://www.youtube.com/embed/S5rA-8mOPOI')" class="btn-copper px-6 py-3 text-xs uppercase tracking-widest font-bold">
                             ▶ Watch Performance
                         </button>
                     </div>
@@ -650,7 +650,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
                     
                     <!-- Paulius Andersson -->
-                    <div class="artist-card p-8 flex flex-col justify-between" onclick="openArtistModal('Paulius Andersson', 'Gala Headliner', 'Denmark / Lithuania', 'paulius.jpg', 'Paulius Andersson is internationally celebrated for breathtaking mastery, profound musical depth, and spellbinding recital programmes across European concert halls.', 'S. Rachmaninoff: Piano Sonata No. 2 in B-flat minor, Op. 36\nS. Prokofiev: Sonata No. 7 in B-flat major, Op. 83', 'https://www.youtube.com/embed/HaCOnnsA1_8')">
+                    <div class="artist-card p-8 flex flex-col justify-between" onclick="openArtistModal('Paulius Andersson', 'Gala Headliner', 'Denmark / Lithuania', 'paulius.jpg', 'Paulius Andersson has a vibrant international career with numerous concerts across Europe. He has won important prizes such as the Lyon International Piano Competition, MozArte, and others.', 'https://www.youtube.com/embed/HaCOnnsA1_8')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[16/10] bg-stone-200">
                                 <img src="https://placehold.co/800x600/1B2A27/D4A373?text=paulius" alt="paulius" class="w-full h-full object-cover hover:scale-105 transition duration-500">
@@ -665,7 +665,7 @@
                     </div>
 
                     <!-- Leo Di Maria -->
-                    <div class="artist-card p-8 flex flex-col justify-between" onclick="openArtistModal('Leo Di Maria', 'Gala Headliner', 'Italy', 'leo.jpg', 'Leo Di Maria has captured international acclaim for commanding performances and lyrical brilliance, performing as soloist with leading symphonies.', 'F. Liszt: Sonata in B minor, S. 178\nC. Franck: Prélude, Aria et Finale', 'https://www.youtube.com/embed/0dDH354PU-Y')">
+                    <div class="artist-card p-8 flex flex-col justify-between" onclick="openArtistModal('Leo Di Maria', 'Gala Headliner', 'Italy', 'leo.jpg', 'Leo Di Maria has won many important competitions, including the UNISA International Piano Competition in Pretoria, Ciudad de Ferrol International Piano Competition in Spain, MozArte Competition in Germany, and the Grand Prix de Lyon in France. He performs around the world, from Europe to Asia, Africa, and America.', 'https://www.youtube.com/embed/0dDH354PU-Y')">
                         <div>
                             <div class="overflow-hidden mb-6 aspect-[16/10] bg-stone-200">
                                 <img src="https://placehold.co/800x600/1B2A27/D4A373?text=leo" alt="leo" class="w-full h-full object-cover hover:scale-105 transition duration-500">
@@ -685,7 +685,7 @@
                 <div class="bg-forest p-12 text-center rounded-sm text-parchment relative overflow-hidden">
                     <h3 class="serif text-3xl italic text-copper mb-4">Experience the Festival Climax</h3>
                     <p class="text-stone-300 font-light text-sm max-w-xl mx-auto mb-8">Watch highlights from the last editions' 1st Prizewinners' Concert and preview the magnificence awaiting audiences this December in Kraainem.</p>
-                    <button onclick="openArtistModal('1st Prizewinners Highlights', 'Official Festival Teaser', 'Kraainem, Belgium', 'teaser', 'A look back at unforgettable moments from previous editions featuring our stellar prizewinners.', 'Selected works by César Franck, Chopin, and Liszt.', 'https://www.youtube.com/embed/HaCOnnsA1_8')" class="btn-copper px-8 py-4 text-xs uppercase tracking-[0.25em] font-bold inline-flex items-center gap-3">
+                    <button onclick="openArtistModal('1st Prizewinners Highlights', 'Official Festival Teaser', 'Kraainem, Belgium', 'teaser', 'A look back at unforgettable moments from previous editions featuring our stellar prizewinners.', 'https://www.youtube.com/embed/HaCOnnsA1_8')" class="btn-copper px-8 py-4 text-xs uppercase tracking-[0.25em] font-bold inline-flex items-center gap-3">
                         ▶ Watch Full Teaser Performance
                     </button>
                 </div>
@@ -948,7 +948,7 @@
         }
 
         // Modal Logic
-        function openArtistModal(name, role, origin, image, bio, repertoire, videoUrl) {
+        function openArtistModal(name, role, origin, image, bio, videoUrl) {
             const modal = document.getElementById('videoModal');
             const content = document.getElementById('modalContent');
             
@@ -962,10 +962,6 @@
                         <h3 class="serif text-4xl italic text-copper mt-1">${name}</h3>
                     </div>
                     <p class="text-stone-300 font-light text-sm leading-relaxed">${bio}</p>
-                    <div class="border-t border-copper/20 pt-4">
-                        <h5 class="text-xs uppercase tracking-widest font-bold text-copper mb-2">Concert Programme</h5>
-                        <p class="text-stone-300 text-sm font-light whitespace-pre-line">${repertoire}</p>
-                    </div>
                     <div class="pt-4 flex justify-end">
                         <a href="https://www.delijsterbes.be/nl/programma/cesar-franck-international-piano-competition-0" target="_blank" class="btn-copper px-6 py-3 text-xs uppercase tracking-widest font-bold">BOOK TICKETS FOR CONCERT</a>
                     </div>
