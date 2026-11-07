@@ -24,7 +24,7 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
+        h1, h2, h3, h4, h5, .serif { font-family: 'Cormorant Garamond', serif; }
         
         .page-section { display: block; animation: sectionFade 0.6s ease-out; }
 
@@ -165,6 +165,7 @@
             display: flex;
             align-items: center;
             gap: 2rem;
+            border-radius: 2px;
         }
         .special-prize-card:hover {
             background: rgba(255, 255, 255, 0.07);
@@ -260,7 +261,7 @@
     <div id="mobile-nav-overlay">
         <div class="flex justify-between items-center mb-12">
             <span class="serif italic text-2xl text-parchment">Menu</span>
-            <button onclick="toggleMobileMenu()" class="text-copper text-4xl leading-none">&times;</button>
+            <button onclick="toggleMobileMenu()" class="text-copper text-4xl leading-none" aria-label="Close menu">&times;</button>
         </div>
 
         <div class="mobile-group">
@@ -276,32 +277,46 @@
             <span class="mobile-label" data-i18n="nav_masterclasses">Masterclasses</span>
             <a href="https://cfipc.com/winter-masterclass/" class="mobile-link" data-i18n="nav_winter">Winter Masterclass</a>
             <a href="https://cfipc.com/spring-masterclass/" class="mobile-link" data-i18n="nav_spring">Spring Masterclass</a>
-            <a href="https://www.masterclass-volodos.com/" class="mobile-link" data-i18n="nav_volodos">Volodos Masterclass</a>
+            <a href="https://www.masterclass-volodos.com/" class="mobile-link" target="_blank" data-i18n="nav_volodos">Volodos Masterclass</a>
+        </div>
+
+        <div class="mobile-group">
+            <span class="mobile-label" data-i18n="nav_concerts_label">Concerts</span>
+            <a href="https://cfipc.com/concerts/" class="mobile-link" data-i18n="nav_concerts_link">Concerts</a>
+        </div>
+
+        <div class="mobile-group">
+            <span class="mobile-label" data-i18n="nav_gallery_label">Gallery</span>
+            <a href="https://cfipc.com/media/" class="mobile-link" data-i18n="nav_media">Media</a>
+            <a href="https://cfipc.com/gallery/" class="mobile-link" data-i18n="nav_pictures">Pictures</a>
         </div>
 
         <div class="mobile-group">
             <span class="mobile-label" data-i18n="nav_about_label">About</span>
             <a href="https://cfipc.com/contact/" class="mobile-link" data-i18n="nav_contact">Contact Us</a>
             <a href="https://cfipc.com/about/" class="mobile-link" data-i18n="nav_legacy">Legacy</a>
+            <a href="https://cfipc.com/partnership/" class="mobile-link" data-i18n="nav_partners">Partners</a>
         </div>
 
-        <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold text-decoration-none" data-i18n="nav_home">Return to Home</a>
+        <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold text-decoration-none" data-i18n="nav_home">Home</a>
     </div>
 
     <!-- Main Navigation Header -->
     <nav class="fixed w-full z-50 bg-[#F2F0E9]/95 backdrop-blur-md border-b border-forest/5">
         <div class="max-w-[1600px] mx-auto px-4 md:px-8">
             <div class="flex justify-between items-center h-32 md:h-48">
+                <!-- Left: Competition & Masterclasses -->
                 <div class="flex-1 flex justify-start items-center">
-                    <button class="md:hidden flex flex-col items-center justify-center space-y-1 p-2" onclick="toggleMobileMenu()">
+                    <button class="md:hidden flex flex-col items-center justify-center space-y-1 p-2" onclick="toggleMobileMenu()" aria-label="Open menu">
+                        <div class="w-6 h-[1.5px] bg-black"></div>
                         <div class="w-6 h-[1.5px] bg-black"></div>
                         <div class="w-6 h-[1.5px] bg-black"></div>
                     </button>
 
-                    <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
+                    <div class="hidden md:flex items-center space-x-8 lg:space-x-10">
                         <div class="dropdown-container">
                             <a href="https://cfipc.com/" class="nav-link" onclick="handleNavClick(event, this)">
-                                <span data-i18n="nav_competition">Competition</span> 
+                                <span data-i18n="nav_competition">Competition</span>
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
@@ -314,42 +329,51 @@
                         </div>
                         <div class="dropdown-container">
                             <a href="https://cfipc.com/winter-masterclass/" class="nav-link" onclick="handleNavClick(event, this)">
-                                <span data-i18n="nav_masterclasses">Masterclasses</span> 
+                                <span data-i18n="nav_masterclasses">Masterclasses</span>
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
                                 <a href="https://cfipc.com/winter-masterclass/" class="dropdown-item" data-i18n="nav_winter">Winter Masterclass</a>
                                 <a href="https://cfipc.com/spring-masterclass/" class="dropdown-item" data-i18n="nav_spring">Spring Masterclass</a>
-                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item" data-i18n="nav_volodos">Volodos Masterclass</a>
+                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item" target="_blank" data-i18n="nav_volodos">Volodos Masterclass</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Center: Logo -->
                 <a href="https://cfipc.com/" class="brand-logo px-2">
-                    <img src="https://cfipc.com/Logo26.png" alt="CFIPC Logo" class="logo-image">
+                    <img src="https://cfipc.com/Logo26.png" alt="César Franck International Piano Competition Logo" class="logo-image" onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='block';">
+                    <div id="fallback-logo" class="hidden text-center">
+                        <span class="serif italic text-2xl text-copper">CFIPC</span>
+                    </div>
                 </a>
 
+                <!-- Right: Concerts, Gallery, About -->
                 <div class="flex-1 flex justify-end items-center">
-                    <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
+                    <div class="hidden md:flex items-center space-x-8 lg:space-x-10">
+                        <a href="https://cfipc.com/concerts/" class="nav-link" data-i18n="nav_concerts_link">Concerts</a>
+
                         <div class="dropdown-container">
-                            <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
-                                <span data-i18n="nav_about">About</span> 
-                                <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a href="https://cfipc.com/contact/" class="dropdown-item" data-i18n="nav_contact">Contact Us</a>
-                                <a href="https://cfipc.com/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-container">
-                            <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
-                                <span data-i18n="nav_gallery">Gallery</span> 
+                            <a href="https://cfipc.com/gallery/" class="nav-link" onclick="handleNavClick(event, this)">
+                                <span data-i18n="nav_gallery">Gallery</span>
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
                             <div class="dropdown-menu">
                                 <a href="https://cfipc.com/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
                                 <a href="https://cfipc.com/gallery/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-container">
+                            <a href="https://cfipc.com/about/" class="nav-link" onclick="handleNavClick(event, this)">
+                                <span data-i18n="nav_about">About</span>
+                                <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="https://cfipc.com/contact/" class="dropdown-item" data-i18n="nav_contact">Contact Us</a>
+                                <a href="https://cfipc.com/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
+                                <a href="https://cfipc.com/partnership/" class="dropdown-item" data-i18n="nav_partners">Partners</a>
                             </div>
                         </div>
                     </div>
@@ -664,6 +688,7 @@
         // Professional Translations Dictionary for Prizes Page
         const translations = {
             en: {
+                menu_label: "Menu",
                 nav_competition: "Competition",
                 nav_rules: "Rules",
                 nav_prizes: "Prizes",
@@ -674,6 +699,7 @@
                 nav_winter: "Winter Masterclass",
                 nav_spring: "Spring Masterclass",
                 nav_volodos: "Volodos Masterclass",
+                nav_concerts_link: "Concerts",
                 nav_about: "About",
                 nav_about_label: "About",
                 nav_contact: "Contact Us",
@@ -765,6 +791,7 @@
                 other_prizes: "Other special prizes to be announced soon"
             },
             fr: {
+                menu_label: "Menu",
                 nav_competition: "Concours",
                 nav_rules: "Règlement",
                 nav_prizes: "Prix",
@@ -775,6 +802,7 @@
                 nav_winter: "Masterclass d'Hiver",
                 nav_spring: "Masterclass de Printemps",
                 nav_volodos: "Masterclass Volodos",
+                nav_concerts_link: "Concerts",
                 nav_about: "À propos",
                 nav_about_label: "À propos",
                 nav_contact: "Contactez-nous",
@@ -793,79 +821,80 @@
                 first_prize: "1er Prix",
                 second_prize: "2e Prix",
                 third_prize: "3e Prix",
-                cat_a_p1_val: "D'une valeur de 550€",
+                cat_a_p1_val: "Valeur 550€",
                 cat_a_p1_1: "&bull; Prix en espèces de 100€",
-                cat_a_p1_2: "&bull; Concert avec orchestre en octobre 2027 lors du \"César Franck & Orchestra Festival 2027\"",
+                cat_a_p1_2: "&bull; Concert avec orchestre en octobre 2027 lors du \"Festival César Franck & Orchestre 2027\"",
                 cat_a_p1_3: "&bull; Cachet de 250€ pour la performance de concerto",
-                cat_a_p1_4: "&bull; Bourse de 200€ (Festival CF Young Talents & Orchestra)",
-                cat_a_p2_val: "D'une valeur de 250€",
+                cat_a_p1_4: "&bull; Bourse de 200€ (CF Young Talents & Orchestra Festival)",
+                cat_a_p2_val: "Valeur 250€",
                 cat_a_p2_1: "&bull; Prix en espèces de 50€",
-                cat_a_p2_2: "&bull; Bourse de 100€ (Festival CF Young Talents & Orchestra)",
+                cat_a_p2_2: "&bull; Bourse de 100€",
                 cat_a_p2_3: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
-                cat_a_p3_val: "D'une valeur de 100€",
+                cat_a_p3_val: "Valeur 100€",
                 cat_a_p3_1: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
-                cat_a_p3_2: "&bull; Invitation au Festival CF Young Talents & Orchestra 2027",
-                cat_b_p1_val: "D'une valeur de 650€",
+                cat_a_p3_2: "&bull; Invitation au Festival 2027",
+                cat_b_p1_val: "Valeur 650€",
                 cat_b_p1_1: "&bull; Prix en espèces de 200€",
-                cat_b_p1_2: "&bull; Concert avec orchestre en octobre 2027 lors du \"César Franck & Orchestra Festival 2027\"",
-                cat_b_p1_3: "&bull; Cachet de 250€ pour la performance de concerto",
-                cat_b_p1_4: "&bull; Bourse de 200€ (Festival CF Young Talents & Orchestra)",
-                cat_b_p2_val: "D'une valeur de 280€",
+                cat_b_p1_2: "&bull; Concert avec orchestre en octobre 2027",
+                cat_b_p1_3: "&bull; Cachet de 250€ pour concerto",
+                cat_b_p1_4: "&bull; Bourse de 200€",
+                cat_b_p2_val: "Valeur 280€",
                 cat_b_p2_1: "&bull; Prix en espèces de 80€",
-                cat_b_p2_2: "&bull; Bourse de 100€ (Festival CF Young Talents & Orchestra)",
-                cat_b_p2_3: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
-                cat_b_p3_val: "D'une valeur de 100€",
-                cat_b_p3_1: "&bull; Bourse de 100€ (Festival CF Young Talents & Orchestra)",
-                cat_b_p3_2: "&bull; Invitation au Festival CF Young Talents & Orchestra 2027",
-                cat_c_p1_val: "D'une valeur de 1400€",
+                cat_b_p2_2: "&bull; Bourse de 100€",
+                cat_b_p2_3: "&bull; Bourse de 100€",
+                cat_b_p3_val: "Valeur 100€",
+                cat_b_p3_1: "&bull; Bourse de 100€",
+                cat_b_p3_2: "&bull; Invitation au Festival 2027",
+                cat_c_p1_val: "Valeur 1400€",
                 cat_c_p1_1: "&bull; Prix en espèces de 300€",
-                cat_c_p1_2: "&bull; Concert avec orchestre en octobre 2027 lors du \"César Franck & Orchestra Festival 2027\"",
-                cat_c_p1_3: "&bull; Cachet de 250€ pour la performance de concerto",
-                cat_c_p1_4: "&bull; Bourse de 200€ (Festival CF Young Talents & Orchestra)",
-                cat_c_paid_concert: "&bull; Concerts payants de 650€*",
-                asterisk_note_c: "*Sous réserve de confirmation par les organisateurs du concert ; les montants reflètent les éditions précédentes et sont susceptibles d'être modifiés.",
-                cat_c_p2_val: "D'une valeur de 320€",
+                cat_c_p1_2: "&bull; Concert avec orchestre en octobre 2027",
+                cat_c_p1_3: "&bull; Cachet de 250€ pour concerto",
+                cat_c_p1_4: "&bull; Bourse de 200€",
+                cat_c_paid_concert: "&bull; Concerts rémunérés de 650€*",
+                asterisk_note_c: "*Sous réserve de confirmation par les organisateurs.",
+                cat_c_p2_val: "Valeur 320€",
                 cat_c_p2_1: "&bull; Prix en espèces de 120€",
-                cat_c_p2_2: "&bull; Bourse de 100€ (Festival CF Young Talents & Orchestra)",
-                cat_c_p2_3: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
-                cat_c_p3_val: "D'une valeur de 100€",
-                cat_c_p3_1: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
-                cat_c_p3_2: "&bull; Invitation au Festival CF Young Talents & Orchestra 2027",
-                cat_d_p1_val: "D'une valeur de 2000€",
+                cat_c_p2_2: "&bull; Bourse de 100€",
+                cat_c_p2_3: "&bull; Bourse de 100€",
+                cat_c_p3_val: "Valeur 100€",
+                cat_c_p3_1: "&bull; Bourse de 100€",
+                cat_c_p3_2: "&bull; Invitation au Festival 2027",
+                cat_d_p1_val: "Valeur 2000€",
                 cat_d_p1_1: "&bull; Prix en espèces de 1000€",
-                cat_d_p1_2: "&bull; Concert avec orchestre en octobre 2027 lors du \"César Franck & Orchestra Festival 2027\"",
-                cat_d_p1_3: "&bull; Cachet de 250€ pour la performance de concerto",
-                cat_d_p1_4: "&bull; Bourse de 200€ (Festival CF Young Talents & Orchestra)",
-                cat_d_paid_concert: "&bull; Concerts payants de 650€*",
-                asterisk_note_d: "*Sous réserve de confirmation par les organisateurs du concert ; les montants reflètent les éditions précédentes et sont susceptibles d'être modifiés.",
-                cat_d_p2_val: "D'une valeur de 600€",
+                cat_d_p1_2: "&bull; Concert avec orchestre en octobre 2027",
+                cat_d_p1_3: "&bull; Cachet de 250€ pour concerto",
+                cat_d_p1_4: "&bull; Bourse de 200€",
+                cat_d_paid_concert: "&bull; Concerts rémunérés de 650€*",
+                asterisk_note_d: "*Sous réserve de confirmation par les organisateurs.",
+                cat_d_p2_val: "Valeur 600€",
                 cat_d_p2_1: "&bull; Prix en espèces de 400€",
-                cat_d_p2_2: "&bull; Bourse de 100€ (Festival CF Young Talents & Orchestra)",
-                cat_d_p2_3: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
-                cat_d_p3_val: "D'une valeur de 200€",
-                cat_d_p3_1: "&bull; Bourse de 100€ (Festival CF Young Talents & Orchestra)",
-                cat_d_p3_2: "&bull; Bourse de 100€ (Masterclass IMF Paris)",
+                cat_d_p2_2: "&bull; Bourse de 100€",
+                cat_d_p2_3: "&bull; Bourse de 100€",
+                cat_d_p3_val: "Valeur 200€",
+                cat_d_p3_1: "&bull; Bourse de 100€",
+                cat_d_p3_2: "&bull; Bourse de 100€",
                 imf_paris_finals_1: "&bull; Accès direct aux Finales du Concours IMF Paris",
                 imf_paris_finals_2: "&bull; Accès direct aux Finales du Concours IMF Paris",
                 special_prizes_heading: "Prix Spéciaux",
-                special_prizes_sub: "Invitations Prestigieuses & Prix de Performance",
+                special_prizes_sub: "Invitations Prestieuses & Prix de Performance",
                 sp_1_title: "Prix de l'Orchestre de Chambre César Franck",
-                sp_1_desc: "Les 1ers prix se produiront avec l'orchestre dirigé par le Maestro Vahan Mardirossian à Bruxelles, en octobre 2027 lors du \"César Franck & Orchestra Festival 2027\".",
+                sp_1_desc: "Les 1ers prix se produiront avec l'orchestre dirigé par le Maestro Vahan Mardirossian à Bruxelles, en octobre 2027.",
                 sp_2_title: "Prix Piano Talents Milano",
-                sp_2_desc: "Prestation de concert dans le cadre de la saison 2027 de l'Associazione PianoFriends Milano.",
-                sp_3_title: "Prix MozArte Aix-la-Chapelle",
-                sp_3_desc: "Opportunité de concert dans le cadre de la saison 2026 du Festival MozArte d'Aix-la-Chapelle.",
-                sp_4_title: "Prix de Bourse Hotchkiss School",
-                sp_4_desc: "Concert au Carnegie Hall et frais de scolarité partiels pour les Summer Piano Portals (Gisele & Fabio Witkowski).",
+                sp_2_desc: "Concert dans le cadre de la saison de l'Associazione PianoFriends Milano.",
+                sp_3_title: "Prix MozArte Aachen",
+                sp_3_desc: "Opportunité de concert dans la saison 2026 du Festival MozArte d'Aix-la-Chapelle.",
+                sp_4_title: "Bourse de la Hotchkiss School",
+                sp_4_desc: "Concert au Carnegie Hall et frais de scolarité partiels pour l'été (Gisele & Fabio Witkowski).",
                 sp_5_title: "Prix IMEP",
-                sp_5_desc: "Invitations de concert pour le Festival International de Piano IMEP 2026, offert par Guido Jardon.",
+                sp_5_desc: "Invitations de concert pour le Festival International de Piano IMEP 2026.",
                 sp_6_title: "Prix du Festival IMF Paris",
-                sp_6_desc: "Participation à un concert dans le cadre de la saison 2026 du Festival IMF Paris.",
-                sp_7_title: "Prix Musique Sans Frontières",
-                sp_7_desc: "Participation gratuite aux masterclasses, au concours et aux concerts à Druskininkai, en Lituanie.",
-                other_prizes: "D'autres prix spéciaux seront annoncés prochainement"
+                sp_6_desc: "Participation à un concert de la saison 2026 du Festival IMF Paris.",
+                sp_7_title: "Prix Music Without Limits",
+                sp_7_desc: "Participation gratuite aux masterclasses, concours et concerts à Druskininkai, Lituanie.",
+                other_prizes: "Autres prix spéciaux à annoncer prochainement"
             },
             nl: {
+                menu_label: "Menu",
                 nav_competition: "Competitie",
                 nav_rules: "Reglement",
                 nav_prizes: "Prijzen",
@@ -876,6 +905,7 @@
                 nav_winter: "Winter Masterclass",
                 nav_spring: "Lente Masterclass",
                 nav_volodos: "Volodos Masterclass",
+                nav_concerts_link: "Concerten",
                 nav_about: "Over Ons",
                 nav_about_label: "Over Ons",
                 nav_contact: "Contact",
@@ -885,7 +915,7 @@
                 nav_pictures: "Foto's",
                 nav_home: "Terug naar Home",
                 prizes_tag: "Prijzen & Laureaten",
-                prizes_title: "Competitie Prijzen",
+                prizes_title: "Wedstrijdprijzen",
                 prizes_subtitle: "Erkenning van artistieke excellentie per categorie",
                 cat_a_heading: "Categorie A",
                 cat_b_heading: "Categorie B",
@@ -894,79 +924,80 @@
                 first_prize: "1e Prijs",
                 second_prize: "2e Prijs",
                 third_prize: "3e Prijs",
-                cat_a_p1_val: "Waarde van 550€",
+                cat_a_p1_val: "Waarde 550€",
                 cat_a_p1_1: "&bull; €100 geldprijs",
                 cat_a_p1_2: "&bull; Concert met orkest in oktober 2027 tijdens het \"César Franck & Orchestra Festival 2027\"",
-                cat_a_p1_3: "&bull; €250 honorarium voor concertouitvoering",
-                cat_a_p1_4: "&bull; €200 beurs (CF Young Talents & Orchestra Festival)",
-                cat_a_p2_val: "Waarde van 250€",
+                cat_a_p1_3: "&bull; €250 honorarium voor concertoperformance",
+                cat_a_p1_4: "&bull; €200 Beurs (CF Young Talents & Orchestra Festival)",
+                cat_a_p2_val: "Waarde 250€",
                 cat_a_p2_1: "&bull; €50 geldprijs",
-                cat_a_p2_2: "&bull; €100 beurs (CF Young Talents & Orchestra Festival)",
-                cat_a_p2_3: "&bull; €100 beurs (IMF Paris Masterclass)",
-                cat_a_p3_val: "Waarde van 100€",
-                cat_a_p3_1: "&bull; €100 beurs (IMF Paris Masterclass)",
-                cat_a_p3_2: "&bull; Uitnodiging voor CF Young Talents & Orchestra Festival 2027",
-                cat_b_p1_val: "Waarde van 650€",
+                cat_a_p2_2: "&bull; €100 Beurs",
+                cat_a_p2_3: "&bull; €100 Beurs (IMF Paris Masterclass)",
+                cat_a_p3_val: "Waarde 100€",
+                cat_a_p3_1: "&bull; €100 Beurs (IMF Paris Masterclass)",
+                cat_a_p3_2: "&bull; Uitnodiging voor Festival 2027",
+                cat_b_p1_val: "Waarde 650€",
                 cat_b_p1_1: "&bull; €200 geldprijs",
-                cat_b_p1_2: "&bull; Concert met orkest in oktober 2027 tijdens het \"César Franck & Orchestra Festival 2027\"",
-                cat_b_p1_3: "&bull; €250 honorarium voor concertouitvoering",
-                cat_b_p1_4: "&bull; €200 beurs (CF Young Talents & Orchestra Festival)",
-                cat_b_p2_val: "Waarde van 280€",
+                cat_b_p1_2: "&bull; Concert met orkest in oktober 2027",
+                cat_b_p1_3: "&bull; €250 honorarium",
+                cat_b_p1_4: "&bull; €200 Beurs",
+                cat_b_p2_val: "Waarde 280€",
                 cat_b_p2_1: "&bull; €80 geldprijs",
-                cat_b_p2_2: "&bull; €100 beurs (CF Young Talents & Orchestra Festival)",
-                cat_b_p2_3: "&bull; €100 beurs (IMF Paris Masterclass)",
-                cat_b_p3_val: "Waarde van 100€",
-                cat_b_p3_1: "&bull; €100 beurs (CF Young Talents & Orchestra Festival)",
-                cat_b_p3_2: "&bull; Uitnodiging voor CF Young Talents & Orchestra Festival 2027",
-                cat_c_p1_val: "Waarde van 1400€",
+                cat_b_p2_2: "&bull; €100 Beurs",
+                cat_b_p2_3: "&bull; €100 Beurs",
+                cat_b_p3_val: "Waarde 100€",
+                cat_b_p3_1: "&bull; €100 Beurs",
+                cat_b_p3_2: "&bull; Uitnodiging voor Festival 2027",
+                cat_c_p1_val: "Waarde 1400€",
                 cat_c_p1_1: "&bull; €300 geldprijs",
-                cat_c_p1_2: "&bull; Concert met orkest in oktober 2027 tijdens het \"César Franck & Orchestra Festival 2027\"",
-                cat_c_p1_3: "&bull; €250 honorarium voor concertouitvoering",
-                cat_c_p1_4: "&bull; €200 beurs (CF Young Talents & Orchestra Festival)",
+                cat_c_p1_2: "&bull; Concert met orkest in oktober 2027",
+                cat_c_p1_3: "&bull; €250 honorarium",
+                cat_c_p1_4: "&bull; €200 Beurs",
                 cat_c_paid_concert: "&bull; Betaalde concerten van €650*",
-                asterisk_note_c: "*Onder voorbehoud van bevestiging door de concertorganisatoren; bedragen weerspiegelen eerdere edities en kunnen worden gewijzigd.",
-                cat_c_p2_val: "Waarde van 320€",
+                asterisk_note_c: "*Onder voorbehoud van bevestiging door concertorganisatoren.",
+                cat_c_p2_val: "Waarde 320€",
                 cat_c_p2_1: "&bull; €120 geldprijs",
-                cat_c_p2_2: "&bull; €100 beurs (CF Young Talents & Orchestra Festival)",
-                cat_c_p2_3: "&bull; €100 beurs (IMF Paris Masterclass)",
-                cat_c_p3_val: "Waarde van 100€",
-                cat_c_p3_1: "&bull; €100 beurs (IMF Paris Masterclass)",
-                cat_c_p3_2: "&bull; Uitnodiging voor CF Young Talents & Orchestra Festival 2027",
-                cat_d_p1_val: "Waarde van 2000€",
+                cat_c_p2_2: "&bull; €100 Beurs",
+                cat_c_p2_3: "&bull; €100 Beurs",
+                cat_c_p3_val: "Waarde 100€",
+                cat_c_p3_1: "&bull; €100 Beurs",
+                cat_c_p3_2: "&bull; Uitnodiging voor Festival 2027",
+                cat_d_p1_val: "Waarde 2000€",
                 cat_d_p1_1: "&bull; €1000 geldprijs",
-                cat_d_p1_2: "&bull; Concert met orkest in oktober 2027 tijdens het \"César Franck & Orchestra Festival 2027\"",
-                cat_d_p1_3: "&bull; €250 honorarium voor concertouitvoering",
-                cat_d_p1_4: "&bull; €200 beurs (CF Young Talents & Orchestra Festival)",
+                cat_d_p1_2: "&bull; Concert met orkest in oktober 2027",
+                cat_d_p1_3: "&bull; €250 honorarium",
+                cat_d_p1_4: "&bull; €200 Beurs",
                 cat_d_paid_concert: "&bull; Betaalde concerten van €650*",
-                asterisk_note_d: "*Onder voorbehoud van bevestiging door de concertorganisatoren; bedragen weerspiegelen eerdere edities en kunnen worden gewijzigd.",
-                cat_d_p2_val: "Waarde van 600€",
+                asterisk_note_d: "*Onder voorbehoud van bevestiging door concertorganisatoren.",
+                cat_d_p2_val: "Waarde 600€",
                 cat_d_p2_1: "&bull; €400 geldprijs",
-                cat_d_p2_2: "&bull; €100 beurs (CF Young Talents & Orchestra Festival)",
-                cat_d_p2_3: "&bull; €100 beurs (IMF Paris Masterclass)",
-                cat_d_p3_val: "Waarde van 200€",
-                cat_d_p3_1: "&bull; €100 beurs (CF Young Talents & Orchestra Festival)",
-                cat_d_p3_2: "&bull; €100 beurs (IMF Paris Masterclass)",
-                imf_paris_finals_1: "&bull; Directe toegang tot de Finales van het IMF Paris Concours",
-                imf_paris_finals_2: "&bull; Directe toegang tot de Finales van het IMF Paris Concours",
+                cat_d_p2_2: "&bull; €100 Beurs",
+                cat_d_p2_3: "&bull; €100 Beurs",
+                cat_d_p3_val: "Waarde 200€",
+                cat_d_p3_1: "&bull; €100 Beurs",
+                cat_d_p3_2: "&bull; €100 Beurs",
+                imf_paris_finals_1: "&bull; Directe toegang tot de Finales van de IMF Paris Competitie",
+                imf_paris_finals_2: "&bull; Directe toegang tot de Finales van de IMF Paris Competitie",
                 special_prizes_heading: "Speciale Prijzen",
                 special_prizes_sub: "Prestigieuze Uitnodigingen & Concertprijzen",
                 sp_1_title: "César Franck Kamerorkest Prijs",
-                sp_1_desc: "1e Prijswinnaars treden op met het orkest onder leiding van Maestro Vahan Mardirossian in Brussel, oktober 2027 tijdens het \"César Franck & Orchestra Festival 2027\".",
+                sp_1_desc: "1e Prijswinnaars treden op met het orkest onder leiding van Maestro Vahan Mardirossian in Brussel, oktober 2027.",
                 sp_2_title: "Piano Talents Milano Prijs",
                 sp_2_desc: "Concertoptreden binnen het concertseizoen 2027 van Associazione PianoFriends Milano.",
                 sp_3_title: "MozArte Aachen Prijs",
-                sp_3_desc: "Concertmogelijkheid als onderdeel van het concertseizoen 2026 van het MozArte Festival Aachen.",
-                sp_4_title: "Hotchkiss School Beursprijs",
-                sp_4_desc: "Concert in Carnegie Hall en gedeeltelijk lesgeld voor de Summer Piano Portals (Gisele & Fabio Witkowski).",
+                sp_3_desc: "Concertmogelijkheid als onderdeel van het concertseizoen 2026 van MozArte Festival Aachen.",
+                sp_4_title: "Hotchkiss School Beurs",
+                sp_4_desc: "Concert in Carnegie Hall en gedeeltelijke lesgeldkorting voor de Summer Piano Portals.",
                 sp_5_title: "Prix IMEP",
-                sp_5_desc: "Concertuitnodigingen voor het Internationaal Pianofestival IMEP 2026, aangeboden door Guido Jardon.",
+                sp_5_desc: "Concertuitnodigingen voor het International Piano Festival IMEP 2026.",
                 sp_6_title: "IMF Paris Festival Prijs",
                 sp_6_desc: "Concertdeelname binnen het IMF Paris Festival 2026 Seizoen.",
                 sp_7_title: "Music Without Limits Award",
-                sp_7_desc: "Gratis deelname aan masterclasses, competitie en concerten in Druskininkai, Litouwen.",
-                other_prizes: "Andere speciale prijzen worden binnenkort bekendgemaakt"
+                sp_7_desc: "Gratis deelname aan masterclasses, wedstrijd en concerten in Druskininkai, Litouwen.",
+                other_prizes: "Overige speciale prijzen worden binnenkort bekendgemaakt"
             },
             de: {
+                menu_label: "Menü",
                 nav_competition: "Wettbewerb",
                 nav_rules: "Regeln",
                 nav_prizes: "Preise",
@@ -977,6 +1008,7 @@
                 nav_winter: "Winter-Meisterkurs",
                 nav_spring: "Frühlings-Meisterkurs",
                 nav_volodos: "Volodos Meisterkurs",
+                nav_concerts_link: "Konzerte",
                 nav_about: "Über Uns",
                 nav_about_label: "Über Uns",
                 nav_contact: "Kontakt",
@@ -985,9 +1017,9 @@
                 nav_media: "Medien",
                 nav_pictures: "Bilder",
                 nav_home: "Zur Startseite",
-                prizes_tag: "Preise & Preisträger",
+                prizes_tag: "Auszeichnungen & Preisträger",
                 prizes_title: "Wettbewerbspreise",
-                prizes_subtitle: "Würdigung künstlerischer Exzellenz nach Kategorien",
+                prizes_subtitle: "Anerkennung künstlerischer Exzellenz nach Kategorien",
                 cat_a_heading: "Kategorie A",
                 cat_b_heading: "Kategorie B",
                 cat_c_heading: "Kategorie C",
@@ -997,77 +1029,78 @@
                 third_prize: "3. Preis",
                 cat_a_p1_val: "Wert 550€",
                 cat_a_p1_1: "&bull; 100€ Geldpreis",
-                cat_a_p1_2: "&bull; Konzert mit Orchester im Oktober 2027 während des \"César Franck & Orchestra Festival 2027\"",
+                cat_a_p1_2: "&bull; Konzert mit Orchester im Oktober 2027",
                 cat_a_p1_3: "&bull; 250€ Honorar für Konzertauftritt",
-                cat_a_p1_4: "&bull; 200€ Stipendium (CF Young Talents & Orchestra Festival)",
+                cat_a_p1_4: "&bull; 200€ Stipendium",
                 cat_a_p2_val: "Wert 250€",
                 cat_a_p2_1: "&bull; 50€ Geldpreis",
-                cat_a_p2_2: "&bull; 100€ Stipendium (CF Young Talents & Orchestra Festival)",
+                cat_a_p2_2: "&bull; 100€ Stipendium",
                 cat_a_p2_3: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
                 cat_a_p3_val: "Wert 100€",
                 cat_a_p3_1: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
-                cat_a_p3_2: "&bull; Einladung zum CF Young Talents & Orchestra Festival 2027",
+                cat_a_p3_2: "&bull; Einladung zum Festival 2027",
                 cat_b_p1_val: "Wert 650€",
                 cat_b_p1_1: "&bull; 200€ Geldpreis",
-                cat_b_p1_2: "&bull; Konzert mit Orchester im Oktober 2027 während des \"César Franck & Orchestra Festival 2027\"",
-                cat_b_p1_3: "&bull; 250€ Honorar für Konzertauftritt",
-                cat_b_p1_4: "&bull; 200€ Stipendium (CF Young Talents & Orchestra Festival)",
+                cat_b_p1_2: "&bull; Konzert mit Orchester",
+                cat_b_p1_3: "&bull; 250€ Honorar",
+                cat_b_p1_4: "&bull; 200€ Stipendium",
                 cat_b_p2_val: "Wert 280€",
                 cat_b_p2_1: "&bull; 80€ Geldpreis",
-                cat_b_p2_2: "&bull; 100€ Stipendium (CF Young Talents & Orchestra Festival)",
-                cat_b_p2_3: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
+                cat_b_p2_2: "&bull; 100€ Stipendium",
+                cat_b_p2_3: "&bull; 100€ Stipendium",
                 cat_b_p3_val: "Wert 100€",
-                cat_b_p3_1: "&bull; 100€ Stipendium (CF Young Talents & Orchestra Festival)",
-                cat_b_p3_2: "&bull; Einladung zum CF Young Talents & Orchestra Festival 2027",
+                cat_b_p3_1: "&bull; 100€ Stipendium",
+                cat_b_p3_2: "&bull; Einladung zum Festival 2027",
                 cat_c_p1_val: "Wert 1400€",
                 cat_c_p1_1: "&bull; 300€ Geldpreis",
-                cat_c_p1_2: "&bull; Konzert mit Orchester im Oktober 2027 während des \"César Franck & Orchestra Festival 2027\"",
-                cat_c_p1_3: "&bull; 250€ Honorar für Konzertauftritt",
-                cat_c_p1_4: "&bull; 200€ Stipendium (CF Young Talents & Orchestra Festival)",
-                cat_c_paid_concert: "&bull; Bezahlte Konzerte von 650€*",
-                asterisk_note_c: "*Vorbehaltlich Bestätigung durch die Konzertorganisatoren; Beträge spiegeln vorherige Ausgaben wider und können sich ändern.",
+                cat_c_p1_2: "&bull; Konzert mit Orchester",
+                cat_c_p1_3: "&bull; 250€ Honorar",
+                cat_c_p1_4: "&bull; 200€ Stipendium",
+                cat_c_paid_concert: "&bull; Bezahlte Konzerte im Wert von 650€*",
+                asterisk_note_c: "*Vorbehaltlich der Bestätigung durch die Veranstalter.",
                 cat_c_p2_val: "Wert 320€",
                 cat_c_p2_1: "&bull; 120€ Geldpreis",
-                cat_c_p2_2: "&bull; 100€ Stipendium (CF Young Talents & Orchestra Festival)",
-                cat_c_p2_3: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
+                cat_c_p2_2: "&bull; 100€ Stipendium",
+                cat_c_p2_3: "&bull; 100€ Stipendium",
                 cat_c_p3_val: "Wert 100€",
-                cat_c_p3_1: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
-                cat_c_p3_2: "&bull; Einladung zum CF Young Talents & Orchestra Festival 2027",
+                cat_c_p3_1: "&bull; 100€ Stipendium",
+                cat_c_p3_2: "&bull; Einladung zum Festival 2027",
                 cat_d_p1_val: "Wert 2000€",
                 cat_d_p1_1: "&bull; 1000€ Geldpreis",
-                cat_d_p1_2: "&bull; Konzert mit Orchester im Oktober 2027 während des \"César Franck & Orchestra Festival 2027\"",
-                cat_d_p1_3: "&bull; 250€ Honorar für Konzertauftritt",
-                cat_d_p1_4: "&bull; 200€ Stipendium (CF Young Talents & Orchestra Festival)",
-                cat_d_paid_concert: "&bull; Bezahlte Konzerte von 650€*",
-                asterisk_note_d: "*Vorbehaltlich Bestätigung durch die Konzertorganisatoren; Beträge spiegeln vorherige Ausgaben wider und können sich ändern.",
+                cat_d_p1_2: "&bull; Konzert mit Orchester",
+                cat_d_p1_3: "&bull; 250€ Honorar",
+                cat_d_p1_4: "&bull; 200€ Stipendium",
+                cat_d_paid_concert: "&bull; Bezahlte Konzerte im Wert von 650€*",
+                asterisk_note_d: "*Vorbehaltlich der Bestätigung durch die Veranstalter.",
                 cat_d_p2_val: "Wert 600€",
                 cat_d_p2_1: "&bull; 400€ Geldpreis",
-                cat_d_p2_2: "&bull; 100€ Stipendium (CF Young Talents & Orchestra Festival)",
-                cat_d_p2_3: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
+                cat_d_p2_2: "&bull; 100€ Stipendium",
+                cat_d_p2_3: "&bull; 100€ Stipendium",
                 cat_d_p3_val: "Wert 200€",
-                cat_d_p3_1: "&bull; 100€ Stipendium (CF Young Talents & Orchestra Festival)",
-                cat_d_p3_2: "&bull; 100€ Stipendium (IMF Paris Masterclass)",
+                cat_d_p3_1: "&bull; 100€ Stipendium",
+                cat_d_p3_2: "&bull; 100€ Stipendium",
                 imf_paris_finals_1: "&bull; Direkter Zugang zum Finale des IMF Paris Wettbewerbs",
                 imf_paris_finals_2: "&bull; Direkter Zugang zum Finale des IMF Paris Wettbewerbs",
                 special_prizes_heading: "Sonderpreise",
-                special_prizes_sub: "Prestigesache & Konzertpreise",
+                special_prizes_sub: "Prestigesache & Konzertauszeichnungen",
                 sp_1_title: "César Franck Kammerorchester Preis",
-                sp_1_desc: "1. Preisträger treten im Oktober 2027 während des \"César Franck & Orchestra Festival 2027\" in Brüssel mit dem Orchester unter der Leitung von Maestro Vahan Mardirossian auf.",
+                sp_1_desc: "Erste Preisträger treten mit dem Orchester unter Maestro Vahan Mardirossian in Brüssel im Oktober 2027 auf.",
                 sp_2_title: "Piano Talents Milano Preis",
-                sp_2_desc: "Konzertauftritt innerhalb der Konzertsaison 2027 der Associazione PianoFriends Milano.",
+                sp_2_desc: "Konzertauftritt innerhalb der Konzert saison 2027 der Associazione PianoFriends Milano.",
                 sp_3_title: "MozArte Aachen Preis",
-                sp_3_desc: "Konzertmöglichkeit im Rahmen der Konzertsaison 2026 des MozArte Festivals Aachen.",
-                sp_4_title: "Hotchkiss School Stipendienpreis",
-                sp_4_desc: "Konzert in der Carnegie Hall und Teilstipendium für die Summer Piano Portals (Gisele & Fabio Witkowski).",
+                sp_3_desc: "Konzertmöglichkeit als Teil der Konzertsaison 2026 des MozArte Festivals Aachen.",
+                sp_4_title: "Hotchkiss School Stipendium",
+                sp_4_desc: "Konzert in der Carnegie Hall und Teilstipendium für die Summer Piano Portals.",
                 sp_5_title: "Prix IMEP",
-                sp_5_desc: "Konzert-Einladungen für das Internationale Klavierfestival IMEP 2026, angeboten von Guido Jardon.",
+                sp_5_desc: "Konzerteinladungen für das International Piano Festival IMEP 2026.",
                 sp_6_title: "IMF Paris Festival Preis",
-                sp_6_desc: "Konzertteilnahme in der Saison 2026 des IMF Paris Festivals.",
+                sp_6_desc: "Konzertteilnahme im Rahmen der IMF Paris Festival Saison 2026.",
                 sp_7_title: "Music Without Limits Award",
                 sp_7_desc: "Kostenlose Teilnahme an Meisterkursen, Wettbewerb und Konzerten in Druskininkai, Litauen.",
                 other_prizes: "Weitere Sonderpreise werden in Kürze bekannt gegeben"
             },
             it: {
+                menu_label: "Menu",
                 nav_competition: "Concorso",
                 nav_rules: "Regolamento",
                 nav_prizes: "Premi",
@@ -1078,6 +1111,7 @@
                 nav_winter: "Masterclass Invernale",
                 nav_spring: "Masterclass Primaverile",
                 nav_volodos: "Masterclass Volodos",
+                nav_concerts_link: "Concerti",
                 nav_about: "Chi Siamo",
                 nav_about_label: "Chi Siamo",
                 nav_contact: "Contatti",
@@ -1096,79 +1130,80 @@
                 first_prize: "1° Premio",
                 second_prize: "2° Premio",
                 third_prize: "3° Premio",
-                cat_a_p1_val: "Valore di 550€",
+                cat_a_p1_val: "Valore 550€",
                 cat_a_p1_1: "&bull; Premio in denaro di 100€",
-                cat_a_p1_2: "&bull; Concerto con orchestra nell'ottobre 2027 durante il \"César Franck & Orchestra Festival 2027\"",
-                cat_a_p1_3: "&bull; Compenso di 250€ per l'esecuzione del concerto",
-                cat_a_p1_4: "&bull; Borsa di studio di 200€ (Festival CF Young Talents & Orchestra)",
-                cat_a_p2_val: "Valore di 250€",
+                cat_a_p1_2: "&bull; Concerto con orchestra nell'ottobre 2027",
+                cat_a_p1_3: "&bull; Compenso di 250€ per concerto",
+                cat_a_p1_4: "&bull; Borsa di studio di 200€",
+                cat_a_p2_val: "Valore 250€",
                 cat_a_p2_1: "&bull; Premio in denaro di 50€",
-                cat_a_p2_2: "&bull; Borsa di studio di 100€ (Festival CF Young Talents & Orchestra)",
-                cat_a_p2_3: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
-                cat_a_p3_val: "Valore di 100€",
-                cat_a_p3_1: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
-                cat_a_p3_2: "&bull; Invito al Festival CF Young Talents & Orchestra 2027",
-                cat_b_p1_val: "Valore di 650€",
+                cat_a_p2_2: "&bull; Borsa di studio di 100€",
+                cat_a_p2_3: "&bull; Borsa di studio di 100€",
+                cat_a_p3_val: "Valore 100€",
+                cat_a_p3_1: "&bull; Borsa di studio di 100€",
+                cat_a_p3_2: "&bull; Invito al Festival 2027",
+                cat_b_p1_val: "Valore 650€",
                 cat_b_p1_1: "&bull; Premio in denaro di 200€",
-                cat_b_p1_2: "&bull; Concerto con orchestra nell'ottobre 2027 durante il \"César Franck & Orchestra Festival 2027\"",
-                cat_b_p1_3: "&bull; Compenso di 250€ per l'esecuzione del concerto",
-                cat_b_p1_4: "&bull; Borsa di studio di 200€ (Festival CF Young Talents & Orchestra)",
-                cat_b_p2_val: "Valore di 280€",
+                cat_b_p1_2: "&bull; Concerto con orchestra",
+                cat_b_p1_3: "&bull; Compenso di 250€",
+                cat_b_p1_4: "&bull; Borsa di studio di 200€",
+                cat_b_p2_val: "Valore 280€",
                 cat_b_p2_1: "&bull; Premio in denaro di 80€",
-                cat_b_p2_2: "&bull; Borsa di studio di 100€ (Festival CF Young Talents & Orchestra)",
-                cat_b_p2_3: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
-                cat_b_p3_val: "Valore di 100€",
-                cat_b_p3_1: "&bull; Borsa di studio di 100€ (Festival CF Young Talents & Orchestra)",
-                cat_b_p3_2: "&bull; Invito al Festival CF Young Talents & Orchestra 2027",
-                cat_c_p1_val: "Valore di 1400€",
+                cat_b_p2_2: "&bull; Borsa di studio di 100€",
+                cat_b_p2_3: "&bull; Borsa di studio di 100€",
+                cat_b_p3_val: "Valore 100€",
+                cat_b_p3_1: "&bull; Borsa di studio di 100€",
+                cat_b_p3_2: "&bull; Invito al Festival 2027",
+                cat_c_p1_val: "Valore 1400€",
                 cat_c_p1_1: "&bull; Premio in denaro di 300€",
-                cat_c_p1_2: "&bull; Concerto con orchestra nell'ottobre 2027 durante il \"César Franck & Orchestra Festival 2027\"",
-                cat_c_p1_3: "&bull; Compenso di 250€ per l'esecuzione del concerto",
-                cat_c_p1_4: "&bull; Borsa di studio di 200€ (Festival CF Young Talents & Orchestra)",
+                cat_c_p1_2: "&bull; Concerto con orchestra",
+                cat_c_p1_3: "&bull; Compenso di 250€",
+                cat_c_p1_4: "&bull; Borsa di studio di 200€",
                 cat_c_paid_concert: "&bull; Concerti retribuiti di 650€*",
-                asterisk_note_c: "*Salvo conferma da parte degli organizzatori del concerto; gli importi riflettono le edizioni precedenti e sono soggetti a modifiche.",
-                cat_c_p2_val: "Valore di 320€",
+                asterisk_note_c: "*Salvo conferma da parte degli organizzatori.",
+                cat_c_p2_val: "Valore 320€",
                 cat_c_p2_1: "&bull; Premio in denaro di 120€",
-                cat_c_p2_2: "&bull; Borsa di studio di 100€ (Festival CF Young Talents & Orchestra)",
-                cat_c_p2_3: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
-                cat_c_p3_val: "Valore di 100€",
-                cat_c_p3_1: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
-                cat_c_p3_2: "&bull; Invito al Festival CF Young Talents & Orchestra 2027",
-                cat_d_p1_val: "Valore di 2000€",
+                cat_c_p2_2: "&bull; Borsa di studio di 100€",
+                cat_c_p2_3: "&bull; Borsa di studio di 100€",
+                cat_c_p3_val: "Valore 100€",
+                cat_c_p3_1: "&bull; Borsa di studio di 100€",
+                cat_c_p3_2: "&bull; Invito al Festival 2027",
+                cat_d_p1_val: "Valore 2000€",
                 cat_d_p1_1: "&bull; Premio in denaro di 1000€",
-                cat_d_p1_2: "&bull; Concerto con orchestra nell'ottobre 2027 durante il \"César Franck & Orchestra Festival 2027\"",
-                cat_d_p1_3: "&bull; Compenso di 250€ per l'esecuzione del concerto",
-                cat_d_p1_4: "&bull; Borsa di studio di 200€ (Festival CF Young Talents & Orchestra)",
+                cat_d_p1_2: "&bull; Concerto con orchestra",
+                cat_d_p1_3: "&bull; Compenso di 250€",
+                cat_d_p1_4: "&bull; Borsa di studio di 200€",
                 cat_d_paid_concert: "&bull; Concerti retribuiti di 650€*",
-                asterisk_note_d: "*Salvo conferma da parte degli organizzatori del concerto; gli importi riflettono le edizioni precedenti e sono soggetti a modifiche.",
-                cat_d_p2_val: "Valore di 600€",
+                asterisk_note_d: "*Salvo conferma da parte degli organizzatori.",
+                cat_d_p2_val: "Valore 600€",
                 cat_d_p2_1: "&bull; Premio in denaro di 400€",
-                cat_d_p2_2: "&bull; Borsa di studio di 100€ (Festival CF Young Talents & Orchestra)",
-                cat_d_p2_3: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
-                cat_d_p3_val: "Valore di 200€",
-                cat_d_p3_1: "&bull; Borsa di studio di 100€ (Festival CF Young Talents & Orchestra)",
-                cat_d_p3_2: "&bull; Borsa di studio di 100€ (Masterclass IMF Paris)",
-                imf_paris_finals_1: "&bull; Accesso diretto alle Finales du Concorso IMF Paris",
-                imf_paris_finals_2: "&bull; Accesso diretto alle Finales du Concorso IMF Paris",
+                cat_d_p2_2: "&bull; Borsa di studio di 100€",
+                cat_d_p2_3: "&bull; Borsa di studio di 100€",
+                cat_d_p3_val: "Valore 200€",
+                cat_d_p3_1: "&bull; Borsa di studio di 100€",
+                cat_d_p3_2: "&bull; Borsa di studio di 100€",
+                imf_paris_finals_1: "&bull; Accesso diretto alle Finali del Concorso IMF Paris",
+                imf_paris_finals_2: "&bull; Accesso diretto alle Finali del Concorso IMF Paris",
                 special_prizes_heading: "Premi Speciali",
-                special_prizes_sub: "Inviti Prestigiosi e Premi di Performance",
+                special_prizes_sub: "Inviti Prestigiosi & Premi di Esibizione",
                 sp_1_title: "Premio Orchestra da Camera César Franck",
-                sp_1_desc: "I vincitori del 1° premio si esibiranno con l'orchestra diretta dal Maestro Vahan Mardirossian a Bruxelles, ottobre 2027 durante il \"César Franck & Orchestra Festival 2027\".",
+                sp_1_desc: "I vincitori del 1° premio suoneranno con l'orchestra diretta dal Maestro Vahan Mardirossian a Bruxelles, ottobre 2027.",
                 sp_2_title: "Premio Piano Talents Milano",
-                sp_2_desc: "Concerto all'interno della stagione concertistica 2027 dell'Associazione PianoFriends Milano.",
-                sp_3_title: "Premio MozArte Aquisgrana",
-                sp_3_desc: "Opportunità di concerto nell'ambito della stagione concertistica 2026 del MozArte Festival Aachen.",
-                sp_4_title: "Premio Borsa di Studio Hotchkiss School",
-                sp_4_desc: "Concerto alla Carnegie Hall e retta parziale per i Summer Piano Portals (Gisele & Fabio Witkowski).",
+                sp_2_desc: "Concerto all'interno della stagione concertistica 2027 di Associazione PianoFriends Milano.",
+                sp_3_title: "Premio MozArte Aachen",
+                sp_3_desc: "Opportunità di concerto nella stagione 2026 del Festival MozArte di Aquisgrana.",
+                sp_4_title: "Borsa di Studio Hotchkiss School",
+                sp_4_desc: "Concerto alla Carnegie Hall e retta parziale per i Summer Piano Portals.",
                 sp_5_title: "Prix IMEP",
-                sp_5_desc: "Inviti a concerti per il Festival Pianistico Internazionale IMEP 2026, offerti da Guido Jardon.",
+                sp_5_desc: "Inviti a concerti per l'International Piano Festival IMEP 2026.",
                 sp_6_title: "Premio Festival IMF Paris",
-                sp_6_desc: "Partecipazione a concerti all'interno della stagione 2026 del Festival IMF Paris.",
+                sp_6_desc: "Partecipazione a concerti della stagione 2026 del Festival IMF Paris.",
                 sp_7_title: "Music Without Limits Award",
                 sp_7_desc: "Partecipazione gratuita a masterclass, concorso e concerti a Druskininkai, Lituania.",
-                other_prizes: "Altri premi speciali saranno annunciati prossimamente"
+                other_prizes: "Altri premi speciali saranno annunciati presto"
             },
             es: {
+                menu_label: "Menú",
                 nav_competition: "Concurso",
                 nav_rules: "Reglas",
                 nav_prizes: "Premios",
@@ -1179,6 +1214,7 @@
                 nav_winter: "Clase Magistral de Invierno",
                 nav_spring: "Clase Magistral de Primavera",
                 nav_volodos: "Clase Magistral Volodos",
+                nav_concerts_link: "Conciertos",
                 nav_about: "Acerca de",
                 nav_about_label: "Acerca de",
                 nav_contact: "Contacto",
@@ -1195,86 +1231,83 @@
                 cat_c_heading: "Categoría C",
                 cat_d_heading: "Categoría D",
                 first_prize: "1er Premio",
-                second_prize: "2º Premio",
+                second_prize: "2° Premio",
                 third_prize: "3er Premio",
                 cat_a_p1_val: "Valorado en 550€",
                 cat_a_p1_1: "&bull; Premio en efectivo de 100€",
-                cat_a_p1_2: "&bull; Concierto con orquesta en octubre de 2027 durante el \"César Franck & Orchestra Festival 2027\"",
-                cat_a_p1_3: "&bull; Tarifa de 250€ por interpretación de concierto",
-                cat_a_p1_4: "&bull; Beca de 200€ (Festival CF Young Talents & Orchestra)",
+                cat_a_p1_2: "&bull; Concierto con orquesta en octubre de 2027",
+                cat_a_p1_3: "&bull; Honorarios de 250€",
+                cat_a_p1_4: "&bull; Beca de 200€",
                 cat_a_p2_val: "Valorado en 250€",
                 cat_a_p2_1: "&bull; Premio en efectivo de 50€",
-                cat_a_p2_2: "&bull; Beca de 100€ (Festival CF Young Talents & Orchestra)",
-                cat_a_p2_3: "&bull; Beca de 100€ (Masterclass IMF Paris)",
+                cat_a_p2_2: "&bull; Beca de 100€",
+                cat_a_p2_3: "&bull; Beca de 100€",
                 cat_a_p3_val: "Valorado en 100€",
-                cat_a_p3_1: "&bull; Beca de 100€ (Masterclass IMF Paris)",
-                cat_a_p3_2: "&bull; Invitación al Festival CF Young Talents & Orchestra 2027",
+                cat_a_p3_1: "&bull; Beca de 100€",
+                cat_a_p3_2: "&bull; Invitación al Festival 2027",
                 cat_b_p1_val: "Valorado en 650€",
                 cat_b_p1_1: "&bull; Premio en efectivo de 200€",
-                cat_b_p1_2: "&bull; Concierto con orquesta en octubre de 2027 durante el \"César Franck & Orchestra Festival 2027\"",
-                cat_b_p1_3: "&bull; Tarifa de 250€ por interpretación de concierto",
-                cat_b_p1_4: "&bull; Beca de 200€ (Festival CF Young Talents & Orchestra)",
+                cat_b_p1_2: "&bull; Concierto con orquesta",
+                cat_b_p1_3: "&bull; Honorarios de 250€",
+                cat_b_p1_4: "&bull; Beca de 200€",
                 cat_b_p2_val: "Valorado en 280€",
                 cat_b_p2_1: "&bull; Premio en efectivo de 80€",
-                cat_b_p2_2: "&bull; Beca de 100€ (Festival CF Young Talents & Orchestra)",
-                cat_b_p2_3: "&bull; Beca de 100€ (Masterclass IMF Paris)",
+                cat_b_p2_2: "&bull; Beca de 100€",
+                cat_b_p2_3: "&bull; Beca de 100€",
                 cat_b_p3_val: "Valorado en 100€",
-                cat_b_p3_1: "&bull; Beca de 100€ (Festival CF Young Talents & Orchestra)",
-                cat_b_p3_2: "&bull; Invitación al Festival CF Young Talents & Orchestra 2027",
+                cat_b_p3_1: "&bull; Beca de 100€",
+                cat_b_p3_2: "&bull; Invitación al Festival 2027",
                 cat_c_p1_val: "Valorado en 1400€",
                 cat_c_p1_1: "&bull; Premio en efectivo de 300€",
-                cat_c_p1_2: "&bull; Concierto con orquesta en octubre de 2027 durante el \"César Franck & Orchestra Festival 2027\"",
-                cat_c_p1_3: "&bull; Tarifa de 250€ por interpretación de concierto",
-                cat_c_p1_4: "&bull; Beca de 200€ (Festival CF Young Talents & Orchestra)",
+                cat_c_p1_2: "&bull; Concierto con orquesta",
+                cat_c_p1_3: "&bull; Honorarios de 250€",
+                cat_c_p1_4: "&bull; Beca de 200€",
                 cat_c_paid_concert: "&bull; Conciertos remunerados de 650€*",
-                asterisk_note_c: "*Sujeto a confirmación por los organizadores del concierto; los importes reflejan ediciones anteriores y están sujetos a cambios.",
+                asterisk_note_c: "*Sujeto a confirmación por los organizadores.",
                 cat_c_p2_val: "Valorado en 320€",
                 cat_c_p2_1: "&bull; Premio en efectivo de 120€",
-                cat_c_p2_2: "&bull; Beca de 100€ (Festival CF Young Talents & Orchestra)",
-                cat_c_p2_3: "&bull; Beca de 100€ (Masterclass IMF Paris)",
+                cat_c_p2_2: "&bull; Beca de 100€",
+                cat_c_p2_3: "&bull; Beca de 100€",
                 cat_c_p3_val: "Valorado en 100€",
-                cat_c_p3_1: "&bull; Beca de 100€ (Masterclass IMF Paris)",
-                cat_c_p3_2: "&bull; Invitación al Festival CF Young Talents & Orchestra 2027",
+                cat_c_p3_1: "&bull; Beca de 100€",
+                cat_c_p3_2: "&bull; Invitación al Festival 2027",
                 cat_d_p1_val: "Valorado en 2000€",
                 cat_d_p1_1: "&bull; Premio en efectivo de 1000€",
-                cat_d_p1_2: "&bull; Concierto con orquesta en octubre de 2027 durante el \"César Franck & Orchestra Festival 2027\"",
-                cat_d_p1_3: "&bull; Tarifa de 250€ por interpretación de concierto",
-                cat_d_p1_4: "&bull; Beca de 200€ (Festival CF Young Talents & Orchestra)",
+                cat_d_p1_2: "&bull; Concierto con orquesta",
+                cat_d_p1_3: "&bull; Honorarios de 250€",
+                cat_d_p1_4: "&bull; Beca de 200€",
                 cat_d_paid_concert: "&bull; Conciertos remunerados de 650€*",
-                asterisk_note_d: "*Sujeto a confirmación por los organizadores del concierto; los importes reflejan ediciones anteriores y están sujetos a cambios.",
+                asterisk_note_d: "*Sujeto a confirmación por los organizadores.",
                 cat_d_p2_val: "Valorado en 600€",
                 cat_d_p2_1: "&bull; Premio en efectivo de 400€",
-                cat_d_p2_2: "&bull; Beca de 100€ (Festival CF Young Talents & Orchestra)",
-                cat_d_p2_3: "&bull; Beca de 100€ (Masterclass IMF Paris)",
+                cat_d_p2_2: "&bull; Beca de 100€",
+                cat_d_p2_3: "&bull; Beca de 100€",
                 cat_d_p3_val: "Valorado en 200€",
-                cat_d_p3_1: "&bull; Beca de 100€ (Festival CF Young Talents & Orchestra)",
-                cat_d_p3_2: "&bull; Beca de 100€ (Masterclass IMF Paris)",
-                imf_paris_finals_1: "&bull; Acceso directo las Finales del Concurso IMF Paris",
-                imf_paris_finals_2: "&bull; Acceso directo a las Finales del Concurso IMF Paris",
+                cat_d_p3_1: "&bull; Beca de 100€",
+                cat_d_p3_2: "&bull; Beca de 100€",
+                imf_paris_finals_1: "&bull; Acceso directo a las Finales del Concurso IMF Paris",
+                imf_paris_finals_2: "&bull; Acceso directo a las Finales del Concorso IMF Paris",
                 special_prizes_heading: "Premios Especiales",
-                special_prizes_sub: "Invitaciones Prestigosas y Premios de Interpretación",
-                sp_1_title: "Premio Orquesta de Cámara César Franck",
-                sp_1_desc: "Los ganadores del 1er premio actuarán con la orquesta dirigida por el Maestro Vahan Mardirossian en Bruselas, octubre de 2027 durante el \"César Franck & Orchestra Festival 2027\".",
+                special_prizes_sub: "Invitaciones Presticiosas y Premios de Interpretación",
+                sp_1_title: "Premio de la Orquesta de Cámara César Franck",
+                sp_1_desc: "Los primeros premios actuarán con la orquesta dirigida por el Maestro Vahan Mardirossian en Bruselas, octubre de 2027.",
                 sp_2_title: "Premio Piano Talents Milano",
-                sp_2_desc: "Concierto dentro de la temporada de conciertos 2027 de la Associazione PianoFriends Milano.",
-                sp_3_title: "Premio MozArte Aquisgrán",
-                sp_3_desc: "Oportunidad de concierto como parte de la temporada de conciertos 2026 del MozArte Festival Aachen.",
-                sp_4_title: "Premio Beca Hotchkiss School",
-                sp_4_desc: "Concierto en el Carnegie Hall y matrícula parcial para los Summer Piano Portals (Gisele & Fabio Witkowski).",
+                sp_2_desc: "Actuación de concierto dentro de la temporada de conciertos 2027 de Associazione PianoFriends Milano.",
+                sp_3_title: "Premio MozArte Aachen",
+                sp_3_desc: "Oportunidad de concierto como parte de la temporada 2026 del Festival MozArte Aachen.",
+                sp_4_title: "Beca Hotchkiss School",
+                sp_4_desc: "Concierto en el Carnegie Hall y matrícula parcial para los Summer Piano Portals.",
                 sp_5_title: "Prix IMEP",
-                sp_5_desc: "Invitaciones a conciertos para el Festival Internacional de Piano IMEP 2026, ofrecidas por Guido Jardon.",
-                sp_6_title: "Premio del Festival IMF Paris",
+                sp_5_desc: "Invitaciones a conciertos para el Festival Internacional de Piano IMEP 2026.",
+                sp_6_title: "Premio Festival IMF Paris",
                 sp_6_desc: "Participación en conciertos dentro de la temporada 2026 del Festival IMF Paris.",
                 sp_7_title: "Music Without Limits Award",
                 sp_7_desc: "Participación gratuita en clases magistrales, concurso y conciertos en Druskininkai, Lituania.",
-                other_prizes: "Pronto se anunciarán otros premios especiales"
+                other_prizes: "Otros premios especiales se anunciarán próximamente"
             }
         };
 
-        let currentLang = 'en';
-
         function setLanguage(lang) {
-            currentLang = lang;
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -1282,7 +1315,8 @@
                     el.innerHTML = translations[lang][key];
                 }
             });
-            toggleLangMenu();
+            document.getElementById('langMenu').classList.remove('active');
+            localStorage.setItem('cfipc_lang', lang);
         }
 
         function toggleLangMenu() {
@@ -1292,12 +1326,45 @@
 
         function toggleMobileMenu() {
             const overlay = document.getElementById('mobile-nav-overlay');
-            overlay.classList.toggle('open');
+            if (overlay.classList.contains('open')) {
+                overlay.classList.remove('open');
+                setTimeout(() => { overlay.style.display = 'none'; }, 400);
+                document.body.style.overflow = 'auto';
+            } else {
+                overlay.style.display = 'flex';
+                setTimeout(() => { overlay.classList.add('open'); }, 10);
+                document.body.style.overflow = 'hidden';
+            }
         }
 
-        function handleNavClick(event, el) {
-            // Placeholder navigation handler
+        function handleNavClick(event, btn) {
+            const menu = btn.nextElementSibling;
+            if (!menu || !menu.classList.contains('dropdown-menu')) return;
+            const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+            if (isTouch) {
+                const wasVisible = menu.classList.contains('is-visible');
+                document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
+                if (!wasVisible) {
+                    event.preventDefault(); 
+                    menu.classList.add('is-visible');
+                }
+            }
+            event.stopPropagation();
         }
+
+        window.onclick = (event) => {
+            document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
+            if (!event.target.closest('.lang-widget-container')) {
+                document.getElementById('langMenu').classList.remove('active');
+            }
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('cfipc_lang');
+            if (savedLang && translations[savedLang]) {
+                setLanguage(savedLang);
+            }
+        });
     </script>
 </body>
 </html>
