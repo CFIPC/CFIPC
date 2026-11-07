@@ -360,15 +360,27 @@
                     <img src="https://cfipc.com/Logo26.png" alt="César Franck International Piano Competition Logo" class="logo-image" onerror="this.src='https://placehold.co/150x100/1B2A27/D4A373?text=CFIPC'">
                 </a>
 
-                <!-- Right: Concerts & About -->
+                <!-- Right: Concerts, Gallery, and About -->
                 <div class="flex-1 flex justify-end items-center">
                     <div class="hidden md:flex items-center space-x-8 lg:space-x-10">
                         <!-- Concerts Link -->
                         <a href="https://cfipc.com/concerts/" class="nav-link" data-i18n="nav_concerts_link">Concerts</a>
                         
+                        <!-- Gallery Dropdown -->
+                        <div class="dropdown-container">
+                            <a href="https://cfipc.com/gallery/" class="nav-link" onclick="handleNavClick(event, this)">
+                                <span data-i18n="nav_gallery">Gallery</span>
+                                <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="https://cfipc.com/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
+                                <a href="https://cfipc.com/gallery/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
+                            </div>
+                        </div>
+
                         <!-- About Dropdown -->
                         <div class="dropdown-container">
-                            <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
+                            <a href="https://cfipc.com/about/" class="nav-link" onclick="handleNavClick(event, this)">
                                 <span data-i18n="nav_about">About</span>
                                 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                             </a>
@@ -376,8 +388,6 @@
                                 <a href="https://cfipc.com/contact/" class="dropdown-item" data-i18n="nav_contact">Contact</a>
                                 <a href="https://cfipc.com/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
                                 <a href="https://cfipc.com/partnership/" class="dropdown-item" data-i18n="nav_partners">Partners</a>
-                                <a href="https://cfipc.com/gallery/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
-                                <a href="https://cfipc.com/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
                             </div>
                         </div>
                     </div>
@@ -387,37 +397,29 @@
     </nav>
 
     <main class="pt-32 md:pt-48">
-        <div class="mobile-group">
-            <span class="mobile-label" data-i18n="nav_about_label">About</span>
-            <a href="https://cfipc.com/contact/" class="mobile-link" data-i18n="nav_contact">Contact</a>
-            <a href="https://cfipc.com/about/" class="mobile-link" data-i18n="nav_legacy">Legacy</a>
-            <a href="https://cfipc.com/partnership/" class="mobile-link" data-i18n="nav_partners">Partners</a>
-            <a href="https://cfipc.com/gallery/" class="mobile-link" data-i18n="nav_pictures">Pictures</a>
-            <a href="https://cfipc.com/media/" class="mobile-link" data-i18n="nav_media">Media</a>
-        </div>
-
-        <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold text-decoration-none" data-i18n="nav_home">Return to Home</a>
-    </div>
-                <div class="max-w-[1400px] mx-auto px-8 relative z-10 w-full">
-                    <div class="max-w-5xl">
-                        <h1 class="text-copper italic font-bold text-5xl md:text-7xl lg:text-[5.5rem] serif leading-[1.1] mb-2" data-i18n="hero_title">
-                            César Franck International Piano Competition
-                        </h1>
-                        <p class="text-copper text-sm md:text-base uppercase tracking-[0.4em] mt-8 mb-12" data-i18n="hero_subtitle">
-                            14th Edition | 18-21 December 2026
+        <!-- Hero Section -->
+        <div class="relative bg-[#1B2A27] text-parchment min-h-[85vh] flex items-center py-24 overflow-hidden">
+            <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#D4A373_1px,transparent_1px)] [background-size:24px_24px]"></div>
+            <div class="max-w-[1400px] mx-auto px-8 relative z-10 w-full">
+                <div class="max-w-5xl">
+                    <h1 class="text-copper italic font-bold text-5xl md:text-7xl lg:text-[5.5rem] serif leading-[1.1] mb-2" data-i18n="hero_title">
+                        César Franck International Piano Competition
+                    </h1>
+                    <p class="text-copper text-sm md:text-base uppercase tracking-[0.4em] mt-8 mb-12" data-i18n="hero_subtitle">
+                        14th Edition | 18-21 December 2026
+                    </p>
+                    <div class="flex flex-col md:flex-row items-center gap-10">
+                        <a href="https://cfipc.com/application/" class="btn-copper px-12 py-6 text-sm md:text-base uppercase font-bold tracking-[0.3em] rounded-sm hover:opacity-90 transition w-full md:w-auto text-center" data-i18n="hero_cta">Apply Now</a>
+                        <p class="text-copper text-xl md:text-2xl font-bold italic serif leading-relaxed max-w-lg text-center md:text-left [text-shadow:_1px_1px_1px_#000,-1px_-1px_1px_#000,1px_-1px_1px_#000,-1px_1px_1px_#000]" data-i18n="hero_desc">
+                            Honouring the legacy of César Franck. Providing an international stage for the next generation of musical talent in Brussels.
                         </p>
-                        <div class="flex flex-col md:flex-row items-center gap-10">
-                            <a href="https://cfipc.com/application/" class="btn-copper px-12 py-6 text-sm md:text-base uppercase font-bold tracking-[0.3em] rounded-sm hover:opacity-90 transition w-full md:w-auto text-center" data-i18n="hero_cta">Apply Now</a>
-                            <p class="text-copper text-xl md:text-2xl font-bold italic serif leading-relaxed max-w-lg text-center md:text-left [text-shadow:_1px_1px_1px_#000,-1px_-1px_1px_#000,1px_-1px_1px_#000,-1px_1px_1px_#000]" data-i18n="hero_desc">
-                                Honouring the legacy of César Franck. Providing an international stage for the next generation of musical talent in Brussels.
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Mission Section -->
-            <div class="py-32 px-8 bg-[#F2F0E9]">
+        <!-- Mission Section -->
+        <div class="py-32 px-8 bg-[#F2F0E9]">
                 <div class="max-w-[1000px] mx-auto">
                     <div class="text-center mb-16">
                         <h4 class="text-copper uppercase tracking-[0.4em] text-[10px] font-bold mb-4" data-i18n="mission_tag">Our Mission</h4>
@@ -477,17 +479,17 @@
                 </div>
             </div>
 
-            <!-- Partners Section -->
-            <div class="py-24 px-8 border-t border-forest/5 bg-white">
-                <div class="max-w-[1400px] mx-auto text-center">
-                    <h4 class="text-stone-400 uppercase tracking-[0.4em] text-[8px] font-bold mb-12" data-i18n="partners_title">Our Partners</h4>
-                    <div class="flex justify-center items-center">
-                        <img src="https://cfipc.com/partners.png" alt="Official Partners of César Franck International Piano Competition" class="max-w-full h-auto opacity-70 hover:opacity-100 transition duration-700" onerror="this.src='https://placehold.co/1200x200/F2F0E9/1B2A27?text=CFIPC+Partners'">
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+        <div class="mobile-group">
+            <span class="mobile-label" data-i18n="nav_about_label">About</span>
+            <a href="https://cfipc.com/contact/" class="mobile-link" data-i18n="nav_contact">Contact</a>
+            <a href="https://cfipc.com/about/" class="mobile-link" data-i18n="nav_legacy">Legacy</a>
+            <a href="https://cfipc.com/partnership/" class="mobile-link" data-i18n="nav_partners">Partners</a>
+            <a href="https://cfipc.com/gallery/" class="mobile-link" data-i18n="nav_pictures">Pictures</a>
+            <a href="https://cfipc.com/media/" class="mobile-link" data-i18n="nav_media">Media</a>
+        </div>
+
+        <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold text-decoration-none" data-i18n="nav_home">Return to Home</a>
+    </div>
 
     <!-- FOOTER -->
     <footer class="bg-[#1B2A27] pt-24 pb-12 px-8">
@@ -718,7 +720,7 @@
                 partners_title: "I Nostri Partner"
             },
             es: {
-                menu_label: "Menú",
+                menu_label: "Menu",
                 nav_competition: "Concurso",
                 nav_rules: "Regeln",
                 nav_prizes: "Premios",
