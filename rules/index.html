@@ -86,8 +86,11 @@
             color: var(--forest);
             transition: all 0.2s;
             text-align: center;
-            text-decoration: none;
             width: 100%;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
         }
         .dropdown-item:hover { 
             background: var(--forest); 
@@ -119,16 +122,18 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            background: none;
+            border: none;
             text-decoration: none;
         }
-        
+
         .logo-image {
             height: 100px;
             width: auto;
             object-fit: contain;
             transition: height 0.3s ease;
         }
-        
+
         @media (min-width: 768px) {
             .logo-image { height: 150px; }
         }
@@ -266,8 +271,9 @@
     <div id="mobile-nav-overlay">
         <div class="flex justify-between items-center mb-12">
             <span class="serif italic text-2xl text-parchment">Menu</span>
-            <button onclick="toggleMobileMenu()" class="text-copper text-4xl leading-none">&times;</button>
+            <button onclick="toggleMobileMenu()" class="text-copper text-4xl leading-none" aria-label="Close menu">&times;</button>
         </div>
+
         <div class="mobile-group">
             <span class="mobile-label" data-i18n="nav_competition">Competition</span>
             <a href="https://cfipc.com/rules/" class="mobile-link" data-i18n="nav_rules">Rules</a>
@@ -276,32 +282,53 @@
             <a href="https://cfipc.com/jury/" class="mobile-link" data-i18n="nav_jury">Jury</a>
             <a href="https://cfipc.com/laureates/" class="mobile-link" data-i18n="nav_laureates">Laureates</a>
         </div>
+
         <div class="mobile-group">
             <span class="mobile-label" data-i18n="nav_masterclasses">Masterclasses</span>
             <a href="https://cfipc.com/winter-masterclass/" class="mobile-link" data-i18n="nav_winter">Winter Masterclass</a>
             <a href="https://cfipc.com/spring-masterclass/" class="mobile-link" data-i18n="nav_spring">Spring Masterclass</a>
-            <a href="https://www.masterclass-volodos.com/" class="mobile-link" data-i18n="nav_volodos">Volodos Masterclass</a>
+            <a href="https://www.masterclass-volodos.com/" class="mobile-link" target="_blank" data-i18n="nav_volodos">Volodos Masterclass</a>
         </div>
+
+        <div class="mobile-group">
+            <span class="mobile-label" data-i18n="nav_concerts_label">Concerts</span>
+            <a href="https://cfipc.com/concerts/" class="mobile-link" data-i18n="nav_concerts_link">Concerts</a>
+        </div>
+
+        <div class="mobile-group">
+            <span class="mobile-label" data-i18n="nav_gallery_label">Gallery</span>
+            <a href="https://cfipc.com/media/" class="mobile-link" data-i18n="nav_media">Media</a>
+            <a href="https://cfipc.com/gallery/" class="mobile-link" data-i18n="nav_pictures">Pictures</a>
+        </div>
+
         <div class="mobile-group">
             <span class="mobile-label" data-i18n="nav_about_label">About</span>
             <a href="https://cfipc.com/contact/" class="mobile-link" data-i18n="nav_contact">Contact Us</a>
             <a href="https://cfipc.com/about/" class="mobile-link" data-i18n="nav_legacy">Legacy</a>
+            <a href="https://cfipc.com/partnership/" class="mobile-link" data-i18n="nav_partners">Partners</a>
         </div>
-        <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold" data-i18n="nav_home">Return to Home</a>
+
+        <a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold text-decoration-none" data-i18n="nav_home">Home</a>
     </div>
 
     <!-- Main Navigation Header -->
     <nav class="fixed w-full z-50 bg-[#F2F0E9]/95 backdrop-blur-md border-b border-forest/5">
         <div class="max-w-[1600px] mx-auto px-4 md:px-8">
             <div class="flex justify-between items-center h-32 md:h-48">
+                <!-- Left: Competition & Masterclasses -->
                 <div class="flex-1 flex justify-start items-center">
-                    <button class="md:hidden flex flex-col items-center justify-center space-y-1 p-2" onclick="toggleMobileMenu()">
+                    <button class="md:hidden flex flex-col items-center justify-center space-y-1 p-2" onclick="toggleMobileMenu()" aria-label="Open menu">
+                        <div class="w-6 h-[1.5px] bg-black"></div>
                         <div class="w-6 h-[1.5px] bg-black"></div>
                         <div class="w-6 h-[1.5px] bg-black"></div>
                     </button>
-                    <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
+
+                    <div class="hidden md:flex items-center space-x-8 lg:space-x-10">
                         <div class="dropdown-container">
-                            <a href="https://cfipc.com/" class="nav-link"><span data-i18n="nav_competition">Competition</span> <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
+                            <a href="https://cfipc.com/" class="nav-link" onclick="handleNavClick(event, this)">
+                                <span data-i18n="nav_competition">Competition</span>
+                                <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                            </a>
                             <div class="dropdown-menu">
                                 <a href="https://cfipc.com/rules/" class="dropdown-item" data-i18n="nav_rules">Rules</a>
                                 <a href="https://cfipc.com/prizes/" class="dropdown-item" data-i18n="nav_prizes">Prizes</a>
@@ -311,32 +338,52 @@
                             </div>
                         </div>
                         <div class="dropdown-container">
-                            <a href="https://cfipc.com/winter-masterclass/" class="nav-link"><span data-i18n="nav_masterclasses">Masterclasses</span> <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
+                            <a href="https://cfipc.com/winter-masterclass/" class="nav-link" onclick="handleNavClick(event, this)">
+                                <span data-i18n="nav_masterclasses">Masterclasses</span>
+                                <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                            </a>
                             <div class="dropdown-menu">
                                 <a href="https://cfipc.com/winter-masterclass/" class="dropdown-item" data-i18n="nav_winter">Winter Masterclass</a>
                                 <a href="https://cfipc.com/spring-masterclass/" class="dropdown-item" data-i18n="nav_spring">Spring Masterclass</a>
-                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item" data-i18n="nav_volodos">Volodos Masterclass</a>
+                                <a href="https://www.masterclass-volodos.com/" class="dropdown-item" target="_blank" data-i18n="nav_volodos">Volodos Masterclass</a>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Center: Logo -->
                 <a href="https://cfipc.com/" class="brand-logo px-2">
-                    <img src="https://cfipc.com/Logo26.png" alt="CFIPC Logo" class="logo-image">
+                    <img src="https://cfipc.com/Logo26.png" alt="César Franck International Piano Competition Logo" class="logo-image" onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='block';">
+                    <div id="fallback-logo" class="hidden text-center">
+                        <span class="serif italic text-2xl text-copper">CFIPC</span>
+                    </div>
                 </a>
+
+                <!-- Right: Concerts, Gallery, About -->
                 <div class="flex-1 flex justify-end items-center">
-                    <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
+                    <div class="hidden md:flex items-center space-x-8 lg:space-x-10">
+                        <a href="https://cfipc.com/concerts/" class="nav-link" data-i18n="nav_concerts_link">Concerts</a>
+
                         <div class="dropdown-container">
-                            <a href="#" class="nav-link" onclick="handleNavClick(event, this)"><span data-i18n="nav_about">About</span> <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
-                            <div class="dropdown-menu">
-                                <a href="https://cfipc.com/contact/" class="dropdown-item" data-i18n="nav_contact">Contact Us</a>
-                                <a href="https://cfipc.com/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-container">
-                            <a href="#" class="nav-link" onclick="handleNavClick(event, this)"><span data-i18n="nav_gallery">Gallery</span> <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></a>
+                            <a href="https://cfipc.com/gallery/" class="nav-link" onclick="handleNavClick(event, this)">
+                                <span data-i18n="nav_gallery">Gallery</span>
+                                <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                            </a>
                             <div class="dropdown-menu">
                                 <a href="https://cfipc.com/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
                                 <a href="https://cfipc.com/gallery/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-container">
+                            <a href="https://cfipc.com/about/" class="nav-link" onclick="handleNavClick(event, this)">
+                                <span data-i18n="nav_about">About</span>
+                                <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="https://cfipc.com/contact/" class="dropdown-item" data-i18n="nav_contact">Contact Us</a>
+                                <a href="https://cfipc.com/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
+                                <a href="https://cfipc.com/partnership/" class="dropdown-item" data-i18n="nav_partners">Partners</a>
                             </div>
                         </div>
                     </div>
@@ -578,14 +625,16 @@
                 nav_winter: "Winter Masterclass",
                 nav_spring: "Spring Masterclass",
                 nav_volodos: "Volodos Masterclass",
+                nav_concerts_link: "Concerts",
                 nav_about: "About",
                 nav_about_label: "About",
                 nav_contact: "Contact Us",
                 nav_legacy: "Legacy",
+                nav_partners: "Partners",
                 nav_gallery: "Gallery",
                 nav_media: "Media",
                 nav_pictures: "Pictures",
-                nav_home: "Return to Home",
+                nav_home: "Home",
                 rules_tag: "Official Regulations",
                 rules_title: "Rules & Regulations 2026",
                 rules_deadline: "Deadline : November 1st 2026",
@@ -677,14 +726,16 @@
                 nav_winter: "Masterclass d'Hiver",
                 nav_spring: "Masterclass de Printemps",
                 nav_volodos: "Masterclass Volodos",
+                nav_concerts_link: "Concerts",
                 nav_about: "À propos",
                 nav_about_label: "À propos",
                 nav_contact: "Contactez-nous",
                 nav_legacy: "Héritage",
+                nav_partners: "Partenaires",
                 nav_gallery: "Galerie",
                 nav_media: "Médias",
                 nav_pictures: "Photos",
-                nav_home: "Retour à l'accueil",
+                nav_home: "Accueil",
                 rules_tag: "Règlement Officiel",
                 rules_title: "Règles & Conditions 2026",
                 rules_deadline: "Date limite : 1er Novembre 2026",
@@ -721,7 +772,7 @@
                 req_4_title: "Modifications de Programme",
                 req_4_desc: "Il n'est PAS possible de modifier le programme des demi-finales après soumission. Pour tous les finalistes sélectionnés, il est possible de modifier votre programme de finale jusqu'au 15 novembre 2026. Les candidats peuvent inclure des œuvres enregistrées du 1er tour.",
                 req_5_title: "Soumission des Partitions",
-                req_5_desc: "Une copie de votre programme (Urtext ou éditions originales préférées par le jury) doit être numérisée et envoyée par tous les finalistes à office@cfipc.com avant le 15 novembre 2026. Aucun changement de programme n'est autorisé après cette date.",
+                req_5_desc: "Une copie de votre programme (Urtext ou éditions originales préférées par le jury) doit être numérisée et envoyée par tous les finalistes à office@cfipc.com avant le 15 novembre 2026. Aucun changement de programme n'est autorisé après cette date. Tout candidat ne soumettant pas les partitions dans les délais risque la disqualification.",
                 semi_box_title: "Demi-Finales (En Ligne)",
                 video_std_title: "Normes Vidéo",
                 video_std_1: "Les vidéos soumises ne doivent pas être éditées (audio). Toute vidéo modifiée sera automatiquement disqualifiée.",
@@ -776,14 +827,16 @@
                 nav_winter: "Winter Masterclass",
                 nav_spring: "Lente Masterclass",
                 nav_volodos: "Volodos Masterclass",
+                nav_concerts_link: "Concerten",
                 nav_about: "Over Ons",
                 nav_about_label: "Over Ons",
                 nav_contact: "Contact",
                 nav_legacy: "Erfenis",
+                nav_partners: "Partners",
                 nav_gallery: "Gallerij",
                 nav_media: "Media",
                 nav_pictures: "Foto's",
-                nav_home: "Terug naar Home",
+                nav_home: "Thuis",
                 rules_tag: "Officieel Reglement",
                 rules_title: "Regels & Voorwaarden 2026",
                 rules_deadline: "Deadline : 1 november 2026",
@@ -875,14 +928,16 @@
                 nav_winter: "Winter-Meisterkurs",
                 nav_spring: "Frühlings-Meisterkurs",
                 nav_volodos: "Volodos Meisterkurs",
+                nav_concerts_link: "Konzerte",
                 nav_about: "Über Uns",
                 nav_about_label: "Über Uns",
                 nav_contact: "Kontakt",
                 nav_legacy: "Vermächtnis",
+                nav_partners: "Partner",
                 nav_gallery: "Galerie",
                 nav_media: "Medien",
                 nav_pictures: "Bilder",
-                nav_home: "Zur Startseite",
+                nav_home: "Startseite",
                 rules_tag: "Offizielle Bestimmungen",
                 rules_title: "Regeln & Bestimmungen 2026",
                 rules_deadline: "Einsendeschluss : 1. November 2026",
@@ -974,14 +1029,16 @@
                 nav_winter: "Masterclass Invernale",
                 nav_spring: "Masterclass Primaverile",
                 nav_volodos: "Masterclass Volodos",
+                nav_concerts_link: "Concerti",
                 nav_about: "Chi Siamo",
                 nav_about_label: "Chi Siamo",
                 nav_contact: "Contatti",
                 nav_legacy: "Eredità",
+                nav_partners: "Partner",
                 nav_gallery: "Galleria",
                 nav_media: "Media",
                 nav_pictures: "Foto",
-                nav_home: "Torna alla Home",
+                nav_home: "Home",
                 rules_tag: "Regolamento Ufficiale",
                 rules_title: "Regole e Condizioni 2026",
                 rules_deadline: "Scadenza : 1 Novembre 2026",
@@ -1073,14 +1130,16 @@
                 nav_winter: "Clase Magistral de Invierno",
                 nav_spring: "Clase Magistral de Primavera",
                 nav_volodos: "Clase Magistral Volodos",
+                nav_concerts_link: "Conciertos",
                 nav_about: "Acerca de",
                 nav_about_label: "Acerca de",
                 nav_contact: "Contacto",
                 nav_legacy: "Legado",
+                nav_partners: "Socios",
                 nav_gallery: "Galería",
                 nav_media: "Medios",
                 nav_pictures: "Imágenes",
-                nav_home: "Volver al Inicio",
+                nav_home: "Inicio",
                 rules_tag: "Normativa Oficial",
                 rules_title: "Reglas y Condiciones 2026",
                 rules_deadline: "Fecha límite : 1 de Noviembre de 2026",
