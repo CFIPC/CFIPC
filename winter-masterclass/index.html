@@ -188,69 +188,6 @@ background-color: var(--copper);
 color: var(--forest);
 }
 .social-circle-footer svg { width: 22px; height: 22px; }
-
-/* Custom Floating Language Widget Styling */
-.lang-widget-container {
-position: fixed;
-bottom: 2rem;
-right: 2rem;
-z-index: 9999;
-}
-.lang-toggle-btn {
-background-color: var(--forest);
-color: var(--copper);
-border: 1.5px solid var(--copper);
-width: 50px;
-height: 50px;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-cursor: pointer;
-transition: all 0.3s ease;
-}
-.lang-toggle-btn:hover {
-background-color: var(--copper);
-color: var(--forest);
-transform: scale(1.05);
-}
-.lang-dropdown-menu {
-position: absolute;
-bottom: 65px;
-right: 0;
-background: var(--parchment);
-border: 1px solid rgba(212, 163, 115, 0.3);
-box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-border-radius: 4px;
-padding: 0.5rem 0;
-display: none;
-min-width: 150px;
-}
-.lang-dropdown-menu.active {
-display: block;
-animation: fadeIn 0.2s ease;
-}
-.lang-option {
-display: block;
-width: 100%;
-padding: 0.6rem 1rem;
-text-align: left;
-background: none;
-border: none;
-font-family: 'Outfit', sans-serif;
-font-size: 0.85rem;
-font-weight: 600;
-text-transform: uppercase;
-letter-spacing: 0.1em;
-color: var(--forest);
-cursor: pointer;
-transition: all 0.2s;
-}
-.lang-option:hover {
-background: var(--forest);
-color: var(--copper);
-}
 </style>
 </head>
 <body>
@@ -263,34 +200,34 @@ color: var(--copper);
 </div>
 
 <div class="mobile-group">
-<span class="mobile-label" data-i18n="nav_competition">Competition</span>
-<a href="https://cfipc.com/rules/" class="mobile-link" data-i18n="nav_rules">Rules</a>
-<a href="https://cfipc.com/prizes/" class="mobile-link" data-i18n="nav_prizes">Prizes</a>
-<a href="https://cfipc.com/application/" class="mobile-link" data-i18n="nav_application">Application</a>
-<a href="https://cfipc.com/jury/" class="mobile-link" data-i18n="nav_jury">Jury</a>
-<a href="https://cfipc.com/laureates/" class="mobile-link" data-i18n="nav_laureates">Laureates</a>
+<span class="mobile-label">Competition</span>
+<a href="https://cfipc.com/rules/" class="mobile-link">Rules</a>
+<a href="https://cfipc.com/prizes/" class="mobile-link">Prizes</a>
+<a href="https://cfipc.com/application/" class="mobile-link">Application</a>
+<a href="https://cfipc.com/jury/" class="mobile-link">Jury</a>
+<a href="https://cfipc.com/laureates/" class="mobile-link">Laureates</a>
 </div>
 
 <div class="mobile-group">
-<span class="mobile-label" data-i18n="nav_masterclasses">Masterclasses</span>
-<a href="https://cfipc.com/winter-masterclass/" class="mobile-link" data-i18n="nav_winter">Winter Masterclass</a>
-<a href="https://cfipc.com/spring-masterclass/" class="mobile-link" data-i18n="nav_spring">Spring Masterclass</a>
-<a href="https://www.masterclass-volodos.com/" class="mobile-link" data-i18n="nav_volodos">Volodos Masterclass</a>
+<span class="mobile-label">Masterclasses</span>
+<a href="https://cfipc.com/winter-masterclass/" class="mobile-link">Winter Masterclass</a>
+<a href="https://cfipc.com/spring-masterclass/" class="mobile-link">Spring Masterclass</a>
+<a href="https://www.masterclass-volodos.com/" class="mobile-link">Volodos Masterclass</a>
 </div>
 
 <div class="mobile-group">
-<span class="mobile-label" data-i18n="nav_gallery">Gallery</span>
-<a href="https://cfipc.com/media/" class="mobile-link" data-i18n="nav_media">Media</a>
-<a href="https://cfipc.com/gallery/" class="mobile-link" data-i18n="nav_pictures">Pictures</a>
+<span class="mobile-label">Gallery</span>
+<a href="https://cfipc.com/media/" class="mobile-link">Media</a>
+<a href="https://cfipc.com/gallery/" class="mobile-link">Pictures</a>
 </div>
 
 <div class="mobile-group">
-<span class="mobile-label" data-i18n="nav_about_label">About</span>
-<a href="https://cfipc.com/contact/" class="mobile-link" data-i18n="nav_contact">Contact Us</a>
-<a href="https://cfipc.com/about/" class="mobile-link" data-i18n="nav_legacy">Legacy</a>
+<span class="mobile-label">About</span>
+<a href="https://cfipc.com/contact/" class="mobile-link">Contact Us</a>
+<a href="https://cfipc.com/about/" class="mobile-link">Legacy</a>
 </div>
 
-<a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold text-decoration-none" data-i18n="nav_home">Return to Home</a>
+<a href="https://cfipc.com/" class="mt-8 text-copper text-sm uppercase tracking-[0.3em] font-bold text-decoration-none">Return to Home</a>
 </div>
 
 <!-- Main Navigation Header -->
@@ -306,26 +243,26 @@ color: var(--copper);
 <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
 <div class="dropdown-container">
 <a href="https://cfipc.com/" class="nav-link" onclick="handleNavClick(event, this)">
-<span data-i18n="nav_competition">Competition</span> 
+Competition 
 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
 </a>
 <div class="dropdown-menu">
-<a href="https://cfipc.com/rules/" class="dropdown-item" data-i18n="nav_rules">Rules</a>
-<a href="https://cfipc.com/prizes/" class="dropdown-item" data-i18n="nav_prizes">Prizes</a>
-<a href="https://cfipc.com/application/" class="dropdown-item" data-i18n="nav_application">Application</a>
-<a href="https://cfipc.com/jury/" class="dropdown-item" data-i18n="nav_jury">Jury</a>
-<a href="https://cfipc.com/laureates/" class="dropdown-item" data-i18n="nav_laureates">Laureates</a>
+<a href="https://cfipc.com/rules/" class="dropdown-item">Rules</a>
+<a href="https://cfipc.com/prizes/" class="dropdown-item">Prizes</a>
+<a href="https://cfipc.com/application/" class="dropdown-item">Application</a>
+<a href="https://cfipc.com/jury/" class="dropdown-item">Jury</a>
+<a href="https://cfipc.com/laureates/" class="dropdown-item">Laureates</a>
 </div>
 </div>
 <div class="dropdown-container">
 <a href="https://cfipc.com/winter-masterclass/" class="nav-link" onclick="handleNavClick(event, this)">
-<span data-i18n="nav_masterclasses">Masterclasses</span> 
+Masterclasses 
 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
 </a>
 <div class="dropdown-menu">
-<a href="https://cfipc.com/winter-masterclass/" class="dropdown-item" data-i18n="nav_winter">Winter Masterclass</a>
-<a href="https://cfipc.com/spring-masterclass/" class="dropdown-item" data-i18n="nav_spring">Spring Masterclass</a>
-<a href="https://www.masterclass-volodos.com/" class="dropdown-item" data-i18n="nav_volodos">Volodos Masterclass</a>
+<a href="https://cfipc.com/winter-masterclass/" class="dropdown-item">Winter Masterclass</a>
+<a href="https://cfipc.com/spring-masterclass/" class="dropdown-item">Spring Masterclass</a>
+<a href="https://www.masterclass-volodos.com/" class="dropdown-item">Volodos Masterclass</a>
 </div>
 </div>
 </div>
@@ -342,22 +279,22 @@ color: var(--copper);
 <div class="hidden md:flex items-center space-x-10 lg:space-x-12">
 <div class="dropdown-container">
 <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
-<span data-i18n="nav_about">About</span> 
+About 
 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
 </a>
 <div class="dropdown-menu">
-<a href="https://cfipc.com/contact/" class="dropdown-item" data-i18n="nav_contact">Contact Us</a>
-<a href="https://cfipc.com/about/" class="dropdown-item" data-i18n="nav_legacy">Legacy</a>
+<a href="https://cfipc.com/contact/" class="dropdown-item">Contact Us</a>
+<a href="https://cfipc.com/about/" class="dropdown-item">Legacy</a>
 </div>
 </div>
 <div class="dropdown-container">
 <a href="#" class="nav-link" onclick="handleNavClick(event, this)">
-<span data-i18n="nav_gallery">Gallery</span> 
+Gallery 
 <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
 </a>
 <div class="dropdown-menu">
-<a href="https://cfipc.com/media/" class="dropdown-item" data-i18n="nav_media">Media</a>
-<a href="https://cfipc.com/gallery/" class="dropdown-item" data-i18n="nav_pictures">Pictures</a>
+<a href="https://cfipc.com/media/" class="dropdown-item">Media</a>
+<a href="https://cfipc.com/gallery/" class="dropdown-item">Pictures</a>
 </div>
 </div>
 </div>
@@ -370,64 +307,64 @@ color: var(--copper);
 <section class="page-section py-32 px-4 md:px-8">
 <div class="max-w-[1400px] mx-auto">
 <div class="text-center mb-24">
-<h4 class="text-copper uppercase tracking-[0.4em] text-[10px] font-bold mb-4" data-i18n="edu_prog">EDUCATIONAL PROGRAMS</h4>
-<h2 class="text-5xl md:text-7xl serif italic text-forest" data-i18n="winter_title">Winter Masterclasses</h2>
-<h3 class="text-2xl md:text-4xl serif italic text-forest mt-4" data-i18n="app_2026">Application 2026</h3>
+<h4 class="text-copper uppercase tracking-[0.4em] text-[10px] font-bold mb-4">EDUCATIONAL PROGRAMS</h4>
+<h2 class="text-5xl md:text-7xl serif italic text-forest">Winter Masterclasses</h2>
+<h3 class="text-2xl md:text-4xl serif italic text-forest mt-4">Application 2025</h3>
 </div>
 
 <div class="mb-24 bg-forest p-12 rounded-sm shadow-xl border border-copper/10 text-center">
 <div class="max-w-4xl mx-auto">
-<p class="text-2xl serif italic mb-8 text-copper" data-i18n="welcome_msg">Welcome to the CFIPC Masterclasses 2026 !</p>
-<p class="font-light leading-relaxed mb-10 text-lg text-copper" data-i18n="format_desc">
+<p class="text-2xl serif italic mb-8 text-copper">Welcome to the CFIPC Masterclasses 2025 !</p>
+<p class="font-light leading-relaxed mb-10 text-lg text-copper/90">
 Our masterclass format will take place in the same way we are doing with our competition and festival : live and digitally.
 </p>
 <div class="inline-block bg-white/5 px-8 py-4 rounded-sm border border-copper/30">
-<p class="font-bold uppercase tracking-widest text-sm text-copper" data-i18n="fee_label">Masterclass fee : 120€ per lesson</p>
+<p class="font-bold uppercase tracking-widest text-sm text-copper">Masterclass fee : 120€ per hour</p>
 </div>
 </div>
 </div>
 
 <div class="mb-32">
-<h3 class="serif text-4xl italic text-forest mb-12 border-b border-forest/5 pb-4 text-center" data-i18n="prof_heading">Available Professors & Periods</h3>
+<h3 class="serif text-4xl italic text-forest mb-12 border-b border-forest/5 pb-4 text-center">Available Professors & Periods</h3>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 <a href="https://olgakern.com" target="_blank" class="prof-card-container">
 <img src="olga.png" class="prof-image" alt="Olga Kern">
 <div class="prof-info">
 <h4 class="text-2xl font-bold mb-2">Olga Kern</h4>
-<p class="font-bold uppercase tracking-widest text-[10px] mb-2 opacity-60" data-i18n="period_label">Masterclass period</p>
-<p class="serif italic text-xl" data-i18n="kern_dates">December 21</p>
+<p class="font-bold uppercase tracking-widest text-[10px] mb-2 opacity-60">Masterclass period</p>
+<p class="serif italic text-xl">December 22</p>
 </div>
 </a>
 <a href="https://www.philipperaskin.com" target="_blank" class="prof-card-container">
 <img src="philippe.png" class="prof-image" alt="Philippe Raskin">
 <div class="prof-info">
 <h4 class="text-2xl font-bold mb-2">Philippe Raskin</h4>
-<p class="font-bold uppercase tracking-widest text-[10px] mb-2 opacity-60" data-i18n="period_label">Masterclass period</p>
-<p class="serif italic text-xl" data-i18n="raskin_dates">December 19 - 23</p>
+<p class="font-bold uppercase tracking-widest text-[10px] mb-2 opacity-60">Masterclass period</p>
+<p class="serif italic text-xl">December 20 - 24</p>
 </div>
 </a>
 <a href="https://leonelmorales.com" target="_blank" class="prof-card-container">
 <img src="leonel.png" class="prof-image" alt="Leonel Morales">
 <div class="prof-info">
 <h4 class="text-2xl font-bold mb-2">Leonel Morales</h4>
-<p class="font-bold uppercase tracking-widest text-[10px] mb-2 opacity-60" data-i18n="period_label">Masterclass period</p>
-<p class="serif italic text-xl" data-i18n="leonel_dates">December 18 - 21</p>
+<p class="font-bold uppercase tracking-widest text-[10px] mb-2 opacity-60">Masterclass period</p>
+<p class="serif italic text-xl">December 19 - 22</p>
 </div>
 </a>
 <a href="https://www.pianofriends.eu/chi-siamo/balzani_cv/" target="_blank" class="prof-card-container">
 <img src="vincenzo.png" class="prof-image" alt="Vincenzo Balzani">
 <div class="prof-info">
 <h4 class="text-2xl font-bold mb-2">Vincenzo Balzani</h4>
-<p class="font-bold uppercase tracking-widest text-[10px] mb-2 opacity-60" data-i18n="period_label">Masterclass period</p>
-<p class="serif italic text-xl" data-i18n="vincenzo_dates">December 18 - 21</p>
+<p class="font-bold uppercase tracking-widest text-[10px] mb-2 opacity-60">Masterclass period</p>
+<p class="serif italic text-xl">December 19 - 22</p>
 </div>
 </a>
 <a href="https://en.wikipedia.org/wiki/Andreas_Frölich" target="_blank" class="prof-card-container">
 <img src="andreas.png" class="prof-image" alt="Andreas Frölich">
 <div class="prof-info">
 <h4 class="text-2xl font-bold mb-2">Andreas Frölich</h4>
-<p class="font-bold uppercase tracking-widest text-[10px] mb-2 opacity-60" data-i18n="period_label">Masterclass period</p>
-<p class="serif italic text-xl" data-i18n="andreas_dates">December 18 - 21</p>
+<p class="font-bold uppercase tracking-widest text-[10px] mb-2 opacity-60">Masterclass period</p>
+<p class="serif italic text-xl">December 19 - 22</p>
 </div>
 </a>
 </div>
@@ -435,124 +372,77 @@ Our masterclass format will take place in the same way we are doing with our com
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-32">
 <div class="shadow-box-beige">
-<h3 class="serif text-4xl italic mb-8 text-forest" data-i18n="logistics_heading">Logistics</h3>
+<h3 class="serif text-4xl italic mb-8 text-forest">Logistics</h3>
 <div class="space-y-6 text-sm font-light leading-relaxed text-forest">
-                            <p data-i18n="logistics_intro">Candidates who are interested to apply for the masterclasses will receive their lesson(s) either :</p>
-                            <p data-i18n="logistics_intro">Finalists who are interested to apply for the masterclasses will receive their lesson(s) either:</p>
+<p>Candidates who are interested to apply for the masterclasses will receive their lesson(s) either :</p>
 <ul class="space-y-4">
 <li class="flex gap-4">
 <span class="font-bold text-copper">•</span>
-@@ -447,7 +447,12 @@
-<span class="font-bold text-copper">•</span>
-<span data-i18n="logistics_digi"><strong>Digitally</strong> for participants who are unable to travel.</span>
+<span><strong>Live in Brussels</strong> directly after the competition on 22nd of December. Prof. Raskin will exceptionally teach this year on the 22nd, 23rd and 24th of December.</span>
 </li>
-                                <li class="flex gap-4">
-                                    <span class="font-bold text-copper">•</span>
-                                    <span data-i18n="logistics_duration">The duration of one lesson is of <strong>50 minutes</strong>.</span>
-                                </li>
+<li class="flex gap-4">
+<span class="font-bold text-copper">•</span>
+<span><strong>Digitally</strong> for participants who are unable to travel.</span>
+</li>
 </ul>
-                            <p class="pt-2" data-i18n="logistics_non_finalists">For pianists not participating in the finals of the competition, some lessons will be planned for December 18.</p>
 </div>
 </div>
 
-@@ -557,9 +562,11 @@
-vincenzo_dates: "December 18 - 21",
-andreas_dates: "December 18 - 21",
-logistics_heading: "Logistics",
-                logistics_intro: "Candidates who are interested to apply for the masterclasses will receive their lesson(s) either :",
-                logistics_intro: "Finalists who are interested to apply for the masterclasses will receive their lesson(s) either:",
-logistics_live: "<strong>Live in Brussels</strong> directly after the competition on 21st of December. Prof. Raskin will exceptionally teach this year on the 21st, 22nd and 23rd of December due to the very high number of applications.",
-logistics_digi: "<strong>Digitally</strong> for participants who are unable to travel.",
-                logistics_duration: "The duration of one lesson is of <strong>50 minutes</strong>.",
-                logistics_non_finalists: "For pianists not participating in the finals of the competition, some lessons will be planned for December 18.",
-bank_heading: "Bank Transfer Details",
-bank_acc: "Account Name :",
-bank_name: "Bank :",
-@@ -603,9 +610,11 @@
-vincenzo_dates: "18 - 21 décembre",
-andreas_dates: "18 - 21 décembre",
-logistics_heading: "Logistique",
-                logistics_intro: "Les candidats souhaitant postuler aux masterclasses recevront leur(s) leçon(s) :",
-                logistics_intro: "Les finalistes souhaitant postuler aux masterclasses recevront leur(s) leçon(s) :",
-logistics_live: "<strong>En présentiel à Bruxelles</strong> directement après le concours le 21 décembre. Le Prof. Raskin enseignera exceptionnellement cette année les 21, 22 et 23 décembre en raison du très grand nombre de candidatures.",
-logistics_digi: "<strong>En ligne</strong> pour les participants ne pouvant pas voyager.",
-                logistics_duration: "La durée d'une leçon est de <strong>50 minutes</strong>.",
-                logistics_non_finalists: "Pour les pianistes ne participant pas à la finale du concours, certaines leçons seront prévues le 18 décembre.",
-bank_heading: "Coordonnées Bancaires",
-bank_acc: "Titulaire du compte :",
-bank_name: "Banque :",
-@@ -649,9 +658,11 @@
-vincenzo_dates: "18 - 21 december",
-andreas_dates: "18 - 21 december",
-logistics_heading: "Logistiek",
-                logistics_intro: "Kandidaten die zich willen aanmelden voor de masterclasses ontvangen hun les(sen) ofwel :",
-                logistics_intro: "Finalisten die zich willen aanmelden voor de masterclasses ontvangen hun les(sen) ofwel:",
-logistics_live: "<strong>Live in Brussel</strong> direct na het concours op 21 december. Prof. Raskin geeft dit jaar uitzonderlijk les op 21, 22 en 23 december vanwege het zeer hoge aantal aanmeldingen.",
-logistics_digi: "<strong>Digitaal</strong> voor deelnemers die niet kunnen reizen.",
-                logistics_duration: "De duur van één les is <strong>50 minuten</strong>.",
-                logistics_non_finalists: "Voor pianisten die niet deelnemen aan de finale van het concours, worden sommige lessen gepland op 18 december.",
-bank_heading: "Bankgegevens",
-bank_acc: "Rekeningnaam :",
-bank_name: "Bank :",
-@@ -695,9 +706,11 @@
-vincenzo_dates: "18. - 21. Dezember",
-andreas_dates: "18. - 21. Dezember",
-logistics_heading: "Logistik",
-                logistics_intro: "Kandidaten, die sich für die Meisterkurse bewerben möchten, erhalten ihre Lektion(en) entweder :",
-                logistics_intro: "Finalisten, die sich für die Meisterkurse bewerben möchten, erhalten ihre Lektion(en) entweder:",
-logistics_live: "<strong>Live in Brüssel</strong> direkt nach dem Wettbewerb am 21. Dezember. Prof. Raskin unterrichtet in diesem Jahr aufgrund der sehr hohen Anzahl an Bewerbungen ausnahmsweise am 21., 22. und 23. Dezember.",
-logistics_digi: "<strong>Digital</strong> für Teilnehmer, die nicht reisen können.",
-                logistics_duration: "Die Dauer einer Lektion beträgt <strong>50 Minuten</strong>.",
-                logistics_non_finalists: "Für Pianisten, die nicht am Finale des Wettbewerbs teilnehmen, sind einige Lektionen für den 18. Dezember geplant.",
-bank_heading: "Bankverbindung",
-bank_acc: "Kontoinhaber :",
-bank_name: "Bank :",
-@@ -741,9 +754,11 @@
-vincenzo_dates: "18 - 21 dicembre",
-andreas_dates: "18 - 21 dicembre",
-logistics_heading: "Logistica",
-                logistics_intro: "I candidati interessati a iscriversi alle masterclass riceveranno la/le loro lezione/i :",
-                logistics_intro: "I finalisti interessati a iscriversi alle masterclass riceveranno la/le loro lezione/i:",
-logistics_live: "<strong>Dal vivo a Bruxelles</strong> subito dopo il concorso il 21 dicembre. Il Prof. Raskin terrà eccezionalmente lezione quest'anno nei giorni 21, 22 e 23 dicembre a causa dell'altissimo numero di candidature.",
-logistics_digi: "<strong>In modalità digitale</strong> per i partecipanti che non possono viaggiare.",
-                logistics_duration: "La durata di una lezione è di <strong>50 minuti</strong>.",
-                logistics_non_finalists: "Per i pianisti che non partecipano alla finale del concorso, alcune lezioni saranno pianificate per il 18 dicembre.",
-bank_heading: "Coordinate Bancarie",
-bank_acc: "Intestatario conto :",
-bank_name: "Banca :",
-@@ -787,81 +802,83 @@
-vincenzo_dates: "18 - 21 de diciembre",
-andreas_dates: "18 - 21 de diciembre",
-logistics_heading: "Logística",
-                logistics_intro: "Los candidatos interesados en postularse a las clases magistrales recibirán su(s) lección(es) de la siguiente manera :",
-                logistics_intro: "Los finalistas interesados en postularse a las clases magistrales recibirán su(s) lección(es):",
-logistics_live: "<strong>En persona en Bruselas</strong> directamente después del concurso el 21 de diciembre. El Prof. Raskin impartirá clases excepcionalmente este año los días 21, 22 y 23 de diciembre debido al altísimo número de solicitudes.",
-logistics_digi: "<strong>Digitalmente</strong> para los participantes que no puedan viajar.",
-                logistics_duration: "La duración de una lección es de <strong>50 minutes</strong>.",
-                logistics_non_finalists: "Para los pianistas que no participan en la final del concurso, algunas lecciones se planificarán para el 18 de diciembre.",
-bank_heading: "Detalles de Transferencia Bancaria",
-bank_acc: "Titular de la cuenta :",
-bank_name: "Banco :",
-bank_iban: "IBAN :",
-bank_bic: "BIC :",
-bank_address: "Dirección :",
-reg_title: "Inscripción",
-reg_desc: "El asunto de la transferencia bancaria debe indicarse claramente con : Nombre del candidato + RASKIN MC & número de horas y/o BALZANI MC & número de horas y/o FROLICH MC & número de horas. Por favor, complete el formulario de solicitud a continuación y envíe el comprobante de pago para reservar su(s) clase(s) magistral(es).",
-reg_refresh: 'Actualice esta página para ver el formulario o <a href="https://forms.fillout.com/t/pZyh9VfZ2pus" target="_blank" class="underline hover:text-copper">regístrese a través de este enlace</a>.'
-}
-};
+<div class="shadow-box-beige">
+<h3 class="serif text-4xl italic mb-8 text-forest">Bank Transfer Details</h3>
+<div class="space-y-4 text-sm text-forest font-light">
+<p><span class="font-bold uppercase text-[10px] opacity-70">Account Name :</span> CFIPC</p>
+<p><span class="font-bold uppercase text-[10px] opacity-70">Bank :</span> BNP Paribas Fortis</p>
+<p><span class="font-bold uppercase text-[10px] opacity-70">IBAN :</span> BE28 0016 9098 3620</p>
+<p><span class="font-bold uppercase text-[10px] opacity-70">BIC :</span> GEBABEBB</p>
+<div class="pt-4 font-bold text-xs uppercase tracking-widest opacity-70 text-copper">Address :</div>
+<p class="leading-relaxed">
+Lijsterbessenbomenlaan 6<br>
+Kraainem 1950<br>
+BELGIUM
+</p>
+</div>
+</div>
+</div>
 
-function setLanguage(lang) {
-const elements = document.querySelectorAll('[data-i18n]');
-elements.forEach(el => {
-const key = el.getAttribute('data-i18n');
-if (translations[lang] && translations[lang][key]) {
-el.innerHTML = translations[lang][key];
-}
-});
-document.getElementById('langMenu').classList.remove('active');
-localStorage.setItem('cfipc_lang', lang);
-}
+<div class="mb-32">
+<div class="max-w-4xl mx-auto text-center mb-12">
+<p class="text-sm uppercase font-bold tracking-widest text-copper mb-4">Registration</p>
+<p class="text-stone-500 font-light leading-relaxed">
+The subject of the bank transfer must be clearly stated with either : Name of candidate + RASKIN MC & number of hours and/or BALZANI MC & number of hours and/or FROLICH MC & number of hours.
+Please fill out the application form below and send the proof of payment in order to reserve your masterclass(es).
+</p>
+<p class="mt-6 text-xs italic text-stone-400">Please refresh this page to see the form or <a href="https://forms.fillout.com/t/pZyh9VfZ2pus" target="_blank" class="underline hover:text-copper">register via this link</a>.</p>
+</div>
+<div class="bg-white p-4 md:p-8 rounded-sm shadow-xl border border-forest/5">
+<div style="width:100%; height:600px;" data-fillout-id="pZyh9VfZ2pus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+<script src="https://server.fillout.com/embed/v1/"></script>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-[#1B2A27] pt-24 pb-12 px-8">
+<div class="max-w-[1400px] mx-auto flex flex-col items-center gap-10">
+<div class="flex gap-6">
+<a href="https://www.facebook.com/cfipc" target="_blank" class="social-circle-footer" aria-label="Facebook">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+</a>
+<a href="https://www.instagram.com/cfipc_official/" target="_blank" class="social-circle-footer" aria-label="Instagram">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+</a>
+<a href="mailto:office@cfipc.com" class="social-circle-footer" aria-label="Email">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+</a>
+</div>
+<p class="text-[9px] uppercase tracking-[0.3em] font-light text-copper" style="color: var(--copper) !important; opacity: 1;">&copy; THE MUSIC AGENCY 2026</p>
+</div>
+</footer>
+
+<script>
+lucide.createIcons();
 
 function handleNavClick(event, btn) {
 const menu = btn.nextElementSibling;
@@ -582,26 +472,8 @@ document.body.style.overflow = 'hidden';
 }
 }
 
-function toggleLangMenu() {
-const menu = document.getElementById('langMenu');
-menu.classList.toggle('active');
-}
-
-window.onclick = (event) => {
-document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
-if (!event.target.closest('.lang-widget-container')) {
-document.getElementById('langMenu').classList.remove('active');
-}
-};
-
-// Auto-load user preference if previously saved
-window.addEventListener('DOMContentLoaded', () => {
-const savedLang = localStorage.getItem('cfipc_lang');
-if (savedLang && translations[savedLang]) {
-setLanguage(savedLang);
-}
-});
+window.onclick = () => document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-visible'));
 </script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ad3becddcd7249d19a31f20ef5fccc08"}'></script><!-- End Cloudflare Web Analytics -->
+    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ad3becddcd7249d19a31f20ef5fccc08"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
